@@ -2,6 +2,9 @@
 
 <br />使用rhino js编写Android应用
 <br />
+<br />[码云](https://gitee.com/MikaGuraN/HL-JS)
+<br />[Github](https://github.com/MikaGuraN/HL-JS)
+<br />
 <br />[预览版](./乐园之土.apk)
 <br />
 <br />还在不断完善啦
