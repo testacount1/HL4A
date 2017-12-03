@@ -1,7 +1,7 @@
 package h.android;
 
-import 放课后乐园部.组件.*;
+import 放课后乐园部.脚本.JavaScript.*;
 
-public class MainService extends 基本服务 {
+public class MainService extends JS服务 {
 
 }

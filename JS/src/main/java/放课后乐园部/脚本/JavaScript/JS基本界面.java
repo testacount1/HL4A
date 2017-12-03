@@ -19,7 +19,7 @@ public class JS基本界面 extends 基本界面 {
     
     public void 跳转(String $文件名) {
         try {
-            Intent 启动 = new Intent(this, 反射.取类(应用.取包名() + ".JSActivity"));
+            Intent 启动 = new Intent(this, 反射.取类(应用.取包名() + ".ProxyActivity"));
             启动.putExtra("文件", $文件名);
             startActivity(启动);
         } catch (Exception $错误) {

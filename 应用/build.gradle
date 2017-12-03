@@ -7,11 +7,12 @@ android {
 
     defaultConfig {
         applicationId "h.android"
-        versionCode 33
-        versionName "1.3.9"
+        versionCode 34
+        versionName "1.3.10"
     }
 }
 dependencies {
+
     compile project(":基本")
     compile project(":JS")
 }
