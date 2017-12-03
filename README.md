@@ -2,6 +2,8 @@
 
 <br />使用rhino js编写Android应用
 <br />
+<br />[预览版](./乐园之土.apk)
+<br />
 <br />还在不断完善啦
 <br />
 <br />更新日志:
@@ -42,4 +44,4 @@
 <br />更改直接从安装包读取文件为启动时解压APK所有文件。 
 <br />
 <br /> 协议 :
-<br />[GNU GENERAL PUBLIC LICENSE 3](https://github.com/MikaGuraN/HL-JS/blob/master/LICENSE)
+<br />[GNU GENERAL PUBLIC LICENSE 3](./LICENSE)
