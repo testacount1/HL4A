@@ -303,7 +303,7 @@ public class 字符 {
 		public static Boolean 是否为空(Object... $内容) {
 				if ($内容 == null) return true;
 				for (Object $单个内容 :$内容) {
-						if ($单个内容 == null || $单个内容.equals(""))
+						if ($单个内容 == null || "".equals($单个内容))
 								return true;
 				}
 				return false;

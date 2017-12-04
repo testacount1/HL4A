@@ -66,7 +66,7 @@ public class 线程 extends Thread {
 		}
 
 		public synchronized void 唤醒() {
-				notify();
+				notifyAll();
 		}
 
 }

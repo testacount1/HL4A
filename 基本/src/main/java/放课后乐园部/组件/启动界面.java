@@ -25,7 +25,7 @@ public class 启动界面 extends 基本界面 {
         public Object 调用(Object[] $参数) {
             String $旧 = (String) 设置.读取("APK散列");
             String $当前 = 散列.文件("MD5", 文件.取安装包位置());
-            if ($旧 != $当前) {
+            if ($旧.equals($当前)) {
                 解压.全部(文件.取安装包位置(), 文件.取数据目录("apk"));
                 设置.设置("APK散列", $当前);
             }

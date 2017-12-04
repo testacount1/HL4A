@@ -2,12 +2,19 @@ package 放课后乐园部.基本;
 
 import java.io.*;
 import java.nio.channels.*;
+import java.util.zip.*;
 
 public final class IO流 {
 
     IO流() {}
 
     public static void 关闭(InputStream $流) {
+        try {
+            $流.close();
+        } catch (Exception $错误) {}
+    }
+    
+    public static void 关闭(ZipFile $流) {
         try {
             $流.close();
         } catch (Exception $错误) {}

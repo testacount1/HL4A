@@ -24,6 +24,7 @@ public class 压缩 {
 										遍历文件($输出流, $所有[i], "");
 								}
 						}
+                        IO流.关闭($输出流);
 
 				} catch (Exception $错误) {}
 		}

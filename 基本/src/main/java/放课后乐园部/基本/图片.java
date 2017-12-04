@@ -30,7 +30,9 @@ public class 图片 {
 		}
 
 		public static void 保存(Bitmap $图片,String $输出) {
-				$图片.compress(Bitmap.CompressFormat.PNG, 100, IO流.输出.文件($输出));
+            FileOutputStream $输出流 = IO流.输出.文件($输出);
+            $图片.compress(Bitmap.CompressFormat.PNG, 100, $输出流);
+            IO流.关闭($输出流);
 		}
 
 		public static Bitmap 合成(Bitmap $背景,Bitmap $前景) {
