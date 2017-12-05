@@ -2,8 +2,8 @@
 
 <br />使用js,lua,bsh编写Android应用
 <br />
-<br />[码云](https://gitee.com/MikaGuraN/HL-JS)
-<br />[Github](https://github.com/MikaGuraN/HL-JS)
+<br />[码云](https://gitee.com/MikaGuraN/HL4A)
+<br />[Github](https://github.com/MikaGuraN/HL4A)
 <br />
 <br />[预览版](./乐园之土.apk)
 <br />
