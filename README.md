@@ -1,6 +1,6 @@
 # 乐园之土
 
-<br />使用rhino js编写Android应用
+<br />使用js,lua,bsh编写Android应用
 <br />
 <br />[码云](https://gitee.com/MikaGuraN/HL-JS)
 <br />[Github](https://github.com/MikaGuraN/HL-JS)
@@ -10,6 +10,11 @@
 <br />还在不断完善啦
 <br />
 <br />更新日志:
+<br />
+<br />1.3.11
+<br />
+<br />加入lua,bsh支持
+<br />全面优化中
 <br />
 <br />1.3.10
 <br />
