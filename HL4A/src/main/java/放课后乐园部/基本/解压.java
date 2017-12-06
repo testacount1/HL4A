@@ -3,12 +3,11 @@ package 放课后乐园部.基本;
 import java.io.*;
 import java.util.*;
 import java.util.zip.*;
+import 放课后乐园部.收集.*;
 
 public class 解压 {
 
     解压() {}
-
-    private static final int BUFF_SIZE = 1024 * 1024;
 
     public static void 单个(String $文件,String $地址,String $输出) {
 
@@ -21,46 +20,67 @@ public class 解压 {
 
     }
 
-    public static void 全部(String $文件,String $输出) {
-
+    public static 集合 全部(String $文件,String $输出) {
+        if ($文件 == null || $输出 == null) return null;
         try {
+            集合 files = new 集合();
+            ZipFile zf = new ZipFile($文件);
+            Enumeration<?> entries = zf.entries();
 
-            File $文件对象 = new File($文件);
-            File $输出文件夹 = new File($输出);
-            if (!$输出文件夹.exists()) {
-                $输出文件夹.mkdirs();
+            while (entries.hasMoreElements()) {
+                ZipEntry entry = ((ZipEntry) entries.nextElement());
+                String entryName = entry.getName();
+                if (!unzipChildFile($输出, files, zf, entry, entryName)) return files;
             }
-            ZipFile $压缩对象 = new ZipFile($文件对象);
-            for (Enumeration<?> $所有 = $压缩对象.entries(); $所有.hasMoreElements();) {
-                ZipEntry $进入 = ((ZipEntry)$所有.nextElement());
-                if ($进入.isDirectory()) {
 
-                    continue;
-                }
-                InputStream $输入流 = $压缩对象.getInputStream($进入);
-                String str = $输出 + File.separator + $进入.getName();
-                str = new String(str.getBytes(), "utf-8");
-                File $输出文件 = new File(str);
-                if (!$输出文件.exists()) {
-                    File $目录 = $输出文件.getParentFile();
-                    if (!$目录.exists()) {
-                        $目录.mkdirs();
-                    }
-                    $输出文件.createNewFile();
-                }
-                OutputStream $输出流 = new FileOutputStream($输出文件);
-                byte buffer[] = new byte[BUFF_SIZE];
-                int realLength;
-                while ((realLength = $输入流.read(buffer)) > 0) {
-                    $输出流.write(buffer, 0, realLength);
-                }
-                IO流.关闭($输入流);
-                IO流.关闭($输出流);
-                IO流.关闭($压缩对象);
-            }
+            return files;
         } catch (Exception $错误) {}
-        
+        return null;
     }
+
+    private static boolean unzipChildFile(String destDir,List<File> files,ZipFile zf,ZipEntry entry,String entryName) throws IOException {
+        String filePath = destDir + File.separator + entryName;
+        File file = new File(filePath);
+        files.add(file);
+        if (entry.isDirectory()) {
+            if (!createOrExistsDir(file)) return false;
+        } else {
+            if (!createOrExistsFile(file)) return false;
+            InputStream in = null;
+            OutputStream out = null;
+
+            in = new BufferedInputStream(zf.getInputStream(entry));
+            out = new BufferedOutputStream(new FileOutputStream(file));
+            byte buffer[] = new byte[in.available()];
+            int len;
+            while ((len = in.read(buffer)) != -1) {
+                out.write(buffer, 0, len);
+            }
+            IO流.关闭(in);
+            IO流.关闭(out);
+        }
+        return true;
+    }
+
+    private static boolean createOrExistsDir(final File file) {
+        return file != null && (file.exists() ? file.isDirectory() : file.mkdirs());
+    }
+
+    private static boolean createOrExistsFile(final File file) {
+        if (file == null) return false;
+        if (file.exists()) return file.isFile();
+        if (!createOrExistsDir(file.getParentFile())) return false;
+        try {
+            return file.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    
+
+
 
 
 }
