@@ -12,7 +12,7 @@ import 放课后乐园部.收集.*;
 
 public class 应用 {
 
-		private 应用() {}
+	 应用() {}
 
 		private static 哈希表 全局变量 = new 哈希表();
 

@@ -32,6 +32,8 @@ public class JavaScript {
 		压入常量("当前环境", this);
 		压入常量("是复制环境", false);
 		压入常量("全局上下文", 环境.读取());
+        
+        运行文件("#lib/android.js");
 
 	}
 
@@ -126,12 +128,12 @@ public class JavaScript {
 	}
 
 	public Object 运行文件(String $地址) {
-		String $ = 文本.读取($地址);
+		String $ = 字符.读取($地址);
 		return 执行代码($, $地址);
 	}
 
 	public Object 运行文件(String $地址,String $环境名) {
-		String $ = 文本.读取($地址);
+		String $ = 字符.读取($地址);
 		return 执行代码($, $环境名);
 	}
 

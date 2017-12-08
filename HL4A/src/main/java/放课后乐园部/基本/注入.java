@@ -7,7 +7,7 @@ import 放课后乐园部.收集.*;
 @说明("注入依赖so或是dex")
 public class 注入 {
 
-    private 注入() {}
+    注入() {}
     
     public static 集合 所有加载器 = new 集合();
     

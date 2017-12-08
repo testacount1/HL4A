@@ -7,7 +7,7 @@ import 放课后乐园部.组件.*;
 
 public class 处理 {
 		
-		private 处理() {}
+	 处理() {}
 		
 		public static Looper 主处理 = Looper.getMainLooper();
 

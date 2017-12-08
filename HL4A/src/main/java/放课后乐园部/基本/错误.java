@@ -74,7 +74,7 @@ public class 错误 {
 
 
     public static void 保存(Throwable $错误) {
-        文本.保存(文件.取存储卡缓存目录("错误日志/" + 时间.格式("中文") + ".log"), 取整个错误($错误));
+        字符.保存(文件.取存储卡缓存目录("错误日志/" + 时间.格式("中文") + ".log"), 取整个错误($错误));
     }
 
     public static void 普通(Throwable $错误) {

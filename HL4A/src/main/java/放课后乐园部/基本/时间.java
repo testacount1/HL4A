@@ -6,7 +6,7 @@ import 放课后乐园部.注解.注释.*;
 
 public class 时间 {
 
-		private 时间() {}
+	 时间() {}
 
 		public static String 格式() {
 				return 格式(new Date(), null);

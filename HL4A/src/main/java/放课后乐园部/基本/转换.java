@@ -6,7 +6,7 @@ import android.util.DisplayMetrics;
 
 public class 转换 {
 
-		private 转换() {}
+	 转换() {}
 
 		private static DisplayMetrics rdm = 环境.读取().getResources().getDisplayMetrics();
 

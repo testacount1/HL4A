@@ -9,7 +9,7 @@ import 放课后乐园部.组件.*;
 
 public class 辅助 {
 
-		private 辅助() {}
+	 辅助() {}
 
 		public static boolean 检查() {
 				if (已启动())

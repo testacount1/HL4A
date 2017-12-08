@@ -12,7 +12,7 @@ public class 启动界面 extends 基本界面 {
     @Override
     public void onCreate(Bundle $数据) {
         super.onCreate($数据);
-        布局.打开(this, new 界面_初始化(this));
+        打开布局(new 界面_初始化(this));
     }
 
     @Override

@@ -24,9 +24,9 @@ public class 哈希表 extends HashMap implements Serializable {
         return this;
     }
     
-    public Iterator 取遍历对象() {
+    public Set<Map.Entry>取遍历对象() {
         
-        return keySet().iterator();
+        return entrySet();
         
     }
 

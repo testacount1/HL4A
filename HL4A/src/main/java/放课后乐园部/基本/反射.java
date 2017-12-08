@@ -7,8 +7,7 @@ import java.lang.reflect.*;
 
 public class 反射  {
 
-    private 反射() {}
-
+    反射() {}
 
     public static Class 取类(String $类名) {
         try {
@@ -36,9 +35,7 @@ public class 反射  {
     }
     
 
-    public static Object 实例化(
-        @参数("类") Class $类,
-        @参数("参数") Object... $参数) {
+    public static Object 实例化(Class $类,Object... $参数) {
         try {
             Class[] $参数类组 = 取参数类组($参数);
             Constructor cons = $类.getConstructor($参数类组);   
@@ -48,16 +45,35 @@ public class 反射  {
     }
 
 
-    public static Field 取变量(
-        @参数("类") Class $类,
-        @参数("变量") String $变量名) {
+    public static Field 取变量(Class $类,String $变量名) {
         try {
             Field $变量 = $类.getDeclaredField($变量名);
+            $变量.setAccessible(true);
             return  $变量;
         } catch (Exception $错误) {}
         return null;
     }
+    
+    public static Object 读变量(Field $变量) {
+        return 读变量($变量,null);
+    }
+    
+    public static Object 读变量(Field $变量,Object $实例) {
+        try {
+            return $变量.get($实例);
+        } catch (Exception $错误) {}
+        return null;
+    }
+    
+    public static void 改变量(Field $变量,Object $内容) {
+        改变量($变量,null,$内容);
+    }
 
+    public static void 改变量(Field $变量,Object $实例,Object $内容) {
+        try {
+            $变量.set($实例, $内容);
+        } catch (Exception $错误) {}
+    }
 
     public static Method 取方法(Class $类,String $方法名) {
         try {

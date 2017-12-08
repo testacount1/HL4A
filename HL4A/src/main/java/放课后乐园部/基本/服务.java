@@ -10,7 +10,7 @@ import 放课后乐园部.脚本.*;
 
 public class 服务 {
 
-    private 服务() {}
+    服务() {}
 
     public static boolean 启动(Context $上下文,String $类型) {
         return 脚本管理.启动服务($上下文,$类型);

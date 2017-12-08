@@ -1,0 +1,18 @@
+// BSH依赖文件，请不要手动运行
+// By MikaGuraN 2017
+
+import java.lang.*;
+import java.util.*;
+import java.io.*;
+import android.content.*;
+import android.os.*;
+import android.widget.*;
+import android.view.*;
+import 放课后乐园部.基本.*;
+import 放课后乐园部.网络.*;
+import 放课后乐园部.事件.*;
+import 放课后乐园部.反射.*;
+import 放课后乐园部.视图.*;
+import 放课后乐园部.收集.*;
+import 放课后乐园部.视图.*;
+import 放课后乐园部.视图.扩展.*;

@@ -6,7 +6,7 @@ import java.util.*;
 
 public class 设备 {
 
-		private 设备() {}
+	 设备() {}
 
 		public static void 剪切板(String $内容) {
 				ClipboardManager clipboard = (ClipboardManager) 环境.读取().getSystemService(Context.CLIPBOARD_SERVICE);

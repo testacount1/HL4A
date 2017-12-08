@@ -5,7 +5,7 @@ import 放课后乐园部.绘画.*;
 
 public class 绘画 {
 
-		private 绘画() {}
+	 绘画() {}
 
 		public static Drawable 透明() {
 				return 生成背景("#00000000", "#10000000");

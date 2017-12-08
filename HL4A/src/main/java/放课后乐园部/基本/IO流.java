@@ -89,7 +89,7 @@ public final class IO流 {
 
     }
 
-    public static final byte[] 读取(InputStream $流) {
+    public static byte[] 读取(InputStream $流) {
         try {
             int $长度 = $流.available();
             byte[] $字节 = new byte[$长度];
@@ -99,11 +99,24 @@ public final class IO流 {
         return null;
     }
 
-    public static final void 保存(OutputStream $流,byte[] $内容) {
+    public static void 保存(OutputStream $流,byte[] $内容) {
         try {
             $流.write($内容);
             $流.flush();
         } catch (IOException $错误) {}
+    }
+    
+    public static void 保存(OutputStream $流,InputStream $输入) {
+        
+        try {
+            int $字节; 
+            byte[] $缓冲 = new byte[$输入.available()]; 
+            while (($字节 = $输入.read($缓冲)) != -1) { 
+                $流.write($缓冲, 0, $字节); 
+			} 
+            $流.flush();
+        }catch(Exception $错误){}
+        
     }
 
 }

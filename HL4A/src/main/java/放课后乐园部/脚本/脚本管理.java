@@ -55,9 +55,9 @@ public class 脚本管理 {
 
             default: case "js":
                 $类名 = "JS";break;
-            case "lua":
+            case "lua":case "luac":
                 $类名 = "Lua";break;
-            case "bsh":
+            case "bsh":case "java":
                 $类名 = "BSH";break;
 
         }

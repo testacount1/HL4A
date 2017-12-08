@@ -8,7 +8,7 @@ import java.io.*;
 
 public class 设置 {
 
-    private 设置() {}
+    设置() {}
 
     public static Object 读取(String $设置名) {
         return 读取从文件("defult", $设置名);

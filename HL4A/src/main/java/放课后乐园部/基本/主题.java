@@ -8,6 +8,8 @@ import 放课后乐园部.注解.注释.*;
 @说明("5是颜色第6位基本色,7是第八位基本深色")
 public class 主题 {
 
+  主题() {}
+
 		public static 集合 当前颜色列表;
 
 		static {

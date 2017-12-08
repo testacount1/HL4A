@@ -5,7 +5,7 @@ import 放课后乐园部.注解.注释.*;
 
 public class 颜色 {
 
-		private 颜色() {}
+	 颜色() {}
 
 		public static Integer 颜色转颜色(String $颜色) {
 				return Color.parseColor($颜色);

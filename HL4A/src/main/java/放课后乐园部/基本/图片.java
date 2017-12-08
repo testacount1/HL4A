@@ -11,7 +11,7 @@ import 放课后乐园部.注解.注释.*;
 
 public class 图片 {
 
-		private 图片() {}
+	 图片() {}
 
 		public static Bitmap 读取(String $地址) {
 				return BitmapFactory.decodeFile(文件.检查地址($地址));

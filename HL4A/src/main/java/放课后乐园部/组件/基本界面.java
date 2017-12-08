@@ -31,10 +31,14 @@ public class 基本界面 extends Activity {
     public 通用方法 菜单创建事件;
     public 通用方法 菜单选中事件;
 
-    public void 跳转(String $文件) {
+    public void 打开布局(View $视图) {
+        布局.打开(this, $视图);
+    }
+
+    public void 跳转界面(String $文件) {
         脚本管理.跳转界面(this, $文件);
     }
-    
+
     public void 结束() {
         finish();
     }

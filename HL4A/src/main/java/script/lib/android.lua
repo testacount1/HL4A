@@ -1,14 +1,13 @@
--- 这是Lua的依赖文件，请不要删除或是手动运行
+-- 这是Lua的依赖文件，请不要手动运行
 -- By MikaGuraN 2017
 
 local 反射 = luajava.bindClass "放课后乐园部.基本.反射";
-
-local String = 反射.取类 "java.lang.String";
 
 local 泛导入表 = {
 "java.lang";
 "java.util";
 "java.io";
+"android.content";
 "android.os";
 "android.widget";
 "android.view";
@@ -17,7 +16,8 @@ local 泛导入表 = {
 "放课后乐园部.事件";
 "放课后乐园部.反射";
 "放课后乐园部.视图";
-"放课后乐园部.脚本";
+"放课后乐园部.收集";
+"放课后乐园部.视图";
 "放课后乐园部.视图.扩展";
 };
 

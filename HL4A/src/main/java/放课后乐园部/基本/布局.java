@@ -9,7 +9,7 @@ import 放课后乐园部.视图.*;
 @功能("对布局的一些操作")
 public class 布局 {
 
-		private 布局() {}
+	 布局() {}
 
 		public static 哈希表 布局表;
 
