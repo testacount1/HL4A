@@ -59,20 +59,10 @@ public class 反射  {
     }
 
 
-    @不建议使用
-
-    public static Method 取方法(
-        @参数("类") Class $类,
-        @参数("参数长度") int $参数长度,
-        @参数("方法名") String $方法名) {
-        Method $所有[] = $类.getDeclaredMethods();
-        for (Method $方法 : $所有) {
-            if (!$方法.getName().equals($方法名)) continue;
-            Class $类型组[] = $方法.getParameterTypes();
-            int $需要长度 = $类型组.length;
-            if ($参数长度 != $需要长度) continue;
-            return $方法;
-        }
+    public static Method 取方法(Class $类,String $方法名) {
+        try {
+            return $类.getDeclaredMethod($方法名);
+        } catch (Exception $错误) {}
         return null;
     }
 

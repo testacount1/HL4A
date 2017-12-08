@@ -19,11 +19,11 @@ public class 弹窗 {
 				颜色(主题.文字());
 		}
 
-		public static void 提示(String $内容) {
+		public static void 提示(Object $内容) {
 				long $上次 = 上次提示;
-				if ((上次提示 = 时间.时间戳() - $上次) < 2333) {
-						文本(文本() + "\n" + $内容);
-				} else 文本($内容);
+				if ((上次提示 = 时间.时间戳()) - $上次 < 2333) {
+						文本(文本() + "\n" + $内容.toString());
+				} else 文本($内容.toString());
 				显示();
 		}
 

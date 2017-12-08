@@ -62,8 +62,8 @@ public class 类 {
 				return null;
 		}
 
-		public 方法 取定参方法(String $方法名,int $参数数量) {
-				Method $方法 = 反射.取方法(类对象, $参数数量 , $方法名);
+		public 方法 取方法(String $方法名) {
+				Method $方法 = 反射.取方法(类对象, $方法名);
 				if ($方法 == null)return null;
 				return new 方法($方法);
 		}

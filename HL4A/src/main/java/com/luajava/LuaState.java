@@ -1031,7 +1031,7 @@ public class LuaState {
 	throws LuaException {
 		if (parent.getLuaState().getPointer() != luaState ||
 			parent.getLuaState().getPointer() != name.getLuaState().getPointer())
-			throw new LuaException("Object must have the same LuaState as the parent!");
+			throw new LuaException("Lua对象的父Lua对象必须为Lua表或Lua用户数据!");
 
 		return new LuaObject(parent, name);
 	}

@@ -11,6 +11,10 @@ public class Lua {
     public Lua() {
         Lua状态机 = LuaStateFactory.newLuaState();
         Lua状态机.置Lua(this);
+        Lua状态机.openLibs();
+        压入变量("当前环境",this);
+        运行文件("#lib/android.lua");
+     
     }
     
     public void 压入方法(String $名称,final 通用方法 $方法) {
