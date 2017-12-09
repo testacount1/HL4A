@@ -24,7 +24,7 @@ local 泛导入表 = {
 导入 = 当前环境.运行文件;
 
 function 导入泛类(_类)
-泛导入表.insert(_类:sub(1,_是泛导入));
+table.insert(泛导入表,_类);
 end
 
 function 导入类(_类)
@@ -71,3 +71,15 @@ return 通用方法 {
 调用 = _函数;
 }
 end;
+
+function 选择(_对象)
+return function(_表)
+if _表[_对象] then
+if type(_表[_对象]) == "function" then
+return _表[_对象]();
+else
+return _表[_对象];
+end
+end
+end
+end

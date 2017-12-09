@@ -6,11 +6,11 @@ import 放课后乐园部.基本.*;
 import 放课后乐园部.收集.*;
 import java.io.*;
 
-public class 网络连接 {
+public class 连接 {
 
     HttpURLConnection 连接对象;
 
-    public 网络连接(String $地址) {
+    public 连接(String $地址) {
         try {
             连接对象 = (HttpURLConnection)new URL($地址).openConnection();
             连接对象.setDoInput(true);
@@ -24,7 +24,7 @@ public class 网络连接 {
         }
     }
 
-    public 网络连接 置连接超时(int $超时) {
+    public 连接 置连接超时(int $超时) {
         连接对象.setConnectTimeout($超时);
         return this;
     }
@@ -33,7 +33,7 @@ public class 网络连接 {
         return 连接对象.getConnectTimeout();
     }
     
-    public 网络连接 置读取超时(int $超时) {
+    public 连接 置读取超时(int $超时) {
         连接对象.setReadTimeout($超时);
         return this;
     }
@@ -42,7 +42,7 @@ public class 网络连接 {
         return 连接对象.getReadTimeout();
     }
 
-    public 网络连接 置重定向(boolean $是否) {
+    public 连接 置重定向(boolean $是否) {
         连接对象.setFollowRedirects($是否);
         return this;
     }
@@ -51,7 +51,7 @@ public class 网络连接 {
         return 连接对象.getFollowRedirects();
     }
 
-    public 网络连接 置请求头(哈希表 $请求表) {
+    public 连接 置请求头(哈希表 $请求表) {
         for (Map.Entry<String, String> $内容 : $请求表.entrySet()) {
             连接对象.setRequestProperty($内容.getKey(), $内容.getValue());
         }
@@ -59,7 +59,7 @@ public class 网络连接 {
     }
 
 
-    public 网络连接 置请求头(String $请求头,String $内容) {
+    public 连接 置请求头(String $请求头,String $内容) {
         连接对象.setRequestProperty($请求头, $内容);
         return this;
     }
@@ -68,7 +68,7 @@ public class 网络连接 {
         return 连接对象.getRequestProperty($请求头);
     }
 
-    public 网络连接 置编码(String $编码) {
+    public 连接 置编码(String $编码) {
         置请求头("Accept-Charset", $编码);
         return this;
     }
@@ -77,7 +77,7 @@ public class 网络连接 {
         return 取请求头("Accept-Charset");
     }
 
-    public 网络连接 置Cookie(String $Cookie) {
+    public 连接 置Cookie(String $Cookie) {
         置请求头("Cookie", $Cookie);
         return this;
     }
@@ -86,7 +86,7 @@ public class 网络连接 {
         return 取请求头("Cookie");
     }
 
-    public 网络连接 置请求类型(String $类型) {
+    public 连接 置请求类型(String $类型) {
         try {
             连接对象.setRequestMethod($类型);
         } catch (Exception $错误) {
@@ -103,12 +103,12 @@ public class 网络连接 {
         return 连接对象.getUseCaches();
     }
     
-    public 网络连接 置可缓存(boolean $设置) {
+    public 连接 置可缓存(boolean $设置) {
         连接对象.setUseCaches($设置);
         return this;
     }
 
-    public 网络连接 发送请求() {
+    public 连接 发送请求() {
         try {
             连接对象.connect();
         } catch (Exception $错误) {
@@ -117,7 +117,7 @@ public class 网络连接 {
         return this;
     }
     
-    public 网络连接 传入数据(String $数据) {
+    public 连接 传入数据(String $数据) {
         try {
             传入数据(字节.转换(URLEncoder.encode($数据, 取编码())));
         } catch (Exception $错误) {
@@ -126,19 +126,19 @@ public class 网络连接 {
         return this;
     }
     
-    public 网络连接 传入数据(哈希表 $数据) {
+    public 连接 传入数据(哈希表 $数据) {
         try {
             传入数据(格式数据($数据));
         } catch (Exception $错误) {}
         return this;
     }
     
-    public 网络连接 传入文件(String $文件) {
+    public 连接 传入文件(String $文件) {
         传入数据(字节.读取($文件));
         return this;
     }
 
-    public 网络连接 传入数据(byte[] $数据) {
+    public 连接 传入数据(byte[] $数据) {
         字节.保存(取输出流(),$数据);
         return this;
     }
@@ -185,7 +185,7 @@ public class 网络连接 {
     }
     
 
-    public 网络连接 保存文件(String $地址) {
+    public 连接 保存文件(String $地址) {
 
         OutputStream $输出流 = IO流.输出.文件($地址);
         IO流.保存($输出流, 取输入流());

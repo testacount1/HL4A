@@ -13,12 +13,12 @@ public class 辅助服务 extends AccessibilityService {
     @Override
     public void onCreate() {
         super.onCreate();
+        服务 = this;
     }
 
     @Override
     public void onServiceConnected() {
         super.onServiceConnected();
-        服务 = this;
     }
 
     @Override
@@ -31,5 +31,10 @@ public class 辅助服务 extends AccessibilityService {
     public void onInterrupt() {
     }
 
-
+    @Override
+    public void onDestroy() {
+        服务 = null;
+        super.onDestroy();
+    }
+    
 }

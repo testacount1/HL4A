@@ -16,13 +16,14 @@ public class 弹窗 {
         提示对象 = Toast.makeText($环境, "", Toast.LENGTH_SHORT);
         文本对象 = (TextView)提示对象.getView()
             .findViewById(android.R.id.message);
-        上次提示 = 时间.时间戳() - 2333;
+        上次提示 = 时间.时间戳() - 500;
         颜色(主题.文字());
     }
 
     public static void 提示(Object $内容) {
+        if ($内容 == null) $内容 = "null";
         long $上次 = 上次提示;
-        if ((上次提示 = 时间.时间戳()) - $上次 < 2333) {
+        if ((上次提示 = 时间.时间戳()) - $上次 < 500) {
             文本(文本() + "\n" + $内容.toString());
         } else 文本($内容.toString());
         显示();

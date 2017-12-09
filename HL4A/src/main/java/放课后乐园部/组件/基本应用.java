@@ -67,14 +67,6 @@ public class 基本应用 extends Application {
         Class $MT = 反射.取类("cc.binmt.signature.PmsHookApplication");
         if ($MT != null) 弹窗.提示("您可能是盗版应用的受害者！");
 
-        new 线程(2333, new 通用方法(){
-                @Override
-                public Object 调用(Object[] $参数) {
-                    System.exit(1);
-                    return null;
-                }
-            });
-
     }
 
 }
