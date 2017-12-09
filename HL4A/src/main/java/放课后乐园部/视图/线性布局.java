@@ -7,7 +7,7 @@ import android.widget.*;
 import 放课后乐园部.事件.*;
 import 放课后乐园部.视图.实现.*;
 
-public class 线性布局 extends LinearLayout implements 线性布局摘要 {
+public class 线性布局 extends LinearLayout implements 基本视图 {
 
     public 线性布局(Context $上下文) {
         super($上下文);
@@ -15,37 +15,30 @@ public class 线性布局 extends LinearLayout implements 线性布局摘要 {
     }
 
     // 线性布局实现
-
-    @Override
+    
     public 线性布局 置重力(String $重力) {
         线性布局实现.置重力(this, $重力);
         return this;
     }
 
-
-    @Override
     public 线性布局 置方向(String $方向) {
         线性布局实现.置方向(this, $方向);
         return this;
     }
 
-    @Override
     public 线性布局 加入子元素(View $子元素) {
         线性布局实现.加入子元素(this, $子元素);
         return this;
     }
 
-    @Override
     public View 取子元素从标签(Object $标签) {
         return 线性布局实现.取子元素从标签(this, $标签);
     }
-
-    @Override
+    
     public View 取子元素从键值(int $键值) {
         return 线性布局实现.取子元素从键值(this, $键值);
     }
-
-    @Override
+    
     public View[] 取所有子元素() {
         return 线性布局实现.取所有子元素(this);
     }

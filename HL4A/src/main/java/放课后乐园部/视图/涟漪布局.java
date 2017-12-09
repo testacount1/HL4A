@@ -12,7 +12,7 @@ import 放课后乐园部.基本.*;
 import 放课后乐园部.视图.实现.*;
 
 
-public class 涟漪布局 extends RelativeLayout implements 视图摘要 {
+public class 涟漪布局 extends RelativeLayout implements 基本视图 {
 
     private int WIDTH;
     private int HEIGHT;

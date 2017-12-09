@@ -9,16 +9,16 @@ public class 视图 {
 
     视图() {}
 
-    public static void 置主题(视图摘要 $视图,String $主题) {
+    public static void 置主题(基本视图 $视图,String $主题) {
 
         String $类名 = $视图.getClass().getName();
         $类名 = 字符.截取开始($类名, "放课后乐园部.视图.", null);
 
         switch ($类名) {
                 
-            case "文本":
+            case "文本控件":
 
-                文本 $文本 = (文本) $视图;
+                文本控件 $文本 = (文本控件) $视图;
 
                 switch ($主题) {
                     case "默认":

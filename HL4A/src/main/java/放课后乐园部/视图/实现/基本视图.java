@@ -4,45 +4,45 @@ import android.app.*;
 import android.view.*;
 import 放课后乐园部.事件.*;
 
-public interface 视图摘要 {
+public interface 基本视图 {
 
-		public 视图摘要 置主题(String $主题);
+		public 基本视图 置主题(String $主题);
 		
-		public 视图摘要 加入到(ViewGroup $布局);
-		public 视图摘要 打开(Activity $界面);
+		public 基本视图 加入到(ViewGroup $布局);
+		public 基本视图 打开(Activity $界面);
 		
-		public 视图摘要 置标签(Object $标签);
+		public 基本视图 置标签(Object $标签);
 		public Object 取标签();
 
-		public 视图摘要 置单击事件(通用方法 $事件);
-		public 视图摘要 置长按事件(通用方法 $事件);
-		public 视图摘要 置触摸事件(通用方法 $事件);
+		public 基本视图 置单击事件(通用方法 $事件);
+		public 基本视图 置长按事件(通用方法 $事件);
+		public 基本视图 置触摸事件(通用方法 $事件);
 
-		public 视图摘要 置宽度(Object $宽度);
-		public 视图摘要 置高度(Object $高度);
+		public 基本视图 置宽度(Object $宽度);
+		public 基本视图 置高度(Object $高度);
 
-		public 视图摘要 置状态(String $状态);
+		public 基本视图 置状态(String $状态);
 		public String 取状态();
-		public 视图摘要 显示();
-		public 视图摘要 占位();
-		public 视图摘要 隐藏();
+		public 基本视图 显示();
+		public 基本视图 占位();
+		public 基本视图 隐藏();
 
-		public 视图摘要 置边距(Object $边距);
-		public 视图摘要 置边距(Object $上,Object $下,Object $左,Object $右);
-		public 视图摘要 置上边距(Object $边距);
-		public 视图摘要 置下边距(Object $边距);
-		public 视图摘要 置左边距(Object $边距);
-		public 视图摘要 置右边距(Object $边距);
+		public 基本视图 置边距(Object $边距);
+		public 基本视图 置边距(Object $上,Object $下,Object $左,Object $右);
+		public 基本视图 置上边距(Object $边距);
+		public 基本视图 置下边距(Object $边距);
+		public 基本视图 置左边距(Object $边距);
+		public 基本视图 置右边距(Object $边距);
 
-		public 视图摘要 置填充(Object $填充);
-		public 视图摘要 置填充(Object $上,Object $下,Object $左,Object $右);
-		public 视图摘要 置上填充(Object $填充);
-		public 视图摘要 置下填充(Object $填充);
-		public 视图摘要 置左填充(Object $填充);
-		public 视图摘要 置右填充(Object $填充);
+		public 基本视图 置填充(Object $填充);
+		public 基本视图 置填充(Object $上,Object $下,Object $左,Object $右);
+		public 基本视图 置上填充(Object $填充);
+		public 基本视图 置下填充(Object $填充);
+		public 基本视图 置左填充(Object $填充);
+		public 基本视图 置右填充(Object $填充);
 
-		public 视图摘要 置背景(Object $背景);
-		public 视图摘要 置背景颜色(Object $颜色);
+		public 基本视图 置背景(Object $背景);
+		public 基本视图 置背景颜色(Object $颜色);
 
 
 		/*

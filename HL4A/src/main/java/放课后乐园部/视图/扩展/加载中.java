@@ -4,12 +4,12 @@ import android.content.*;
 import 放课后乐园部.基本.*;
 import 放课后乐园部.视图.*;
 
-import 放课后乐园部.视图.文本;
+import 放课后乐园部.视图.文本控件;
 
 public class 加载中 extends 线性布局 {
 
 		public 进度条 $进度;
-		public 文本 $文本;
+		public 文本控件 $文本;
 
 		public 加载中(Context $上下文) {
 				this($上下文, "加载中");
@@ -27,14 +27,14 @@ public class 加载中 extends 线性布局 {
 						.置进度颜色(主题.进度条())
 						.加入到(this);
 
-				$文本 = new 文本($上下文)
+				$文本 = new 文本控件($上下文)
 						.置主题("默认")
 						.置文本($内容)
 						.加入到(this);
 
 		}
 		
-		public 文本 取文本对象() {
+		public 文本控件 取文本对象() {
 				return $文本;
 		}
 		

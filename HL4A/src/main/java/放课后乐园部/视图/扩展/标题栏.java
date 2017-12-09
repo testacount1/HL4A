@@ -6,7 +6,7 @@ import 放课后乐园部.视图.*;
 
 public class 标题栏 extends 线性布局 {
 
-		public 文本 标题;
+		public 文本控件 标题;
 
 		public 标题栏(Context $上下文) {
 				this($上下文, "");
@@ -21,7 +21,7 @@ public class 标题栏 extends 线性布局 {
 						.置重力("中间垂直")
 						.置背景颜色(主题.标题栏());
 
-				标题 = new 文本($上下文)
+				标题 = new 文本控件($上下文)
 						.置主题("标题")
 						.置文本($标题内容)
 						.置左填充("16dp")

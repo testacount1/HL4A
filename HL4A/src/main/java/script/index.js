@@ -7,7 +7,7 @@ var $分隔 = function() {
 return new 分隔(当前界面,"8dp");
 }
 
-let $文本 = new 文本(当前界面)
+let $文本 = new 文本控件(当前界面)
 .置主题("默认")
 .置文本("输出和错误日志保存在\nAndroid/data/h.android/下")
 .加入到($内容);

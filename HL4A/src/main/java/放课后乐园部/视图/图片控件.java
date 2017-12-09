@@ -2,63 +2,60 @@ package 放课后乐园部.视图;
 
 import android.app.*;
 import android.content.*;
+import android.graphics.*;
+import android.graphics.drawable.*;
 import android.view.*;
 import android.widget.*;
+import java.io.*;
 import 放课后乐园部.事件.*;
 import 放课后乐园部.视图.实现.*;
+import 放课后乐园部.基本.*;
 
-public class 进度条 extends ProgressBar implements 基本视图 {
+public class 图片控件 extends ImageView implements 基本视图 {
 
-    public 进度条(Context $上下文) {
+    public 图片控件(Context $上下文) {
         super($上下文);
     }
 
-    //进度条实现
-
-    
-    public 进度条 置进度(int $进度) {
-        进度条实现.置进度(this, $进度);
+    public 图片控件 置图片(Bitmap $图片) {
+        setImageBitmap($图片);
         return this;
     }
 
-    
-    public 进度条 置二级进度(int $进度) {
-        进度条实现.置二级进度(this, $进度);
+    public 图片控件 置图片(byte[] $图片) {
+        置图片(图片.读取($图片));
         return this;
     }
 
-    
-    public 进度条 置进度颜色(Object $颜色) {
-        进度条实现.置进度颜色(this, $颜色);
+    public 图片控件 置图片(InputStream $图片) {
+        置图片(图片.读取($图片));
         return this;
     }
 
-    
-    public int 取进度() {
-        return 进度条实现.取进度(this);
+    public 图片控件 置图片(String $地址) {
+        置图片(图片.读取($地址));
+        return this;
     }
 
-    
-    public int 取二级进度() {
-        return 进度条实现.取二级进度(this);
+    public 图片控件 保存到(String $地址) {
+        图片.保存(图片.读取((BitmapDrawable)getDrawable()), $地址);
+        return this;
     }
-
-    //视图实现
 
     @Override
-    public 进度条 加入到(ViewGroup $布局) {
+    public 图片控件 加入到(ViewGroup $布局) {
         视图实现.加入到(this, $布局);
         return this;
     }
 
     @Override
-    public 进度条 打开(Activity $界面) {
+    public 图片控件 打开(Activity $界面) {
         视图实现.打开(this, $界面);
         return this;
     }
 
     @Override
-    public 进度条 置标签(Object $标签) {
+    public 图片控件 置标签(Object $标签) {
         视图实现.置标签(this, $标签);
         return this;
     }
@@ -69,43 +66,43 @@ public class 进度条 extends ProgressBar implements 基本视图 {
     }
 
     @Override
-    public 进度条 置主题(String $主题) {
+    public 图片控件 置主题(String $主题) {
         视图实现.置主题(this, $主题);
         return this;
     }
 
     @Override
-    public 进度条 置单击事件(通用方法 $事件) {
+    public 图片控件 置单击事件(通用方法 $事件) {
         视图实现.置单击事件(this, $事件);
         return this;
     }
 
     @Override
-    public 进度条 置长按事件(通用方法 $事件) {
+    public 图片控件 置长按事件(通用方法 $事件) {
         视图实现.置长按事件(this, $事件);
         return this;
     }
 
     @Override
-    public 进度条 置触摸事件(通用方法 $事件) {
+    public 图片控件 置触摸事件(通用方法 $事件) {
         视图实现.置触摸事件(this, $事件);
         return this;
     }
 
     @Override
-    public 进度条 置宽度(Object $宽度) {
+    public 图片控件 置宽度(Object $宽度) {
         视图实现.置宽度(this, $宽度);
         return this;
     }
 
     @Override
-    public 进度条 置高度(Object $高度) {
+    public 图片控件 置高度(Object $高度) {
         视图实现.置高度(this, $高度);
         return this;
     }
 
     @Override
-    public 进度条 置状态(String $状态) {
+    public 图片控件 置状态(String $状态) {
         视图实现.置状态(this, $状态);
         return this;
     }
@@ -116,103 +113,103 @@ public class 进度条 extends ProgressBar implements 基本视图 {
     }
 
     @Override
-    public 进度条 显示() {
+    public 图片控件 显示() {
         视图实现.显示(this);
         return this;
     }
 
     @Override
-    public 进度条 占位() {
+    public 图片控件 占位() {
         视图实现.占位(this);
         return this;
     }
 
     @Override
-    public 进度条 隐藏() {
+    public 图片控件 隐藏() {
         视图实现.隐藏(this);
         return this;
     }
 
     @Override
-    public 进度条 置边距(Object $边距) {
+    public 图片控件 置边距(Object $边距) {
         视图实现.置边距(this, $边距);
         return this;
     }
 
     @Override
-    public 进度条 置边距(Object $上,Object $下,Object $左,Object $右) {
+    public 图片控件 置边距(Object $上,Object $下,Object $左,Object $右) {
         视图实现.置边距(this, $上, $下, $左, $右);
         return this;
     }
 
     @Override
-    public 进度条 置上边距(Object $边距) {
+    public 图片控件 置上边距(Object $边距) {
         视图实现.置上边距(this, $边距);
         return this;
     }
 
     @Override
-    public 进度条 置下边距(Object $边距) {
+    public 图片控件 置下边距(Object $边距) {
         视图实现.置下边距(this, $边距);
         return this;
     }
 
     @Override
-    public 进度条 置左边距(Object $边距) {
+    public 图片控件 置左边距(Object $边距) {
         视图实现.置左边距(this, $边距);
         return this;
     }
 
     @Override
-    public 进度条 置右边距(Object $边距) {
+    public 图片控件 置右边距(Object $边距) {
         视图实现.置右边距(this, $边距);
         return this;
     }
 
     @Override
-    public 进度条 置填充(Object $填充) {
+    public 图片控件 置填充(Object $填充) {
         视图实现.置填充(this, $填充);
         return this;
     }
 
     @Override
-    public 进度条 置填充(Object $上,Object $下,Object $左,Object $右) {
+    public 图片控件 置填充(Object $上,Object $下,Object $左,Object $右) {
         视图实现.置填充(this, $上, $下, $左, $右);
         return this;
     }
 
     @Override
-    public 进度条 置上填充(Object $填充) {
+    public 图片控件 置上填充(Object $填充) {
         视图实现.置上填充(this, $填充);
         return this;
     }
 
     @Override
-    public 进度条 置下填充(Object $填充) {
+    public 图片控件 置下填充(Object $填充) {
         视图实现.置下填充(this, $填充);
         return this;
     }
 
     @Override
-    public 进度条 置左填充(Object $填充) {
+    public 图片控件 置左填充(Object $填充) {
         视图实现.置左填充(this, $填充);
         return this;
     }
 
     @Override
-    public 进度条 置右填充(Object $填充) {
+    public 图片控件 置右填充(Object $填充) {
         视图实现.置右填充(this, $填充);
         return this;
     }
 
     @Override
-    public 进度条 置背景(Object $背景) {
+    public 图片控件 置背景(Object $背景) {
         视图实现.置背景(this, $背景);
         return this;
     }
 
     @Override
-    public 进度条 置背景颜色(Object $颜色) {
+    public 图片控件 置背景颜色(Object $颜色) {
         视图实现.置背景颜色(this, $颜色);
         return this;
     }

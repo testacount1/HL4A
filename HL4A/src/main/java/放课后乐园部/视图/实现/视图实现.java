@@ -43,7 +43,7 @@ public final class 视图实现 {
 				return $视图.getTag();
 		}
 		
-		public static void 置主题(视图摘要 $视图,String $主题) {
+		public static void 置主题(基本视图 $视图,String $主题) {
 				视图.置主题($视图, $主题);
 		}
 
