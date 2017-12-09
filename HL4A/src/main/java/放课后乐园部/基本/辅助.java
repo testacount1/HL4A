@@ -15,22 +15,16 @@ public class 辅助 {
         if (已启动())
             return true;
         环境.读取().startActivity(new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
-        弹窗.提示("请关闭使用界面的服务 并开启或重启 " + 应用.取应用名() + " ~");
+        弹窗.提示("请关闭使用界面的服务 并开启或重启 " + 应用.取应用名() + " ~\n重新开关后服务仍未运行请重启系统！");
         return false;
     }
 
-    public static void 等包名(String $包名) {
-        if (!检查()) return;
-        while (取包名() != $包名) {
+    public static boolean 等包名(String $包名) {
+        if (!检查()) return false;
+        while (!$包名.equals(取包名())) {
             线程.延时(233);
         }
-    }
-
-    public static void 等界面(String $类名) {
-        if (!检查()) return;
-        while (取界面() != $类名) {
-            线程.延时(233);
-        }
+        return true;
     }
 
     public static 节点 等文本(String $文本) {
@@ -74,21 +68,15 @@ public class 辅助 {
         return $节点;
     }
 
-    public static String 取界面() {
-        if (!检查()) return null;
-        return 辅助服务.意图.getClassName().toString();
-    }
-
     public static String 取包名() {
         if (!检查()) return null;
-        return 辅助服务.节点.getPackageName().toString();
+        return (String)辅助服务.服务.getRootInActiveWindow().getPackageName();
     }
 
 
     public static 节点 找文本(String $文本) {
         if (!检查()) return null;
         return 找文本($文本, 0);
-
     }
 
     public static 节点 找文本(String $文本,int $键值) {

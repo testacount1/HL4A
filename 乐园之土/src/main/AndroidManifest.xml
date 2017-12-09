@@ -12,9 +12,7 @@
         android:name=".Application"
         android:debuggable="false"
         android:allowBackup="false">
-        <activity
-            android:label="@string/name"
-            android:name=".StartActivity">
+        <activity android:name=".StartActivity">
             <intent-filter>
                 <action
                     android:name="android.intent.action.MAIN" />
@@ -22,15 +20,6 @@
                     android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:label="@string/name"
-            android:name=".JSActivity" />
-        <activity
-            android:label="@string/name"
-            android:name=".LuaActivity" />
-        <activity
-            android:label="@string/name"
-            android:name=".BSHActivity" />
         <service
             android:name=".Accessibility"
             android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE" >
@@ -41,12 +30,12 @@
                 <action android:name="android.accessibilityservice.AccessibilityService" />
             </intent-filter>
         </service>
-        <service
-            android:name=".JSService" />
-        <service
-            android:name=".LuaService" />
-        <service
-            android:name=".BSHService" />
+        <activity android:name=".JSActivity" />
+        <activity android:name=".LuaActivity" />
+        <activity android:name=".BSHActivity" />
+        <service android:name=".JSService" />
+        <service android:name=".LuaService" />
+        <service android:name=".BSHService" />
     </application>
 
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
