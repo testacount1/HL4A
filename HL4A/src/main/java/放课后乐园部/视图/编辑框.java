@@ -55,7 +55,7 @@ public class 编辑框 extends EditText implements 基本视图 {
 
 
     public 编辑框 置文本(String $文本) {
-        文本实现.置文本(this, $文本);
+        文本实现.置文本(this,$文本);
         return this;
     }
 
@@ -67,7 +67,7 @@ public class 编辑框 extends EditText implements 基本视图 {
 
 
     public String 取文本() {
-        return 文本实现.取文本(this);
+        return getText().toString();
     }
 
 

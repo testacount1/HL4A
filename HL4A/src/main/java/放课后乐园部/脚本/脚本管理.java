@@ -39,12 +39,17 @@ public class 脚本管理 {
 
     public static void 跳转界面(基本界面 $界面,String $文件) {
 
+        if (!文件.是文件($文件)) {
+            弹窗.提示(文件.检查地址($文件) + " 不存在！");
+            return;
+        }
+
         String $类名 = 取脚本类(字符.截取结束($文件, ".", null), "Activity");
         Class $类 = 反射.取类($类名);
         Intent $意图 = new Intent($界面, $类);
-        $意图.putExtra("文件",$文件);
+        $意图.putExtra("文件", $文件);
         $界面.startActivity($意图);
-        
+
     }
 
     public static String 取脚本类(String $类型,String $后缀) {

@@ -14,6 +14,7 @@ public class 注入 {
     public static void 注入SO(String $文件) {
         try {
             System.load($文件);
+        
         } catch (Exception $错误) {}
     }
 
@@ -34,6 +35,7 @@ public class 注入 {
             super($文件, 文件.取缓存目录(), null, $父加载器);
             文件地址 = $文件;
             所有加载器.添加(this);
+   
         }
 
         public 类加载器(String $文件,String $依赖目录,ClassLoader $父加载器) {
