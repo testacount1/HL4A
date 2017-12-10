@@ -12,7 +12,57 @@ public class 侧滑布局 extends DrawerLayout implements 基本视图 {
     public 侧滑布局(Context $上下文) {
         super($上下文);
         视图实现.初始化控件(this);
-        置主题("默认");
+        setLayoutParams(new MarginLayoutParams(-1,-1));
+    }
+    
+    public 侧滑布局 打开侧滑() {
+        openDrawer(3);
+        return this;
+    }
+    
+    public 侧滑布局 打开侧滑(View $视图) {
+        openDrawer($视图);
+        return this;
+    }
+    
+    public 侧滑布局 关闭侧滑() {
+        closeDrawer(3);
+        return this;
+    }
+    
+    public 侧滑布局 关闭侧滑(View $视图) {
+        openDrawer($视图);
+        return this;
+    }
+    
+    public boolean 是否打开() {
+        return isDrawerOpen(3);
+    }
+    
+    public boolean 是否打开(View $视图) {
+        return isDrawerOpen($视图);
+    }
+
+    public 侧滑布局 加入子元素(View $子元素) {
+        布局实现.加入子元素(this, $子元素);
+        return this;
+    }
+    
+    public 侧滑布局 加入子元素(View $子元素,String $重力) {
+        布局实现.加入子元素(this, $子元素, $重力);
+        return this;
+    }
+
+    public View 取子元素从标签(Object $标签) {
+        return 布局实现.取子元素从标签(this, $标签);
+    }
+
+    public View 取子元素从键值(int $键值) {
+        return 布局实现.取子元素从键值(this, $键值);
+    }
+
+    public View[] 取所有子元素() {
+        return 布局实现.取所有子元素(this);
     }
 
     @Override

@@ -8,28 +8,51 @@ import 放课后乐园部.事件.*;
 import 放课后乐园部.视图.实现.*;
 
 public class 菜单布局 extends SlidingLayout implements 基本视图 {
-    
+
     public 菜单布局(Context $上下文) {
         super($上下文);
         视图实现.初始化控件(this);
         置主题("默认");
     }
     
+    public 菜单布局 加入子元素(View $子元素) {
+        布局实现.加入子元素(this, $子元素);
+        return this;
+    }
+
+    public 菜单布局 加入子元素(View $子元素,String $重力) {
+        布局实现.加入子元素(this, $子元素, $重力);
+        return this;
+    }
+
+    public View 取子元素从标签(Object $标签) {
+        return 布局实现.取子元素从标签(this, $标签);
+    }
+
+    public View 取子元素从键值(int $键值) {
+        return 布局实现.取子元素从键值(this, $键值);
+    }
+
+    public View[] 取所有子元素() {
+        return 布局实现.取所有子元素(this);
+    }
+
+
     public 菜单布局 打开菜单() {
         openMenu();
         return this;
     }
-    
+
     public 菜单布局 关闭菜单() {
-       closeMenu();
-       return this;
+        closeMenu();
+        return this;
     }
-    
+
     public 菜单布局 切换状态() {
         toggle();
         return this;
     }
-    
+
     public boolean 是否打开() {
         return isOpen;
     }
@@ -205,5 +228,5 @@ public class 菜单布局 extends SlidingLayout implements 基本视图 {
         视图实现.置背景颜色(this, $颜色);
         return this;
     }
-    
+
 }

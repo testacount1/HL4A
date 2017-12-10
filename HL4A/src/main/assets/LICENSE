@@ -1,0 +1,12 @@
+HL4A luajava 代码修改完善自 开源项目 AndroLua+
+协议:MIT
+需要体验lua英文编程的可以使用AndroLua+
+
+本项目使用开源项目BeanShell解析Java脚本
+协议:LGPL
+
+本项目JavaScript执行使用开源项目Rhino
+协议:MPL2.0
+
+本项目开源 :
+协议:GPL 3

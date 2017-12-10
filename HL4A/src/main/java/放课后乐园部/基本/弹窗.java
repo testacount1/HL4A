@@ -1,8 +1,12 @@
 package 放课后乐园部.基本;
 
-import android.widget.*;
+import android.app.*;
 import android.content.*;
+import android.view.*;
+import android.widget.*;
 import 放课后乐园部.事件.*;
+import 放课后乐园部.视图.*;
+import 放课后乐园部.资源.布局.*;
 
 public class 弹窗 {
 
@@ -17,42 +21,149 @@ public class 弹窗 {
         文本对象 = (TextView)提示对象.getView()
             .findViewById(android.R.id.message);
         上次提示 = 时间.时间戳() - 500;
-        颜色(主题.文字());
+        文本对象.setTextColor(视图.检查颜色(主题.文字()));
     }
 
-    public static void 提示(Object $内容) {
-        if ($内容 == null) $内容 = "null";
-        long $上次 = 上次提示;
-        if ((上次提示 = 时间.时间戳()) - $上次 < 500) {
-            文本(文本() + "\n" + $内容.toString());
-        } else 文本($内容.toString());
-        显示();
-    }
-    
-    public static void 线程提示(Object $内容) {
+    public static void 提示(final Object $内容) {
         处理.主线程(new 通用方法(){
                 @Override
                 public Object 调用(Object[] $参数) {
-                    弹窗.提示($参数[0]);
+                    Object $文本 = $内容;
+                    if ($文本 == null) $文本 = "null";
+                    long $上次 = 上次提示;
+                    if ((上次提示 = 时间.时间戳()) - $上次 < 500) {
+                        文本对象.setText(文本对象.getText() + "\n" + $内容.toString());
+                    } else 文本对象.setText($内容.toString());
+                    提示对象.show();
                     return null;
                 }
-            },$内容);
+            });
     }
 
-    public static void 文本(String $文本) {
-        文本对象.setText($文本);
+    public static 基本弹窗 普通(Activity $界面,String $标题,Object $内容) {
+        界面_基本弹窗 $布局 = new 界面_基本弹窗($界面, $标题, $内容);
+        return new 基本弹窗($界面).置布局($布局);
     }
 
-    public static String 文本() {
-        return (String) 文本对象.getText();
+    public static 基本弹窗 普通(Activity $界面,String $标题,Object $内容,String $按钮,通用方法 $单击) {
+        界面_基本弹窗 $布局 = new 界面_基本弹窗($界面, $标题, $内容);
+        按钮 $按钮对象 = new 按钮($界面)
+            .置宽度("自动")
+            .置高度("自动")
+            .置文本重力("中间")
+            .置背景("透明")
+            .置文本颜色(主题.文字())
+            .置文本($按钮)
+            .置文本大小("8dp")
+            .置单击事件($单击);
+        $布局.操作布局.显示().加入子元素($按钮对象);
+        return new 基本弹窗($界面).置布局($布局);
     }
 
-    public static void 颜色(Object $颜色) {
-        文本对象.setTextColor(视图.检查颜色($颜色));
+    public static 基本弹窗 普通(Activity $界面,String $标题,Object $内容,String $按钮,通用方法 $单击,String $右按钮,通用方法 $右单击) {
+        界面_基本弹窗 $布局 = new 界面_基本弹窗($界面, $标题, $内容);
+        按钮 $左按钮对象 = new 按钮($界面)
+            .置宽度("自动")
+            .置高度("自动")
+            .置文本重力("中间")
+            .置背景("透明")
+            .置文本颜色(主题.文字())
+            .置文本($按钮)
+            .置文本大小("8dp")
+            .置单击事件($单击);
+        按钮 $右按钮对象 = new 按钮($界面)
+            .置宽度("自动")
+            .置高度("自动")
+            .置文本重力("中间")
+            .置背景("透明")
+            .置文本颜色(主题.文字())
+            .置文本($右按钮)
+            .置文本大小("8dp")
+            .置单击事件($右单击);
+        $布局.操作布局.显示()
+            .加入子元素($左按钮对象)
+            .加入子元素($右按钮对象);
+        return new 基本弹窗($界面).置布局($布局);
     }
 
-    public static void 显示() {
-        提示对象.show();
+    public static 基本弹窗 普通(Activity $界面,String $标题,Object $内容,String $左按钮,通用方法 $左单击,String $中按钮,通用方法 $中单击,String $右按钮,通用方法 $右单击) {
+        界面_基本弹窗 $布局 = new 界面_基本弹窗($界面, $标题, $内容);
+        new 按钮($界面)
+            .置宽度("自动")
+            .置高度("自动")
+            .置文本重力("中间")
+            .置背景("透明")
+            .置文本颜色(主题.文字())
+            .置文本($左按钮)
+            .置文本大小("8dp")
+            .置单击事件($左单击)
+            .加入到($布局
+                 .操作布局
+                 .显示()
+                 .置重力("左边"));
+        线性布局 $右布局 = new 线性布局($界面)
+            .置宽度("最大")
+            .置高度("最大")
+            .置方向("水平")
+            .置重力("右边")
+            .加入到($布局.操作布局);
+        new 按钮($界面)
+            .置宽度("自动")
+            .置高度("自动")
+            .置文本重力("中间")
+            .置背景("透明")
+            .置文本颜色(主题.文字())
+            .置文本($中按钮)
+            .置文本大小("8dp")
+            .置单击事件($中单击)
+            .加入到($右布局);
+        new 按钮($界面)
+            .置宽度("自动")
+            .置高度("自动")
+            .置文本重力("中间")
+            .置背景("透明")
+            .置文本颜色(主题.文字())
+            .置文本($右按钮)
+            .置文本大小("8dp")
+            .置单击事件($右单击)
+            .加入到($右布局);
+        return new 基本弹窗($界面).置布局($布局);
+    }
+
+    public static class 基本弹窗 extends AlertDialog {
+
+        public View 布局;
+
+        public 基本弹窗(Context $界面) {
+            super($界面);
+        }
+
+        public 基本弹窗 置布局(View $视图) {
+            布局 = $视图;
+            return this;
+        }
+
+        public View 取布局() {
+            return 布局;
+        }
+
+        public 基本弹窗 显示() {
+            show();
+            setContentView(布局);
+            return this;
+        }
+
+        public 基本弹窗 置可关闭(boolean $是否) {
+            setCancelable($是否);
+            setCanceledOnTouchOutside($是否);
+            return this;
+        }
+
+        public 基本弹窗 关闭() {
+            dismiss();
+            return this;
+        }
+
     }
 
 }

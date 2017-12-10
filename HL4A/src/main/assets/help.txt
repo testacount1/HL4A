@@ -120,6 +120,3 @@ new Object[]{参数1,参数2}
 都是很简单的，
 具体的各种中文API
 请使用MT管理器查看DEX
-
-简单实例请查看
-安装包/script/index.js

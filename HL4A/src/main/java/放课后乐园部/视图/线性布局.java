@@ -6,6 +6,7 @@ import android.view.*;
 import android.widget.*;
 import 放课后乐园部.事件.*;
 import 放课后乐园部.视图.实现.*;
+import 放课后乐园部.基本.*;
 
 public class 线性布局 extends LinearLayout implements 基本视图 {
 
@@ -14,34 +15,53 @@ public class 线性布局 extends LinearLayout implements 基本视图 {
         视图实现.初始化控件(this);
         置主题("默认");
     }
+    
+    public 线性布局 到侧滑左布局() {
+        侧滑布局.LayoutParams $设置 = new 侧滑布局.LayoutParams(getLayoutParams());
+        $设置.gravity = 视图.检查重力("开始");
+        setLayoutParams($设置);
+        return this;
+    }
+    
+    public 线性布局 到侧滑右布局() {
+        侧滑布局.LayoutParams $设置 = new 侧滑布局.LayoutParams(getLayoutParams());
+        $设置.gravity = 视图.检查重力("结束");
+        setLayoutParams($设置);
+        return this;
+    }
 
-    // 线性布局实现
+    // 布局实现
     
     public 线性布局 置重力(String $重力) {
-        线性布局实现.置重力(this, $重力);
+        布局实现.置重力(this, $重力);
         return this;
     }
 
     public 线性布局 置方向(String $方向) {
-        线性布局实现.置方向(this, $方向);
+        布局实现.置方向(this, $方向);
         return this;
     }
 
     public 线性布局 加入子元素(View $子元素) {
-        线性布局实现.加入子元素(this, $子元素);
+        布局实现.加入子元素(this, $子元素);
         return this;
     }
-
+    
+    public 线性布局 加入子元素(View $子元素,String $重力) {
+        布局实现.加入子元素(this, $子元素, $重力);
+        return this;
+    }
+    
     public View 取子元素从标签(Object $标签) {
-        return 线性布局实现.取子元素从标签(this, $标签);
+        return 布局实现.取子元素从标签(this, $标签);
     }
     
     public View 取子元素从键值(int $键值) {
-        return 线性布局实现.取子元素从键值(this, $键值);
+        return 布局实现.取子元素从键值(this, $键值);
     }
     
     public View[] 取所有子元素() {
-        return 线性布局实现.取所有子元素(this);
+        return 布局实现.取所有子元素(this);
     }
 
     // 视图实现

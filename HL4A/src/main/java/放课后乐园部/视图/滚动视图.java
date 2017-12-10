@@ -15,6 +15,28 @@ public class 滚动视图 extends ScrollView implements 基本视图 {
         置主题("默认");
     }
     
+    public 滚动视图 加入子元素(View $子元素) {
+        布局实现.加入子元素(this, $子元素);
+        return this;
+    }
+
+    public 滚动视图 加入子元素(View $子元素,String $重力) {
+        布局实现.加入子元素(this, $子元素, $重力);
+        return this;
+    }
+
+    public View 取子元素从标签(Object $标签) {
+        return 布局实现.取子元素从标签(this, $标签);
+    }
+
+    public View 取子元素从键值(int $键值) {
+        return 布局实现.取子元素从键值(this, $键值);
+    }
+
+    public View[] 取所有子元素() {
+        return 布局实现.取所有子元素(this);
+    }
+    
     @Override
     public 滚动视图 加入到(ViewGroup $布局) {
         视图实现.加入到(this, $布局);

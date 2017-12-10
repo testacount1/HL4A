@@ -1,4 +1,5 @@
 package 放课后乐园部.基本;
+import 放课后乐园部.事件.*;
 
 public class 错误 {
 
@@ -52,9 +53,9 @@ public class 错误 {
                 case "java.lang.NoSuchMethodException":$错误类型 += "方法不存在异常。当访问某个类的不存在的方法时抛出该异常。";break;
                 case "java.lang.NumberFormatException":$错误类型 += "数字格式异常。当试图将一个String转换为指定的数字类型，而该字符串确不满足数字类型要求的格式时，抛出该异常。";break;
                 case "android.content.ActivityNotFoundException":$错误类型 += "界面不存在异常，可能是没有在应用清单声明该Activity。";break;
+                case "android.view.WindowManager$BadTokenException":$错误类型 += "访问界面异常,请在界面创建完成后进行对界面的操作。";break;
             }
-        }
-        else {
+        } else {
             $错误类型 = "代码抛出错误:";
         }
         $错误类型 += $错误类名;
@@ -77,9 +78,11 @@ public class 错误 {
         字符.保存(文件.取存储卡缓存目录("错误日志/" + 时间.格式("中文") + ".log"), 取整个错误($错误));
     }
 
+    static 弹窗.基本弹窗 弹窗对象;
+
     public static void 普通(Throwable $错误) {
         错误.保存($错误);
-        设置.设置("APK散列", "<Error>");
+        设置.设置("APK散列","<Error>");
         System.exit(0);
     }
 

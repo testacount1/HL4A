@@ -36,7 +36,6 @@ public class 视图 {
                             .置方向("垂直");
                         break;
 
-
                     case "分隔":
                         $线性布局
                             .置宽度("最大")
@@ -230,6 +229,12 @@ public class 视图 {
         String[] $设置 = $重力.toLowerCase().split("[|]");
         for (String $单个 : $设置) {
             switch ($单个) {
+                case "start":case "开始":
+                    $重力类型 = $重力类型 | Gravity.START;
+                    break;
+                case "end":case "结束":
+                    $重力类型 = $重力类型 | Gravity.START;
+                    break;
                 case "center":case "中间":
                     $重力类型 = $重力类型 | Gravity.CENTER;
                     break;

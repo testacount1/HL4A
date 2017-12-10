@@ -18,6 +18,7 @@ public class 启动界面 extends 基本界面 {
     @Override
     public void onStart() {
         super.onStart();
+        
         new 线程($初始化).启动();
     }
 

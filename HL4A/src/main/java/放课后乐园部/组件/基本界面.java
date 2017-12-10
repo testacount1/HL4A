@@ -52,6 +52,7 @@ public class 基本界面 extends Activity {
     @Override
     public void onStart() {
         super.onStart();
+        环境.设置界面(this);
         调用方法.事件(界面开始事件);
     }
 
