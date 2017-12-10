@@ -12,9 +12,11 @@ public class 列表视图 extends ListView implements 基本视图 {
     
     public 列表视图(Context $上下文) {
         super($上下文);
+        视图实现.初始化控件(this);
+        置主题("默认");
     }
     
-    public 列表视图 置适配器(ListAdapter $适配器) {
+    public 列表视图 置适配器(BaseAdapter $适配器) {
         setAdapter($适配器);
         return this;
     }

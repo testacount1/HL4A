@@ -15,6 +15,8 @@ public class 图片控件 extends ImageView implements 基本视图 {
 
     public 图片控件(Context $上下文) {
         super($上下文);
+        视图实现.初始化控件(this);
+        置主题("默认");
     }
 
     public 图片控件 置图片(Bitmap $图片) {

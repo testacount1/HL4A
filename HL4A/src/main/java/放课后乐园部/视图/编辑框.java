@@ -13,6 +13,7 @@ public class 编辑框 extends EditText implements 基本视图 {
     public 编辑框(Context $上下文) {
         super($上下文);
         视图实现.初始化控件(this);
+        置主题("默认");
     }
     
     // 编辑框实现

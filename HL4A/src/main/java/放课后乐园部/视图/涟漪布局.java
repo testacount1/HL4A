@@ -49,7 +49,8 @@ public class 涟漪布局 extends RelativeLayout implements 基本视图 {
 
     public 涟漪布局(Context $上下文) {
         super($上下文);
-				视图实现.初始化控件(this);
+        视图实现.初始化控件(this);
+        置主题("默认");
         rippleColor = 颜色.颜色转颜色(颜色.白色);
         rippleType = 2;
         hasToZoom = false;
@@ -66,23 +67,23 @@ public class 涟漪布局 extends RelativeLayout implements 基本视图 {
         this.setWillNotDraw(false);
 
         gestureDetector = new GestureDetector(this.getContext(), new GestureDetector.SimpleOnGestureListener() {
-								@Override
-								public void onLongPress(MotionEvent event) {
-										super.onLongPress(event);
-										animateRipple(event);
-										sendClickEvent(true);
-								}
+                @Override
+                public void onLongPress(MotionEvent event) {
+                    super.onLongPress(event);
+                    animateRipple(event);
+                    sendClickEvent(true);
+                }
 
-								@Override
-								public boolean onSingleTapConfirmed(MotionEvent e) {
-										return true;
-								}
+                @Override
+                public boolean onSingleTapConfirmed(MotionEvent e) {
+                    return true;
+                }
 
-								@Override
-								public boolean onSingleTapUp(MotionEvent e) {
-										return true;
-								}
-						});
+                @Override
+                public boolean onSingleTapUp(MotionEvent e) {
+                    return true;
+                }
+            });
 
         this.setDrawingCacheEnabled(true);
         this.setClickable(true);
@@ -106,8 +107,7 @@ public class 涟漪布局 extends RelativeLayout implements 基本视图 {
                 invalidate();
                 if (完成事件 != null) 完成事件.调用(this);
                 return;
-            }
-						else
+            } else
                 canvasHandler.postDelayed(runnable, frameRate);
 
             if (timer == 0)
@@ -135,8 +135,7 @@ public class 涟漪布局 extends RelativeLayout implements 基本视图 {
                     paint.setAlpha((int) (rippleAlpha - ((rippleAlpha) * (((float) timerEmpty * frameRate) / (durationEmpty)))));
                 else
                     paint.setAlpha(rippleAlpha);
-            }
-            else
+            } else
                 paint.setAlpha((int) (rippleAlpha - ((rippleAlpha) * (((float) timer * frameRate) / rippleDuration))));
 
             timer++;
@@ -178,8 +177,7 @@ public class 涟漪布局 extends RelativeLayout implements 基本视图 {
             if (isCentered || rippleType == 1) {
                 this.x = getMeasuredWidth() / 2;
                 this.y = getMeasuredHeight() / 2;
-            }
-						else {
+            } else {
                 this.x = x;
                 this.y = y;
             }
@@ -221,8 +219,7 @@ public class 涟漪布局 extends RelativeLayout implements 基本视图 {
             if (isLongClick) {
                 if (adapterView.getOnItemLongClickListener() != null)
                     adapterView.getOnItemLongClickListener().onItemLongClick(adapterView, this, position, id);
-            }
-						else {
+            } else {
                 if (adapterView.getOnItemClickListener() != null)
                     adapterView.getOnItemClickListener().onItemClick(adapterView, this, position, id);
             }
@@ -250,22 +247,22 @@ public class 涟漪布局 extends RelativeLayout implements 基本视图 {
      *
      * @param rippleColor New color resource
      */
-		public 涟漪布局 置涟漪颜色(Object $颜色) {
-				this.rippleColor = 颜色.颜色转颜色(视图.检查颜色($颜色));
-				return this;
-		}
+    public 涟漪布局 置涟漪颜色(Object $颜色) {
+        this.rippleColor = 颜色.颜色转颜色(视图.检查颜色($颜色));
+        return this;
+    }
 
-		public int 取涟漪颜色() {
-				return rippleColor;
-		}
+    public int 取涟漪颜色() {
+        return rippleColor;
+    }
 
     public 涟漪布局 置涟漪类型(String $类型) {
-				switch ($类型) {
-						case "默认":rippleType = 0;break;
-						case "矩形":rippleType = 3;break;
+        switch ($类型) {
+            case "默认":rippleType = 0;break;
+            case "矩形":rippleType = 3;break;
 
-				}
-				return this;
+        }
+        return this;
     }
 
     public Boolean isCentered() {
@@ -292,7 +289,7 @@ public class 涟漪布局 extends RelativeLayout implements 基本视图 {
      */
     public 涟漪布局 置涟漪填充(int ripplePadding) {
         this.ripplePadding = ripplePadding;
-				return this;
+        return this;
     }
 
     public Boolean isZooming() {
@@ -345,7 +342,7 @@ public class 涟漪布局 extends RelativeLayout implements 基本视图 {
      */
     public 涟漪布局 置涟漪速度(int rippleDuration) {
         this.rippleDuration = rippleDuration;
-				return this;
+        return this;
     }
 
     public int getFrameRate() {
@@ -359,185 +356,185 @@ public class 涟漪布局 extends RelativeLayout implements 基本视图 {
      */
     public 涟漪布局 setFrameRate(int frameRate) {
         this.frameRate = frameRate;
-				return this;
+        return this;
     }
 
     public 涟漪布局 置涟漪结束事件(通用方法 $事件) {
-				完成事件 = $事件;
-				return this;
-		}
+        完成事件 = $事件;
+        return this;
+    }
 
-		@Override
-		public 涟漪布局 加入到(ViewGroup $布局) {
-				视图实现.加入到(this, $布局);
-				return this;
-		}
-		
-		@Override
-		public 涟漪布局 打开(Activity $界面) {
-				视图实现.打开(this, $界面);
-				return this;
-		}
+    @Override
+    public 涟漪布局 加入到(ViewGroup $布局) {
+        视图实现.加入到(this, $布局);
+        return this;
+    }
 
-		@Override
-		public 涟漪布局 置标签(Object $标签) {
-				视图实现.置标签(this, $标签);
-				return this;
-		}
+    @Override
+    public 涟漪布局 打开(Activity $界面) {
+        视图实现.打开(this, $界面);
+        return this;
+    }
 
-		@Override
-		public Object 取标签() {
-				return 视图实现.取标签(this);
-		}
-		
-		@Override
-		public 涟漪布局 置主题(String $主题) {
-				视图实现.置主题(this, $主题);
-				return this;
-		}
+    @Override
+    public 涟漪布局 置标签(Object $标签) {
+        视图实现.置标签(this, $标签);
+        return this;
+    }
 
-		@Override
-		public 涟漪布局 置单击事件(通用方法 $事件) {
-				视图实现.置单击事件(this, $事件);
-				return this;
-		}
+    @Override
+    public Object 取标签() {
+        return 视图实现.取标签(this);
+    }
 
-		@Override
-		public 涟漪布局 置长按事件(通用方法 $事件) {
-				视图实现.置长按事件(this, $事件);
-				return this;
-		}
+    @Override
+    public 涟漪布局 置主题(String $主题) {
+        视图实现.置主题(this, $主题);
+        return this;
+    }
 
-		@Override
-		public 涟漪布局 置触摸事件(通用方法 $事件) {
-				视图实现.置触摸事件(this, $事件);
-				return this;
-		}
+    @Override
+    public 涟漪布局 置单击事件(通用方法 $事件) {
+        视图实现.置单击事件(this, $事件);
+        return this;
+    }
 
-		@Override
-		public 涟漪布局 置宽度(Object $宽度) {
-				视图实现.置宽度(this, $宽度);
-				return this;
-		}
+    @Override
+    public 涟漪布局 置长按事件(通用方法 $事件) {
+        视图实现.置长按事件(this, $事件);
+        return this;
+    }
 
-		@Override
-		public 涟漪布局 置高度(Object $高度) {
-				视图实现.置高度(this, $高度);
-				return this;
-		}
+    @Override
+    public 涟漪布局 置触摸事件(通用方法 $事件) {
+        视图实现.置触摸事件(this, $事件);
+        return this;
+    }
 
-		@Override
-		public 涟漪布局 置状态(String $状态) {
-				视图实现.置状态(this, $状态);
-				return this;
-		}
+    @Override
+    public 涟漪布局 置宽度(Object $宽度) {
+        视图实现.置宽度(this, $宽度);
+        return this;
+    }
 
-		@Override
-		public String 取状态() {
-				return 视图实现.取状态(this);
-		}
+    @Override
+    public 涟漪布局 置高度(Object $高度) {
+        视图实现.置高度(this, $高度);
+        return this;
+    }
 
-		@Override
-		public 涟漪布局 显示() {
-				视图实现.显示(this);
-				return this;
-		}
+    @Override
+    public 涟漪布局 置状态(String $状态) {
+        视图实现.置状态(this, $状态);
+        return this;
+    }
 
-		@Override
-		public 涟漪布局 占位() {
-				视图实现.占位(this);
-				return this;
-		}
+    @Override
+    public String 取状态() {
+        return 视图实现.取状态(this);
+    }
 
-		@Override
-		public 涟漪布局 隐藏() {
-				视图实现.隐藏(this);
-				return this;
-		}
+    @Override
+    public 涟漪布局 显示() {
+        视图实现.显示(this);
+        return this;
+    }
 
-		@Override
-		public 涟漪布局 置边距(Object $边距) {
-				视图实现.置边距(this, $边距);
-				return this;
-		}
+    @Override
+    public 涟漪布局 占位() {
+        视图实现.占位(this);
+        return this;
+    }
 
-		@Override
-		public 涟漪布局 置边距(Object $上,Object $下,Object $左,Object $右) {
-				视图实现.置边距(this, $上, $下, $左, $右);
-				return this;
-		}
+    @Override
+    public 涟漪布局 隐藏() {
+        视图实现.隐藏(this);
+        return this;
+    }
 
-		@Override
-		public 涟漪布局 置上边距(Object $边距) {
-				视图实现.置上边距(this, $边距);
-				return this;
-		}
+    @Override
+    public 涟漪布局 置边距(Object $边距) {
+        视图实现.置边距(this, $边距);
+        return this;
+    }
 
-		@Override
-		public 涟漪布局 置下边距(Object $边距) {
-				视图实现.置下边距(this, $边距);
-				return this;
-		}
+    @Override
+    public 涟漪布局 置边距(Object $上,Object $下,Object $左,Object $右) {
+        视图实现.置边距(this, $上, $下, $左, $右);
+        return this;
+    }
 
-		@Override
-		public 涟漪布局 置左边距(Object $边距) {
-				视图实现.置左边距(this, $边距);
-				return this;
-		}
+    @Override
+    public 涟漪布局 置上边距(Object $边距) {
+        视图实现.置上边距(this, $边距);
+        return this;
+    }
 
-		@Override
-		public 涟漪布局 置右边距(Object $边距) {
-				视图实现.置右边距(this, $边距);
-				return this;
-		}
+    @Override
+    public 涟漪布局 置下边距(Object $边距) {
+        视图实现.置下边距(this, $边距);
+        return this;
+    }
 
-		@Override
-		public 涟漪布局 置填充(Object $填充) {
-				视图实现.置填充(this, $填充);
-				return this;
-		}
+    @Override
+    public 涟漪布局 置左边距(Object $边距) {
+        视图实现.置左边距(this, $边距);
+        return this;
+    }
 
-		@Override
-		public 涟漪布局 置填充(Object $上,Object $下,Object $左,Object $右) {
-				视图实现.置填充(this, $上, $下, $左, $右);
-				return this;
-		}
+    @Override
+    public 涟漪布局 置右边距(Object $边距) {
+        视图实现.置右边距(this, $边距);
+        return this;
+    }
 
-		@Override
-		public 涟漪布局 置上填充(Object $填充) {
-				视图实现.置上填充(this, $填充);
-				return this;
-		}
+    @Override
+    public 涟漪布局 置填充(Object $填充) {
+        视图实现.置填充(this, $填充);
+        return this;
+    }
 
-		@Override
-		public 涟漪布局 置下填充(Object $填充) {
-				视图实现.置下填充(this, $填充);
-				return this;
-		}
+    @Override
+    public 涟漪布局 置填充(Object $上,Object $下,Object $左,Object $右) {
+        视图实现.置填充(this, $上, $下, $左, $右);
+        return this;
+    }
 
-		@Override
-		public 涟漪布局 置左填充(Object $填充) {
-				视图实现.置左填充(this, $填充);
-				return this;
-		}
+    @Override
+    public 涟漪布局 置上填充(Object $填充) {
+        视图实现.置上填充(this, $填充);
+        return this;
+    }
 
-		@Override
-		public 涟漪布局 置右填充(Object $填充) {
-				视图实现.置右填充(this, $填充);
-				return this;
-		}
+    @Override
+    public 涟漪布局 置下填充(Object $填充) {
+        视图实现.置下填充(this, $填充);
+        return this;
+    }
 
-		@Override
-		public 涟漪布局 置背景(Object $背景) {
-				视图实现.置背景(this, $背景);
-				return this;
-		}
+    @Override
+    public 涟漪布局 置左填充(Object $填充) {
+        视图实现.置左填充(this, $填充);
+        return this;
+    }
 
-		@Override
-		public 涟漪布局 置背景颜色(Object $颜色) {
-				视图实现.置背景颜色(this, $颜色);
-				return this;
-		}
-		
+    @Override
+    public 涟漪布局 置右填充(Object $填充) {
+        视图实现.置右填充(this, $填充);
+        return this;
+    }
+
+    @Override
+    public 涟漪布局 置背景(Object $背景) {
+        视图实现.置背景(this, $背景);
+        return this;
+    }
+
+    @Override
+    public 涟漪布局 置背景颜色(Object $颜色) {
+        视图实现.置背景颜色(this, $颜色);
+        return this;
+    }
+
 
 }
