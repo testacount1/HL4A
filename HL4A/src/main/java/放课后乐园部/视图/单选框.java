@@ -16,6 +16,19 @@ public class 单选框 extends RadioButton implements 基本视图 {
         置主题("默认");
     }
     
+
+    @Override
+    public 单选框 置布局重力(String $重力) {
+        视图实现.置布局重力(this,$重力);
+        return this;
+    }
+
+    @Override
+    public 单选框 置布局权重(float $权重) {
+        视图实现.置布局权重(this,$权重);
+        return this;
+    }
+    
     public 单选框 置选中状态(boolean $是否打开) {
         setSelected($是否打开);
         return this;

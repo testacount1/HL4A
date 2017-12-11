@@ -9,12 +9,16 @@ import com.myopicmobile.textwarrior.common.*;
 import 放课后乐园部.事件.*;
 import 放课后乐园部.基本.*;
 import 放课后乐园部.视图.实现.*;
+import 放课后乐园部.视图.事件.*;
+import android.widget.*;
 
 public class 代码框 extends FreeScrollingTextField  {
     
     private boolean _isWordWrap;
     private Context mContext;
     private int _index;
+    
+    public 通用方法 选中文本事件;
 
     public 代码框(Context $上下文) {
         super($上下文);
@@ -32,6 +36,11 @@ public class 代码框 extends FreeScrollingTextField  {
         置文本颜色(textColor);
     }
 
+    public 代码框 置代码选中事件(通用方法 $方法) {
+        setOnSelectionChangedListener(new 代码选中($方法));
+        return this;
+    }
+    
 
     public 代码框 加入到(ViewGroup $布局) {
         视图实现.加入到(this, $布局);
@@ -185,9 +194,6 @@ public class 代码框 extends FreeScrollingTextField  {
         return this;
     }
 
-
-
-
     protected void onLayout(boolean changed,int left,int top,int right,int bottom) {
         // TODO: Implement this method
         super.onLayout(changed, left, top, right, bottom);
@@ -274,7 +280,27 @@ public class 代码框 extends FreeScrollingTextField  {
         return  _hDoc.subSequence(getSelectionStart(), getSelectionEnd() - getSelectionStart()).toString();
     }
 
+    
+    public 代码框 全选() {
+        selectAll();
+        return this;
+    }
 
+    public 代码框 复制() {
+        copy();
+        return this;
+    }
+    
+    public 代码框 剪切() {
+        cut();
+        return this;
+    }
+    
+    public 代码框 粘贴() {
+        paste();
+        return this;
+    }
+    
     public boolean onKeyShortcut(int keyCode,KeyEvent event) {
         final int filteredMetaState = event.getMetaState() & ~KeyEvent.META_CTRL_MASK;
         if (KeyEvent.metaStateHasNoModifiers(filteredMetaState)) {
@@ -307,9 +333,8 @@ public class 代码框 extends FreeScrollingTextField  {
         return createDocumentProvider().toString();
     }
 
-    public 代码框 插入(int idx,String text) {
+    public 代码框 插入(String text) {
         selectText(false);
-        moveCaret(idx);
         paste(text);
         return this;
     }
@@ -337,7 +362,7 @@ public class 代码框 extends FreeScrollingTextField  {
     }
 
 
-    public 代码框 取消() {
+    public 代码框 撤销() {
         DocumentProvider doc = createDocumentProvider();
         int newPosition = doc.undo();
 
@@ -370,6 +395,7 @@ public class 代码框 extends FreeScrollingTextField  {
     }
 
     public 代码框 读入(String $文件) {
+        if (文件.是文件($文件))
         置文本(字符.读取($文件));
         return this;
     }

@@ -18,6 +18,19 @@ public class 图片控件 extends ImageView implements 基本视图 {
         视图实现.初始化控件(this);
         置主题("默认");
     }
+    
+
+    @Override
+    public 图片控件 置布局重力(String $重力) {
+        视图实现.置布局重力(this,$重力);
+        return this;
+    }
+
+    @Override
+    public 图片控件 置布局权重(float $权重) {
+        视图实现.置布局权重(this,$权重);
+        return this;
+    }
 
     public 图片控件 置图片(Bitmap $图片) {
         setImageBitmap($图片);

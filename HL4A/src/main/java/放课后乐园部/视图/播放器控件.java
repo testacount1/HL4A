@@ -23,6 +23,19 @@ public class 播放器控件 extends VideoView implements 基本视图 {
         置主题("默认");
     }
     
+
+    @Override
+    public 播放器控件 置布局重力(String $重力) {
+        视图实现.置布局重力(this,$重力);
+        return this;
+    }
+
+    @Override
+    public 播放器控件 置布局权重(float $权重) {
+        视图实现.置布局权重(this,$权重);
+        return this;
+    }
+    
     public 播放器控件 开始() {
         置播放状态("开始");
         return this;

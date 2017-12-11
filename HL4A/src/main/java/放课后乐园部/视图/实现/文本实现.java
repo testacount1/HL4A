@@ -30,7 +30,7 @@ public final class 文本实现 {
 		}
 
 		public static String 取文本(TextView $视图) {
-				return (String) $视图.getText();
+				return $视图.getText().toString();
 		}
 
 		public static void 置文本大小(TextView $视图,Object $大小) {

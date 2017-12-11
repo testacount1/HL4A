@@ -15,6 +15,19 @@ public class 文本控件 extends TextView implements 基本视图 {
         视图实现.初始化控件(this);
         置主题("默认");
     }
+    
+
+    @Override
+    public 文本控件 置布局重力(String $重力) {
+        视图实现.置布局重力(this,$重力);
+        return this;
+    }
+
+    @Override
+    public 文本控件 置布局权重(float $权重) {
+        视图实现.置布局权重(this,$权重);
+        return this;
+    }
 
     public 文本控件 置文本(String $文本) {
         文本实现.置文本(this, $文本);

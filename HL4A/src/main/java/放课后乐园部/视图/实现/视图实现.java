@@ -7,11 +7,26 @@ import android.view.ViewGroup.*;
 import 放课后乐园部.事件.*;
 import 放课后乐园部.基本.*;
 import 放课后乐园部.视图.事件.*;
+import android.widget.*;
 
 public final class 视图实现 {
 
     private 视图实现() {}
 
+    // Linear
+    
+    public static void 置布局重力(View $视图,String $重力) {
+        LinearLayout.LayoutParams $设置 = (LinearLayout.LayoutParams)取设置($视图);
+        $设置.gravity = 视图.检查重力($重力);
+        置设置($视图, $设置);
+    }
+    
+    public static void 置布局权重(View $视图,float $权重) {
+        LinearLayout.LayoutParams $设置 = (LinearLayout.LayoutParams)取设置($视图);
+        $设置.weight = $权重;
+        置设置($视图, $设置);
+    }
+    
     // AddView
 
     public static void 加入到(View $视图,ViewGroup $布局) {

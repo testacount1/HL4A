@@ -63,7 +63,19 @@ public class 开关按钮 extends ToggleButton implements 基本视图 {
         文本实现.置HTML文本(this, $HTML);
         return this;
     }
+    
 
+    @Override
+    public 开关按钮 置布局重力(String $重力) {
+        视图实现.置布局重力(this,$重力);
+        return this;
+    }
+
+    @Override
+    public 开关按钮 置布局权重(float $权重) {
+        视图实现.置布局权重(this,$权重);
+        return this;
+    }
 
     public String 取文本() {
         return 文本实现.取文本(this);

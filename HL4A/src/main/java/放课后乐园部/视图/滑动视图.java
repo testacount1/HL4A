@@ -20,8 +20,16 @@ public class 滑动视图 extends PageView implements 基本视图 {
         return this;
     }
 
-    public 滑动视图 加入子元素(View $子元素,String $重力) {
-        布局实现.加入子元素(this, $子元素, $重力);
+
+    @Override
+    public 滑动视图 置布局重力(String $重力) {
+        视图实现.置布局重力(this,$重力);
+        return this;
+    }
+
+    @Override
+    public 滑动视图 置布局权重(float $权重) {
+        视图实现.置布局权重(this,$权重);
         return this;
     }
 

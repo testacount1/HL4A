@@ -15,15 +15,24 @@ public class 滑动布局 extends PageLayout implements 基本视图 {
         置主题("默认");
     }
     
+
+    @Override
+    public 滑动布局 置布局重力(String $重力) {
+        视图实现.置布局重力(this,$重力);
+        return this;
+    }
+
+    @Override
+    public 滑动布局 置布局权重(float $权重) {
+        视图实现.置布局权重(this,$权重);
+        return this;
+    }
+    
     public 滑动布局 加入子元素(View $子元素) {
         布局实现.加入子元素(this, $子元素);
         return this;
     }
 
-    public 滑动布局 加入子元素(View $子元素,String $重力) {
-        布局实现.加入子元素(this, $子元素, $重力);
-        return this;
-    }
 
     public View 取子元素从标签(Object $标签) {
         return 布局实现.取子元素从标签(this, $标签);

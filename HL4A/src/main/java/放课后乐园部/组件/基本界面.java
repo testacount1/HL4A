@@ -27,6 +27,72 @@ public class 基本界面 extends Activity {
     public 通用方法 离开界面事件;
     public 通用方法 界面销毁事件;
 
+    public 通用方法 按键按下事件;
+
+    long 返回时间;
+
+    @Override
+    public boolean onKeyDown(int keyCode,KeyEvent event) {
+
+        if (按键按下事件 == null) {
+
+            if (keyCode == KeyEvent.KEYCODE_BACK) {
+
+                long 上次 = 返回时间;
+
+                if ((返回时间 = 时间.时间戳()) - 上次 < 2000) {
+                    结束();
+                    return true;
+                } else {
+                    弹窗.提示("再按一次返回键退出 ~");
+                    return false;
+                }
+
+            } else return super.onKeyDown(keyCode, event);
+
+        } else {
+
+            return 调用方法.事件(按键按下事件, keyCode, event) == true;
+        }
+        
+    }
+
+    public 通用方法 按键弹起事件;
+
+    @Override
+    public boolean onKeyUp(int keyCode,KeyEvent event) {
+        if (按键弹起事件 != null)
+            return 调用方法.事件(按键弹起事件,keyCode,event) == true;
+        return super.onKeyUp(keyCode, event);
+    }
+
+    public 通用方法 按键长按事件;
+    
+    @Override
+    public boolean onKeyLongPress(int keyCode,KeyEvent event) {
+        if (按键长按事件 != null)
+            return 调用方法.事件(按键长按事件,keyCode,event) == true;
+        return super.onKeyLongPress(keyCode, event);
+    }
+
+    public 通用方法 按键单击事件;
+    
+    @Override
+    public boolean onKeyShortcut(int keyCode,KeyEvent event) {
+        if (按键单击事件 != null)
+            return 调用方法.事件(按键单击事件,keyCode,event) == true;
+        return super.onKeyShortcut(keyCode, event);
+    }
+    
+    public 通用方法 按键双击事件;
+
+    @Override
+    public boolean onKeyMultiple(int keyCode,int repeatCount,KeyEvent event) {
+        if (按键双击事件 != null)
+            return 调用方法.事件(按键双击事件,keyCode,repeatCount,event) == true;
+        return super.onKeyMultiple(keyCode, repeatCount, event);
+    }
+    
     public Menu 当前菜单;
     public 通用方法 菜单创建事件;
     public 通用方法 菜单选中事件;

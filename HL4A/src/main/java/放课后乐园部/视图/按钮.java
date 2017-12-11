@@ -15,6 +15,19 @@ public class 按钮 extends Button implements 基本视图 {
         视图实现.初始化控件(this);
         置主题("默认");
     }
+    
+
+    @Override
+    public 按钮 置布局重力(String $重力) {
+        视图实现.置布局重力(this,$重力);
+        return this;
+    }
+
+    @Override
+    public 按钮 置布局权重(float $权重) {
+        视图实现.置布局权重(this,$权重);
+        return this;
+    }
 
     // 文本实现
 

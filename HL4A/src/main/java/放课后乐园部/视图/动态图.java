@@ -12,6 +12,19 @@ import 放课后乐园部.视图.实现.*;
 
 public class 动态图 extends View implements 基本视图 {
 
+
+    @Override
+    public 动态图 置布局重力(String $重力) {
+        视图实现.置布局重力(this,$重力);
+        return this;
+    }
+
+    @Override
+    public 动态图 置布局权重(float $权重) {
+        视图实现.置布局权重(this,$权重);
+        return this;
+    }
+    
     private static final int DEFAULT_MOVIE_VIEW_DURATION = 1000;
 
     private Movie movie;

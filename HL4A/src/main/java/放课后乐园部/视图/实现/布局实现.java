@@ -35,15 +35,6 @@ public class 布局实现 {
         视图实现.加入到($子元素,$视图);
     }
     
-    public static void 加入子元素(ViewGroup $视图,View $子元素,String $重力) {
-        Class $布局 = 反射.取类($视图.getClass().getName()+".MarginLayoutParams");
-        Object $设置 = 反射.实例化($布局,视图实现.取设置($子元素));
-        Field $重力变量 = 反射.取变量($布局,"gravity");
-        反射.改变量($重力变量,$设置,视图.检查重力($重力));
-        视图实现.置设置($子元素,(MarginLayoutParams)$设置);
-        $视图.addView($子元素);
-    }
-
     public static View 取子元素从标签(ViewGroup $视图,Object $标签) {
         return $视图.findViewWithTag($标签);
     }

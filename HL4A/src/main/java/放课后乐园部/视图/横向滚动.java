@@ -7,7 +7,7 @@ import android.widget.*;
 import 放课后乐园部.事件.*;
 import 放课后乐园部.视图.实现.*;
 
-public class 横向滚动 extends ScrollView implements 基本视图 {
+public class 横向滚动 extends HorizontalScrollView implements 基本视图 {
 
     public 横向滚动(Context $上下文) {
         super($上下文);
@@ -15,13 +15,21 @@ public class 横向滚动 extends ScrollView implements 基本视图 {
         置主题("默认");
     }
     
-    public 横向滚动 加入子元素(View $子元素) {
-        布局实现.加入子元素(this, $子元素);
+
+    @Override
+    public 横向滚动 置布局重力(String $重力) {
+        视图实现.置布局重力(this,$重力);
         return this;
     }
 
-    public 横向滚动 加入子元素(View $子元素,String $重力) {
-        布局实现.加入子元素(this, $子元素, $重力);
+    @Override
+    public 横向滚动 置布局权重(float $权重) {
+        视图实现.置布局权重(this,$权重);
+        return this;
+    }
+    
+    public 横向滚动 加入子元素(View $子元素) {
+        布局实现.加入子元素(this, $子元素);
         return this;
     }
 

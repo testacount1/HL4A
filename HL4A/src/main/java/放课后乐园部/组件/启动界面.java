@@ -40,8 +40,8 @@ public class 启动界面 extends 基本界面 {
 
         @Override
         public Object 调用(Object[] $参数) {
-            脚本管理.跳转界面(启动界面.this,"#index.js");
-            启动界面.this.结束();
+            跳转界面("#index.js");
+            结束();
             return null;
         }
     };

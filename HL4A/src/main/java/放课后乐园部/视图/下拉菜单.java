@@ -16,6 +16,19 @@ public class 下拉菜单 extends Spinner implements 基本视图 {
         置主题("默认");
     }
     
+
+    @Override
+    public 下拉菜单 置布局重力(String $重力) {
+        视图实现.置布局重力(this,$重力);
+        return this;
+    }
+
+    @Override
+    public 下拉菜单 置布局权重(float $权重) {
+        视图实现.置布局权重(this,$权重);
+        return this;
+    }
+    
     public 下拉菜单 置适配器(BaseAdapter $适配器) {
         setAdapter($适配器);
         return this;

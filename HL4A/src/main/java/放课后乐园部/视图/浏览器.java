@@ -24,6 +24,19 @@ public class 浏览器 extends WebView implements 基本视图 {
         设置.setSupportZoom(true);
         setWebViewClient(new 浏览器实例());
     }
+    
+
+    @Override
+    public 浏览器 置布局重力(String $重力) {
+        视图实现.置布局重力(this,$重力);
+        return this;
+    }
+
+    @Override
+    public 浏览器 置布局权重(float $权重) {
+        视图实现.置布局权重(this,$权重);
+        return this;
+    }
 
     public 浏览器 置网址(String $地址) {
         loadUrl($地址);

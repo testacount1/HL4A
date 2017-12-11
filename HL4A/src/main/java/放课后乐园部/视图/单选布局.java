@@ -16,6 +16,19 @@ public class 单选布局 extends RadioGroup implements 基本视图 {
         置主题("默认");
     }
     
+
+    @Override
+    public 单选布局 置布局重力(String $重力) {
+        视图实现.置布局重力(this,$重力);
+        return this;
+    }
+
+    @Override
+    public 单选布局 置布局权重(float $权重) {
+        视图实现.置布局权重(this,$权重);
+        return this;
+    }
+    
     public 单选布局 置重力(String $重力) {
         布局实现.置重力(this, $重力);
         return this;
@@ -28,11 +41,6 @@ public class 单选布局 extends RadioGroup implements 基本视图 {
 
     public 单选布局 加入子元素(View $子元素) {
         布局实现.加入子元素(this, $子元素);
-        return this;
-    }
-
-    public 单选布局 加入子元素(View $子元素,String $重力) {
-        布局实现.加入子元素(this, $子元素, $重力);
         return this;
     }
 

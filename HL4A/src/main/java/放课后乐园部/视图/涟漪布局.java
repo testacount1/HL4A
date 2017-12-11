@@ -14,6 +14,19 @@ import 放课后乐园部.视图.实现.*;
 
 public class 涟漪布局 extends RelativeLayout implements 基本视图 {
 
+
+    @Override
+    public 涟漪布局 置布局重力(String $重力) {
+        视图实现.置布局重力(this,$重力);
+        return this;
+    }
+
+    @Override
+    public 涟漪布局 置布局权重(float $权重) {
+        视图实现.置布局权重(this,$权重);
+        return this;
+    }
+    
     private int WIDTH;
     private int HEIGHT;
     private int frameRate = 10;
@@ -92,11 +105,6 @@ public class 涟漪布局 extends RelativeLayout implements 基本视图 {
     
     public 涟漪布局 加入子元素(View $子元素) {
         布局实现.加入子元素(this, $子元素);
-        return this;
-    }
-
-    public 涟漪布局 加入子元素(View $子元素,String $重力) {
-        布局实现.加入子元素(this, $子元素, $重力);
         return this;
     }
 
