@@ -15,7 +15,7 @@ public class 长按 implements OnLongClickListener {
 	@Override
 	public boolean onLongClick(View $对象) {
 		// TODO: Implement this method
-		return (事件.调用($对象) == true);
+		return (调用方法.事件(事件,$对象) == true);
 	}
 
 	

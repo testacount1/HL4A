@@ -32,14 +32,20 @@ public class 布局实现 {
     // addView
 
     public static void 加入子元素(ViewGroup $视图,View $子元素) {
-        视图实现.加入到($子元素,$视图);
+        if ($子元素 instanceof 基本视图)
+            加入子元素($视图, (基本视图)$子元素);
+        else 视图实现.加入到($子元素, $视图);
     }
-    
-    public static View 取子元素从标签(ViewGroup $视图,Object $标签) {
+
+    public static void 加入子元素(ViewGroup $视图,基本视图 $子元素) {
+        $子元素.加入到($视图);
+    }
+
+    public static View 取子元素(ViewGroup $视图,Object $标签) {
         return $视图.findViewWithTag($标签);
     }
 
-    public static View 取子元素从键值(ViewGroup $视图,int $键值) {
+    public static View 取子元素(ViewGroup $视图,int $键值) {
         return $视图.getChildAt($键值);
     }
 
@@ -47,7 +53,7 @@ public class 布局实现 {
         int count = $视图.getChildCount();
         View[] $所有 = new View[count];
         for (int i = 0;i < count;i ++) {
-            $所有[i] = 取子元素从键值($视图, i);
+            $所有[i] = 取子元素($视图, i);
         }
         return $所有;
     }

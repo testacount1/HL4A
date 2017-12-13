@@ -41,7 +41,7 @@ public class 基本界面 extends Activity {
                 long 上次 = 返回时间;
 
                 if ((返回时间 = 时间.时间戳()) - 上次 < 2000) {
-                    结束();
+                    finish();
                     return true;
                 } else {
                     弹窗.提示("再按一次返回键退出 ~");
@@ -106,19 +106,20 @@ public class 基本界面 extends Activity {
     }
 
     public void 结束() {
+        if (不结束 == false)
         finish();
     }
 
     @Override
     public void onCreate(Bundle $数据) {
         super.onCreate($数据);
+        环境.读取().所有界面.添加(this);
         L = Looper.getMainLooper();
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        环境.设置界面(this);
         调用方法.事件(界面开始事件);
     }
 
@@ -200,6 +201,8 @@ public class 基本界面 extends Activity {
         super.onStop();
     }
 
+    public boolean 不结束 = false;
+    
     @Override
     public void onDestroy() {
         调用方法.事件(界面销毁事件);
@@ -208,6 +211,7 @@ public class 基本界面 extends Activity {
                 unbindService($连接);
         }
         super.onDestroy();
+        不结束 = true;
     }
 
 }

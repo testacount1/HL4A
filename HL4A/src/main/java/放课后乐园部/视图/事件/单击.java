@@ -14,7 +14,7 @@ public class 单击 implements OnClickListener {
 	
 	@Override
 	public void onClick(View $对象) {
-			事件.调用($对象);
+        调用方法.事件(事件,$对象);
 	}
 
 	

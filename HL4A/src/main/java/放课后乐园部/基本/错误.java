@@ -1,5 +1,5 @@
 package 放课后乐园部.基本;
-import 放课后乐园部.事件.*;
+import android.content.*;
 
 public class 错误 {
 
@@ -66,24 +66,30 @@ public class 错误 {
         return 取错误类型($错误) + "\n\n" + 取错误信息($错误) + "\n\n" + 取错误位置($错误);
     }
 
-    public static void 提醒(Throwable $错误) {
-        String $错误类型 = 取错误类型($错误);
-        String $错误信息 = 取错误信息($错误);
-        String $错误位置 = 取错误位置($错误, 1);
-        弹窗.提示($错误位置 + "\n" + $错误类型 + "\n" + $错误信息);
-    }
-
-
     public static void 保存(Throwable $错误) {
         字符.保存(文件.取存储卡缓存目录("错误日志/" + 时间.格式("中文") + ".log"), 取整个错误($错误));
     }
 
-    static 弹窗.基本弹窗 弹窗对象;
+    public static void 默认(Throwable $错误) {
+        Thread.getDefaultUncaughtExceptionHandler().uncaughtException(null, $错误);
+    }
 
     public static void 普通(Throwable $错误) {
+        try {
+            环境.读取().结束界面();
+            Intent $意图 = new Intent(环境.读取(), 反射.取类(应用.取包名() + ".ErrorActivity"));
+            $意图.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            $意图.putExtra("错误", 取整个错误($错误));
+            环境.读取().startActivity($意图);
+        } catch (Exception $新错误) {
+            结束($新错误);
+        }
+    }
+
+    public static void 结束(Throwable $错误) {
         错误.保存($错误);
-        设置.设置("APK散列","<Error>");
-        System.exit(0);
+        设置.设置("APK散列", "<Error>");
+        环境.读取().结束();
     }
 
 }

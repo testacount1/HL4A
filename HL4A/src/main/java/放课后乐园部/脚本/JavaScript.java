@@ -118,7 +118,7 @@ public class JavaScript {
 		if ($内容 == null) $内容 = "";
 
 		try {
-			return JS上下文.evaluateString(函数环境, $内容.toString(), "JS脚本:<" + $环境名 + ">)"+"\n\nJS代码:\n"+$内容+"\n(行数:", 1, null);
+			return JS上下文.evaluateString(函数环境, $内容.toString(), "文件:<" + $环境名 + ">", 1, null);
 		} catch (Exception $错误) {
 			错误.普通($错误);
 		}

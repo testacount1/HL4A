@@ -30,6 +30,7 @@
                 <action android:name="android.accessibilityservice.AccessibilityService" />
             </intent-filter>
         </service>
+        <activity android:name=".ErrorActivity" />
         <activity android:name=".JSActivity" />
         <activity android:name=".LuaActivity" />
         <activity android:name=".BSHActivity" />
