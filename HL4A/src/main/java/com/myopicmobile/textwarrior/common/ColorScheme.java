@@ -85,7 +85,7 @@ public abstract class ColorScheme {
 
 		// High-contrast, black-on-white color scheme
 		HashMap<Colorable, Integer> colors = new HashMap<Colorable, Integer>(Colorable.values().length);
-        colors.put(Colorable.FOREGROUND, BLACK);//前景色
+        colors.put(Colorable.FOREGROUND, WHITE);//前景色
         colors.put(Colorable.BACKGROUND, WHITE);
         colors.put(Colorable.SELECTION_FOREGROUND, WHITE);//选择文本的前景色
         colors.put(Colorable.SELECTION_BACKGROUND, BLUE);//选择文本的背景色
@@ -105,7 +105,7 @@ public abstract class ColorScheme {
 	}
 
 	// In ARGB format: 0xAARRGGBB
-	private static final int BLACK = 0x000000;
+	private static final int BLACK = 视图.检查颜色("#000000");
     private static final int BLUE = 视图.检查颜色(主题.文字());
     private static final int DARK_RED = 0xFFA31515;
     private static final int GREY = 视图.检查颜色("#F0F0F0");
