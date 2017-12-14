@@ -7,8 +7,8 @@ android {
 
     defaultConfig {
         applicationId "h.android"
-        versionCode 49
-        versionName "1.4.5"
+        versionCode 50
+        versionName "1.4.6"
     }
 }
 dependencies {

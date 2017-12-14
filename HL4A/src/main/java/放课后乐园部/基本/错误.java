@@ -1,12 +1,13 @@
 package 放课后乐园部.基本;
 import android.content.*;
+import org.mozilla.javascript.*;
 
 public class 错误 {
 
     错误() {}
 
     public static String 取错误信息(Throwable $错误) {
-        return "错误信息 : " + $错误.getMessage();
+        return $错误.getMessage();
     }
 
     public static String 取错误位置(Throwable $错误) {
@@ -54,15 +55,19 @@ public class 错误 {
                 case "java.lang.NumberFormatException":$错误类型 += "数字格式异常。当试图将一个String转换为指定的数字类型，而该字符串确不满足数字类型要求的格式时，抛出该异常。";break;
                 case "android.content.ActivityNotFoundException":$错误类型 += "界面不存在异常，可能是没有在应用清单声明该Activity。";break;
                 case "android.view.WindowManager$BadTokenException":$错误类型 += "访问界面异常,请在界面创建完成后进行对界面的操作。";break;
+                default: $错误类型 += "这是一种错误 但是我还没有给出详细解释";break;
             }
         } else {
             $错误类型 = "代码抛出错误:";
         }
-        $错误类型 += $错误类名;
+        $错误类型 += ("\n\n" + $错误类名);
         return $错误类型;
     }
 
     public static String 取整个错误(Throwable $错误) {
+        if ($错误 instanceof WrappedException) {
+        return "JS调用Java时产生的错误，通常是调用不当或是Java代码出错。\n详细错误内容:\n"+$错误.getMessage();
+        }
         return 取错误类型($错误) + "\n\n" + 取错误信息($错误) + "\n\n" + 取错误位置($错误);
     }
 

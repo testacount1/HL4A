@@ -54,7 +54,7 @@ public class 基本界面 extends Activity {
 
             return 调用方法.事件(按键按下事件, keyCode, event) == true;
         }
-        
+
     }
 
     public 通用方法 按键弹起事件;
@@ -62,37 +62,37 @@ public class 基本界面 extends Activity {
     @Override
     public boolean onKeyUp(int keyCode,KeyEvent event) {
         if (按键弹起事件 != null)
-            return 调用方法.事件(按键弹起事件,keyCode,event) == true;
+            return 调用方法.事件(按键弹起事件, keyCode, event) == true;
         return super.onKeyUp(keyCode, event);
     }
 
     public 通用方法 按键长按事件;
-    
+
     @Override
     public boolean onKeyLongPress(int keyCode,KeyEvent event) {
         if (按键长按事件 != null)
-            return 调用方法.事件(按键长按事件,keyCode,event) == true;
+            return 调用方法.事件(按键长按事件, keyCode, event) == true;
         return super.onKeyLongPress(keyCode, event);
     }
 
     public 通用方法 按键单击事件;
-    
+
     @Override
     public boolean onKeyShortcut(int keyCode,KeyEvent event) {
         if (按键单击事件 != null)
-            return 调用方法.事件(按键单击事件,keyCode,event) == true;
+            return 调用方法.事件(按键单击事件, keyCode, event) == true;
         return super.onKeyShortcut(keyCode, event);
     }
-    
+
     public 通用方法 按键双击事件;
 
     @Override
     public boolean onKeyMultiple(int keyCode,int repeatCount,KeyEvent event) {
         if (按键双击事件 != null)
-            return 调用方法.事件(按键双击事件,keyCode,repeatCount,event) == true;
+            return 调用方法.事件(按键双击事件, keyCode, repeatCount, event) == true;
         return super.onKeyMultiple(keyCode, repeatCount, event);
     }
-    
+
     public Menu 当前菜单;
     public 通用方法 菜单创建事件;
     public 通用方法 菜单选中事件;
@@ -105,9 +105,13 @@ public class 基本界面 extends Activity {
         脚本管理.跳转界面(this, $文件);
     }
 
+    public void 跳转界面(String $文件,int $请求码) {
+        脚本管理.跳转界面(this, $文件, $请求码);
+    }
+
     public void 结束() {
         if (不结束 == false)
-        finish();
+            finish();
     }
 
     @Override
@@ -202,7 +206,7 @@ public class 基本界面 extends Activity {
     }
 
     public boolean 不结束 = false;
-    
+
     @Override
     public void onDestroy() {
         调用方法.事件(界面销毁事件);

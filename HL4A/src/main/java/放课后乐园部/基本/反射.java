@@ -9,16 +9,16 @@ public class 反射  {
 
     反射() {}
 
-    public static Class 取类(String $类名) {
+    public static Class<?> 取类(String $类名) {
         try {
             return Class.forName($类名,false,注入.最新加载器);
         } catch (Exception $错误) {}
         return null;
     }
 
-    public static Class 取类(String $类名,ClassLoader $类加载器) {
+    public static Class<?> 取类(String $类名,ClassLoader $类加载器) {
         try {
-            Class $类 = Class.forName($类名, false, $类加载器);
+            Class<?> $类 = Class.forName($类名, false, $类加载器);
             if ($类 == null)
                 $类 = 取类($类名);
             return $类;
