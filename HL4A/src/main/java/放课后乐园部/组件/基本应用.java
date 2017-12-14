@@ -78,9 +78,8 @@ public class 基本应用 extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-
+        注入.最新加载器 = getClassLoader();
         Thread.setDefaultUncaughtExceptionHandler(处理);
-
         环境.设置(this);
         弹窗.初始化(this);
         签名检验();
@@ -90,7 +89,6 @@ public class 基本应用 extends Application {
     public static void 签名检验() {
         Class $MT = 反射.取类("cc.binmt.signature.PmsHookApplication");
         if ($MT != null) 弹窗.提示("您可能是盗版应用的受害者！");
-
     }
 
 }

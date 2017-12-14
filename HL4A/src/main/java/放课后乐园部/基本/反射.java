@@ -11,18 +11,10 @@ public class 反射  {
 
     public static Class 取类(String $类名) {
         try {
-            Class $类 =  Class.forName($类名);
-            if ($类 == null) {
-                for (注入.类加载器 $加载器 : 注入.所有加载器) {
-                    if ($类 != null)break;
-                    Class.forName($类名, false, $加载器);
-                }
-            }
-            return $类;
+            return Class.forName($类名,false,注入.最新加载器);
         } catch (Exception $错误) {}
         return null;
     }
-
 
     public static Class 取类(String $类名,ClassLoader $类加载器) {
         try {

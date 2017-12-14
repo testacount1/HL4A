@@ -6,6 +6,10 @@ import org.mozilla.javascript.commonjs.module.*;
 import 放课后乐园部.基本.*;
 import 放课后乐园部.注解.注释.*;
 import 放课后乐园部.脚本.*;
+import java.net.*;
+import org.mozilla.javascript.commonjs.module.provider.*;
+import android.net.*;
+import 放课后乐园部.收集.*;
 
 public class JavaScript {
 
@@ -23,11 +27,6 @@ public class JavaScript {
 		ImporterTopLevel 初始化环境 = new ImporterTopLevel();
 		初始化环境.initStandardObjects(JS上下文, false);
 		函数环境 = 初始化环境;
-
-		new RequireBuilder()
-			.setSandboxed(true)
-			.createRequire(JS上下文, 函数环境)
-			.install(函数环境);
 
 		压入常量("当前环境", this);
 		压入常量("是复制环境", false);
@@ -50,12 +49,6 @@ public class JavaScript {
 		压入常量("是复制环境", true);
 		压入常量("全局上下文", 环境.读取());
 
-	}
-
-	public void 初始化() {
-		执行代码("var h = Packages.放课后乐园部;"
-
-			 , this.toString());
 	}
 
 	public void 压入变量(String $对象名,Object $对象) {
@@ -136,17 +129,6 @@ public class JavaScript {
 		String $ = 字符.读取($地址);
 		return 执行代码($, $环境名);
 	}
-
-	@功能("注入DEX依赖")
-	@出错("但是注入之后旧的JS环境不能直接通过Packages访问")
-	@解决("注入以后可以在JS里通过类加载器取类")
-	public 注入.类加载器 注入DEX(String $文件) {
-		注入.类加载器 $加载器 = 注入.注入DEX($文件, JS上下文.getApplicationClassLoader());
-		JS上下文.setApplicationClassLoader($加载器);
-		所有加载器.add($加载器);
-		return $加载器;
-	}
-
 
 	public void 退出() {
 		JS上下文.exit();

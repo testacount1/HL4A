@@ -10,7 +10,7 @@ public final class 文件 {
     文件() {}
 
     public static Boolean 检查目录(String $目录) {
-        return new File($目录).getParentFile().mkdirs();
+        return new File(检查地址($目录)).getParentFile().mkdirs();
     }
 
     public static String 创建文件(String $文件) {

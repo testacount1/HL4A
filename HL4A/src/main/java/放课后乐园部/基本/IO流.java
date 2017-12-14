@@ -74,9 +74,8 @@ public final class IO流 {
 
         public static FileOutputStream 文件(String $文件) {
             try {
-                $文件 = 文件.检查地址($文件);
                 文件.检查目录($文件);
-                return new FileOutputStream(new File($文件));
+                return new FileOutputStream(new File(文件.检查地址($文件)));
             } catch (Exception $错误) {}
             return null;
         }
@@ -103,7 +102,7 @@ public final class IO流 {
         try {
             $流.write($内容);
             $流.flush();
-        } catch (IOException $错误) {}
+        } catch (Exception $错误) {}
     }
     
     public static void 保存(OutputStream $流,InputStream $输入) {

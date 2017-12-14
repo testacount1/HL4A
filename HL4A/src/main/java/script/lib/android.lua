@@ -23,7 +23,7 @@ local 泛导入表 = {
 
 导入 = 当前环境.运行文件;
 
-function 导入泛类(_类)
+function 导入包(_类)
 table.insert(泛导入表,_类);
 end
 
