@@ -23,7 +23,7 @@ public class WrappedException extends EvaluatorException {
      * @see Context#throwAsScriptRuntimeEx(Throwable e)
      */
     public WrappedException(Throwable exception) {
-        super("这是一个JS执行中捕捉到的错误:\n " + 错误.取整个错误(exception));
+        super("\n\n" + 错误.取整个错误(exception));
         this.exception = exception;
         Kit.initCause(this, exception);
 
