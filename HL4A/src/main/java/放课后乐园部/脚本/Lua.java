@@ -17,7 +17,7 @@ public class Lua {
      
     }
     
-    public void 压入方法(String $名称,final 通用方法 $方法) {
+    public Lua 压入方法(String $名称,final 通用方法 $方法) {
         
         try {
             new JavaFunction(Lua状态机) {
@@ -40,7 +40,7 @@ public class Lua {
 
             }.register($名称);
         } catch (Exception $错误) {}
-
+return this;
     }
 
     public Object 读取对象(String $对象名) {
@@ -143,12 +143,13 @@ public class Lua {
         return null;
     }
 
-    public void 压入变量(String $对象名,Object $对象) {
+    public Lua 压入变量(String $对象名,Object $对象) {
         synchronized (Lua状态机) {
             try {
                 Lua状态机.pushObjectValue($对象);
                 Lua状态机.setGlobal($对象名);
             } catch (Exception $错误) {}
+            return this;
         }
     }
 

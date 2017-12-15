@@ -13,14 +13,14 @@ import java.util.Vector;
 
 
 //TODO Have all methods work with charOffsets and move all gap handling to logicalToRealIndex()
-public class TextBuffer implements CharSequence
+public class TextBuffer implements java.lang.CharSequence
 {
 
 	@Override
 	public int length()
 	{
 		// TODO: Implement this method
-		return getTextLength();
+		return getTextLength()-1;
 	}
 	
 	// gap size must be > 0 to insert into full buffers successfully
@@ -395,6 +395,8 @@ public class TextBuffer implements CharSequence
 		}
 
 		_cache.invalidateCache(charOffset);
+
+		onAdd(charOffset,c.length);
 	}
 	
 	/**
@@ -430,7 +432,86 @@ public class TextBuffer implements CharSequence
 		}
 
 		_cache.invalidateCache(charOffset);
+		onDel(charOffset,totalChars);
 	}
+
+	private void onAdd(int charOffset,int totalChars){
+		Pair s = findSpan(charOffset);
+		Pair p=_spans.get(s.getFirst());
+		p.setFirst(p.getFirst()+totalChars);
+	}
+	
+	private void onDel(int charOffset,int totalChars){
+		int len = length();
+		if (len==0){
+			clearSpans();
+			return;
+		}
+
+		Pair s = findSpan2(charOffset);
+		if(totalChars==1){
+			Pair p=_spans.get(s.getFirst());
+			if(p.getFirst()>1){
+				p.setFirst(p.getFirst()-1);
+			}
+			else{
+				_spans.remove(s.getFirst());
+			}
+		}
+		else{
+			int o=s.getSecond();
+			int l=charOffset-o;
+			Pair p=_spans.get(s.getFirst());
+			if(p.getFirst()>l){
+				p.setFirst(p.getFirst()-l);
+			}
+			else{
+				_spans.remove(s.getFirst());
+			}
+			totalChars-=l;
+			if(totalChars>0){
+				for(int i=s.getFirst();i>=0;i--){
+					Pair p1=_spans.get(i);
+					l=p1.getFirst();
+					if(totalChars>l){
+						totalChars-=l;
+						_spans.remove(i);
+					}
+					else{
+						p1.setFirst(p1.getFirst()-totalChars);
+						break;
+					}
+				}
+			}
+
+		}
+	}
+	
+	private Pair findSpan(int index){
+		int n=_spans.size();
+		int cur=0;
+		for (int i=0;i<n;i++){
+			int l=_spans.get(i).getFirst();
+			cur+=l;
+			if(cur>=index)
+				return new Pair(i,cur-l);
+		}
+		return new Pair(0,0);
+	}
+
+	private Pair findSpan2(int index){
+		int n=_spans.size();
+		int cur=0;
+		for (int i=0;i<n;i++){
+			int l=_spans.get(i).getFirst();
+			cur+=l;
+			if(cur>index)
+				return new Pair(i,cur-l);
+		}
+		return new Pair(0,0);
+	}
+
+
 
 	/**
 	 * Moves _gapStartIndex by displacement units. Note that displacement can be
@@ -441,9 +522,11 @@ public class TextBuffer implements CharSequence
 	 */
 	synchronized void shiftGapStart(int displacement){
 		if(displacement >= 0){
+			onAdd(_gapStartIndex, displacement);
 			_lineCount += countNewlines(_gapStartIndex, displacement);
 		}
 		else{
+			onDel(_gapStartIndex, 0-displacement);
 			_lineCount -= countNewlines(_gapStartIndex + displacement, -displacement);
 		}
 
@@ -572,7 +655,7 @@ public class TextBuffer implements CharSequence
 	
 	public void clearSpans(){
 		_spans = new Vector<Pair>();
-	    _spans.add(new Pair(0, Lexer.NORMAL));
+	    _spans.add(new Pair(length(), Lexer.NORMAL));
 	}
 	
 	public List<Pair> getSpans(){

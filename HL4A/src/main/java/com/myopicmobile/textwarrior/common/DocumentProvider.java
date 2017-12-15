@@ -22,8 +22,15 @@ import java.util.List;
  * changes made by one DocumentProvider will not cause other DocumentProviders
  * to be notified. Implement a publish/subscribe interface if required.
  */
-public class DocumentProvider implements CharSequence
+public class DocumentProvider implements java.lang.CharSequence
 {
+
+	@Override
+	public int length()
+	{
+		// TODO: Implement this method
+		return _theText.length();
+	}
 
 	/** Current position in the text. Range [ 0, _theText.getTextLength() ) */
 	private int _currIndex;
@@ -43,12 +50,7 @@ public class DocumentProvider implements CharSequence
 		_currIndex = 0;
 		_theText = rhs._theText;
 	}
-	@Override
-	public int length()
-	{
-		// TODO: Implement this method
-		return _theText.length();
-	}
+
 	/**
 	 * Get a substring of up to maxChars length, starting from charOffset
 	 */

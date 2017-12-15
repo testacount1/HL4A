@@ -15,7 +15,6 @@ public class 列表视图 extends ListView implements 基本视图 {
         视图实现.初始化控件(this);
         置主题("默认");
     }
-    
 
     @Override
     public 列表视图 置布局重力(String $重力) {

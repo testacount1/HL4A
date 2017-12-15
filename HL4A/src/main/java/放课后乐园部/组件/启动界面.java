@@ -1,6 +1,8 @@
 package 放课后乐园部.组件;
 
+import android.content.pm.*;
 import android.os.*;
+import android.view.*;
 import 放课后乐园部.事件.*;
 import 放课后乐园部.基本.*;
 import 放课后乐园部.视图.*;
@@ -40,32 +42,27 @@ public class 启动界面 extends 基本界面 {
 
         打开布局($底层);
 
-    }
-
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        权限.检查($检查成功,$检查失败);
-    }
-
-    通用方法 $检查成功 = new 通用方法() {
-        @Override
-        public Object 调用(Object[] $参数) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
             new 线程($初始化).启动();
-            return null;
+            return;
         }
-    };
-    
-    通用方法 $检查失败 = new 通用方法() {
-        @Override
-        public Object 调用(Object[] $参数) {
-            错误.普通(new Exception("权限错误,程序无法运行。"));
-            return null;
+
+        按键按下事件 = new 通用方法() {
+            @Override
+            public Object 调用(Object[] $参数) {
+                return null;
+            }
+        };
+ 
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+        if (权限.检查所有() == true) {
+            new 线程($初始化).启动();
+        } else {
+            权限.请求所有(this);
         }
-    };
-    
-    
+
+    }
+
     通用方法 $初始化 = new 通用方法() {
         @Override
         public Object 调用(Object[] $参数) {
@@ -81,7 +78,6 @@ public class 启动界面 extends 基本界面 {
     };
 
     通用方法 跳转 = new 通用方法() {
-
         @Override
         public Object 调用(Object[] $参数) {
             跳转界面("#index.js");
@@ -89,5 +85,19 @@ public class 启动界面 extends 基本界面 {
             return null;
         }
     };
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,String[] permissions,int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode) {
+            case 0x38:
+                for (int i = 0; i < permissions.length; i++) {
+                    if (grantResults[i] == PackageManager.PERMISSION_GRANTED)
+                        错误.普通(new Exception("权限错误 应用无法运行:" + permissions[i]));
+                }
+                new 线程($初始化).启动();
+                break;
+        }
+    }
 
 }

@@ -96,8 +96,8 @@ public abstract class ColorScheme {
 
         colors.put(Colorable.NON_PRINTING_GLYPH, BLUE);//行号
         colors.put(Colorable.COMMENT, OLIVE_GREEN); //注释
-        colors.put(Colorable.KEYWORD, BLUE); //关键字
-        colors.put(Colorable.NAME, GREY); // Eclipse default color
+        colors.put(Colorable.KEYWORD, DARK_RED); //关键字
+        colors.put(Colorable.NAME, BLUE); // Eclipse default color
         colors.put(Colorable.LITERAL, BLUE); // Eclipse default color
         colors.put(Colorable.STRING, DARK_RED); //字符串
         colors.put(Colorable.SECONDARY, 0xff6f008a);//宏
@@ -112,7 +112,7 @@ public abstract class ColorScheme {
     private static final int OLIVE_GREEN = 0xFF3F7F5F;
     private static final int PURPLE = 0xFFDD4488;
     private static final int RED = 0xFFFF0000;
-    private static final int WHITE = 0xFFFFFF;
+    private static final int WHITE = 视图.检查颜色("#FFFFFF");
     private static final int PURPLE2 = 0xFFFF00FF;
     private static final int LIGHT_BLUE = 0xFF6080FF;
     private static final int LIGHT_BLUE2 = 0xFF40B0FF;

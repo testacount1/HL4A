@@ -4,7 +4,7 @@
     platformBuildVersionName="6.0-2166767">
     <uses-sdk
         android:minSdkVersion="8"
-        android:targetSdkVersion="25" />
+        android:targetSdkVersion="21" />
     <application
         android:theme="@android:style/Theme.Holo.Light.NoActionBar"
         android:label="@string/name"
@@ -30,6 +30,7 @@
                 <action android:name="android.accessibilityservice.AccessibilityService" />
             </intent-filter>
         </service>
+
         <activity android:name=".ErrorActivity" />
         <activity android:name=".JSActivity" />
         <activity android:name=".LuaActivity" />

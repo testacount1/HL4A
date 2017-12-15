@@ -9,12 +9,36 @@ import android.util.*;
 import android.view.*;
 import java.util.*;
 import 放课后乐园部.收集.*;
+import android.content.pm.PackageManager.*;
 
 public class 应用 {
 
     应用() {}
 
     private static 哈希表 全局变量 = new 哈希表();
+
+    public static int 取编译SDK() {
+        try {
+            PackageInfo $信息 = 环境.读取().getPackageManager().getPackageInfo(
+                应用.取包名(), 0);
+            return $信息.applicationInfo.targetSdkVersion;
+        } catch (Exception $错误) {}
+        return 23;
+    }
+
+    public static String[] 取所有权限() {
+        PackageInfo packageInfo = null;
+        try {
+            packageInfo = 环境.读取().getPackageManager().getPackageInfo(
+                应用.取包名(), PackageManager.GET_PERMISSIONS);
+        } catch (Exception $错误) {
+            错误.普通($错误);
+        }
+        if (packageInfo != null) {
+            return packageInfo.requestedPermissions;
+        }
+        return null;
+    }
 
     public static 集合 取用户应用() {
         return 取所有应用(false);
@@ -59,14 +83,14 @@ public class 应用 {
         } catch (Exception $错误) {}
         return null;
     }
-    
+
     public static String 取版本名() {
         try {
             return 环境.读取().getPackageManager().getPackageInfo(取包名(), 64).versionName;
         } catch (Exception $错误) {}
         return null;
     }
-    
+
     public static Integer 取版本号() {
         try {
             return 环境.读取().getPackageManager().getPackageInfo(取包名(), 64).versionCode;

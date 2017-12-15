@@ -50,21 +50,23 @@ public class JavaScript {
 		压入常量("全局上下文", 环境.读取());
 
 	}
-
-	public void 压入变量(String $对象名,Object $对象) {
+   
+	public JavaScript 压入变量(String $对象名,Object $对象) {
 		try {
 			ScriptableObject.putProperty(函数环境, $对象名, Context.javaToJS($对象, 函数环境));
 		} catch (Exception $错误) {
 			错误.普通($错误);
 		}
+        return this;
 	}
 
-	public void 压入常量(String $对象名,Object $对象) {
+	public JavaScript 压入常量(String $对象名,Object $对象) {
 		try {
 			ScriptableObject.putConstProperty(函数环境, $对象名, Context.javaToJS($对象, 函数环境));
 		} catch (Exception $错误) {
 			错误.普通($错误);
 		}
+        return this;
 	}
 
 	public Object 读取对象(String $对象名) {

@@ -32,8 +32,8 @@ public class 弹窗 {
                     if ($文本 == null) $文本 = "null";
                     long $上次 = 上次提示;
                     if ((上次提示 = 时间.时间戳()) - $上次 < 500) {
-                        文本对象.setText(文本对象.getText() + "\n" + $内容.toString());
-                    } else 文本对象.setText($内容.toString());
+                        文本对象.setText(文本对象.getText() + "\n" + $文本.toString());
+                    } else 文本对象.setText($文本.toString());
                     提示对象.show();
                     return null;
                 }

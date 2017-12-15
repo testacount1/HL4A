@@ -1,5 +1,6 @@
 package 放课后乐园部.脚本;
 
+import android.content.*;
 import bsh.*;
 import 放课后乐园部.基本.*;
 
@@ -33,12 +34,13 @@ public class BeanShell {
         return null;
     }
 
-    public void 压入变量(String $BSH实例名,Object $BSH实例) {
+    public BeanShell 压入变量(String $BSH实例名,Object $BSH实例) {
         try {
             BSH实例.set($BSH实例名, $BSH实例);
         } catch (EvalError $错误) {
             错误.普通($错误);
         }
+        return this;
     }
 
     public Object 读取对象(String $BSH实例名) {

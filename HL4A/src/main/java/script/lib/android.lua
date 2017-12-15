@@ -60,6 +60,7 @@ _表[_键值] = _类;
 return _类;
 end
 end
+return nil;
 end
 
 setmetatable(_G, {
@@ -82,4 +83,27 @@ return _表[_对象];
 end
 end
 end
+end
+
+local function 取(_v,_k)
+local e,r = pcall(function(_v,_k) return _v["置" .. _k]; end,_v,_k);
+if e then return r; end
+end
+
+function 加载布局(_表,_父)
+local _视图 = _表[1](当前界面);
+if _父 then
+_视图.加入到(_父);
+end
+for _k,_v in pairs(_表) do
+if type(_v) == "table" then
+加载布局(_v,_视图);
+else
+local 置者 = 取(_视图,_k)
+if 置者 then
+置者(_v);
+end
+end
+end
+return _视图;
 end
