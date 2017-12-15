@@ -1,19 +1,20 @@
 package 放课后乐园部.组件;
 
 import android.app.*;
+import android.content.*;
 import android.os.*;
+import android.view.*;
+import java.io.*;
 import 放课后乐园部.事件.*;
 import 放课后乐园部.基本.*;
 import 放课后乐园部.收集.*;
-import android.view.*;
-import android.content.*;
-import java.io.*;
 import 放课后乐园部.脚本.*;
 
 public class 基本界面 extends Activity {
 
     public Looper L;
     public 集合 服务连接 = new 集合();
+
 
     public 通用方法 收到意图事件;
 
@@ -28,7 +29,7 @@ public class 基本界面 extends Activity {
     public 通用方法 界面销毁事件;
 
     public 通用方法 按键按下事件;
-
+    
     long 返回时间;
 
     @Override
@@ -126,6 +127,8 @@ public class 基本界面 extends Activity {
         super.onStart();
         调用方法.事件(界面开始事件);
     }
+
+
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {

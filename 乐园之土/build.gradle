@@ -7,11 +7,10 @@ android {
 
     defaultConfig {
         applicationId "h.android"
-        versionCode 51
-        versionName "1.4.7"
+        versionCode 52
+        versionName "1.4.8"
     }
 }
 dependencies {
-
     compile project(":HL4A")
 }

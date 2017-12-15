@@ -33,6 +33,8 @@ public class 基本应用 extends Application {
             }
         });
 
+
+        
     @Override
     protected void attachBaseContext(Context $上下文) {
         super.attachBaseContext($上下文);

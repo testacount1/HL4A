@@ -12,6 +12,8 @@ public class 线程 extends Thread {
 
     private Long 启动延时;
 
+    boolean 已结束 = false;
+
     public 线程(通用方法 $方法,Object... $参数) {
         置错误处理对象(((基本应用)环境.读取()).处理);
         启动方法 = new 可运行类($方法, $参数);
@@ -29,6 +31,8 @@ public class 线程 extends Thread {
         if (启动延时 != null)
             线程.延时(启动延时);
         返回参数 = 启动方法.执行();
+        已结束 = true;
+        唤醒();
         Looper.loop();
     }
 
@@ -55,28 +59,25 @@ public class 线程 extends Thread {
 
     }
 
-    public synchronized void 暂停() {
+    public synchronized void 等待() {
         try {
-            wait();
-        } catch (Exception $错误) {}
-    }
-
-    public synchronized void 暂停(long $毫秒) {
-        try {
-            wait($毫秒);
+            if (已结束 == false)
+                wait();
+            else
+                唤醒();
         } catch (Exception $错误) {}
     }
 
     public synchronized void 唤醒() {
         notifyAll();
     }
-    
+
     public void 置错误处理(通用方法 $处理) {
         置错误处理对象(new 错误处理($处理));
     }
-    
+
     public void 置错误处理对象(错误处理 $处理) {
         setDefaultUncaughtExceptionHandler($处理);
     }
-    
+
 }

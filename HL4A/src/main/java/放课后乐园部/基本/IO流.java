@@ -50,8 +50,7 @@ public final class IO流 {
 
         public static FileInputStream 文件(String $文件) {
             try {
-                $文件 = 文件.检查地址($文件);
-                return new FileInputStream(new File($文件));
+                return new FileInputStream(new File(文件.检查地址($文件)));
             } catch (Exception $错误) {}
             return null;
         }

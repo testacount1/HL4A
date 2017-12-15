@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 
 android {
+    minSdkVersion 21
     compileSdkVersion 21
     buildToolsVersion "21.1.0"
 
@@ -10,5 +11,6 @@ android {
 }
 
 dependencies {
+	compile 'com.android.support:support-v4:+'
     compile fileTree(dir: 'libs', include: ['*'])
 }

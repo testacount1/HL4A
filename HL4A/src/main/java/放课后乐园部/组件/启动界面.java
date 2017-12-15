@@ -46,9 +46,26 @@ public class 启动界面 extends 基本界面 {
     @Override
     public void onStart() {
         super.onStart();
-        new 线程($初始化).启动();
+        权限.检查($检查成功,$检查失败);
     }
 
+    通用方法 $检查成功 = new 通用方法() {
+        @Override
+        public Object 调用(Object[] $参数) {
+            new 线程($初始化).启动();
+            return null;
+        }
+    };
+    
+    通用方法 $检查失败 = new 通用方法() {
+        @Override
+        public Object 调用(Object[] $参数) {
+            错误.普通(new Exception("权限错误,程序无法运行。"));
+            return null;
+        }
+    };
+    
+    
     通用方法 $初始化 = new 通用方法() {
         @Override
         public Object 调用(Object[] $参数) {

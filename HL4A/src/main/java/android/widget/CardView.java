@@ -22,7 +22,6 @@ import android.graphics.*;
 import android.os.*;
 import android.util.*;
 import android.view.*;
-import android.widget.*;
 
 /**
  * A FrameLayout with a rounded corner background and shadow.

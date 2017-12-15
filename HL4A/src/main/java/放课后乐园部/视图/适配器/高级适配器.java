@@ -6,12 +6,13 @@ import 放课后乐园部.收集.*;
 
 public class 高级适配器 extends BaseAdapter {
 
-    哈希表 保存;
-    集合 布局表;
+    哈希表 保存 = new 哈希表();
+    集合 布局表 = new 集合();
 
-    public void 添加视图(String $标签,View $视图) {
+    public 高级适配器 添加视图(String $标签,View $视图) {
         布局表.添加($视图);
         保存.设置($标签, $视图);
+        return this;
     }
 
     public View 读取视图(int $键值) {
@@ -24,7 +25,7 @@ public class 高级适配器 extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return 布局表.toArray().length;
+        return 布局表.size();
     }
 
     @Override
