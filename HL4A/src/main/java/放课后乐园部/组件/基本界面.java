@@ -15,7 +15,6 @@ public class 基本界面 extends Activity {
     public Looper L;
     public 集合 服务连接 = new 集合();
 
-
     public 通用方法 收到意图事件;
 
     public 通用方法 界面开始事件;
@@ -29,7 +28,7 @@ public class 基本界面 extends Activity {
     public 通用方法 界面销毁事件;
 
     public 通用方法 按键按下事件;
-    
+
     long 返回时间;
 
     @Override
@@ -103,23 +102,38 @@ public class 基本界面 extends Activity {
     }
 
     public void 跳转界面(String $文件) {
-        脚本管理.跳转界面(this, $文件);
+        脚本管理.跳转界面(this, $文件 , null);
     }
 
-    public void 跳转界面(String $文件,int $请求码) {
-        脚本管理.跳转界面(this, $文件, $请求码);
+    public void 跳转界面(String $文件,Object... $数据) {
+        脚本管理.跳转界面(this, $文件 , $数据);
+    }
+
+    public void 跳转界面(int $请求码,String $文件) {
+        脚本管理.跳转界面(this, $文件, $请求码 , null);
+    }
+
+    public void 跳转界面(int $请求码,String $文件,Object... $数据) {
+        脚本管理.跳转界面(this, $文件, $请求码 , $数据);
     }
 
     public void 结束() {
         if (不结束 == false)
             finish();
     }
+    
+    public Object[] 传入数据;
 
     @Override
     public void onCreate(Bundle $数据) {
         super.onCreate($数据);
+        if (Build.VERSION.SDK_INT >= 21)
+            setTheme(android.R.style.Theme_Material_Light_NoActionBar);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         环境.读取().所有界面.添加(this);
         L = Looper.getMainLooper();
+        Object[] $参数 = ((Object[])getIntent().getSerializableExtra("数据"));
+        传入数据 = $参数;
     }
 
     @Override

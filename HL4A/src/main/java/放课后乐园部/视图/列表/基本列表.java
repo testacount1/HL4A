@@ -32,6 +32,11 @@ public class 基本列表 extends 滚动视图 implements 基本视图 {
         return this;
     }
     
+    public 基本列表 清空() {
+        底层.removeAllViews();
+        return this;
+    }
+    
     @Override
     public 基本列表 置布局重力(String $重力) {
         视图实现.置布局重力(this, $重力);

@@ -18,7 +18,7 @@ public final class 文件 {
         字符.保存($文件, "");
         return $文件;
     }
-    
+
     public static Boolean 是文件(String $文件) {
         $文件 = 检查地址($文件);
         return new File($文件).isFile();
@@ -63,22 +63,22 @@ public final class 文件 {
     }
 
     public static File 取文件对象(String $文件) {
-        return new File($文件);
+        return new File(检查地址($文件));
     }
 
     public static String 检查地址(String $目录) {
 
         if ($目录 == null)
             return null;
-            
-            switch ($目录) {
-                case "返回":$目录 = "@assets/icon/ic_back.png";break;
-                case "安卓":$目录 = "@assets/icon/ic_android.png";break;
-                case "菜单":$目录 = "@assets/icon/ic_menu.png";break;
-                case "复制":$目录 = "@assets/icon/ic_copy.png";break;
-                case "更多":$目录 = "@assets/icon/ic_more.png";break;
-                case "设置":$目录 = "@assets/icon/ic_setting.png";break;
-            }
+
+        switch ($目录) {
+            case "返回":$目录 = "@assets/icon/ic_back.png";break;
+            case "安卓":$目录 = "@assets/icon/ic_android.png";break;
+            case "菜单":$目录 = "@assets/icon/ic_menu.png";break;
+            case "复制":$目录 = "@assets/icon/ic_copy.png";break;
+            case "更多":$目录 = "@assets/icon/ic_more.png";break;
+            case "设置":$目录 = "@assets/icon/ic_setting.png";break;
+        }
 
         switch ($目录.substring(0, 1)) {
             case "%":
@@ -98,7 +98,7 @@ public final class 文件 {
         if (!$目录.startsWith("/"))
             $目录 = 取存储卡目录() + "/" + $目录;
 
-            
+
         return $目录;
     }
 
@@ -182,7 +182,20 @@ public final class 文件 {
 
     public static void 删除(String $地址) {
         $地址 = 检查地址($地址);
-        new 命令("rm -rf " + $地址).等待();
+        if (!字符.是否出现($地址, " "))
+            new 命令("rm -rf " + $地址).等待();
+        else {
+            File $对象 = new File($地址);
+            if ($对象.isFile()) {
+                $对象.delete();
+            } else if ($对象.isDirectory()) {
+                File[] $列表 = $对象.listFiles();
+                for (File $单个 : $列表)
+                    删除($单个.getPath());
+                $对象.delete();
+            }
+        }
+
     }
 
 }

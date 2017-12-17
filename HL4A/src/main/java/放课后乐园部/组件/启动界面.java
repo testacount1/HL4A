@@ -7,6 +7,7 @@ import 放课后乐园部.事件.*;
 import 放课后乐园部.基本.*;
 import 放课后乐园部.视图.*;
 import 放课后乐园部.视图.扩展.*;
+import java.io.*;
 
 public class 启动界面 extends 基本界面 {
 
@@ -80,7 +81,7 @@ public class 启动界面 extends 基本界面 {
     通用方法 跳转 = new 通用方法() {
         @Override
         public Object 调用(Object[] $参数) {
-            跳转界面("#index.js");
+            跳转界面("#index.lua");
             结束();
             return null;
         }

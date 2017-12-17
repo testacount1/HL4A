@@ -96,7 +96,7 @@ public class 菜单 extends PopupWindow {
 
     }
     
-    public 菜单 关闭() {
+    public 菜单 隐藏() {
         dismiss();
         return this;
     }

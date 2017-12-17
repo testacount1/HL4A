@@ -32,12 +32,21 @@
         </service>
 
         <activity android:name=".ErrorActivity" />
-        <activity android:name=".JSActivity" />
-        <activity android:name=".LuaActivity" />
-        <activity android:name=".BSHActivity" />
-        <service android:name=".JSService" />
-        <service android:name=".LuaService" />
-        <service android:name=".BSHService" />
+        <activity android:name=".JSActivity"
+        />
+        <activity android:name=".LuaActivity" 
+        />
+        <activity android:name=".BSHActivity" 
+        />
+        <service android:name=".JSService" 
+            
+        />
+        <service android:name=".LuaService" 
+            
+        />
+        <service android:name=".BSHService" 
+            
+        />
     </application>
 
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />

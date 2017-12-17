@@ -23,6 +23,7 @@
  */
 
 package com.luajava;
+import 放课后乐园部.基本.*;
 
 /**
  * LuaJava exception
@@ -48,7 +49,6 @@ public class LuaException extends Exception
 	 */
 	public LuaException(Exception e)
 	{
-	   super((e.getCause() != null) ? e.getCause() : e);
-		//super(e.getMessage());
+	   super(错误.取整个错误(e));
 	}
 } 

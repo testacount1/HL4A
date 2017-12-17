@@ -28,14 +28,14 @@ public class 线性布局 extends LinearLayout implements 基本视图 {
         return this;
     }
     
-    public 线性布局 到侧滑左布局() {
+    public 线性布局 置侧滑左布局(boolean $是否) {
         侧滑布局.LayoutParams $设置 = new 侧滑布局.LayoutParams(getLayoutParams());
         $设置.gravity = 视图.检查重力("开始");
         setLayoutParams($设置);
         return this;
     }
     
-    public 线性布局 到侧滑右布局() {
+    public 线性布局 置侧滑右布局(boolean $是否) {
         侧滑布局.LayoutParams $设置 = new 侧滑布局.LayoutParams(getLayoutParams());
         $设置.gravity = 视图.检查重力("结束");
         setLayoutParams($设置);

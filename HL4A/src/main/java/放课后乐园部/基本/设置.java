@@ -67,8 +67,9 @@ public class 设置 {
             InputStream $输入流 = IO流.输入.文件($地址);
             $设置.load($输入流);
             IO流.关闭($输入流);
+            return $设置;
         } catch (Exception $错误) {}
-        return null;
+        return new Properties();
     }
 
     public static Properties 打开XML(String $地址) {
@@ -77,8 +78,9 @@ public class 设置 {
             InputStream $输入流 = IO流.输入.文件($地址);
             $设置.loadFromXML($输入流);
             IO流.关闭($输入流);
+            return $设置;
         } catch (Exception $错误) {}
-        return null;
+        return new Properties();
     }
 
     public static void 保存PRO(String $地址,Properties $设置) {

@@ -55,8 +55,12 @@ local function 全局读取(_表,_键值)
 _键值 = 过滤类名(_键值);
 for _k,_v in ipairs(泛导入表) do
 local _类 = 反射.取类(_v .. "." .. _键值);
+if not _类 then
+_类 = 反射.取类(_v .. "$" .. _键值);
+end
 if _类 then
 _表[_键值] = _类;
+导入包(_类.getName());
 return _类;
 end
 end
@@ -86,24 +90,31 @@ end
 end
 
 local function 取(_v,_k)
-local e,r = pcall(function(_v,_k) return _v["置" .. _k]; end,_v,_k);
+local e,r = pcall(function(_v,_k) return _v[_k]; end,_v,_k);
 if e then return r; end
 end
 
-function 加载布局(_表,_父)
+function 创建布局(_表,_父)
 local _视图 = _表[1](当前界面);
-if _父 then
-_视图.加入到(_父);
-end
 for _k,_v in pairs(_表) do
 if type(_v) == "table" then
-加载布局(_v,_视图);
+创建布局(_v,_视图);
 else
-local 置者 = 取(_视图,_k)
+local 置者 = 取(_视图,"置".._k)
+if not 置者 then
+置者 = 取(_视图,_k);
+end
 if 置者 then
+pcall(function()
 置者(_v);
+end);
+elseif _k == "赋值" then
+_G[_v] = _视图;
 end
 end
+end
+if _父 then
+_视图.加入到(_父);
 end
 return _视图;
 end

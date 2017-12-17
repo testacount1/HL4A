@@ -3,6 +3,7 @@ package 放课后乐园部.基本;
 import android.app.*;
 import android.content.*;
 import android.view.*;
+import android.view.WindowManager.*;
 import android.widget.*;
 import 放课后乐园部.事件.*;
 import 放课后乐园部.视图.*;
@@ -136,7 +137,14 @@ public class 弹窗 {
 
         public 基本弹窗(Context $界面) {
             super($界面);
+            setCanceledOnTouchOutside(true);
+
+            /*
+             getWindow().setBackgroundDrawable(绘画.颜色转绘画(0));
+             requestWindowFeature(Window.FEATURE_NO_TITLE);
+             */
         }
+
 
         public 基本弹窗 置布局(View $视图) {
             布局 = $视图;
@@ -148,8 +156,19 @@ public class 弹窗 {
         }
 
         public 基本弹窗 显示() {
-            show();
-            setContentView(布局);
+            处理.主线程(new 通用方法() {
+                    @Override
+                    public Object 调用(Object[] $参数) {
+                        show();
+                        setContentView(布局);
+                        Window window = getWindow();
+                        LayoutParams params = window.getAttributes();
+                        params.flags = 2;
+                        window.setAttributes(params);
+                        return null;
+                    }
+                });
+
             return this;
         }
 
@@ -159,8 +178,14 @@ public class 弹窗 {
             return this;
         }
 
-        public 基本弹窗 关闭() {
-            dismiss();
+        public 基本弹窗 隐藏() {
+            处理.主线程(new 通用方法() {
+                    @Override
+                    public Object 调用(Object[] $参数) {
+                        dismiss();
+                        return null;
+                    }
+                });
             return this;
         }
 

@@ -14,19 +14,19 @@ public final class 视图实现 {
     private 视图实现() {}
 
     // Linear
-    
+
     public static void 置布局重力(View $视图,String $重力) {
         LinearLayout.LayoutParams $设置 = (LinearLayout.LayoutParams)取设置($视图);
         $设置.gravity = 视图.检查重力($重力);
         置设置($视图, $设置);
     }
-    
+
     public static void 置布局权重(View $视图,float $权重) {
         LinearLayout.LayoutParams $设置 = (LinearLayout.LayoutParams)取设置($视图);
         $设置.weight = $权重;
         置设置($视图, $设置);
     }
-    
+
     // AddView
 
     public static void 加入到(View $视图,ViewGroup $布局) {
@@ -75,10 +75,14 @@ public final class 视图实现 {
         $视图.setOnTouchListener(new 触摸($事件));
     }
 
-    public static void 置宽度(View $视图,Object $宽度) {
-        ViewGroup.MarginLayoutParams $设置 = 取设置($视图);
-        $设置.width = 视图.检查大小($宽度).intValue();
-        置设置($视图, $设置);
+    public static void 置宽度(final View $视图,final Object $宽度) {
+        处理.主线程(new 通用方法() {
+                @Override
+                public Object 调用(Object[] $参数) {
+                    置宽度实现($视图, $宽度);
+                    return null;
+                }
+            });
     }
 
     public static void 置高度(View $视图,Object $高度) {
@@ -86,7 +90,19 @@ public final class 视图实现 {
         $设置.height = 视图.检查大小($高度).intValue();
         置设置($视图, $设置);
     }
+    
+    
+    public static void 置宽度实现(View $视图,Object $宽度) {
+        ViewGroup.MarginLayoutParams $设置 = 取设置($视图);
+        $设置.width = 视图.检查大小($宽度).intValue();
+        置设置($视图, $设置);
+    }
 
+    public static void 置高度实现(View $视图,Object $高度) {
+        ViewGroup.MarginLayoutParams $设置 = 取设置($视图);
+        $设置.height = 视图.检查大小($高度).intValue();
+        置设置($视图, $设置);
+    }
     public static void 置边距(View $视图,Object $全局) {
         置边距($视图, $全局, $全局, $全局, $全局);
     }
@@ -107,7 +123,7 @@ public final class 视图实现 {
         置边距($视图, null, null, null, $边距);
     }
 
-    public static void 置边距(View $视图,Object $上,Object $下,Object $左,Object $右) {
+    public static void 置边距实现(View $视图,Object $上,Object $下,Object $左,Object $右) {
         ViewGroup.MarginLayoutParams $设置 = 取设置($视图);
         try {
             int $上边距 = $设置.topMargin;
@@ -126,9 +142,28 @@ public final class 视图实现 {
         }
     }
 
+    public static void 置边距(final View $视图,final Object $上,final Object $下,final Object $左,final Object $右) {
+        处理.主线程(new 通用方法() {
+                @Override
+                public Object 调用(Object[] $参数) {
+                    置边距实现($视图, $上, $下, $左, $右);
+                    return null;
+                }
+            });
+    }
+
     // Visible
 
-    public static void 置状态(View $视图,String $状态) {
+    public static void 置状态(final View $视图,final String $状态) {
+        处理.主线程(new 通用方法() {
+                @Override
+                public Object 调用(Object[] $参数) {
+                    置状态实现($视图, $状态);
+                    return null;
+                }});
+    }
+
+    public static void 置状态实现(View $视图,String $状态) {
         try {
             int $状态i = 0;
             switch ($状态) {

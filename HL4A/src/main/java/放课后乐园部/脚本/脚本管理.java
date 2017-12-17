@@ -5,6 +5,8 @@ import android.os.*;
 import 放课后乐园部.事件.*;
 import 放课后乐园部.基本.*;
 import 放课后乐园部.组件.*;
+import 放课后乐园部.收集.*;
+import java.io.*;
 
 public class 脚本管理 {
 
@@ -37,7 +39,7 @@ public class 脚本管理 {
         return $处理;
     }
 
-    public static void 跳转界面(基本界面 $界面,String $文件) {
+    public static void 跳转界面(基本界面 $界面,String $文件,Object... $数据) {
 
         if (!文件.是文件($文件)) {
             弹窗.提示(文件.检查地址($文件) + " 不存在！");
@@ -48,11 +50,13 @@ public class 脚本管理 {
         Class $类 = 反射.取类($类名);
         Intent $意图 = new Intent($界面, $类);
         $意图.putExtra("文件", $文件);
+        if ($数据 != null)
+        $意图.putExtra("数据",$数据);
         $界面.startActivity($意图);
 
     }
     
-    public static void 跳转界面(基本界面 $界面,String $文件,int $请求码) {
+    public static void 跳转界面(基本界面 $界面,int $请求码,String $文件,Object... $数据) {
 
         if (!文件.是文件($文件)) {
             弹窗.提示(文件.检查地址($文件) + " 不存在！");
@@ -63,6 +67,8 @@ public class 脚本管理 {
         Class $类 = 反射.取类($类名);
         Intent $意图 = new Intent($界面, $类);
         $意图.putExtra("文件", $文件);
+        if ($数据 != null)
+            $意图.putExtra("数据",$数据);
         $界面.startActivityForResult($意图,$请求码);
 
     }

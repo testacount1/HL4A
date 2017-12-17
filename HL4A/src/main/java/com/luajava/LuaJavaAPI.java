@@ -69,9 +69,6 @@ public final class LuaJavaAPI {
 
     private static Class<?> Character_class = Character.class;
 
-    private static boolean 通用方法;
-
-
     private LuaJavaAPI() {
     }
 
