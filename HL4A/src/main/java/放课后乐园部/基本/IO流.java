@@ -100,9 +100,7 @@ public final class IO流 {
 
     public static byte[] 读取(InputStream $流) {
         try {
-            int $长度 = 0;
-            while ($长度 == 0)
-                $长度 = $流.available();
+            int $长度 = $流.available();
             byte[] $字节 = new byte[$长度];
             $流.read($字节);
             return $字节;

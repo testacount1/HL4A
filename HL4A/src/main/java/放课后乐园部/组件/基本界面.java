@@ -33,21 +33,21 @@ public class 基本界面 extends Activity {
     public 通用方法 菜单创建事件;
     public 通用方法 菜单选中事件;
     public 通用方法 按键双击事件;
-    
-    
+
+
     public boolean onError(Throwable $错误) {
         return new Boolean(true).equals(调用方法.事件(应用出错事件));
     }
 
     private long 返回时间;
-    
-    
+
+
     public Menu 当前菜单;
-    
+
     public void 打开布局(View $视图) {
-        布局.打开(this,$视图);
+        布局.打开(this, $视图);
     }
-    
+
     public void 跳转界面(Class $类) {
         跳转界面(null, $类, null);
     }
@@ -78,6 +78,8 @@ public class 基本界面 extends Activity {
 
     public void 跳转脚本(Integer $请求码,String $文件,Object... $数据) {
 
+        if ($文件 == null || "".equals($文件))  
+            return;
         String $类名 = 脚本管理.取脚本类($文件, "Activity");
         Class $类 = 反射.取类($类名);
         Intent $意图 = new Intent(this, $类);
@@ -90,7 +92,7 @@ public class 基本界面 extends Activity {
             startActivityForResult($意图, $请求码);
 
     }
-    
+
     public void 置返回值(int $请求码) {
         setResult($请求码);
     }
@@ -104,13 +106,13 @@ public class 基本界面 extends Activity {
         $意图.putExtra("数据表", (Serializable)$数据表);
         置返回值($结果码, $意图);
     }
-    
+
     public void 结束() {
         if (!已结束)
             finish();
     }
-    
-    
+
+
     public Object[] 传入数据;
 
     @Override
@@ -179,7 +181,7 @@ public class 基本界面 extends Activity {
         super.onPause();
         调用方法.事件(界面遮挡事件);
     }
-    
+
     @Override
     public boolean onKeyDown(int keyCode,KeyEvent event) {
 
@@ -233,7 +235,7 @@ public class 基本界面 extends Activity {
             return 调用方法.事件(按键双击事件, keyCode, repeatCount, event) == true;
         return super.onKeyMultiple(keyCode, repeatCount, event);
     }
-    
+
 
     @Override
     public void onActivityResult(int $请求码,int $结果码,Intent $意图) {
@@ -251,9 +253,9 @@ public class 基本界面 extends Activity {
     }
 
     public 集合 服务连接 = new 集合();
-    
+
     private boolean 已结束 = false;
-    
+
     @Override
     public void onDestroy() {
         if (已结束 == false) {
@@ -266,5 +268,5 @@ public class 基本界面 extends Activity {
             已结束 = true;
         }
     }
-    
+
 }
