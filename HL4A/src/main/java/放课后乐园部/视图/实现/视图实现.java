@@ -8,6 +8,7 @@ import 放课后乐园部.事件.*;
 import 放课后乐园部.基本.*;
 import 放课后乐园部.视图.事件.*;
 import android.widget.*;
+import 放课后乐园部.组件.基本界面;
 
 public final class 视图实现 {
 
@@ -30,22 +31,13 @@ public final class 视图实现 {
     // AddView
 
     public static void 加入到(View $视图,ViewGroup $布局) {
-        String $类名 = $布局.getClass().getName();
-        Class $类 = 反射.取类($类名 + "$MarginLayoutParams");
-        if ($类 == null) {
-            $类 = 反射.取类($类名 + "$LayoutParams");
-        }
-        if ($类 != null) {
-            置设置($视图, (MarginLayoutParams)
-                反射.实例化($类, 取设置($视图)));
-        }
         $布局.addView($视图);
     }
 
     //setContentView
 
     public static void 打开(View $视图,Activity $界面) {
-        布局.打开($界面, $视图);
+        布局.打开($界面,$视图);
     }
 
     // Tag
@@ -56,10 +48,6 @@ public final class 视图实现 {
 
     public static Object 取标签(View $视图) {
         return $视图.getTag();
-    }
-
-    public static void 置主题(基本视图 $视图,String $主题) {
-        视图.置主题($视图, $主题);
     }
 
     // Width/Height

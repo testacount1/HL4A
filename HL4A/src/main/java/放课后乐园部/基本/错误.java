@@ -1,4 +1,5 @@
 package 放课后乐园部.基本;
+
 import android.content.*;
 import org.mozilla.javascript.*;
 
@@ -66,7 +67,7 @@ public class 错误 {
 
     public static String 取整个错误(Throwable $错误) {
         if ($错误 instanceof WrappedException) {
-        return "JS调用Java时产生的错误，通常是调用不当或是Java代码出错。\n详细错误内容:\n"+$错误.getMessage();
+            return "JS调用Java时产生的错误，通常是调用不当或是Java代码出错。\n详细错误内容:\n" + $错误.getMessage();
         }
         return 取错误类型($错误) + "\n\n" + 取错误信息($错误) + "\n\n" + 取错误位置($错误);
     }
@@ -81,7 +82,12 @@ public class 错误 {
 
     public static void 普通(Throwable $错误) {
         try {
-            环境.读取().结束界面();
+            /*
+            try {
+                保存($错误);
+            } catch (Exception $保存错误) {}
+            */
+            环境.读取().结束界面($错误);
             Intent $意图 = new Intent(环境.读取(), 反射.取类(应用.取包名() + ".ErrorActivity"));
             $意图.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             $意图.putExtra("错误", 取整个错误($错误));
@@ -93,7 +99,7 @@ public class 错误 {
 
     public static void 结束(Throwable $错误) {
         错误.保存($错误);
-        设置.设置("APK散列", "<Error>");
+        设置.保存("APK散列", "<Error>");
         环境.读取().结束();
     }
 

@@ -1,7 +1,6 @@
 package 放课后乐园部.基本;
 
-import android.graphics.*;
-import 放课后乐园部.注解.注释.*;
+import android.graphics.Typeface;
 
 public class 字体 {
 

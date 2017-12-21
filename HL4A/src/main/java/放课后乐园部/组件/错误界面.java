@@ -7,12 +7,12 @@ import 放课后乐园部.事件.*;
 
 public class 错误界面 extends 基本界面 {
 
-    String 错误;
+    String 错误内容;
     
     @Override
     public void onCreate(Bundle $数据) {
         super.onCreate($数据);
-
+        
         按键按下事件 = new 通用方法() {
             @Override
             public Object 调用(Object[] $参数) {
@@ -22,14 +22,15 @@ public class 错误界面 extends 基本界面 {
         };
 
         线性布局 $底层 = new 线性布局(this)
-            .置主题("底层")
+            .置宽度("最大")
+            .置高度("最大")
             .打开(this);
 
         new 标题栏(this, "又崩溃了(ノДＴ)")
-            .右按钮("复制",new 通用方法() {
+            .右按钮("图片.复制",new 通用方法() {
                 @Override
                 public Object 调用(Object[] $参数) {
-                    设备.剪切板(错误);
+                    设备.剪切板(错误内容);
                     弹窗.提示("已复制 ~");
                     return null;
                 }
@@ -37,19 +38,22 @@ public class 错误界面 extends 基本界面 {
             .加入到($底层);
 
 
-        错误 = getIntent().getStringExtra("错误");
+        错误内容 = getIntent().getStringExtra("错误");
 
-        if (错误 == null) 错误 = "未知错误";
+        if (错误内容 == null) 错误内容 = "未知错误";
 
         线性布局 $布局 = new 线性布局(this)
-            .置主题("底层")
+            .置宽度("最大")
+            .置高度("最大")
             .置填充("16dp")
             .加入到($底层);
 
         new 滚动文本(this)
-            .置文本(错误)
+            .置文本(错误内容)
             .加入到($布局);
 
+           
+             
     }
 
 }

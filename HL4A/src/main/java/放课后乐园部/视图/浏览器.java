@@ -16,7 +16,8 @@ public class 浏览器 extends WebView implements 基本视图 {
     public 浏览器(Context $上下文) {
         super($上下文);
         视图实现.初始化控件(this);
-        置主题("默认");
+        置宽度("最大");
+        置高度("最大");
         设置 = getSettings();
         设置.setJavaScriptEnabled(true);
         设置.setJavaScriptCanOpenWindowsAutomatically(true);
@@ -91,12 +92,6 @@ public class 浏览器 extends WebView implements 基本视图 {
     @Override
     public Object 取标签() {
         return 视图实现.取标签(this);
-    }
-
-    @Override
-    public 浏览器 置主题(String $主题) {
-        视图实现.置主题(this, $主题);
-        return this;
     }
 
     @Override

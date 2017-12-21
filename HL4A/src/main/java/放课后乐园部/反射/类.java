@@ -1,8 +1,9 @@
 package 放课后乐园部.反射;
 
-import java.lang.reflect.*;
-import 放课后乐园部.基本.*;
-import 放课后乐园部.收集.*;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import 放课后乐园部.基本.反射;
+import 放课后乐园部.收集.哈希表;
 
 public class 类 {
 
@@ -22,13 +23,11 @@ public class 类 {
 
     public static 类 取类(String $类名) {
         Class $类 = 反射.取类($类名);
-        断言.空指针("找不到类:" + $类名, $类);
         return 取类($类);
     }
 
     public static 类 取类(String $类名,ClassLoader $类加载器) {
         Class $类 = 反射.取类($类名, $类加载器);
-        断言.空指针("找不到类:" + $类名, $类);
         return 取类($类);
     }
 
@@ -38,13 +37,11 @@ public class 类 {
 
     public 类(String $类名) {
         Class $类 = 反射.取类($类名);
-        断言.空指针("找不到类:" + $类名, $类);
         类对象 = $类;
     }
 
     public 类(String $类名,ClassLoader $类加载器) {
         Class $类 = 反射.取类($类名, $类加载器);
-        断言.空指针("找不到类:" + $类名, $类);
         类对象 = $类;
     }
 

@@ -20,7 +20,6 @@ public class 播放器控件 extends VideoView implements 基本视图 {
         控制器 = new MediaController($上下文);
         setMediaController(控制器);
         视图实现.初始化控件(this);
-        置主题("默认");
     }
     
 
@@ -123,12 +122,6 @@ public class 播放器控件 extends VideoView implements 基本视图 {
     @Override
     public Object 取标签() {
         return 视图实现.取标签(this);
-    }
-
-    @Override
-    public 播放器控件 置主题(String $主题) {
-        视图实现.置主题(this, $主题);
-        return this;
     }
 
     @Override

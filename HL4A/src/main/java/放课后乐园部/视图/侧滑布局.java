@@ -12,7 +12,6 @@ public class 侧滑布局 extends DrawerLayout implements 基本视图 {
 
     public 侧滑布局(Context $上下文) {
         super($上下文);
-        置主题("默认");
         setLayoutParams(new MarginLayoutParams(-1,-1));
     }
     
@@ -96,12 +95,6 @@ public class 侧滑布局 extends DrawerLayout implements 基本视图 {
     @Override
     public Object 取标签() {
         return 视图实现.取标签(this);
-    }
-
-    @Override
-    public 侧滑布局 置主题(String $主题) {
-        视图实现.置主题(this, $主题);
-        return this;
     }
 
     @Override

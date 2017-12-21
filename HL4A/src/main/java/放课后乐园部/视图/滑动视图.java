@@ -1,20 +1,24 @@
 package 放课后乐园部.视图;
 
-import android.app.*;
-import android.content.*;
-import android.view.*;
-import android.widget.*;
-import 放课后乐园部.事件.*;
-import 放课后乐园部.视图.实现.*;
+import android.app.Activity;
+import android.content.Context;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.PageView;
+import 放课后乐园部.事件.通用方法;
+import 放课后乐园部.视图.实现.基本视图;
+import 放课后乐园部.视图.实现.布局实现;
+import 放课后乐园部.视图.实现.视图实现;
 
 public class 滑动视图 extends PageView implements 基本视图 {
-    
+
     public 滑动视图(Context $上下文) {
         super($上下文);
         视图实现.初始化控件(this);
-        置主题("默认");
+        置宽度("最大");
+        置高度("最大");
     }
-    
+
     public 滑动视图 加入子元素(View $子元素) {
         布局实现.加入子元素(this, $子元素);
         return this;
@@ -23,13 +27,13 @@ public class 滑动视图 extends PageView implements 基本视图 {
 
     @Override
     public 滑动视图 置布局重力(String $重力) {
-        视图实现.置布局重力(this,$重力);
+        视图实现.置布局重力(this, $重力);
         return this;
     }
 
     @Override
     public 滑动视图 置布局权重(float $权重) {
-        视图实现.置布局权重(this,$权重);
+        视图实现.置布局权重(this, $权重);
         return this;
     }
 
@@ -66,12 +70,6 @@ public class 滑动视图 extends PageView implements 基本视图 {
     @Override
     public Object 取标签() {
         return 视图实现.取标签(this);
-    }
-
-    @Override
-    public 滑动视图 置主题(String $主题) {
-        视图实现.置主题(this, $主题);
-        return this;
     }
 
     @Override
@@ -216,5 +214,5 @@ public class 滑动视图 extends PageView implements 基本视图 {
         视图实现.置背景颜色(this, $颜色);
         return this;
     }
-    
+
 }

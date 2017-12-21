@@ -1,15 +1,12 @@
 package 放课后乐园部.基本;
 
-import dalvik.system.*;
-import 放课后乐园部.注解.注释.*;
-import 放课后乐园部.收集.*;
+import dalvik.system.DexClassLoader;
 
-@说明("注入依赖so或是dex")
 public class 注入 {
 
     注入() {}
     
-    public static ClassLoader 最新加载器;
+    public static ClassLoader 最新加载器 = 环境.读取().getClassLoader();
     
     public static void 注入SO(String $文件) {
         try {

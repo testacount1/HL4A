@@ -13,7 +13,6 @@ import 放课后乐园部.脚本.*;
 public class 基本界面 extends Activity {
 
     public Looper L;
-    public 集合 服务连接 = new 集合();
 
     public 通用方法 收到意图事件;
 
@@ -26,101 +25,91 @@ public class 基本界面 extends Activity {
     public 通用方法 界面回调事件;
     public 通用方法 离开界面事件;
     public 通用方法 界面销毁事件;
-
     public 通用方法 按键按下事件;
-
-    long 返回时间;
-
-    @Override
-    public boolean onKeyDown(int keyCode,KeyEvent event) {
-
-        if (按键按下事件 == null) {
-
-            if (keyCode == KeyEvent.KEYCODE_BACK) {
-
-                long 上次 = 返回时间;
-
-                if ((返回时间 = 时间.时间戳()) - 上次 < 2000) {
-                    finish();
-                    return true;
-                } else {
-                    弹窗.提示("再按一次返回键退出 ~");
-                    return false;
-                }
-
-            } else return super.onKeyDown(keyCode, event);
-
-        } else {
-
-            return 调用方法.事件(按键按下事件, keyCode, event) == true;
-        }
-
-    }
-
+    public 通用方法 应用出错事件;
     public 通用方法 按键弹起事件;
-
-    @Override
-    public boolean onKeyUp(int keyCode,KeyEvent event) {
-        if (按键弹起事件 != null)
-            return 调用方法.事件(按键弹起事件, keyCode, event) == true;
-        return super.onKeyUp(keyCode, event);
-    }
-
     public 通用方法 按键长按事件;
-
-    @Override
-    public boolean onKeyLongPress(int keyCode,KeyEvent event) {
-        if (按键长按事件 != null)
-            return 调用方法.事件(按键长按事件, keyCode, event) == true;
-        return super.onKeyLongPress(keyCode, event);
-    }
-
     public 通用方法 按键单击事件;
-
-    @Override
-    public boolean onKeyShortcut(int keyCode,KeyEvent event) {
-        if (按键单击事件 != null)
-            return 调用方法.事件(按键单击事件, keyCode, event) == true;
-        return super.onKeyShortcut(keyCode, event);
-    }
-
-    public 通用方法 按键双击事件;
-
-    @Override
-    public boolean onKeyMultiple(int keyCode,int repeatCount,KeyEvent event) {
-        if (按键双击事件 != null)
-            return 调用方法.事件(按键双击事件, keyCode, repeatCount, event) == true;
-        return super.onKeyMultiple(keyCode, repeatCount, event);
-    }
-
-    public Menu 当前菜单;
     public 通用方法 菜单创建事件;
     public 通用方法 菜单选中事件;
+    public 通用方法 按键双击事件;
+    
+    
+    public boolean onError(Throwable $错误) {
+        return new Boolean(true).equals(调用方法.事件(应用出错事件));
+    }
 
+    private long 返回时间;
+    
+    
+    public Menu 当前菜单;
+    
     public void 打开布局(View $视图) {
-        布局.打开(this, $视图);
+        布局.打开(this,$视图);
+    }
+    
+    public void 跳转界面(Class $类) {
+        跳转界面(null, $类, null);
     }
 
-    public void 跳转界面(String $文件) {
-        脚本管理.跳转界面(this, $文件 , null);
+    public void 跳转界面(Class $类,Object... $数据) {
+        跳转界面(null, $类 , $数据);
     }
 
-    public void 跳转界面(String $文件,Object... $数据) {
-        脚本管理.跳转界面(this, $文件 , $数据);
+    public void 跳转界面(Integer $请求码,Class $类,Object... $数据) {
+
+        Intent $意图 = new Intent(this, $类);
+        if ($数据 != null)
+            $意图.putExtra("数据", $数据);
+        if ($请求码 == null)
+            startActivity($意图);
+        else
+            startActivityForResult($意图, $请求码);
+
     }
 
-    public void 跳转界面(int $请求码,String $文件) {
-        脚本管理.跳转界面(this, $文件, $请求码 , null);
+    public void 跳转脚本(String $文件) {
+        跳转脚本(null, $文件, null);
     }
 
-    public void 跳转界面(int $请求码,String $文件,Object... $数据) {
-        脚本管理.跳转界面(this, $文件, $请求码 , $数据);
+    public void 跳转脚本(String $文件,Object... $数据) {
+        跳转脚本(null, $文件 , $数据);
     }
 
+    public void 跳转脚本(Integer $请求码,String $文件,Object... $数据) {
+
+        String $类名 = 脚本管理.取脚本类($文件, "Activity");
+        Class $类 = 反射.取类($类名);
+        Intent $意图 = new Intent(this, $类);
+        $意图.putExtra("文件", $文件);
+        if ($数据 != null)
+            $意图.putExtra("数据", $数据);
+        if ($请求码 == null)
+            startActivity($意图);
+        else
+            startActivityForResult($意图, $请求码);
+
+    }
+    
+    public void 置返回值(int $请求码) {
+        setResult($请求码);
+    }
+
+    public void 置返回值(int $结果码,Intent $意图) {
+        setResult($结果码, $意图);
+    }
+
+    public void 置返回值(int $结果码,哈希表 $数据表) {
+        Intent $意图 = new Intent();
+        $意图.putExtra("数据表", (Serializable)$数据表);
+        置返回值($结果码, $意图);
+    }
+    
     public void 结束() {
-        if (不结束 == false)
+        if (!已结束)
             finish();
     }
+    
     
     public Object[] 传入数据;
 
@@ -141,8 +130,6 @@ public class 基本界面 extends Activity {
         super.onStart();
         调用方法.事件(界面开始事件);
     }
-
-
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
@@ -192,20 +179,61 @@ public class 基本界面 extends Activity {
         super.onPause();
         调用方法.事件(界面遮挡事件);
     }
+    
+    @Override
+    public boolean onKeyDown(int keyCode,KeyEvent event) {
 
-    public void 置返回值(int $请求码) {
-        setResult($请求码);
+        if (按键按下事件 == null) {
+
+            if (keyCode == KeyEvent.KEYCODE_BACK) {
+
+                long 上次 = 返回时间;
+
+                if ((返回时间 = 时间.时间戳()) - 上次 < 2000) {
+                    finish();
+                    return true;
+                } else {
+                    弹窗.提示("再按一次返回键退出 ~");
+                    return false;
+                }
+
+            } else return super.onKeyDown(keyCode, event);
+
+        } else {
+
+            return 调用方法.事件(按键按下事件, keyCode, event) == true;
+        }
+
     }
 
-    public void 置返回值(int $结果码,Intent $意图) {
-        setResult($结果码, $意图);
+    @Override
+    public boolean onKeyUp(int keyCode,KeyEvent event) {
+        if (按键弹起事件 != null)
+            return 调用方法.事件(按键弹起事件, keyCode, event) == true;
+        return super.onKeyUp(keyCode, event);
     }
 
-    public void 置返回值(int $结果码,哈希表 $数据表) {
-        Intent $意图 = new Intent();
-        $意图.putExtra("数据表", (Serializable)$数据表);
-        置返回值($结果码, $意图);
+    @Override
+    public boolean onKeyLongPress(int keyCode,KeyEvent event) {
+        if (按键长按事件 != null)
+            return 调用方法.事件(按键长按事件, keyCode, event) == true;
+        return super.onKeyLongPress(keyCode, event);
     }
+
+    @Override
+    public boolean onKeyShortcut(int keyCode,KeyEvent event) {
+        if (按键单击事件 != null)
+            return 调用方法.事件(按键单击事件, keyCode, event) == true;
+        return super.onKeyShortcut(keyCode, event);
+    }
+
+    @Override
+    public boolean onKeyMultiple(int keyCode,int repeatCount,KeyEvent event) {
+        if (按键双击事件 != null)
+            return 调用方法.事件(按键双击事件, keyCode, repeatCount, event) == true;
+        return super.onKeyMultiple(keyCode, repeatCount, event);
+    }
+    
 
     @Override
     public void onActivityResult(int $请求码,int $结果码,Intent $意图) {
@@ -222,17 +250,21 @@ public class 基本界面 extends Activity {
         super.onStop();
     }
 
-    public boolean 不结束 = false;
-
+    public 集合 服务连接 = new 集合();
+    
+    private boolean 已结束 = false;
+    
     @Override
     public void onDestroy() {
-        调用方法.事件(界面销毁事件);
-        if (!服务连接.isEmpty()) {
-            for (服务.连接处理 $连接 : 服务连接)
-                unbindService($连接);
+        if (已结束 == false) {
+            调用方法.事件(界面销毁事件);
+            if (!服务连接.isEmpty()) {
+                for (服务.连接处理 $连接 : 服务连接)
+                    unbindService($连接);
+            }
+            super.onDestroy();
+            已结束 = true;
         }
-        super.onDestroy();
-        不结束 = true;
     }
-
+    
 }

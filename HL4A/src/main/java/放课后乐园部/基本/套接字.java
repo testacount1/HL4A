@@ -1,12 +1,11 @@
 package 放课后乐园部.基本;
 
-import java.io.*;
-import java.net.*;
-import 放课后乐园部.事件.*;
-import 放课后乐园部.注解.注释.*;
-import 放课后乐园部.注解.状态.*;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.ServerSocket;
+import java.net.Socket;
+import 放课后乐园部.事件.通用方法;
 
-@未测试
 public class 套接字 {
 
 	 套接字() {}
@@ -16,8 +15,6 @@ public class 套接字 {
 				private Socket 对象;
 
 				private 套接字客户端(Socket $对象) {
-
-						断言.空指针("套接字对象为空", $对象);
 
 						对象 = $对象;
 
@@ -59,8 +56,6 @@ public class 套接字 {
 				private 监听线程 线程;
 
 				public 套接字服务器(ServerSocket $对象,通用方法 $处理) {
-
-						断言.空指针("套接字对象为空", $对象, $处理);
 
 						对象 = $对象;
 						

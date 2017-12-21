@@ -4,6 +4,7 @@ import android.content.pm.*;
 import android.os.*;
 import java.io.*;
 import java.net.*;
+import 放课后乐园部.收集.哈希表;
 
 public final class 文件 {
 
@@ -32,6 +33,13 @@ public final class 文件 {
     public static Boolean 是否存在(String $路径) {
         $路径 = 检查地址($路径);
         return new File($路径).exists();
+    }
+    
+    public static String[] 取文件地址列表(String $目录) {
+        $目录 = 检查地址($目录);
+        if (是目录($目录))
+            return new File($目录).list();
+        return null;
     }
 
     public static File[] 取文件列表(String $目录) {
@@ -66,18 +74,26 @@ public final class 文件 {
         return new File(检查地址($文件));
     }
 
+    public static String 默认地址 = 取数据目录("apk/script");
+
+    public static 哈希表 替换地址 = new 哈希表();
+
     public static String 检查地址(String $目录) {
 
         if ($目录 == null)
             return null;
 
+        if (替换地址.检查($目录)) {
+            $目录 = (String)替换地址.读取($目录);
+        }
+
         switch ($目录) {
-            case "返回":$目录 = "@assets/icon/ic_back.png";break;
-            case "安卓":$目录 = "@assets/icon/ic_android.png";break;
-            case "菜单":$目录 = "@assets/icon/ic_menu.png";break;
-            case "复制":$目录 = "@assets/icon/ic_copy.png";break;
-            case "更多":$目录 = "@assets/icon/ic_more.png";break;
-            case "设置":$目录 = "@assets/icon/ic_setting.png";break;
+            case "图片.返回":$目录 = "@assets/icon/ic_back.png";break;
+            case "图片.安卓":$目录 = "@assets/icon/ic_android.png";break;
+            case "图片.菜单":$目录 = "@assets/icon/ic_menu.png";break;
+            case "图片.复制":$目录 = "@assets/icon/ic_copy.png";break;
+            case "图片.更多":$目录 = "@assets/icon/ic_more.png";break;
+            case "图片.设置":$目录 = "@assets/icon/ic_setting.png";break;
         }
 
         switch ($目录.substring(0, 1)) {
@@ -91,7 +107,7 @@ public final class 文件 {
                 $目录 = 取数据目录("apk/") + $目录.substring(1);
                 break;
             case "#":
-                $目录 = 取数据目录("apk/script/") + $目录.substring(1);
+                $目录 = 默认地址 + "/" + $目录.substring(1);
                 break;
         }
 
@@ -107,7 +123,7 @@ public final class 文件 {
     }
 
     public static String 取目录(String $文件) {
-        return 字符.取结束前($文件, 取名称($文件).length());
+        return new File($文件).getParent();
     }
 
     public static Boolean 可读(String $文件) {
@@ -170,22 +186,29 @@ public final class 文件 {
     }
 
     public static void 复制(String $地址,String $新地址) {
-        if (!是文件($地址))return;
-        文件.删除($新地址);
-        字节.保存($新地址, 字节.读取($地址));
+        if (文件.是文件($地址)) {
+            文件.删除($新地址);
+            字节.保存($新地址, 字节.读取($地址));
+        } else if(文件.是目录($地址)) {
+            File[] $所有 = 取文件列表($地址);
+            for (File $单个 : $所有) {
+                复制($单个.getPath(), $新地址  + "/" + $单个.getName());
+            }
+        }
     }
 
     public static void 剪切(String $地址,String $新地址) {
-        文件.复制($地址, $新地址);
+        复制($地址, $新地址);
         文件.删除($地址);
     }
 
     public static void 删除(String $地址) {
         $地址 = 检查地址($地址);
+        File $对象 = new File($地址);
+        if ($对象.exists())
         if (!字符.是否出现($地址, " "))
             new 命令("rm -rf " + $地址).等待();
         else {
-            File $对象 = new File($地址);
             if ($对象.isFile()) {
                 $对象.delete();
             } else if ($对象.isDirectory()) {

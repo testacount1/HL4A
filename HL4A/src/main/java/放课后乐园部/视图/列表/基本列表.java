@@ -108,12 +108,6 @@ public class 基本列表 extends 滚动视图 implements 基本视图 {
     }
 
     @Override
-    public 基本列表 置主题(String $主题) {
-        视图实现.置主题(this, $主题);
-        return this;
-    }
-
-    @Override
     public 基本列表 置单击事件(通用方法 $事件) {
         视图实现.置单击事件(this, $事件);
         return this;

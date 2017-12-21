@@ -13,7 +13,8 @@ public class Lua {
         Lua状态机.置Lua(this);
         Lua状态机.openLibs();
         压入变量("当前环境",this);
-        运行文件("#lib/android.lua");
+        压入变量("当前应用",环境.读取());
+        运行文件("@script/lib/android.lua");
      
     }
     
@@ -79,7 +80,7 @@ return this;
             }
             throw new LuaException(取错误类型($错误码) + ": " + Lua状态机.toString(-1));
         } catch (Exception $错误) {
-            错误.普通($错误);
+            错误.默认($错误);
         }
         return null;
     }
@@ -105,7 +106,7 @@ return this;
                     throw new LuaException(取错误类型($错误码) + ": " + Lua状态机.toString(-1));
                 }
             } catch (Exception $错误) {
-                错误.普通($错误);
+                错误.默认($错误);
             }
 
         }
@@ -138,7 +139,7 @@ return this;
             }
             throw new LuaException(取错误类型($错误码) + ": " + Lua状态机.toString(-1));
         } catch (Exception $错误) {
-            错误.普通($错误);
+            错误.默认($错误);
         }
         return null;
     }

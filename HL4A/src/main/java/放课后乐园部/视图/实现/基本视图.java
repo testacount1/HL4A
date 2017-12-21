@@ -9,8 +9,6 @@ public interface 基本视图 {
     public 基本视图 置布局重力(String $重力);
     public 基本视图 置布局权重(float $权重);
 
-    public 基本视图 置主题(String $主题);
-
     public 基本视图 加入到(ViewGroup $布局);
     public 基本视图 打开(Activity $界面);
 

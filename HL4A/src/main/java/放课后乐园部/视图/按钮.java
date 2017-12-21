@@ -7,15 +7,19 @@ import android.view.*;
 import android.widget.*;
 import 放课后乐园部.事件.*;
 import 放课后乐园部.视图.实现.*;
+import 放课后乐园部.基本.绘画;
+import 放课后乐园部.基本.颜色;
 
 public class 按钮 extends Button implements 基本视图 {
 
     public 按钮(Context $上下文) {
         super($上下文);
         视图实现.初始化控件(this);
-        置主题("默认");
+        置宽度("最大");
+        置高度("56dp");
+        置背景(绘画.主题());
+        置文本颜色(颜色.白色);
     }
-    
 
     @Override
     public 按钮 置布局重力(String $重力) {
@@ -163,12 +167,6 @@ public class 按钮 extends Button implements 基本视图 {
     @Override
     public Object 取标签() {
         return 视图实现.取标签(this);
-    }
-
-    @Override
-    public 按钮 置主题(String $主题) {
-        视图实现.置主题(this, $主题);
-        return this;
     }
 
     @Override

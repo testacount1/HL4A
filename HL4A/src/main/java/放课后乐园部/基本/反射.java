@@ -1,8 +1,9 @@
 package 放课后乐园部.基本;
 
-import 放课后乐园部.注解.状态.*;
-import 放课后乐园部.注解.注释.*;
-import java.lang.reflect.*;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 
 
 public class 反射  {
@@ -32,7 +33,9 @@ public class 反射  {
             Class[] $参数类组 = 取参数类组($参数);
             Constructor cons = $类.getConstructor($参数类组);   
             return cons.newInstance($参数);
-        } catch (Exception $错误) {}
+        } catch (Exception $错误) {
+            错误.默认($错误);
+        }
         return null;
     }
 
@@ -64,7 +67,9 @@ public class 反射  {
     public static void 改变量(Field $变量,Object $实例,Object $内容) {
         try {
             $变量.set($实例, $内容);
-        } catch (Exception $错误) {}
+        } catch (Exception $错误) {
+            错误.默认($错误);
+        }
     }
 
     public static Method 取方法(Class $类,String $方法名) {
@@ -75,11 +80,8 @@ public class 反射  {
     }
 
 
-    public static Method 取方法(
-        @参数("类") Class $类,
-        @参数("方法名") String $方法名,
-        @参数("参数") Object... $参数) {
-        Method $所有[] = $类.getDeclaredMethods();
+    public static Method 取方法(Class $类,String $方法名,Object... $参数) {
+        Method $所有[] = $类.getMethods();
         for (Method $方法 : $所有) {
             if (!$方法.getName().equals($方法名)) continue;
             int $参数长度 = $参数.length;
@@ -103,26 +105,19 @@ public class 反射  {
     }
 
 
-    public static Object 调用方法(
-        @参数("实例 可NULL") Object $实例,
-        @参数("方法对象") Method $方法,
-        @参数("传入参数") Object... $参数) {
+    public static Object 调用方法(Object $实例,Method $方法,Object... $参数) {
         try {
             return $方法.invoke($实例, $参数);
         } catch (Exception $错误) {}
         return null;
     }
 
-    @无法使用
 
-    @出错("所有都返回一个结果,为什么呢？")
-    public static boolean 是静态方法(
-        @参数("方法对象") Method $方法) {
+    public static boolean 是静态方法(Method $方法) {
         return Modifier.isStatic($方法.getModifiers());
     }
 
-    public static boolean 是静态变量(
-        @参数("变量对象") Field $变量) {
+    public static boolean 是静态变量(Field $变量) {
         return Modifier.isStatic($变量.getModifiers());
     }
 

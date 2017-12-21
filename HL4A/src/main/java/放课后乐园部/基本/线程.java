@@ -15,7 +15,6 @@ public class 线程 extends Thread {
     boolean 已结束 = false;
 
     public 线程(通用方法 $方法,Object... $参数) {
-        置错误处理对象(((基本应用)环境.读取()).处理);
         启动方法 = new 可运行类($方法, $参数);
     }
 
@@ -28,8 +27,9 @@ public class 线程 extends Thread {
     public void run() {
         Looper.prepare();
         L = Looper.myLooper();
+        置错误处理对象(环境.读取().处理);
         if (启动延时 != null)
-            线程.延时(启动延时);
+            线程.暂停(启动延时);
         返回参数 = 启动方法.执行();
         已结束 = true;
         唤醒();
@@ -48,11 +48,7 @@ public class 线程 extends Thread {
         yield();
     }
 
-    public void 调用(通用方法 $方法,Object... $参数) {
-        处理.线程(this, $方法, $参数);
-    }
-
-    public static void 延时(long $毫秒) {
+    public static void 暂停(long $毫秒) {
         try {
             Thread.sleep($毫秒);
         } catch (Exception $错误) {}
@@ -63,8 +59,6 @@ public class 线程 extends Thread {
         try {
             if (已结束 == false)
                 wait();
-            else
-                唤醒();
         } catch (Exception $错误) {}
     }
 
@@ -72,12 +66,12 @@ public class 线程 extends Thread {
         notifyAll();
     }
 
-    public void 置错误处理(通用方法 $处理) {
+    public static void 置错误处理(通用方法 $处理) {
         置错误处理对象(new 错误处理($处理));
     }
 
-    public void 置错误处理对象(错误处理 $处理) {
-        setDefaultUncaughtExceptionHandler($处理);
+    public static void 置错误处理对象(错误处理 $处理) {
+        Thread.setDefaultUncaughtExceptionHandler($处理);
     }
 
 }

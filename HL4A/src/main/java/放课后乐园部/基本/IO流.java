@@ -3,6 +3,7 @@ package 放课后乐园部.基本;
 import java.io.*;
 import java.nio.channels.*;
 import java.util.zip.*;
+import com.luajava.LuaException;
 
 public final class IO流 {
 
@@ -10,40 +11,49 @@ public final class IO流 {
 
     public static void 关闭(InputStream $流) {
         try {
-            $流.close();
-        } catch (Exception $错误) {}
+            if ($流 != null)
+                $流.close();
+        } catch (IOException $错误) {
+        } catch (NullPointerException $错误) {}
     }
-    
+
     public static void 关闭(ZipFile $流) {
         try {
-            $流.close();
-        } catch (Exception $错误) {}
+            if ($流 != null)
+                $流.close();
+        } catch (IOException $错误) {
+        } catch (NullPointerException $错误) {}
     }
 
     public static void 关闭(OutputStream $流) {
         try {
-            $流.close();
-        } catch (Exception $错误) {}
+            if ($流 != null)
+                $流.close();
+        } catch (IOException $错误) {
+        } catch (NullPointerException $错误) {}
     }
 
     public static FileLock 锁定(FileInputStream $流) {
         try {
             return $流.getChannel().tryLock();
-        } catch (Exception $错误) {}
+        } catch (IOException $错误) {
+        } catch (NullPointerException $错误) {}
         return null;
     }
 
     public static FileLock 锁定(FileOutputStream $流) {
         try {
             return $流.getChannel().tryLock();
-        } catch (Exception $错误) {}
+        } catch (IOException $错误) {
+        } catch (NullPointerException $错误) {}
         return null;
     }
 
     public static void 解锁(FileLock $文件锁) {
         try {
             $文件锁.release();
-        } catch (Exception $错误) {}
+        } catch (IOException $错误) {
+        } catch (NullPointerException $错误) {}
     }
 
     public static class 输入 {
@@ -51,7 +61,8 @@ public final class IO流 {
         public static FileInputStream 文件(String $文件) {
             try {
                 return new FileInputStream(new File(文件.检查地址($文件)));
-            } catch (Exception $错误) {}
+            } catch (IOException $错误) {
+            } catch (NullPointerException $错误) {}
             return null;
         }
 
@@ -75,7 +86,7 @@ public final class IO流 {
             try {
                 文件.检查目录($文件);
                 return new FileOutputStream(new File(文件.检查地址($文件)));
-            } catch (Exception $错误) {}
+            } catch (IOException $错误) {}
             return null;
         }
 
@@ -89,11 +100,14 @@ public final class IO流 {
 
     public static byte[] 读取(InputStream $流) {
         try {
-            int $长度 = $流.available();
+            int $长度 = 0;
+            while ($长度 == 0)
+                $长度 = $流.available();
             byte[] $字节 = new byte[$长度];
             $流.read($字节);
             return $字节;
-        } catch (Exception $错误) {}
+        } catch (IOException $错误) {
+        } catch (NullPointerException $错误) {}
         return null;
     }
 
@@ -101,11 +115,12 @@ public final class IO流 {
         try {
             $流.write($内容);
             $流.flush();
-        } catch (Exception $错误) {}
+        } catch (IOException $错误) {
+        } catch (NullPointerException $错误) {}
     }
-    
+
     public static void 保存(OutputStream $流,InputStream $输入) {
-        
+
         try {
             int $字节; 
             byte[] $缓冲 = new byte[$输入.available()]; 
@@ -113,8 +128,9 @@ public final class IO流 {
                 $流.write($缓冲, 0, $字节); 
 			} 
             $流.flush();
-        }catch(Exception $错误){}
-        
+        } catch (IOException $错误) {
+        } catch (NullPointerException $错误) {}
+
     }
 
 }

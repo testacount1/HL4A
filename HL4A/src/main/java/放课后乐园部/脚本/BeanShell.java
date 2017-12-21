@@ -11,6 +11,7 @@ public class BeanShell {
     public BeanShell() {	
         BSH实例 = new Interpreter();
         压入变量("当前环境", this);
+        压入变量("当前应用",环境.读取());
         运行文件("#lib/android.bsh");
     }
 
@@ -22,7 +23,7 @@ public class BeanShell {
         try {
             return BSH实例.eval($内容);
         } catch (Exception $错误) {
-            错误.普通($错误);
+            错误.默认($错误);
         }
         return null;
     }
@@ -38,7 +39,7 @@ public class BeanShell {
         try {
             BSH实例.set($BSH实例名, $BSH实例);
         } catch (EvalError $错误) {
-            错误.普通($错误);
+            错误.默认($错误);
         }
         return this;
     }
@@ -47,7 +48,7 @@ public class BeanShell {
         try {
             return BSH实例.get($BSH实例名);
         } catch (EvalError $错误) {
-            错误.普通($错误);
+            错误.默认($错误);
         }
         return null;
     }

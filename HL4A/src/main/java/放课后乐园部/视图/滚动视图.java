@@ -12,10 +12,10 @@ public class 滚动视图 extends ScrollView implements 基本视图 {
     public 滚动视图(Context $上下文) {
         super($上下文);
         视图实现.初始化控件(this);
-        置主题("默认");
+        置宽度("最大");
+        置高度("最大");
     }
     
-
     @Override
     public 滚动视图 置布局重力(String $重力) {
         视图实现.置布局重力(this,$重力);
@@ -66,12 +66,6 @@ public class 滚动视图 extends ScrollView implements 基本视图 {
     @Override
     public Object 取标签() {
         return 视图实现.取标签(this);
-    }
-
-    @Override
-    public 滚动视图 置主题(String $主题) {
-        视图实现.置主题(this, $主题);
-        return this;
     }
 
     @Override

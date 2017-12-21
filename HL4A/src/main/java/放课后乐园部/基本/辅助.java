@@ -22,7 +22,7 @@ public class 辅助 {
     public static boolean 等包名(String $包名) {
         if (!检查()) return false;
         while (!$包名.equals(取包名())) {
-            线程.延时(233);
+            线程.暂停(233);
         }
         return true;
     }
@@ -31,7 +31,7 @@ public class 辅助 {
         if (!检查()) return null;
         节点 $节点 = 找文本($文本);
         while ($节点 == null) {
-            线程.延时(233);
+            线程.暂停(233);
             $节点 = 找文本($文本);
         }
         return $节点;
@@ -42,7 +42,7 @@ public class 辅助 {
         if (!检查()) return null;
         节点 $节点 = 找文本($文本, $键值);
         while ($节点 == null) {
-            线程.延时(233);
+            线程.暂停(233);
             $节点 = 找文本($文本, $键值);
         }
         return $节点;
@@ -52,7 +52,7 @@ public class 辅助 {
         if (!检查()) return null;
         节点 $节点 = 找ID($ID);
         while ($节点 == null) {
-            线程.延时(233);
+            线程.暂停(233);
             $节点 = 找ID($ID);
         }
         return $节点;
@@ -62,7 +62,7 @@ public class 辅助 {
         if (!检查()) return null;
         节点 $节点 = 找ID($ID, $键值);
         while ($节点 == null) {
-            线程.延时(233);
+            线程.暂停(233);
             $节点 = 找ID($ID, $键值);
         }
         return $节点;

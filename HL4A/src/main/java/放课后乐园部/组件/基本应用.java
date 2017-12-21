@@ -64,6 +64,15 @@ public class 基本应用 extends Application {
         }
     }
 
+    public void 结束界面(Throwable $错误) {
+        for (基本界面 $界面 : 所有界面) {
+            boolean $不结束 = false;
+            try {
+                $不结束 = $界面.onError($错误);
+            } catch (Exception $新错误) {}
+            if (!$不结束) $界面.结束();
+        }
+    }
 
     @Override
     public void onLowMemory() {
@@ -80,12 +89,10 @@ public class 基本应用 extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        注入.最新加载器 = getClassLoader();
-        Thread.setDefaultUncaughtExceptionHandler(处理);
         环境.设置(this);
         弹窗.初始化(this);
+        线程.置错误处理对象(处理);
         签名检验();
-        主题.置主题(颜色.靛蓝);
     }
 
     public static void 签名检验() {

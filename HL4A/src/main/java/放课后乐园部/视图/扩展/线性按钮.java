@@ -3,6 +3,7 @@ package 放课后乐园部.视图.扩展;
 import android.content.*;
 import 放课后乐园部.视图.*;
 import 放课后乐园部.事件.*;
+import 放课后乐园部.基本.绘画;
 
 public class 线性按钮 extends 线性布局 {
 
@@ -12,7 +13,7 @@ public class 线性按钮 extends 线性布局 {
         super($上下文);
         置宽度("56dp");
         置高度("56dp");
-        置背景("透明");
+        置背景(绘画.透明());
         置重力("中间");
         图片 = new 图片控件($上下文)
             .置宽度("22dp")

@@ -39,45 +39,24 @@ public class 脚本管理 {
         return $处理;
     }
 
-    public static void 跳转界面(基本界面 $界面,String $文件,Object... $数据) {
-
-        if (!文件.是文件($文件)) {
-            弹窗.提示(文件.检查地址($文件) + " 不存在！");
-            return;
+    public static String 取脚本文件类型(String $地址) {
+        String $类型 = 字符.小写(字符.截取结束($地址, ".", null));
+        switch ($类型) {
+            case "lua":case "luac":
+                return "lua";
+            case "js":
+                return "js";
+            case "bsh":case "java":
+                return "bsh";
         }
-
-        String $类名 = 取脚本类(字符.截取结束($文件, ".", null), "Activity");
-        Class $类 = 反射.取类($类名);
-        Intent $意图 = new Intent($界面, $类);
-        $意图.putExtra("文件", $文件);
-        if ($数据 != null)
-        $意图.putExtra("数据",$数据);
-        $界面.startActivity($意图);
-
-    }
-    
-    public static void 跳转界面(基本界面 $界面,int $请求码,String $文件,Object... $数据) {
-
-        if (!文件.是文件($文件)) {
-            弹窗.提示(文件.检查地址($文件) + " 不存在！");
-            return;
-        }
-
-        String $类名 = 取脚本类(字符.截取结束($文件, ".", null), "Activity");
-        Class $类 = 反射.取类($类名);
-        Intent $意图 = new Intent($界面, $类);
-        $意图.putExtra("文件", $文件);
-        if ($数据 != null)
-            $意图.putExtra("数据",$数据);
-        $界面.startActivityForResult($意图,$请求码);
-
+        return $类型;
     }
 
-    public static String 取脚本类(String $类型,String $后缀) {
+    public static String 取脚本类(String $文件,String $后缀) {
 
         String $类名 = "";
 
-        switch (字符.小写($类型)) {
+        switch (取脚本文件类型($文件)) {
 
             default: case "js":
                 $类名 = "JS";break;

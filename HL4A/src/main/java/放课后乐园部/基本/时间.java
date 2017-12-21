@@ -1,8 +1,8 @@
 package 放课后乐园部.基本;
 
-import java.text.*;
-import java.util.*;
-import 放课后乐园部.注解.注释.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public class 时间 {
 
@@ -117,7 +117,6 @@ public class 时间 {
 				return $时间.getSeconds();
 		}
 
-		@说明("传入时间戳与现在比较 返回比较结果")
 		public static String 比较(long $时间戳) {
 
 				String $比较 = "";
@@ -152,7 +151,6 @@ public class 时间 {
 
 		}
 		
-		@说明("传入一个时间戳与现在比较 返回相对结果")
 		public static String 相对(long $时间戳) {
 
 				String $相对 = "";

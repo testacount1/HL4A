@@ -14,8 +14,8 @@ public class 设置 {
         return 读取从文件("defult", $设置名);
     }
 
-    public static void 设置(String $设置名,Object $设置内容) {
-        设置到文件("defult", $设置名, $设置内容);
+    public static void 保存(String $设置名,Object $设置内容) {
+        保存到文件("defult", $设置名, $设置内容);
     }
 
     public static void 移除(String $设置名) {
@@ -29,7 +29,7 @@ public class 设置 {
         } catch (Exception $错误) { return null; }
     }
 
-    public static void 设置到文件(String $文件名,String $设置名,Object $设置内容) {
+    public static void 保存到文件(String $文件名,String $设置名,Object $设置内容) {
         SharedPreferences $共享 =环境.读取().getSharedPreferences($文件名, Context.MODE_APPEND);
         SharedPreferences.Editor $写入 =  $共享.edit();
         if ($设置内容 == null) {

@@ -63,7 +63,8 @@ public class 涟漪布局 extends RelativeLayout implements 基本视图 {
     public 涟漪布局(Context $上下文) {
         super($上下文);
         视图实现.初始化控件(this);
-        置主题("默认");
+        置宽度("最大");
+        置高度("最大");
         rippleColor = 颜色.颜色转颜色(颜色.白色);
         rippleType = 2;
         hasToZoom = false;
@@ -416,12 +417,6 @@ public class 涟漪布局 extends RelativeLayout implements 基本视图 {
     @Override
     public Object 取标签() {
         return 视图实现.取标签(this);
-    }
-
-    @Override
-    public 涟漪布局 置主题(String $主题) {
-        视图实现.置主题(this, $主题);
-        return this;
     }
 
     @Override

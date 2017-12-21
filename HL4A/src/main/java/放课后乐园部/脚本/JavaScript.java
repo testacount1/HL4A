@@ -1,24 +1,21 @@
 package 放课后乐园部.脚本;
 
-import java.util.*;
-import org.mozilla.javascript.*;
-import org.mozilla.javascript.commonjs.module.*;
-import 放课后乐园部.基本.*;
-import 放课后乐园部.注解.注释.*;
-import 放课后乐园部.脚本.*;
-import java.net.*;
-import org.mozilla.javascript.commonjs.module.provider.*;
-import android.net.*;
-import 放课后乐园部.收集.*;
+import java.util.List;
+import org.mozilla.javascript.Context;
+import org.mozilla.javascript.Function;
+import org.mozilla.javascript.ImporterTopLevel;
+import org.mozilla.javascript.Scriptable;
+import org.mozilla.javascript.ScriptableObject;
+import 放课后乐园部.基本.字符;
+import 放课后乐园部.基本.注入;
+import 放课后乐园部.基本.环境;
+import 放课后乐园部.基本.错误;
 
 public class JavaScript {
 
 	public Context JS上下文;
 	public Scriptable 函数环境;
 
-	public List <注入.类加载器> 所有加载器;
-
-	@功能("初始化一个空的环境")
 	public JavaScript() {
 
 		JS上下文 = Context.enter();
@@ -28,15 +25,14 @@ public class JavaScript {
 		初始化环境.initStandardObjects(JS上下文, false);
 		函数环境 = 初始化环境;
 
-		压入常量("当前环境", this);
-		压入常量("是复制环境", false);
-		压入常量("全局上下文", 环境.读取());
-        
-        运行文件("#lib/android.js");
+		压入变量("当前环境", this);
+		压入变量("是复制环境", false);
+		压入变量("全局上下文", 环境.读取());
+        压入变量("当前应用",环境.读取());
+        运行文件("@script/lib/android.js");
 
 	}
 
-	@功能("复制一个环境")
 	public JavaScript(JavaScript $被继承) {
 
 		JS上下文 = Context.enter();
@@ -45,9 +41,9 @@ public class JavaScript {
 		JS上下文.setOptimizationLevel(-1);
 		JS上下文.setLanguageVersion(Context.VERSION_ES6);
 
-		压入常量("当前环境", this);
-		压入常量("是复制环境", true);
-		压入常量("全局上下文", 环境.读取());
+		压入变量("复制环境", this);
+		压入变量("是复制环境", true);
+		压入变量("全局上下文", 环境.读取());
 
 	}
    
@@ -55,7 +51,7 @@ public class JavaScript {
 		try {
 			ScriptableObject.putProperty(函数环境, $对象名, Context.javaToJS($对象, 函数环境));
 		} catch (Exception $错误) {
-			错误.普通($错误);
+			错误.默认($错误);
 		}
         return this;
 	}
@@ -64,7 +60,7 @@ public class JavaScript {
 		try {
 			ScriptableObject.putConstProperty(函数环境, $对象名, Context.javaToJS($对象, 函数环境));
 		} catch (Exception $错误) {
-			错误.普通($错误);
+			错误.默认($错误);
 		}
         return this;
 	}
@@ -90,7 +86,7 @@ public class JavaScript {
 		try {
 			return $函数.call(JS上下文, 函数环境, 函数环境, $传入);
 		} catch (Exception $错误) {
-			错误.普通($错误);
+			错误.默认($错误);
 		}
 		return null;
 	}
@@ -115,7 +111,7 @@ public class JavaScript {
 		try {
 			return JS上下文.evaluateString(函数环境, $内容.toString(), "文件:<" + $环境名 + ">", 1, null);
 		} catch (Exception $错误) {
-			错误.普通($错误);
+			错误.默认($错误);
 		}
 
 		return null;

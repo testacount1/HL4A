@@ -7,13 +7,15 @@ import android.view.*;
 import android.widget.*;
 import 放课后乐园部.事件.*;
 import 放课后乐园部.视图.实现.*;
+import 放课后乐园部.基本.主题;
 
 public class 文本控件 extends TextView implements 基本视图 {
 
     public 文本控件(Context $上下文) {
         super($上下文);
         视图实现.初始化控件(this);
-        置主题("默认");
+        置文本大小(主题.文本大小());
+        置文本颜色(主题.基本色());
     }
     
 
@@ -155,12 +157,6 @@ public class 文本控件 extends TextView implements 基本视图 {
     @Override
     public Object 取标签() {
         return 视图实现.取标签(this);
-    }
-
-    @Override
-    public 文本控件 置主题(String $主题) {
-        视图实现.置主题(this, $主题);
-        return this;
     }
 
     @Override

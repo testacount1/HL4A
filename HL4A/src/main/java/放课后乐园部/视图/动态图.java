@@ -56,7 +56,6 @@ public class 动态图 extends View implements 基本视图 {
     public 动态图(Context $上下文) {
         super($上下文);
         视图实现.初始化控件(this);
-        置主题("默认");
     }
 
     public String 图片地址;
@@ -129,12 +128,6 @@ public class 动态图 extends View implements 基本视图 {
     @Override
     public Object 取标签() {
         return 视图实现.取标签(this);
-    }
-
-    @Override
-    public 动态图 置主题(String $主题) {
-        视图实现.置主题(this, $主题);
-        return this;
     }
 
     @Override

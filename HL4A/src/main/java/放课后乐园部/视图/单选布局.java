@@ -13,7 +13,6 @@ public class 单选布局 extends RadioGroup implements 基本视图 {
     public 单选布局(Context $上下文) {
         super($上下文);
         视图实现.初始化控件(this);
-        置主题("默认");
     }
     
 
@@ -77,12 +76,6 @@ public class 单选布局 extends RadioGroup implements 基本视图 {
     @Override
     public Object 取标签() {
         return 视图实现.取标签(this);
-    }
-
-    @Override
-    public 单选布局 置主题(String $主题) {
-        视图实现.置主题(this, $主题);
-        return this;
     }
 
     @Override

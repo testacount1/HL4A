@@ -15,13 +15,15 @@ local 泛导入表 = {
 "放课后乐园部.网络";
 "放课后乐园部.事件";
 "放课后乐园部.反射";
-"放课后乐园部.视图";
 "放课后乐园部.收集";
 "放课后乐园部.视图";
+"放课后乐园部.视图.列表";
 "放课后乐园部.视图.扩展";
 };
 
-导入 = 当前环境.运行文件;
+function 导入文件(_文件)
+return 当前环境.运行文件(_文件);
+end
 
 function 导入包(_类)
 table.insert(泛导入表,_类);
@@ -36,6 +38,16 @@ _G[_类名] = _类对象;
 return _类对象;
 end
 error("没有这个类 : ".._类);
+end
+end
+
+function 导入(_内容)
+if 文件.是文件(_内容) then
+return 导入文件(_内容);
+elseif 反射.取类(_内容) then
+return 导入类(_内容);
+else
+导入包(_内容);
 end
 end
 
@@ -96,11 +108,17 @@ end
 
 function 创建布局(_表,_父)
 local _视图 = _表[1](当前界面);
+if _父 then
+_视图.加入到(_父);
+end
 for _k,_v in pairs(_表) do
 if type(_v) == "table" then
 创建布局(_v,_视图);
 else
 local 置者 = 取(_视图,"置".._k)
+if not 置者 then
+置者 = 取(_视图,"set".._k);
+end
 if not 置者 then
 置者 = 取(_视图,_k);
 end
@@ -112,9 +130,6 @@ elseif _k == "赋值" then
 _G[_v] = _视图;
 end
 end
-end
-if _父 then
-_视图.加入到(_父);
 end
 return _视图;
 end

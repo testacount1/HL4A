@@ -14,8 +14,7 @@ public class 下拉刷新布局 extends SwipeRefreshLayout implements 基本视�
     public 下拉刷新布局(Context $上下文) {
         super($上下文);
         视图实现.初始化控件(this);
-        置主题("默认");
-        置圆圈颜色(主题.文字());
+        置圆圈颜色(主题.基本色());
     }
     
 
@@ -25,7 +24,7 @@ public class 下拉刷新布局 extends SwipeRefreshLayout implements 基本视�
     }
 
     public 下拉刷新布局 置刷新事件(通用方法 $事件) {
-        setOnRefreshListener(new 下拉刷新事件($事件));
+        setOnRefreshListener(new 下拉刷新($事件));
         return this;
     }
 
@@ -85,12 +84,6 @@ public class 下拉刷新布局 extends SwipeRefreshLayout implements 基本视�
     @Override
     public Object 取标签() {
         return 视图实现.取标签(this);
-    }
-
-    @Override
-    public 下拉刷新布局 置主题(String $主题) {
-        视图实现.置主题(this, $主题);
-        return this;
     }
 
     @Override
