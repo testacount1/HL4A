@@ -166,7 +166,7 @@ public final class LuaJavaAPI {
 
                 ret = method.invoke(obj, objs);
             } catch (Exception e) {
-                throw new LuaException(e);
+                throw new LuaException(错误.取整个错误(e));
             }
 
             // Void function returns null
@@ -247,7 +247,7 @@ public final class LuaJavaAPI {
             } catch (LuaException e) {
                 argError(L, fieldName, 3, type);
             } catch (Exception e) {
-                throw new LuaException(e);
+                throw new LuaException(错误.取整个错误(e));
             }
 
             return 1;

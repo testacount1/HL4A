@@ -78,6 +78,12 @@ public final class 文件 {
 
     public static 哈希表 替换地址 = new 哈希表();
 
+    public static String[] 检查地址(String[] $目录) {
+        for (int $键值 = 0;$键值 != $目录.length;$键值 += 1)
+            $目录[$键值] = 检查地址($目录[$键值]);
+        return $目录;
+    }
+    
     public static String 检查地址(String $目录) {
 
         if ($目录 == null)
