@@ -1,26 +1,13 @@
 package com.myopicmobile.textwarrior.android;
-import android.content.Context;
-import android.content.res.TypedArray;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
-import android.util.DisplayMetrics;
-import android.util.TypedValue;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
-import android.widget.Filter;
-import android.widget.Filterable;
-import android.widget.ListPopupWindow;
-import android.widget.TextView;
-
-import com.myopicmobile.textwarrior.common.Flag;
-import com.myopicmobile.textwarrior.common.Language;
-import com.myopicmobile.textwarrior.common.LanguageNonProg;
-
-import java.util.ArrayList;
+import android.content.*;
+import android.content.res.*;
+import android.graphics.drawable.*;
+import android.view.*;
+import android.widget.*;
+import android.widget.AdapterView.*;
+import com.myopicmobile.textwarrior.common.*;
+import java.util.*;
+import android.util.*;
 
 public class AutoCompletePanel {
 
@@ -28,7 +15,7 @@ public class AutoCompletePanel {
 	private Context _context;
 	private static Language _globalLanguage = LanguageNonProg.getInstance();
 	private ListPopupWindow _autoCompletePanel;
-	private AutoCompletePanel.MyAdapter _adapter;
+	private MyAdapter _adapter;
 	private Filter _filter;
 
 	private int _verticalOffset;
@@ -158,7 +145,7 @@ public class AutoCompletePanel {
 			_autoCompletePanel.dismiss();
 		}
 	}
-	synchronized public void setLanguage(Language lang) {
+	synchronized public static void setLanguage(Language lang) {
 		_globalLanguage = lang;
 	}
 
@@ -176,7 +163,7 @@ public class AutoCompletePanel {
 
 		private DisplayMetrics dm;
 
-		public MyAdapter(android.content.Context context, int resource) {
+		public MyAdapter(Context context, int resource) {
 			super(context, resource);
 			_abort = new Flag();
 			setNotifyOnChange(false);
@@ -198,16 +185,6 @@ public class AutoCompletePanel {
 		public View getView(int position, View convertView, ViewGroup parent) {
 			// TODO: Implement this method
 			TextView view=(TextView) super.getView(position, convertView, parent);
-			/*TextView view=null;
-			if(convertView==null){
-				 view=new TextView(_context);
-				 view.setTextSize(16);
-				 view.setPadding(dp(8),dp(3),dp(8),dp(3));
-			}
-			else{
-				view=(TextView) convertView;
-			}
-			view.setText(getItem(position));*/
 			view.setTextColor(_textColor);
 			return view;
 		}
@@ -240,15 +217,6 @@ public class AutoCompletePanel {
 				 */
 				@Override
 				protected FilterResults performFiltering(CharSequence constraint) {
-					/*int l=constraint.length();
-					 int i=l;
-					 for(;i>0;i--){
-					 if(constraint.charAt(l-1)=='.')
-					 break;
-					 }
-					 if(i>0){
-					 constraint=constraint.subSequence(i,l);
-					 }*/
 
 					// 此处实现过滤
 					// 过滤后利用FilterResults将过滤结果返回
@@ -310,11 +278,8 @@ public class AutoCompletePanel {
 						// 有过滤结果，显示自动完成列表
 						MyAdapter.this.clear();   // 清空旧列表
 						MyAdapter.this.addAll((ArrayList<String>)results.values);
-						//int y = _textField.getPaintBaseline(_textField.getCaretRow()) - _textField.getScrollY();
 						int y = _textField.getCaretY() + _textField.rowHeight() / 2 - _textField.getScrollY();
 						setHeight(getItemHeight() * Math.min(2, results.count));
-						//setHeight((int)(Math.min(_textField.getContentHeight()*0.4,getItemHeight() * Math.min(6, results.count))));
-						
 						setHorizontalOffset(_textField.getCaretX() - _textField.getScrollX());
 						setVerticalOffset(y - _textField.getHeight());//_textField.getCaretY()-_textField.getScrollY()-_textField.getHeight());
 						notifyDataSetChanged();

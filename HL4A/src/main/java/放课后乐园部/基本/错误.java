@@ -3,9 +3,51 @@ package 放课后乐园部.基本;
 import android.content.*;
 import org.mozilla.javascript.*;
 
-public class 错误 {
+public class 错误 extends Exception {
 
-    错误() {}
+    public 错误(String $错误) {
+        super($错误);
+    }
+
+    public 错误(Exception $错误) {
+        super(取整个错误($错误));
+    }
+
+    public String 取错误信息() {
+        return 取错误信息(this);
+    }
+
+    public String 取错误位置() {
+        return 取错误位置(this);
+    }
+
+    public String 取错误位置(int $最大) {
+        return 取错误位置(this, $最大);
+    }
+    
+    public String 取错误类型() {
+        return 取错误类型(this);
+    }
+    
+    public String 取整个错误() {
+        return 取整个错误(this);
+    }
+    
+    public void 保存() {
+        保存(this);
+    }
+    
+    public void 默认() {
+        默认(this);
+    }
+    
+    public void 普通() {
+        普通(this);
+    }
+    
+    public void 结束() {
+        结束(this);
+    }
 
     public static String 取错误信息(Throwable $错误) {
         return $错误.getMessage();
@@ -77,20 +119,42 @@ public class 错误 {
     }
 
     public static void 默认(Throwable $错误) {
-        Thread.getDefaultUncaughtExceptionHandler().uncaughtException(null, $错误);
+        Thread.getDefaultUncaughtExceptionHandler().uncaughtException(线程.取当前线程(), $错误);
     }
 
     public static void 普通(Throwable $错误) {
+        保存($错误);
         try {
-            /*
-            try {
-                保存($错误);
-            } catch (Exception $保存错误) {}
-            */
             环境.读取().结束界面($错误);
             Intent $意图 = new Intent(环境.读取(), 反射.取类(应用.取包名() + ".ErrorActivity"));
             $意图.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             $意图.putExtra("错误", 取整个错误($错误));
+            环境.读取().startActivity($意图);
+        } catch (Exception $新错误) {
+            结束($新错误);
+        }
+    }
+
+    public static void 普通(String $错误内容) {
+        try {
+            Exception $错误 = new RuntimeException($错误内容);
+            环境.读取().结束界面($错误);
+            Intent $意图 = new Intent(环境.读取(), 反射.取类(应用.取包名() + ".ErrorActivity"));
+            $意图.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            $意图.putExtra("错误", 取整个错误($错误));
+            环境.读取().startActivity($意图);
+        } catch (Exception $新错误) {
+            结束($新错误);
+        }
+    }
+
+    public static void 内容(String $错误内容) {
+        try {
+            Exception $错误 = new RuntimeException($错误内容);
+            环境.读取().结束界面($错误);
+            Intent $意图 = new Intent(环境.读取(), 反射.取类(应用.取包名() + ".ErrorActivity"));
+            $意图.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            $意图.putExtra("错误", $错误内容);
             环境.读取().startActivity($意图);
         } catch (Exception $新错误) {
             结束($新错误);

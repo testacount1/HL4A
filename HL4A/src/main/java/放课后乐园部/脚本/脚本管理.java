@@ -38,6 +38,10 @@ public class 脚本管理 {
         $界面.服务连接.添加($处理);
         return $处理;
     }
+    
+    public static boolean 是脚本(String $地址) {
+        return 取脚本文件类型($地址) != null;
+    }
 
     public static String 取脚本文件类型(String $地址) {
         String $类型 = 字符.小写(字符.截取结束($地址, ".", null));
@@ -46,10 +50,12 @@ public class 脚本管理 {
                 return "lua";
             case "js":
                 return "js";
-            case "bsh":case "java":
+            case "bsh":
                 return "bsh";
+            case "java":
+                return "java";
         }
-        return $类型;
+        return null;
     }
 
     public static String 取脚本类(String $文件,String $后缀) {

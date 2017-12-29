@@ -4,8 +4,16 @@ import java.util.*;
 import android.view.*;
 import java.io.*;
 
-public class 哈希表 extends HashMap implements Serializable {
+public class 哈希表<键值,内容> extends HashMap implements Serializable,Map {
 
+    public 哈希表() {
+        super();
+    }
+    
+    public 哈希表(Map $表) {
+        super($表);
+    }
+    
     public Boolean 检查(Object $键值) {
         return containsKey($键值);
     }

@@ -45,7 +45,7 @@ public class 应用 {
     }
 
     public static 集合 取系统应用() {
-        return 取所有应用(null);
+        return 取所有应用(true);
     }
 
     public static 集合 取所有应用() {
@@ -58,8 +58,8 @@ public class 应用 {
         List<PackageInfo> $所有 = $PM.getInstalledPackages(0);
         for (PackageInfo $单个 : $所有) {
             if (($单个.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) > 0) {
-                if ($类型 == false) continue;
-            } else if ($类型 == true) { continue; }
+                if (new Boolean(false).equals($类型)) continue;
+            } else if (new Boolean(true).equals($类型)) { continue; }
             $列表.添加($单个.packageName);
         }
         return $列表;

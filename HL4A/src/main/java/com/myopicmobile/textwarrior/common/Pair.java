@@ -32,4 +32,9 @@ public final class Pair {
 	public final void setSecond(int value){
 		_second = value;
 	}
+
+	@Override
+	public String toString() {
+		return "("+_first+","+_second+")";
+	}
 }

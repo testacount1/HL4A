@@ -7,17 +7,19 @@ import 放课后乐园部.事件.*;
 import 放课后乐园部.基本.*;
 import 放课后乐园部.收集.*;
 
+import com.lzy.okgo.OkGo;
+
 public class 基本应用 extends Application {
 
     public 集合 所有界面 = new 集合();
-    
+
     public 通用方法 内存不足事件;
     public 通用方法 清理内存事件;
     public 通用方法 设置改变事件;
     public 通用方法 应用销毁事件;
     public 通用方法 附加上下文事件;
 
-    public 通用方法 错误处理 = new 通用方法() {
+    public 通用方法 应用出错事件 = new 通用方法() {
         @Override
         public Object 调用(Object[] $参数) {
             错误.普通((Throwable)$参数[1]);
@@ -25,16 +27,31 @@ public class 基本应用 extends Application {
         }
     };
 
-    public 错误处理 处理 = new 错误处理(new 通用方法() {
+    public 错误处理 错误处理 = new 错误处理(new 通用方法() {
             @Override
             public Object 调用(Object[] $参数) {
-                调用方法.事件(错误处理, $参数);
+                调用方法.事件(应用出错事件, $参数);
+                return null;
+            }
+        });
+
+    public 通用方法 系统输出事件 = new 通用方法() {
+        @Override
+        public Object 调用(Object[] $参数) {
+            弹窗.提示(字符.分解($参数));
+            return null;
+        }
+    };
+
+    public 打印处理 输出打印 = new 打印处理(new 通用方法() {
+            @Override
+            public Object 调用(Object[] $参数) {
+                调用方法.事件(系统输出事件,$参数);
                 return null;
             }
         });
 
 
-        
     @Override
     protected void attachBaseContext(Context $上下文) {
         super.attachBaseContext($上下文);
@@ -52,12 +69,12 @@ public class 基本应用 extends Application {
         super.onTerminate();
         调用方法.事件(应用销毁事件);
     }
-    
+
     public void 结束() {
         结束界面();
         onTerminate();
     }
-    
+
     public void 结束界面() {
         for (基本界面 $界面 : 所有界面) {
             $界面.结束();
@@ -89,10 +106,13 @@ public class 基本应用 extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        线程.置错误处理对象(错误处理);
+        System.setErr(输出打印);
+        System.setOut(输出打印);
         环境.设置(this);
         弹窗.初始化(this);
-        线程.置错误处理对象(处理);
         签名检验();
+        OkGo.getInstance().init(this);
     }
 
     public static void 签名检验() {

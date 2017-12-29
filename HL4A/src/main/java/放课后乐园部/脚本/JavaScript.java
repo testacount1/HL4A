@@ -1,17 +1,63 @@
 package 放课后乐园部.脚本;
 
-import java.util.List;
-import org.mozilla.javascript.Context;
-import org.mozilla.javascript.Function;
-import org.mozilla.javascript.ImporterTopLevel;
-import org.mozilla.javascript.Scriptable;
-import org.mozilla.javascript.ScriptableObject;
-import 放课后乐园部.基本.字符;
-import 放课后乐园部.基本.注入;
-import 放课后乐园部.基本.环境;
-import 放课后乐园部.基本.错误;
+import org.mozilla.javascript.*;
+import 放课后乐园部.事件.*;
+import 放课后乐园部.基本.*;
+import 放课后乐园部.脚本.事件.*;
+import 放课后乐园部.收集.*;
+import java.util.*;
 
 public class JavaScript {
+
+    public static 哈希表 替换关键字表 = new 哈希表();
+    
+    public static String[][] 默认替换表 = {
+        {"跳出", "break"},
+        {"为", "case"},
+        {"继续", "continue"},
+        {"默认", "default"},
+        {"删除", "delete"},
+        {"执行", "do"},
+        {"否则", "else"},
+        {"假", "false"},
+        {"循环", "for"},
+        {"函数", "function"},
+        {"如果", "if"},
+        {"在", "in"},
+        {"变量", "let"},
+        {"新", "new"},
+        {"空", "null"},
+        {"返", "return"},
+        {"选.", "switch"},
+        {"此", "this"},
+        {"真", "true"},
+        {"型", "typeof"},
+        {"自由变量", "var"},
+        {"当", "while"},
+        {"扩", "with"},
+        {"让", "yield"},
+        {"捕", "catch"},
+        {"常量", "const"},
+        {"终", "finally"},
+        {"类为", "instanceof"},
+        {"抛", "throw"},
+        {"试", "try"},
+       
+    };
+    
+    static {
+        替换关键字(默认替换表);
+    }
+    
+    public static void 替换关键字(String $新,String $旧) {
+        替换关键字表.设置($新,$旧);
+    }
+    
+    public static void 替换关键字(String[][] $表) {
+        for (String[] $单个 : $表) {
+            替换关键字表.设置((String)$单个[0],(String)$单个[1]);
+        }
+    }
 
 	public Context JS上下文;
 	public Scriptable 函数环境;
@@ -25,11 +71,12 @@ public class JavaScript {
 		初始化环境.initStandardObjects(JS上下文, false);
 		函数环境 = 初始化环境;
 
+        //置错误监听(默认警告监听, 默认错误监听, 默认运行时错误监听);
+
 		压入变量("当前环境", this);
 		压入变量("是复制环境", false);
-		压入变量("全局上下文", 环境.读取());
-        压入变量("当前应用",环境.读取());
-        运行文件("@script/lib/android.js");
+        压入变量("当前应用", 环境.读取());
+        运行文件("@lib/android.js");
 
 	}
 
@@ -46,7 +93,12 @@ public class JavaScript {
 		压入变量("全局上下文", 环境.读取());
 
 	}
-   
+
+    public JavaScript 置错误监听(通用方法 $警告,通用方法 $错误,通用方法 $运行时错误) {
+        JS上下文.setErrorReporter(new 错误监听($警告, $错误, $运行时错误));
+        return this;
+    }
+
 	public JavaScript 压入变量(String $对象名,Object $对象) {
 		try {
 			ScriptableObject.putProperty(函数环境, $对象名, Context.javaToJS($对象, 函数环境));
@@ -99,11 +151,11 @@ public class JavaScript {
 	}
 
     public Object 执行代码(String $内容) {
-        
-        return 执行代码($内容,$内容);
-        
+
+        return 执行代码($内容, $内容);
+
     }
-    
+
 	public Object 执行代码(String $内容,String $环境名) {
 
 		if ($内容 == null) $内容 = "";

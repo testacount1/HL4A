@@ -8,9 +8,15 @@ android {
     defaultConfig {
         applicationId "h.android"
     }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['src/main/jniLibs']
+        }
+    }
 }
 
 dependencies {
-	compile 'com.android.support:support-v4:+'
-    compile fileTree(dir: 'libs', include: ['*'])
+    compile fileTree(dir: 'libs')
 }
+

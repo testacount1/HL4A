@@ -14,7 +14,7 @@ public class Lua {
         Lua状态机.openLibs();
         压入变量("当前环境",this);
         压入变量("当前应用",环境.读取());
-        运行文件("@script/lib/android.lua");
+        运行文件("@lib/android.lua");
      
     }
     

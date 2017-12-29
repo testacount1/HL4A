@@ -10,8 +10,9 @@ public class 解压 {
     解压() {}
 
     public static void 单个(String $文件,String $地址,String $输出) {
-
         try {
+            $文件 = 文件.检查地址($文件);
+            $输出 = 文件.检查地址($输出);
             ZipFile $压缩 = new ZipFile($文件);
             ZipEntry $进入 = $压缩.getEntry($地址);
             字节.保存($输出, 字节.读取($压缩.getInputStream($进入)));
@@ -22,6 +23,8 @@ public class 解压 {
 
     public static 集合 全部(String $文件,String $输出) {
         if ($文件 == null || $输出 == null) return null;
+        $文件 = 文件.检查地址($文件);
+        $输出 = 文件.检查地址($输出);
         try {
             集合 files = new 集合();
             ZipFile zf = new ZipFile($文件);

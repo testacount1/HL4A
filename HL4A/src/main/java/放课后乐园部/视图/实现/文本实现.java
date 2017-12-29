@@ -13,8 +13,15 @@ public final class 文本实现 {
 
 		private 文本实现() {}
 
-		public static void 置文本(TextView $视图,String $内容) {
-				$视图.setText($内容);
+		public static void 置文本(final TextView $视图,final String $内容) {
+            处理.主线程(new 通用方法() {
+                    @Override
+                    public Object 调用(Object[] $参数) {
+                        $视图.setText($内容);
+                        return null;
+                    }
+                });
+				
 		}
 
 		public static void 置HTML文本(TextView $视图,String $HTML) {

@@ -12,7 +12,7 @@ public class BeanShell {
         BSH实例 = new Interpreter();
         压入变量("当前环境", this);
         压入变量("当前应用",环境.读取());
-        运行文件("#lib/android.bsh");
+        运行文件("@lib/android.bsh");
     }
 
     public Interpreter 取BSH实例() {

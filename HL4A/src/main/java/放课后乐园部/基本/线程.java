@@ -27,7 +27,7 @@ public class 线程 extends Thread {
     public void run() {
         Looper.prepare();
         L = Looper.myLooper();
-        置错误处理对象(环境.读取().处理);
+        置错误处理对象(环境.读取().错误处理);
         if (启动延时 != null)
             线程.暂停(启动延时);
         返回参数 = 启动方法.执行();
@@ -64,6 +64,10 @@ public class 线程 extends Thread {
 
     public synchronized void 唤醒() {
         notifyAll();
+    }
+    
+    public static Thread 取当前线程() {
+        return Thread.currentThread();
     }
 
     public static void 置错误处理(通用方法 $处理) {

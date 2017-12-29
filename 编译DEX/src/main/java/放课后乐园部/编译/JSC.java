@@ -26,6 +26,7 @@ public class JSC {
         } else 源码 = "";
         编译参数 = new CompilerEnvirons();
         编译器 = new ClassCompiler(编译参数);
+        置编译源码(false);
     }
 
     public JSC 置编译版本(int $版本) {
@@ -53,9 +54,7 @@ public class JSC {
         return this;
     }
 
-    public String[] 编译() {
-
-            集合 $返回 = new 集合();
+    public String 编译() {
 
             if (源码 != "") {
                 类名 = 字符.替换(文件名, ".", "$");
@@ -71,10 +70,9 @@ public class JSC {
                 byte[] $字节 = (byte[])$结果[j + 1];
                 String $保存 = 输出 + "/" + $路径 + ".class";
                 字节.保存($保存, $字节);
-                $返回.添加($保存);
             }
 
-            return (String[])$返回.toArray(new String[$返回.size()]);
+            return 包名 + "." + 文件名 + ".exec(当前环境.JS上下文,当前环境.函数环境);";
 
     }
 

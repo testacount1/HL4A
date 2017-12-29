@@ -5,13 +5,14 @@ import com.android.dx.merge.*;
 import 放课后乐园部.基本.*;
 import java.io.*;
 import com.android.dx.dex.cf.*;
+import org.mozilla.classfile.*;
 
 public class DEX {
 
     private DEX() {}
 
     public static void dex(String $输出,String... $路径) throws IOException {
-     
+     new ClassFileWriter("","","");
             Main.Arguments $参数 = new Main.Arguments();
             $参数.strictNameCheck = false;
             $参数.fileNames = 文件.检查地址($路径);

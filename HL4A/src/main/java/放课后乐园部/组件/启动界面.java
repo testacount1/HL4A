@@ -76,18 +76,11 @@ public class 启动界面 extends 基本界面 {
             String $旧 = (String) 设置.读取("APK散列");
             String $当前 = 散列.文件("MD5", 文件.取安装包位置());
             if (!$当前.equals($旧)) {
-                解压.全部(文件.取安装包位置(), 文件.取数据目录("apk"));
+                文件.删除("@");
+                解压.全部(文件.取安装包位置(), "@");
                 设置.保存("APK散列", $当前);
             }
-            处理.界面(启动界面.this, 跳转);
-            return null;
-        }
-    };
-
-    通用方法 跳转 = new 通用方法() {
-        @Override
-        public Object 调用(Object[] $参数) {
-            跳转脚本("#index.lua");
+            跳转脚本("#index.js");
             结束();
             return null;
         }

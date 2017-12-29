@@ -111,7 +111,9 @@ public class 基本界面 extends Activity {
         if (!已结束)
             finish();
     }
-
+    
+    
+    
 
     public Object[] 传入数据;
 

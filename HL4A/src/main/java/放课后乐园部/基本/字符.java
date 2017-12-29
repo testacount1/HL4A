@@ -173,21 +173,34 @@ public class 字符 {
     }
 
     public static String 正则匹配(String $文本,String $正则表达式) {
-        if (是否为空($文本, $正则表达式)) return null;
-        return Pattern.compile($正则表达式).matcher($文本).group();
+        Matcher $结果 = Pattern.compile($正则表达式).matcher($文本);
+        if ($结果.find())return $结果.group();
+        return null;
     }
 
     public static String 正则匹配(String $文本,String $正则表达式,Integer $次数) {
-        if (是否为空($次数)) return 正则匹配($文本, $正则表达式);
-        if (是否为空($文本, $正则表达式)) return null;
-        return Pattern.compile($正则表达式).matcher($文本).group($次数);
+        Matcher $结果 = Pattern.compile($正则表达式).matcher($文本);
+        if ($结果.find($次数))return $结果.group($次数);
+        return null;
     }
 
     public static String 正则替换(String $文本,String $表达式,String $新文本) {
-        if (是否为空($文本, $表达式, $新文本)) return null;
         return $文本.replaceAll($表达式, $新文本);
     }
-
+    
+    public static String 逐行替换(String $文本,String $表达式,String $新文本) {
+        String[] $所有 = 到数组($文本,"\n");
+        for (int $键值 = 0;$键值 != $所有.length;$键值 += 1)
+            $所有[$键值] = 替换($所有[$键值],$表达式,$新文本);
+        return 分解($所有,"\n");
+    }
+    
+    public static String 逐行正则(String $文本,String $表达式,String $新文本) {
+        String[] $所有 = 到数组($文本,"\n");
+        for (int $键值 = 0;$键值 != $所有.length;$键值 += 1)
+            $所有[$键值] = 正则替换($所有[$键值],$表达式,$新文本);
+        return 分解($所有,"\n");
+    }
 
     public static String 截取开始(String $文本,String $开始,String $结束) {
 
@@ -321,14 +334,6 @@ public class 字符 {
             if ($位置 == -1) return null;
             return $位置 + $内容.length();
         } else return 取出现位置下标($文本, $内容);
-    }
-
-    public static String 正则截取(String $文本,String $开始,String $结束) {
-        return 字符.正则匹配($文本, $开始 + "(.*)" + $结束);
-    }
-
-    public static String 正则截取(String $文本,String $开始,String $结束,Integer $次数) {
-        return 字符.正则匹配($文本, $开始 + "(.*)" + $结束, $次数);
     }
 
     public static Boolean 是否为空(Object... $内容) {

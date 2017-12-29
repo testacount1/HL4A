@@ -24,7 +24,7 @@ public class 弹窗 {
         上次提示 = 时间.时间戳() - 233;
         文本对象.setTextColor(视图.检查颜色(主题.基本色()));
     }
-    
+
     public static void 提示(final Object $内容) {
         处理.主线程(new 通用方法(){
                 @Override
@@ -129,6 +129,12 @@ public class 弹窗 {
             .置单击事件($右单击)
             .加入到($右布局);
         return new 基本弹窗($界面).置布局($布局);
+    }
+
+    public static 基本弹窗 加载中(Activity $界面,String $内容) {
+        界面_加载中 $视图 = new 界面_加载中($界面);
+        $视图.文本对象.置文本($内容);
+        return new 基本弹窗($界面).置可关闭(false).置布局($视图);
     }
 
     public static class 基本弹窗 extends AlertDialog {

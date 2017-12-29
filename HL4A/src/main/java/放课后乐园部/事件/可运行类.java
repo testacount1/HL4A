@@ -2,7 +2,7 @@ package 放课后乐园部.事件;
 
 import 放课后乐园部.基本.*;
 
-public class 可运行类 implements Runnable {
+public class 可运行类 implements Runnable,通用方法 {
 
 		public 通用方法 方法;
 		public Object[] 参数;
@@ -21,6 +21,7 @@ public class 可运行类 implements Runnable {
 				return 调用(参数);
 		}
 
+        @Override
 		public Object 调用(Object... $参数) {
 				if (方法 != null) {
 						try {
