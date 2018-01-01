@@ -26,11 +26,11 @@ public class 主题 {
     }
     
     public static String 文本大小() {
-        return "11sp";
+        return "8dp";
     }
     
     public static String 大文本() {
-        return "14dp";
+        return "13dp";
     }
 
 }

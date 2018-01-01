@@ -17,8 +17,10 @@ public class 脚本界面 extends 基本界面 {
         if ($数据 != null) {
             文件.默认地址 = $数据.getString("目录");
             MultiDex.install(this);
+            当前脚本 = $数据.getString("脚本");
+        } else {
+            当前脚本 = 文件.检查地址(getIntent().getStringExtra("文件"));
         }
-        当前脚本 = 文件.检查地址(getIntent().getStringExtra("文件"));
         if (当前脚本 == null || !文件.是文件(当前脚本))
             错误.普通(new Exception("脚本不存在:" + 当前脚本));
         else {
@@ -36,7 +38,8 @@ public class 脚本界面 extends 基本界面 {
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
-        outState.putString("目录",文件.默认地址);
+        outState.putString("目录", 文件.默认地址);
+        outState.putString("脚本", 当前脚本);
         super.onSaveInstanceState(outState);
     }
 
