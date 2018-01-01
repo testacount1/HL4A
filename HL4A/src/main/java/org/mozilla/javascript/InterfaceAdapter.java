@@ -7,6 +7,7 @@
 package org.mozilla.javascript;
 
 import java.lang.reflect.Method;
+import 放课后乐园部.事件.*;
 
 /**
  * Adapter to use JS function as implementation of Java interfaces with
@@ -119,6 +120,8 @@ public class InterfaceAdapter
             }
             function = (Callable)value;
         }
+        if (通用方法.class.isAssignableFrom(thisObject.getClass()))
+            args = (Object[])args[0];
         WrapFactory wf = cx.getWrapFactory();
         if (args == null) {
             args = ScriptRuntime.emptyArgs;

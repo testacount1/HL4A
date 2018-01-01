@@ -1,9 +1,9 @@
 package 放课后乐园部.脚本.界面;
 
-import 放课后乐园部.组件.基本界面;
-import android.os.Bundle;
-import 放课后乐园部.基本.文件;
-import 放课后乐园部.基本.错误;
+import android.os.*;
+import android.support.multidexs.*;
+import 放课后乐园部.基本.*;
+import 放课后乐园部.组件.*;
 
 public class 脚本界面 extends 基本界面 {
 
@@ -14,6 +14,10 @@ public class 脚本界面 extends 基本界面 {
     @Override
     public void onCreate(Bundle $数据) {
         super.onCreate($数据);
+        if ($数据 != null) {
+            文件.默认地址 = $数据.getString("目录");
+            MultiDex.install(this);
+        }
         当前脚本 = 文件.检查地址(getIntent().getStringExtra("文件"));
         if (当前脚本 == null || !文件.是文件(当前脚本))
             错误.普通(new Exception("脚本不存在:" + 当前脚本));
@@ -28,6 +32,12 @@ public class 脚本界面 extends 基本界面 {
     public void onRestart() {
         文件.默认地址 = 当前目录;
         super.onRestart();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putString("目录",文件.默认地址);
+        super.onSaveInstanceState(outState);
     }
 
 

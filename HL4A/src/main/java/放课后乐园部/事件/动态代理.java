@@ -13,8 +13,11 @@ public class 动态代理 implements InvocationHandler {
     
     public 哈希表 方法表;
     
-    public Object 代理(Class $类,HashMap $列表) {
-        方法表 = (哈希表)$列表;
+    public 动态代理(Map $列表) {
+        方法表 = new 哈希表($列表);
+    }
+    
+    public  Object 代理(Class $类) {
         return Proxy.newProxyInstance(注入.最新加载器,$类.getInterfaces(),this);
     }
     

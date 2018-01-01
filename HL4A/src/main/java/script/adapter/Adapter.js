@@ -1,23 +1,23 @@
-var Adapter = Adapter || function() {
+自由变量 Adapter = Adapter || 函数() {
 
-let 列表 = null;
-let 适配器 = null;
+变量 列表 = 空;
+变量 适配器 = 空;
 
-this.设置 = (_列表,_适配器) => {
+此.设置 = (_列表,_适配器) => {
 列表 = _列表;
 适配器 = _适配器;
 }
 
-this.添加 = (_参数) => {
+此.添加 = (_参数) => {
 列表.添加视图(适配器(_参数));
-return this;
+返 此;
 }
 
-this.清空 = () => {
+此.清空 = () => {
 列表.清空();
-return this;
+返 此;
 }
 
-return this;
+返 此;
 
 }

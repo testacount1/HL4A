@@ -12,23 +12,23 @@ public class JavaScript {
     public static 哈希表 替换关键字表 = new 哈希表();
     
     public static String[][] 默认替换表 = {
-        {"跳出", "break"},
+        {"出", "break"},
         {"为", "case"},
-        {"继续", "continue"},
-        {"默认", "default"},
-        {"删除", "delete"},
-        {"执行", "do"},
-        {"否则", "else"},
+        {"续", "continue"},
+        {"默", "default"},
+        {"删", "delete"},
+        {"执", "do"},
+        {"另", "else"},
         {"假", "false"},
         {"循环", "for"},
         {"函数", "function"},
-        {"如果", "if"},
+        {"如", "if"},
         {"在", "in"},
         {"变量", "let"},
         {"新", "new"},
         {"空", "null"},
         {"返", "return"},
-        {"选.", "switch"},
+        {"选", "switch"},
         {"此", "this"},
         {"真", "true"},
         {"型", "typeof"},
@@ -72,7 +72,6 @@ public class JavaScript {
 		函数环境 = 初始化环境;
 
         //置错误监听(默认警告监听, 默认错误监听, 默认运行时错误监听);
-
 		压入变量("当前环境", this);
 		压入变量("是复制环境", false);
         压入变量("当前应用", 环境.读取());

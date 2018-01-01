@@ -29,7 +29,7 @@ public class 代码框 extends FreeScrollingTextField  {
         setShowLineNumbers(true);
         setHighlightCurrentRow(true);
         setWordWrap(false);
-        setAutoIndentWidth(2);
+        setAutoIndentWidth(0);
         Lexer.setLanguage(LanguageLua.getInstance());
         setNavigationMethod(new YoyoNavigationMethod(this));
         int textColor = 视图.检查颜色(主题.基本色()); // 默认文字

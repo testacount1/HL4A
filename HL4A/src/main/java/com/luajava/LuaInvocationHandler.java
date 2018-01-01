@@ -26,6 +26,7 @@ package com.luajava;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import 放课后乐园部.基本.*;
+import 放课后乐园部.事件.*;
 
 /**
  * Class that implements the InvocationHandler interface.
@@ -67,6 +68,11 @@ public class LuaInvocationHandler implements InvocationHandler {
 			}
 
 			Object ret = null;
+            
+            if (proxy instanceof 通用方法) {
+                args = (Object[])args[0];
+            }
+            
 			try {
 				// Checks if returned type is void. if it is returns null.
 				if (retType.equals(Void.class) || retType.equals(void.class)) {

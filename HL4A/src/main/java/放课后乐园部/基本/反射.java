@@ -12,7 +12,7 @@ public class 反射  {
 
     public static Class<?> 取类(String $类名) {
         try {
-            return Class.forName($类名,false,注入.最新加载器);
+            return Class.forName($类名, false, 注入.最新加载器);
         } catch (Exception $错误) {}
         return null;
     }
@@ -26,7 +26,7 @@ public class 反射  {
         } catch (Exception $错误) {}
         return null;
     }
-    
+
 
     public static Object 实例化(Class $类,Object... $参数) {
         try {
@@ -40,28 +40,34 @@ public class 反射  {
     }
 
 
-    public static Field 取变量(Class $类,String $变量名) {
-        try {
-            Field $变量 = $类.getDeclaredField($变量名);
-            $变量.setAccessible(true);
-            return  $变量;
-        } catch (Exception $错误) {}
+    public static Field 取变量(Object $实例,String $变量名) {
+            Class $类 = $实例.getClass();
+            Field $变量 = null;
+            while ($类 != null && $变量 == null) {
+                try {
+                    $变量 = $类.getDeclaredField($变量名);
+                    $变量.setAccessible(true);
+                    return $变量;
+                } catch (NoSuchFieldException $错误) {
+                    $类 = $类.getSuperclass();
+                }
+            }
         return null;
     }
-    
+
     public static Object 读变量(Field $变量) {
-        return 读变量($变量,null);
+        return 读变量($变量, null);
     }
-    
+
     public static Object 读变量(Field $变量,Object $实例) {
         try {
             return $变量.get($实例);
         } catch (Exception $错误) {}
         return null;
     }
-    
+
     public static void 改变量(Field $变量,Object $内容) {
-        改变量($变量,null,$内容);
+        改变量($变量, null, $内容);
     }
 
     public static void 改变量(Field $变量,Object $实例,Object $内容) {
@@ -71,15 +77,36 @@ public class 反射  {
             错误.默认($错误);
         }
     }
-
-    public static Method 取方法(Class $类,String $方法名) {
-        try {
-            return $类.getDeclaredMethod($方法名);
-        } catch (Exception $错误) {}
+    
+    public static Method 取首位方法(Class $类,String $方法名) {
+        Method[] $所有 = $类.getDeclaredMethods();
+        for (Method $单个 : $所有) {
+            if ($单个.getName().equals($方法名)) {
+                return $单个;
+            }
+        }
         return null;
     }
 
+    public static Method 取方法(Class $类,String $方法名) {
+        return 取方法($类,$方法名,new Class[0]);
+    }
+    
+    public static Method 取方法(Class $类,String $方法名,Class... $参数) {
+            Method $方法 = null;
+            while ($类 != null) {
+                try {
+                    $方法 = $类.getDeclaredMethod($方法名, 取参数类组($参数));
+                    $方法.setAccessible(true);
+                    return $方法;
+                } catch (NoSuchMethodException $错误) {
+                    $类 = $类.getSuperclass();
+                }
+            }
+        return null;
+    }
 
+    /*
     public static Method 取方法(Class $类,String $方法名,Object... $参数) {
         Method $所有[] = $类.getMethods();
         for (Method $方法 : $所有) {
@@ -103,6 +130,8 @@ public class 反射  {
         }
         return null;
     }
+    
+    */
 
 
     public static Object 调用方法(Object $实例,Method $方法,Object... $参数) {
@@ -123,6 +152,8 @@ public class 反射  {
 
 
     public static Class[] 取参数类组(Object... $参数) {
+        if ($参数 instanceof Class[])
+            return (Class[])$参数;
         Class[] $参数类组 = new Class[$参数.length];
         for (int i = 0, j = $参数.length; i < j; i++) {
             $参数类组[i] = $参数[i].getClass();

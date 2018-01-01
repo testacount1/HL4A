@@ -1,28 +1,28 @@
-var layout_index = layout_index || function(_界面) {
+自由变量 layout_index = layout_index || 函数(_界面) {
 
-this.__proto__ = new Layout(_界面);
+此.__proto__ = 新 Layout(_界面);
 //super(Context);
 
-this.刷新 = new 下拉刷新布局(_界面)
+此.刷新 = 新 下拉刷新布局(_界面)
 .置填充("16dp")
-.加入到(this.布局);
+.加入到(此.布局);
 
-this.列表 = new 基本列表(_界面)
-.加入到(this.刷新);
+此.列表 = 新 基本列表(_界面)
+.加入到(此.刷新);
 
-this.打开();
+此.打开();
 
-return this;
+返 此;
 
 }
 
-var layout_index_edit = function(_界面) {
+自由变量 layout_index_edit = 函数(_界面) {
 
-this.布局 = new 线性布局(_界面);
+此.布局 = 新 线性布局(_界面);
 
-this.编辑 = new 编辑框(_界面)
-.加入到(this.布局);
+此.编辑 = 新 编辑框(_界面)
+.加入到(此.布局);
 
-return this;
+返 此;
 
 }

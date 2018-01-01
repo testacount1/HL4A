@@ -7,11 +7,11 @@ android {
 
     defaultConfig {
         applicationId "h.android"
-        versionCode 55
-        versionName "1.5.0"
+        versionCode 58
+        versionName "1.5.3";
     }
 }
 dependencies {
     compile project(":HL4A")
-   //compile project(':编译DEX')
+    //compile project(':编译DEX')
 }

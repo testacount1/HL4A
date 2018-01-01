@@ -3,11 +3,14 @@ package 放课后乐园部.组件;
 import android.app.*;
 import android.content.*;
 import android.content.res.*;
+import java.io.*;
+import java.lang.reflect.*;
+import java.util.*;
+import java.util.regex.*;
 import 放课后乐园部.事件.*;
 import 放课后乐园部.基本.*;
 import 放课后乐园部.收集.*;
-
-import com.lzy.okgo.OkGo;
+import android.support.multidexs.*;
 
 public class 基本应用 extends Application {
 
@@ -46,15 +49,19 @@ public class 基本应用 extends Application {
     public 打印处理 输出打印 = new 打印处理(new 通用方法() {
             @Override
             public Object 调用(Object[] $参数) {
-                调用方法.事件(系统输出事件,$参数);
+                调用方法.事件(系统输出事件, $参数);
                 return null;
             }
         });
 
 
+    public boolean 已初始化 = false;
+
     @Override
     protected void attachBaseContext(Context $上下文) {
         super.attachBaseContext($上下文);
+        if (!已初始化) return;
+        MultiDex.install($上下文);
         调用方法.事件(附加上下文事件, $上下文);
     }
 
@@ -112,7 +119,7 @@ public class 基本应用 extends Application {
         环境.设置(this);
         弹窗.初始化(this);
         签名检验();
-        OkGo.getInstance().init(this);
+        //OkGo.getInstance().init(this);
     }
 
     public static void 签名检验() {

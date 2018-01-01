@@ -98,7 +98,7 @@ class TokenStream
     
     /*
     
-    太费劲了 还是直接switch好了
+    太费劲了 还是直接替换好了
     
     MikaGuraN 2017/12/26
     
@@ -314,6 +314,10 @@ class TokenStream
     {
 // #string_id_map#
 // The following assumes that Token.EOF == 0
+        if (JavaScript.替换关键字表.检查(name)) {
+            name = (String)JavaScript.替换关键字表.读取(name);
+        }
+        
         final int
             // 11.6.2.1 Keywords (ECMAScript2015)
             Id_break         = Token.BREAK,

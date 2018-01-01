@@ -8,8 +8,7 @@
 
 package org.mozilla.javascript;
 
-import java.security.AccessController;
-import java.security.PrivilegedAction;
+import 放课后乐园部.实现.*;
 
 /**
  * Factory class that Rhino runtime uses to create new {@link Context}
@@ -349,11 +348,14 @@ public class ContextFactory
      */
     protected GeneratedClassLoader createClassLoader(final ClassLoader parent)
     {
+    /*
         return AccessController.doPrivileged(new PrivilegedAction<DefiningClassLoader>() {
             public DefiningClassLoader run(){
                 return new DefiningClassLoader(parent);
             }
         });
+        */
+        return new 类加载器(parent);
     }
 
     /**

@@ -1,0 +1,22 @@
+apply plugin: 'com.android.library'
+
+android {
+    minSdkVersion 21
+    compileSdkVersion 21
+    buildToolsVersion "21.1.0"
+
+    defaultConfig {
+        applicationId "h.android"
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['src/main/jniLibs']
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs')
+}
+

@@ -31,7 +31,9 @@ public class BeanShell {
     public Object 运行文件(String $文件) {
         try {
             return BSH实例.source(文件.检查地址($文件));
-        } catch (Exception $错误) {}
+        } catch (Exception $错误) {
+            错误.默认($错误);
+        }
         return null;
     }
 

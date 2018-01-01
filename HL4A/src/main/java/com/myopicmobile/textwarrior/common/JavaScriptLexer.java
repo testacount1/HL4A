@@ -1228,7 +1228,7 @@ public class JavaScriptLexer {
           }
           case 42: break;
           case 18:
-          { throw new RuntimeException("Unterminated string at end of line");
+          {
           }
           case 43: break;
           case 19:
@@ -1240,7 +1240,7 @@ public class JavaScriptLexer {
           }
           case 45: break;
           case 21:
-          { throw new RuntimeException("Unterminated character literal at end of line");
+          {
           }
           case 46: break;
           case 22:
