@@ -23,16 +23,16 @@ public class BeanShell {
         try {
             return BSH实例.eval($内容);
         } catch (Exception $错误) {
-            错误.默认($错误);
+            错误.抛出($错误);
         }
         return null;
     }
-
+    
     public Object 运行文件(String $文件) {
         try {
             return BSH实例.source(文件.检查地址($文件));
         } catch (Exception $错误) {
-            错误.默认($错误);
+            错误.抛出($错误);
         }
         return null;
     }
@@ -41,7 +41,7 @@ public class BeanShell {
         try {
             BSH实例.set($BSH实例名, $BSH实例);
         } catch (EvalError $错误) {
-            错误.默认($错误);
+            错误.抛出($错误);
         }
         return this;
     }
@@ -50,7 +50,7 @@ public class BeanShell {
         try {
             return BSH实例.get($BSH实例名);
         } catch (EvalError $错误) {
-            错误.默认($错误);
+            错误.抛出($错误);
         }
         return null;
     }

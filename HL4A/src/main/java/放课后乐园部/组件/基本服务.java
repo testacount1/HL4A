@@ -22,10 +22,8 @@ public class 基本服务 extends Service {
 
     @Override
     public IBinder onBind(Intent $意图) {
-        
         调用方法.事件(服务绑定事件,$意图);
         return new 绑定器();
- 
     }
 
     @Override

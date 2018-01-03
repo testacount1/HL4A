@@ -19,7 +19,7 @@ public class 图片 {
     图片() {}
 
     public static Bitmap 读取(String $地址) {
-        return BitmapFactory.decodeFile(文件.检查地址($地址));
+        return BitmapFactory.decodeFile(文件.取文件对象($地址).getPath());
     }
 
     public static Bitmap 读取(InputStream $输入流) {

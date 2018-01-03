@@ -87,7 +87,7 @@ public class 启动界面 extends 基本界面 {
             }
             MultiDex.install(启动界面.this);
             环境.读取().已初始化 = true;
-            跳转脚本("#index.js");
+            跳转脚本("@script/index.js");
             结束();
             return null;
         }
@@ -102,7 +102,7 @@ public class 启动界面 extends 基本界面 {
             case 0x38:
                 for (int i = 0; i < permissions.length; i++) {
                     if (grantResults[i] == PackageManager.PERMISSION_GRANTED)
-                        错误.普通(new Exception("权限错误 应用无法运行:" + permissions[i]));
+                        错误.抛出(new Exception("权限错误 应用无法运行:" + permissions[i]));
                 }
                 new 线程($初始化).启动();
                 break;

@@ -87,7 +87,7 @@ public class LuaInvocationHandler implements InvocationHandler {
 				}
 			}
 			catch (LuaException e) {
-				错误.普通(e);
+				错误.抛出(e);
 			}  	
 			if (ret == null)
 				if (retType.equals(boolean.class) || retType.equals(Boolean.class))

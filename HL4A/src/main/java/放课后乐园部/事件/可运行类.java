@@ -27,7 +27,7 @@ public class 可运行类 implements Runnable,通用方法 {
 						try {
 								return 方法.调用($参数);
 						} catch (Exception $错误) {
-								错误.普通($错误);
+								错误.抛出($错误);
 						}
 				}
 				return null;

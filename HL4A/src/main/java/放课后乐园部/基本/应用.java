@@ -32,7 +32,7 @@ public class 应用 {
             packageInfo = 环境.读取().getPackageManager().getPackageInfo(
                 应用.取包名(), PackageManager.GET_PERMISSIONS);
         } catch (Exception $错误) {
-            错误.普通($错误);
+            错误.抛出($错误);
         }
         if (packageInfo != null) {
             return packageInfo.requestedPermissions;

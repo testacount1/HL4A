@@ -5,7 +5,7 @@ import java.util.*;
 import 放课后乐园部.事件.*;
 
 
-public class 集合 extends ArrayList implements Serializable,List {
+public class 集合 extends ArrayList implements Serializable,基本收集 {
 
     public static 集合 到集合(Object[] $数组) {
         集合 $集合 = new 集合();

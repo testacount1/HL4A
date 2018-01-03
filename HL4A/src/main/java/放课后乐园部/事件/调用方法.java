@@ -9,7 +9,7 @@ public class 调用方法 {
         try {
             return $方法.调用($参数);
         } catch (Exception $错误) {
-            错误.普通($错误);
+            错误.抛出($错误);
         }
         return null;
 
@@ -30,7 +30,7 @@ public class 调用方法 {
             if ($方法 != null)
                 return $方法.调用($参数);
         } catch (Exception $错误) {
-            错误.普通($错误);
+            错误.抛出($错误);
         }
         return null;
 

@@ -102,7 +102,7 @@ public class JavaScript {
 		try {
 			ScriptableObject.putProperty(函数环境, $对象名, Context.javaToJS($对象, 函数环境));
 		} catch (Exception $错误) {
-			错误.默认($错误);
+			错误.抛出($错误);
 		}
         return this;
 	}
@@ -111,7 +111,7 @@ public class JavaScript {
 		try {
 			ScriptableObject.putConstProperty(函数环境, $对象名, Context.javaToJS($对象, 函数环境));
 		} catch (Exception $错误) {
-			错误.默认($错误);
+			错误.抛出($错误);
 		}
         return this;
 	}
@@ -137,7 +137,7 @@ public class JavaScript {
 		try {
 			return $函数.call(JS上下文, 函数环境, 函数环境, $传入);
 		} catch (Exception $错误) {
-			错误.默认($错误);
+			错误.抛出($错误);
 		}
 		return null;
 	}
@@ -160,22 +160,22 @@ public class JavaScript {
 		if ($内容 == null) $内容 = "";
 
 		try {
-			return JS上下文.evaluateString(函数环境, $内容.toString(), "文件:<" + $环境名 + ">", 1, null);
+			return JS上下文.evaluateString(函数环境, $内容.toString(), $环境名, 1, null);
 		} catch (Exception $错误) {
-			错误.默认($错误);
+			错误.抛出($错误);
 		}
 
 		return null;
 
 	}
 
-	public Object 运行文件(String $地址) {
-		String $ = 字符.读取($地址);
-		return 执行代码($, $地址);
+    public Object 运行文件(String $地址) {
+        String $ = 字符.读取($地址);
+        return 执行代码($, $地址);
 	}
 
 	public Object 运行文件(String $地址,String $环境名) {
-		String $ = 字符.读取($地址);
+        String $ = 字符.读取($地址);
 		return 执行代码($, $环境名);
 	}
 

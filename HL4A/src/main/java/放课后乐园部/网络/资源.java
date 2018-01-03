@@ -36,6 +36,14 @@ public class 资源 {
         return 对象.code();
     }
     
+    public boolean 是否成功() {
+        return 对象.isSuccessful();
+    }
+    
+    public boolean 有重定向() {
+        return 对象.isRedirect();
+    }
+    
     public File 保存到(String $地址) {
         FileOutputStream $流 = IO流.输出.文件($地址);
         IO流.保存($流,对象.body().byteStream());

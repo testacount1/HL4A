@@ -80,7 +80,7 @@ return this;
             }
             throw new LuaException(取错误类型($错误码) + ": " + Lua状态机.toString(-1));
         } catch (Exception $错误) {
-            错误.默认($错误);
+            错误.抛出($错误);
         }
         return null;
     }
@@ -106,7 +106,7 @@ return this;
                     throw new LuaException(取错误类型($错误码) + ": " + Lua状态机.toString(-1));
                 }
             } catch (Exception $错误) {
-                错误.默认($错误);
+                错误.抛出($错误);
             }
 
         }
@@ -139,7 +139,7 @@ return this;
             }
             throw new LuaException(取错误类型($错误码) + ": " + Lua状态机.toString(-1));
         } catch (Exception $错误) {
-            错误.默认($错误);
+            错误.抛出($错误);
         }
         return null;
     }

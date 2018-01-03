@@ -46,15 +46,15 @@ public abstract class RhinoException extends RuntimeException
             return details;
         }
         StringBuilder buf = new StringBuilder(details);
-        buf.append(" (");
+        buf.append("\n\n在: JavaScript主程序(");
         if (sourceName != null) {
             buf.append(sourceName);
         }
         if (lineNumber > 0) {
-            buf.append('#');
+            buf.append("#");
             buf.append(lineNumber);
+            buf.append(")");
         }
-        buf.append(')');
         return buf.toString();
     }
 

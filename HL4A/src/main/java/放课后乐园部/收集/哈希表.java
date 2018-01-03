@@ -4,7 +4,7 @@ import java.util.*;
 import android.view.*;
 import java.io.*;
 
-public class 哈希表<键值,内容> extends HashMap implements Serializable,Map {
+public class 哈希表<键值,内容> extends HashMap implements Serializable,基本收集 {
 
     public 哈希表() {
         super();

@@ -34,7 +34,7 @@ public class 反射  {
             Constructor cons = $类.getConstructor($参数类组);   
             return cons.newInstance($参数);
         } catch (Exception $错误) {
-            错误.默认($错误);
+            错误.抛出($错误);
         }
         return null;
     }
@@ -74,7 +74,7 @@ public class 反射  {
         try {
             $变量.set($实例, $内容);
         } catch (Exception $错误) {
-            错误.默认($错误);
+            错误.抛出($错误);
         }
     }
     

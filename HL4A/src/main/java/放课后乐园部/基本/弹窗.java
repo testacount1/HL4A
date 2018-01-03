@@ -13,7 +13,6 @@ public class 弹窗 {
 
     弹窗() {}
 
-    public static Long 上次提示;
     public static Toast 提示对象;
     public static TextView 文本对象;
 
@@ -21,7 +20,6 @@ public class 弹窗 {
         提示对象 = Toast.makeText($环境, "", Toast.LENGTH_SHORT);
         文本对象 = (TextView)提示对象.getView()
             .findViewById(android.R.id.message);
-        上次提示 = 时间.时间戳() - 233;
         文本对象.setTextSize(视图.检查大小(主题.文本大小()));
         文本对象.setTextColor(视图.检查颜色(主题.基本色()));
     }
@@ -32,10 +30,7 @@ public class 弹窗 {
                 public Object 调用(Object[] $参数) {
                     Object $文本 = $内容;
                     if ($文本 == null) $文本 = "null";
-                    long $上次 = 上次提示;
-                    if ((上次提示 = 时间.时间戳()) - $上次 < 500) {
-                        文本对象.setText(文本对象.getText() + "\n" + $文本.toString());
-                    } else 文本对象.setText($文本.toString());
+                    文本对象.setText($文本.toString());
                     提示对象.show();
                     return null;
                 }

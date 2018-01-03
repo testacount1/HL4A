@@ -8,6 +8,7 @@ import 放课后乐园部.收集.哈希表;
 import android.content.*;
 import android.net.*;
 import 放课后乐园部.收集.*;
+import 放课后乐园部.网络.*;
 
 public final class 文件 {
 
@@ -20,10 +21,6 @@ public final class 文件 {
             $意图.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             环境.读取().startActivity($意图);
         }
-    }
-
-    public static String 置缓存(String $文件) {
-        return 置缓存($文件, false);
     }
 
     public static String 置缓存(String $文件,boolean $可执行) {
@@ -79,29 +76,29 @@ public final class 文件 {
     }
 
     public static 集合 找文件关键字(String $目录,String $关键字) {
-        
+
         集合 $返回 = new 集合();
-        
+
         File[] $列表 = 文件.取文件列表($目录);
-        
+
         for (File $单个 : $列表) {
-            
-            if ($单个.isFile() && 字符.是否出现($单个.getName(),$关键字)) {
+
+            if ($单个.isFile() && 字符.是否出现($单个.getName(), $关键字)) {
                 $返回.添加($单个);
             } else {
-                $返回.addAll(找文件关键字($单个.getPath(),$关键字));
+                $返回.addAll(找文件关键字($单个.getPath(), $关键字));
             }
-            
+
         }
-        
+
         return $返回;
-        
+
     }
-    
+
     public static 集合 找文件关键字(String $目录,String $前缀,String $后缀) {
-        return 找文件关键字($目录,$前缀,$后缀,false);
+        return 找文件关键字($目录, $前缀, $后缀, false);
     }
-    
+
     public static 集合 找文件关键字(String $目录,String $前缀,String $后缀,boolean $不包含) {
 
         集合 $返回 = new 集合();
@@ -111,10 +108,10 @@ public final class 文件 {
         for (File $单个 : $列表) {
 
             if ($单个.isFile() && $单个.getName().startsWith($前缀) && $单个.getName().endsWith($后缀)) {
-                if ($不包含 && $单个.getName().equals($前缀+$后缀)) continue;
+                if ($不包含 && $单个.getName().equals($前缀 + $后缀)) continue;
                 $返回.添加($单个);
             } else if ($单个.isDirectory()) {
-                $返回.addAll(找文件关键字($单个.getPath(),$前缀,$后缀,$不包含));
+                $返回.addAll(找文件关键字($单个.getPath(), $前缀, $后缀, $不包含));
             }
 
         }
@@ -122,7 +119,7 @@ public final class 文件 {
         return $返回;
 
     }
-    
+
     public static String 取存储卡目录() {
         return Environment.getExternalStorageDirectory().getPath();
     }
@@ -143,8 +140,14 @@ public final class 文件 {
         } catch (Exception $错误) {}
         return null;
     }
+    
+    public static boolean 是网络文件(String $文件) {
+        return 字符.以开始($文件,"http");
+    }
 
     public static File 取文件对象(String $文件) {
+        if (是网络文件($文件))
+            $文件 = 网络.缓存($文件);
         return new File(检查地址($文件));
     }
 
@@ -199,6 +202,17 @@ public final class 文件 {
             $目录[$键值] = 检查地址($目录[$键值]);
         return $目录;
     }
+    
+    public static String 取直接地址(String $地址) {
+        if (是网络文件($地址))
+            $地址 = 字符.截取开始($地址,"://",null);
+        String $名称 = 取名称($地址);
+        if (字符.是否出现($名称,"?")) {
+            $地址 = 字符.截取结束($地址,"/",null)
+            + 字符.截取开始($名称,null,"?");
+        }
+        return $地址.replace("/","$");
+    }
 
     public static String 检查地址(String $目录) {
 
@@ -209,36 +223,43 @@ public final class 文件 {
             $目录 = (String)替换地址表.读取($目录);
         }
 
+        if (是网络文件($目录)) {
+                
+                return $目录;
 
+        } else {
 
-        switch ($目录.substring(0, 1)) {
-            case "%":
-                $目录 = 取存储卡目录($目录.substring(1));
-                break;
-            case "$":
-                $目录 =  取数据目录($目录.substring(1));
-                break;
-            case "@":
-                $目录 = 取数据目录("apk/") + $目录.substring(1);
-                break;
-            case "#":
-                $目录 = 默认地址 + "/" + $目录.substring(1);
-                break;
+            switch ($目录.substring(0, 1)) {
+                case "%":
+                    $目录 = 取存储卡目录($目录.substring(1));
+                    break;
+                case "$":
+                    $目录 =  取数据目录($目录.substring(1));
+                    break;
+                case "@":
+                    $目录 = 取数据目录("apk/") + $目录.substring(1);
+                    break;
+                case "#":
+                    $目录 = 默认地址 + "/" + $目录.substring(1);
+                    break;
+            }
+
+            if (!$目录.startsWith("/"))
+                $目录 = 取存储卡目录() + "/" + $目录;
+
+            return $目录;
+                
         }
-
-        if (!$目录.startsWith("/"))
-            $目录 = 取存储卡目录() + "/" + $目录;
-
-
-        return new File($目录).getPath();
+        
+        
     }
-    
+
     public static String 取后缀(String $地址) {
-        return 字符.小写(字符.截取结束(取文件对象($地址).getName(),".",null));
+        return 字符.小写(字符.截取结束(取文件对象($地址).getName(), ".", null));
     }
-    
+
     public static String 除后缀(String $地址) {
-        return 字符.小写(字符.截取结束("/"+取文件对象($地址).getName(),"/","."));
+        return 字符.小写(字符.截取结束("/" + 取文件对象($地址).getName(), "/", "."));
     }
 
     public static String 取名称(String $路径) {
@@ -311,12 +332,17 @@ public final class 文件 {
     public static void 存自身文件(String $相对地址,String $输出文件) {
         解压.单个(取安装包位置(), $相对地址, $输出文件);
     }
+    
+    public static boolean 是空文件(String $地址) {
+        if (!文件.是文件($地址)) return true;
+        return 取文件对象($地址).length() == 0;
+    }
 
     public static void 复制(String $地址,String $新地址) {
         File $对象 = 取文件对象($地址);
         if ($对象.isFile()) {
             文件.删除($新地址);
-            if (文件.取大小($地址) == 0) {
+            if (文件.是空文件($地址)) {
                 创建文件($新地址);
             } else {
                 InputStream $输入 = IO流.输入.文件($对象.getPath());

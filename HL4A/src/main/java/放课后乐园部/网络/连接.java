@@ -11,6 +11,7 @@ public class 连接 {
     HttpURLConnection 连接对象;
 
     public 连接(String $地址) {
+        断言.在主线程("直接访问网络文件:访问网络文件不能在主线程！\n请在线程内访问 ~");
         try {
             连接对象 = (HttpURLConnection)new URL($地址).openConnection();
             连接对象.setDoInput(true);
@@ -20,7 +21,7 @@ public class 连接 {
             置重定向(true);
             置连接超时(2333);
         } catch (Exception $错误) {
-            错误.普通($错误);
+            错误.抛出($错误);
         }
     }
 
@@ -90,7 +91,7 @@ public class 连接 {
         try {
             连接对象.setRequestMethod($类型);
         } catch (Exception $错误) {
-            错误.普通($错误);
+            错误.抛出($错误);
         }
         return this;
     }
@@ -112,7 +113,7 @@ public class 连接 {
         try {
             连接对象.connect();
         } catch (Exception $错误) {
-            错误.普通($错误);
+            错误.抛出($错误);
         }
         return this;
     }
@@ -121,7 +122,7 @@ public class 连接 {
         try {
             传入数据(字节.转换(URLEncoder.encode($数据, 取编码())));
         } catch (Exception $错误) {
-            错误.普通($错误);
+            错误.抛出($错误);
         }
         return this;
     }
@@ -147,7 +148,7 @@ public class 连接 {
         try {
             return 连接对象.getOutputStream();
         } catch (Exception $错误) {
-            错误.普通($错误);
+            错误.抛出($错误);
         }
         return null;
     }
@@ -157,7 +158,7 @@ public class 连接 {
         try {
             return 连接对象.getInputStream();
         } catch (Exception $错误) {
-            错误.普通($错误);
+            错误.抛出($错误);
         }
         return null;
     }

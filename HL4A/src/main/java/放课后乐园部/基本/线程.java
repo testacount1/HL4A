@@ -69,6 +69,14 @@ public class 线程 extends Thread {
     public static Thread 取当前线程() {
         return Thread.currentThread();
     }
+    
+    public static boolean 是线程() {
+        return 取当前线程() instanceof 线程;
+    }
+    
+    public static boolean 是主线程() {
+        return Looper.myLooper() == Looper.getMainLooper();
+    }
 
     public static void 置错误处理(通用方法 $处理) {
         置错误处理对象(new 错误处理($处理));
