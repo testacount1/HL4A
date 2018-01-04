@@ -4,7 +4,12 @@ import android.content.*;
 import bsh.*;
 import 放课后乐园部.基本.*;
 
-public class BeanShell {
+public class BeanShell implements 基本脚本 {
+
+    @Override
+    public String 取脚本类型() {
+        return "BeanShell";
+    }
 
     public Interpreter BSH实例;
 
@@ -19,6 +24,7 @@ public class BeanShell {
         return BSH实例;
     }
 
+    @Override
     public Object 执行代码(String $内容) {
         try {
             return BSH实例.eval($内容);
@@ -28,24 +34,26 @@ public class BeanShell {
         return null;
     }
     
+    @Override
     public Object 运行文件(String $文件) {
         try {
-            return BSH实例.source(文件.检查地址($文件));
+            return BSH实例.source(文件.取文件对象($文件).getPath());
         } catch (Exception $错误) {
             错误.抛出($错误);
         }
         return null;
     }
 
-    public BeanShell 压入变量(String $BSH实例名,Object $BSH实例) {
+    @Override
+    public void 压入变量(String $名称,Object $对象) {
         try {
-            BSH实例.set($BSH实例名, $BSH实例);
+            BSH实例.set($名称, $对象);
         } catch (EvalError $错误) {
             错误.抛出($错误);
         }
-        return this;
     }
-
+    
+    @Override
     public Object 读取对象(String $BSH实例名) {
         try {
             return BSH实例.get($BSH实例名);
@@ -55,6 +63,7 @@ public class BeanShell {
         return null;
     }
 
+    @Override
     public Object 调用函数(String $方法名,Object... $参数组) {
 
         int $数量 = $参数组.length;

@@ -77,9 +77,9 @@ public class 错误 extends RuntimeException {
             ScriptStackElement $脚本位置数组[] = ((RhinoException)$错误).getScriptStack();
             for (ScriptStackElement $单个 : $脚本位置数组) {
                 if ($单个.functionName == null) {
-                    $错误位置信息.append("\n在: JavaScript主程序(" + 文件.取名称($单个.fileName) + "#" + $单个.lineNumber + ")");
+                    $错误位置信息.append("\n在: JavaScript主程序(" + 文件.取名称($单个.fileName) + ":" + $单个.lineNumber + ")");
                 } else {
-                    $错误位置信息.append("\n在: JavaScript函数:" + $单个.functionName + "(" + 文件.取名称($单个.fileName) + "#" + $单个.lineNumber + ")");
+                    $错误位置信息.append("\n在: JavaScript函数:" + $单个.functionName + "(" + 文件.取名称($单个.fileName) + ":" + $单个.lineNumber + ")");
                 }
             }
             $错误位置信息.append("\n");

@@ -32,7 +32,6 @@ public class 线程 extends Thread {
             线程.暂停(启动延时);
         返回参数 = 启动方法.执行();
         已结束 = true;
-        唤醒();
         Looper.loop();
     }
 
@@ -47,23 +46,12 @@ public class 线程 extends Thread {
     public void 让步() {
         yield();
     }
-
+    
     public static void 暂停(long $毫秒) {
         try {
             Thread.sleep($毫秒);
         } catch (Exception $错误) {}
 
-    }
-
-    public synchronized void 等待() {
-        try {
-            if (已结束 == false)
-                wait();
-        } catch (Exception $错误) {}
-    }
-
-    public synchronized void 唤醒() {
-        notifyAll();
     }
     
     public static Thread 取当前线程() {

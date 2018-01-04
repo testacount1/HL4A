@@ -80,8 +80,7 @@ public class 基本界面 extends Activity {
 
         if ($文件 == null || "".equals($文件))  
             return;
-        String $类名 = 脚本管理.取脚本类($文件, "Activity");
-        Class $类 = 反射.取类($类名);
+        Class<?> $类 = 反射.取自身类("ScriptActivity");
         Intent $意图 = new Intent(this, $类);
         $意图.putExtra("文件", $文件);
         if ($数据 != null)
@@ -186,13 +185,9 @@ public class 基本界面 extends Activity {
 
     @Override
     public boolean onKeyDown(int keyCode,KeyEvent event) {
-
         if (按键按下事件 == null) {
-
             if (keyCode == KeyEvent.KEYCODE_BACK) {
-
                 long 上次 = 返回时间;
-
                 if ((返回时间 = 时间.时间戳()) - 上次 < 2000) {
                     finish();
                     return true;
@@ -200,14 +195,10 @@ public class 基本界面 extends Activity {
                     弹窗.提示("再按一次返回键退出 ~");
                     return false;
                 }
-
             } else return super.onKeyDown(keyCode, event);
-
         } else {
-
             return 调用方法.事件(按键按下事件, keyCode, event) == true;
         }
-
     }
 
     @Override

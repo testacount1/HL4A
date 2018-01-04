@@ -10,6 +10,10 @@ public class 反射  {
 
     反射() {}
 
+    public static Class<?> 取自身类(String $相对) {
+        return 取类(应用.取包名() + "." + $相对);
+    }
+    
     public static Class<?> 取类(String $类名) {
         try {
             return Class.forName($类名, false, 注入.最新加载器);
@@ -41,17 +45,17 @@ public class 反射  {
 
 
     public static Field 取变量(Object $实例,String $变量名) {
-            Class $类 = $实例.getClass();
-            Field $变量 = null;
-            while ($类 != null && $变量 == null) {
-                try {
-                    $变量 = $类.getDeclaredField($变量名);
-                    $变量.setAccessible(true);
-                    return $变量;
-                } catch (NoSuchFieldException $错误) {
-                    $类 = $类.getSuperclass();
-                }
+        Class $类 = $实例.getClass();
+        Field $变量 = null;
+        while ($类 != null && $变量 == null) {
+            try {
+                $变量 = $类.getDeclaredField($变量名);
+                $变量.setAccessible(true);
+                return $变量;
+            } catch (NoSuchFieldException $错误) {
+                $类 = $类.getSuperclass();
             }
+        }
         return null;
     }
 
@@ -77,7 +81,7 @@ public class 反射  {
             错误.抛出($错误);
         }
     }
-    
+
     public static Method 取首位方法(Class $类,String $方法名) {
         Method[] $所有 = $类.getDeclaredMethods();
         for (Method $单个 : $所有) {
@@ -89,49 +93,49 @@ public class 反射  {
     }
 
     public static Method 取方法(Class $类,String $方法名) {
-        return 取方法($类,$方法名,new Class[0]);
+        return 取方法($类, $方法名, new Class[0]);
     }
-    
+
     public static Method 取方法(Class $类,String $方法名,Class... $参数) {
-            Method $方法 = null;
-            while ($类 != null) {
-                try {
-                    $方法 = $类.getDeclaredMethod($方法名, 取参数类组($参数));
-                    $方法.setAccessible(true);
-                    return $方法;
-                } catch (NoSuchMethodException $错误) {
-                    $类 = $类.getSuperclass();
-                }
+        Method $方法 = null;
+        while ($类 != null) {
+            try {
+                $方法 = $类.getDeclaredMethod($方法名, 取参数类组($参数));
+                $方法.setAccessible(true);
+                return $方法;
+            } catch (NoSuchMethodException $错误) {
+                $类 = $类.getSuperclass();
             }
+        }
         return null;
     }
 
     /*
-    public static Method 取方法(Class $类,String $方法名,Object... $参数) {
-        Method $所有[] = $类.getMethods();
-        for (Method $方法 : $所有) {
-            if (!$方法.getName().equals($方法名)) continue;
-            int $参数长度 = $参数.length;
-            Class $类型组[] = $方法.getParameterTypes();
-            int $需要长度 = $类型组.length;
-            if ($参数长度 < $需要长度) continue;
-            boolean $结束 = false;
-            for (int $键值 = 0;$键值 == $参数长度 - 1;$键值 ++) {
-                Class $值;
-                if ($键值 > $需要长度 - 1)
-                    $值 = $类型组[$需要长度 - 1];
-                else $值 = $类型组[$键值];
-                if (!$值.isAssignableFrom($参数[$键值].getClass())) {
-                    $结束 = true;break;
-                }
-            }
-            if ($结束) continue;
-            return $方法;
-        }
-        return null;
-    }
-    
-    */
+     public static Method 取方法(Class $类,String $方法名,Object... $参数) {
+     Method $所有[] = $类.getMethods();
+     for (Method $方法 : $所有) {
+     if (!$方法.getName().equals($方法名)) continue;
+     int $参数长度 = $参数.length;
+     Class $类型组[] = $方法.getParameterTypes();
+     int $需要长度 = $类型组.length;
+     if ($参数长度 < $需要长度) continue;
+     boolean $结束 = false;
+     for (int $键值 = 0;$键值 == $参数长度 - 1;$键值 ++) {
+     Class $值;
+     if ($键值 > $需要长度 - 1)
+     $值 = $类型组[$需要长度 - 1];
+     else $值 = $类型组[$键值];
+     if (!$值.isAssignableFrom($参数[$键值].getClass())) {
+     $结束 = true;break;
+     }
+     }
+     if ($结束) continue;
+     return $方法;
+     }
+     return null;
+     }
+
+     */
 
 
     public static Object 调用方法(Object $实例,Method $方法,Object... $参数) {

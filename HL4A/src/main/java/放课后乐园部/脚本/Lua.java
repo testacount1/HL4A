@@ -4,7 +4,12 @@ import com.luajava.*;
 import 放课后乐园部.基本.*;
 import 放课后乐园部.事件.*;
 
-public class Lua {
+public class Lua implements 基本脚本 {
+
+    @Override
+    public String 取脚本类型() {
+        return "Lua";
+    }
 
     public LuaState Lua状态机;
 
@@ -12,17 +17,15 @@ public class Lua {
         Lua状态机 = LuaStateFactory.newLuaState();
         Lua状态机.置Lua(this);
         Lua状态机.openLibs();
-        压入变量("当前环境",this);
-        压入变量("当前应用",环境.读取());
+        压入变量("当前环境", this);
+        压入变量("当前应用", 环境.读取());
         运行文件("@lib/android.lua");
-     
+
     }
-    
+
     public Lua 压入方法(String $名称,final 通用方法 $方法) {
-        
         try {
             new JavaFunction(Lua状态机) {
-
                 @Override
                 public int execute() throws LuaException {
                     int $数量 = L.getTop();
@@ -31,19 +34,17 @@ public class Lua {
                         for (int i = 4; i <= $数量; i++)
                             $参数[i - 4] = L.toJavaObject(i);
                         $方法.调用($参数);
-                    }
-                    else if ($数量 == 3) {
+                    } else if ($数量 == 3) {
                         $方法.调用(L.toString(3));
                     }
                     return 0;
                 }
-
-
             }.register($名称);
         } catch (Exception $错误) {}
-return this;
+        return this;
     }
 
+    @Override
     public Object 读取对象(String $对象名) {
         try {
             synchronized (Lua状态机) {
@@ -53,13 +54,12 @@ return this;
         } catch (Exception $错误) {}
         return null;
     }
-    
+
+    @Override
     public Object 运行文件(String $文件) {
-        
-        return 运行文件($文件,new Object[0]);
-        
+        return 运行文件($文件, new Object[0]);
     }
-    
+
     public Object 运行文件(String $文件,Object... $参数) {
         int $错误码;
         try {
@@ -85,6 +85,7 @@ return this;
         return null;
     }
 
+    @Override
     public Object 调用函数(String funcName,Object... $参数) {
         synchronized (Lua状态机) {
             try {
@@ -112,13 +113,11 @@ return this;
         }
         return null;
     }
-    
-    public Object 执行代码(String $内容) {
-        
-        return 执行代码($内容,new Object[0]);
-        
-    }
 
+    @Override
+    public Object 执行代码(String $内容) {
+        return 执行代码($内容, new Object[0]);
+    }
 
     public Object 执行代码(String $内容,Object... $参数) {
         try {
@@ -143,18 +142,18 @@ return this;
         }
         return null;
     }
-
-    public Lua 压入变量(String $对象名,Object $对象) {
+    
+    @Override
+    public void 压入变量(String $对象名,Object $对象) {
         synchronized (Lua状态机) {
             try {
                 Lua状态机.pushObjectValue($对象);
                 Lua状态机.setGlobal($对象名);
             } catch (Exception $错误) {}
-            return this;
         }
     }
 
-    
+
     private String 取错误类型(int error) {
         switch (error) {
             case 6:

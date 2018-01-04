@@ -5,39 +5,30 @@ import 放课后乐园部.事件.*;
 import 放课后乐园部.基本.*;
 import 放课后乐园部.收集.*;
 import java.io.*;
-import android.widget.SeekBar.*;
 
 public class 音乐服务 extends 基本服务 {
 
-    String 保存地址 = "$数据/所有音乐.H";
-    集合 所有音乐;
-    boolean 需要;
+    public static volatile 音乐服务 实例;
+    
+    public MediaPlayer 播放器 = new MediaPlayer();
 
+    public void 销毁() {
+        stopSelf();
+    }
+    
     @Override
     public void onCreate() {
         super.onCreate();
-        所有音乐 = 序列化.读取集合(保存地址);
+        实例 = this;
     }
-
-    @Override
-    public void onDestroy() {
-        if (所有音乐.isEmpty())
-            文件.删除(保存地址);
-        else
-            序列化.保存(保存地址, 所有音乐);
-        super.onDestroy();
-    }
-
-    MediaPlayer 播放器 = new MediaPlayer();
-
-    public 错误 置音乐(String $地址) {
+    
+    public void 置音乐(String $地址) {
         try {
             String $音乐 = 文件.检查地址($地址);
             播放器.setDataSource($音乐);
             播放器.prepare();
-            return null;
         }  catch (Exception $错误) {
-            return new 错误($错误);
+            错误.抛出($错误);
         }
     }
     
@@ -46,9 +37,7 @@ public class 音乐服务 extends 基本服务 {
                 @Override
                 public Object 调用(Object[] $参数) {
                     try {
-                        String $音乐 = 文件.检查地址($地址);
-                        播放器.setDataSource($音乐);
-                        播放器.prepare();
+                        置音乐($地址);
                         调用方法.事件($回调,true);
                     }  catch (Exception $错误) {
                         调用方法.事件($回调,false,new 错误($错误));

@@ -32,33 +32,18 @@
         </service>
 
         <activity android:name=".ErrorActivity" />
-        <activity android:name=".JSActivity"
-        />
-        <activity android:name=".LuaActivity" 
-        />
-        <activity android:name=".BSHActivity" 
-        />
-        <service android:name=".JSService" 
-            
-        />
-        <service android:name=".LuaService" 
-            
-        />
-        <service android:name=".BSHService" 
-            
-        />
+        <activity android:name=".ScriptActivity"/>
+        
+        <service android:name =".MusicService" />
+
     </application>
 
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <!--获取GSM（2g）、WCDMA（联通3g）等网络状态的信息  -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <!--获取wifi网络状态的信息 -->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <!--保持CPU 运转，屏幕和键盘灯有可能是关闭的,用于文件上传和下载 -->
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <!--获取sd卡写的权限，用于文件上传和下载-->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <!--允许读取手机状态-->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
 </manifest>

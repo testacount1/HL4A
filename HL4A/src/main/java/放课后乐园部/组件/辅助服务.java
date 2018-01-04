@@ -8,9 +8,9 @@ import 放课后乐园部.基本.*;
 
 public class 辅助服务 extends AccessibilityService {
 
-    public static 辅助服务 服务 = null;
-    public static AccessibilityEvent 意图 = null;
-    public static AccessibilityNodeInfo 节点 = null;
+    public static volatile 辅助服务 服务 = null;
+    public static volatile AccessibilityEvent 意图 = null;
+    public static volatile AccessibilityNodeInfo 节点 = null;
 
 
     @Override

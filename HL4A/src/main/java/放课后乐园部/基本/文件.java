@@ -255,6 +255,7 @@ public final class 文件 {
     }
 
     public static String 取后缀(String $地址) {
+        if (!字符.是否出现($地址,"."))return "";
         return 字符.小写(字符.截取结束(取文件对象($地址).getName(), ".", null));
     }
 

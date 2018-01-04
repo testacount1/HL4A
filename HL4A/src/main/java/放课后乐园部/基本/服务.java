@@ -12,31 +12,40 @@ public class 服务 {
 
     服务() {}
 
-    public static boolean 启动(Context $上下文,String $类型) {
-        return 脚本管理.启动服务($上下文,$类型);
+    public static void 启动(Context $上下文,Class<?> $类) {
+        if (服务.已启动($类.getName()))return;
+        $上下文.startService(new Intent($上下文, $类));
+        if (!服务.已启动($类.getName())) {
+            throw new 错误("无法启动该服务:"+$类.getName());
+        }
     }
-    
-    public static 连接处理 绑定(基本界面 $界面,String $类型) {
-        return 绑定($界面,$类型, null, null);
-    }
-    
-    public static 连接处理 绑定(基本界面 $界面,String $类型,通用方法 $成功) {
-        return 绑定($界面,$类型, $成功, null);
+
+    public static void 启动(Context $上下文,String $相对) {
+        Class<?> $类 = 反射.取自身类($相对);
+        if ($类 != null) {
+            启动($上下文,$类);
+        } else {
+            throw new 错误("本应用没有该服务:"+$相对);
+        }
     }
 
     public static boolean 已启动(String $类名) {
         ActivityManager $am = (ActivityManager) 环境.读取().getSystemService(Context.ACTIVITY_SERVICE);
-        ArrayList<ActivityManager.RunningServiceInfo> $服务列表 = (ArrayList<ActivityManager.RunningServiceInfo>)$am.getRunningServices(233);
+        ArrayList<ActivityManager.RunningServiceInfo> $服务列表 = (ArrayList<ActivityManager.RunningServiceInfo>)$am.getRunningServices(32767);
         for (ActivityManager.RunningServiceInfo $单个 : $服务列表) {
             if ($单个.service.getClassName().contains($类名)) return true;
         }
         return false;
     }
 
-    public static 连接处理 绑定(基本界面 $界面,String $类型,通用方法 $成功,通用方法 $断开) {
-        return 脚本管理.绑定服务($界面,$类型,$成功,$断开);
+    public static 连接处理 绑定(基本界面 $界面,Class $类,通用方法 $成功,通用方法 $断开) {
+        服务.启动($界面,$类);
+        连接处理 $处理 = new 连接处理($成功, $断开);
+        $界面.bindService(new Intent($界面, $类), $处理, Context.BIND_AUTO_CREATE);
+        $界面.服务连接.添加($处理);
+        return $处理;
     }
-    
+
     public static class 连接处理 implements ServiceConnection {
 
         基本服务 服务;

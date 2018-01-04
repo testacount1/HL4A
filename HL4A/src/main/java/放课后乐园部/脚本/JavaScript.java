@@ -7,7 +7,12 @@ import 放课后乐园部.脚本.事件.*;
 import 放课后乐园部.收集.*;
 import java.util.*;
 
-public class JavaScript {
+public class JavaScript implements 基本脚本 {
+
+    @Override
+    public String 取脚本类型() {
+        return "JavaScript";
+    }
 
     public static 哈希表 替换关键字表 = new 哈希表();
     
@@ -98,24 +103,25 @@ public class JavaScript {
         return this;
     }
 
-	public JavaScript 压入变量(String $对象名,Object $对象) {
+    @Override
+	public void 压入变量(String $对象名,Object $对象) {
 		try {
 			ScriptableObject.putProperty(函数环境, $对象名, Context.javaToJS($对象, 函数环境));
 		} catch (Exception $错误) {
 			错误.抛出($错误);
 		}
-        return this;
 	}
 
-	public JavaScript 压入常量(String $对象名,Object $对象) {
+	public void 压入常量(String $对象名,Object $对象) {
 		try {
 			ScriptableObject.putConstProperty(函数环境, $对象名, Context.javaToJS($对象, 函数环境));
 		} catch (Exception $错误) {
 			错误.抛出($错误);
 		}
-        return this;
 	}
+    
 
+    @Override
 	public Object 读取对象(String $对象名) {
 		Object $对象 = 函数环境.get($对象名, 函数环境);
 		if ($对象 != Scriptable.NOT_FOUND) {
@@ -124,6 +130,7 @@ public class JavaScript {
 		return null;
 	}
 
+    
 	public Function 读取函数(String $函数名) {
 		Object $对象 = 读取对象($函数名);
 		if ($对象 instanceof Function) {
@@ -142,17 +149,16 @@ public class JavaScript {
 		return null;
 	}
 
-
+    @Override
 	public Object 调用函数(String $函数名,Object... $传入) {
 		Function $函数 = 读取函数($函数名);
 		if ($函数 != null)return 调用函数($函数, $传入);
 		return null;
 	}
 
+    @Override
     public Object 执行代码(String $内容) {
-
         return 执行代码($内容, $内容);
-
     }
 
 	public Object 执行代码(String $内容,String $环境名) {
@@ -169,6 +175,7 @@ public class JavaScript {
 
 	}
 
+    @Override
     public Object 运行文件(String $地址) {
         String $ = 字符.读取($地址);
         return 执行代码($, $地址);
