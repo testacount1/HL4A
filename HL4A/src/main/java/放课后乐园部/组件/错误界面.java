@@ -12,7 +12,7 @@ public class 错误界面 extends 基本界面 {
     @Override
     public void onCreate(Bundle $数据) {
         super.onCreate($数据);
-
+        try {
         按键按下事件 = new 通用方法() {
             @Override
             public Object 调用(Object[] $参数) {
@@ -21,13 +21,12 @@ public class 错误界面 extends 基本界面 {
             }
         };
 
-        线性布局 $底层 = new 线性布局(this)
-            .置宽度("最大")
-            .置高度("最大")
-            .打开(this);
+        线性布局 $底层 = new 线性布局(this);
+		$底层.打开(this);
 
-        标题栏 $标题 = new 标题栏(this, "又崩溃了(ノДＴ)")
-            .加入到($底层);
+        标题栏 $标题 = new 标题栏(this);
+		$标题.置标题("又崩溃了(ノДＴ)");
+		$标题.加入到($底层);
 
         $标题.左按钮("图片.返回", new 通用方法() {
                 @Override
@@ -36,7 +35,7 @@ public class 错误界面 extends 基本界面 {
                     return null;
                 }
             });
-            
+
         $标题.右按钮("图片.复制", new 通用方法() {
                 @Override
                 public Object 调用(Object[] $参数) {
@@ -45,7 +44,7 @@ public class 错误界面 extends 基本界面 {
                     return null;
                 }
             });
-            
+
         $标题.右按钮("图片.发送", new 通用方法() {
                 @Override
                 public Object 调用(Object[] $参数) {
@@ -55,24 +54,26 @@ public class 错误界面 extends 基本界面 {
                     return null;
                 }
             });
-        
+
 
 
         错误内容 = getIntent().getStringExtra("错误");
 
         if (错误内容 == null) 错误内容 = "未知错误";
 
-        线性布局 $布局 = new 线性布局(this)
-            .置宽度("最大")
-            .置高度("最大")
-            .置填充("16dp")
-            .加入到($底层);
+        线性布局 $布局 = new 线性布局(this);
+		$布局.置宽度("最大");
+		$布局.置高度("最大");
+		$布局.置填充("16dp");
+		$布局.加入到($底层);
 
-        new 滚动文本(this)
-            .置文本(错误内容)
-            .加入到($布局);
+        滚动文本 $文本 = new 滚动文本(this);
+		$文本.置文本(错误内容);
+		$文本.加入到($布局);
 
-
+}catch(Exception $错误) {
+    错误.保存($错误);
+}
 
     }
 

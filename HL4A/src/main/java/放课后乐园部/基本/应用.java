@@ -17,6 +17,10 @@ public class 应用 {
 
     private static 哈希表 全局变量 = new 哈希表();
 
+	public static void 启动(String $包名) {
+		环境.读取().startActivity(环境.读取().getPackageManager().getLaunchIntentForPackage($包名));
+	}
+	
     public static int 取编译SDK() {
         try {
             PackageInfo $信息 = 环境.读取().getPackageManager().getPackageInfo(

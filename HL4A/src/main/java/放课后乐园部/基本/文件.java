@@ -247,7 +247,7 @@ public final class 文件 {
             if (!$目录.startsWith("/"))
                 $目录 = 取存储卡目录() + "/" + $目录;
 
-            return $目录;
+            return new File($目录).getPath();
                 
         }
         

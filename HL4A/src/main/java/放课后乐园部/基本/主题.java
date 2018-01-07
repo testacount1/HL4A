@@ -9,6 +9,10 @@ public class 主题 {
 
     public static 集合 当前颜色列表 = 集合.到集合(颜色.靛蓝);
 
+	public static String 默认填充() {
+		return "16dp";
+	}
+
     public static String 基本色() {
         return (String)当前颜色列表.get(5);
     }
@@ -26,11 +30,15 @@ public class 主题 {
     }
     
     public static String 文本大小() {
-        return "8dp";
+        return "5sp";
     }
     
     public static String 大文本() {
-        return "13dp";
+        return "8sp";
     }
+	
+	public  static String 圆角() {
+		return "2dp";
+	}
 
 }

@@ -4,11 +4,10 @@ import android.app.*;
 import android.graphics.drawable.*;
 import android.view.*;
 import android.view.ViewGroup.*;
+import android.widget.*;
 import 放课后乐园部.事件.*;
 import 放课后乐园部.基本.*;
 import 放课后乐园部.视图.事件.*;
-import android.widget.*;
-import 放课后乐园部.组件.基本界面;
 
 public final class 视图实现 {
 
@@ -37,7 +36,7 @@ public final class 视图实现 {
     //setContentView
 
     public static void 打开(View $视图,Activity $界面) {
-        布局.打开($界面,$视图);
+        布局.打开($界面, $视图);
     }
 
     // Tag
@@ -73,21 +72,25 @@ public final class 视图实现 {
             });
     }
 
-    public static void 置高度(View $视图,Object $高度) {
-        ViewGroup.MarginLayoutParams $设置 = 取设置($视图);
-        $设置.height = 视图.检查大小($高度).intValue();
-        置设置($视图, $设置);
+    public static void 置高度(final View $视图,final Object $高度) {
+        处理.主线程(new 通用方法() {
+                @Override
+                public Object 调用(Object[] $参数) {
+                    置高度实现($视图, $高度);
+                    return null;
+                }
+            });
     }
-    
-    
+
+
     public static void 置宽度实现(View $视图,Object $宽度) {
-        ViewGroup.MarginLayoutParams $设置 = 取设置($视图);
+        ViewGroup.LayoutParams $设置 = 取设置($视图);
         $设置.width = 视图.检查大小($宽度).intValue();
         置设置($视图, $设置);
     }
 
     public static void 置高度实现(View $视图,Object $高度) {
-        ViewGroup.MarginLayoutParams $设置 = 取设置($视图);
+        ViewGroup.LayoutParams $设置 = 取设置($视图);
         $设置.height = 视图.检查大小($高度).intValue();
         置设置($视图, $设置);
     }
@@ -112,7 +115,7 @@ public final class 视图实现 {
     }
 
     public static void 置边距实现(View $视图,Object $上,Object $下,Object $左,Object $右) {
-        ViewGroup.MarginLayoutParams $设置 = 取设置($视图);
+        ViewGroup.MarginLayoutParams $设置 = 取边距设置($视图);
         try {
             int $上边距 = $设置.topMargin;
             int $下边距 = $设置.bottomMargin;
@@ -257,11 +260,20 @@ public final class 视图实现 {
         $视图.setLayoutParams(new MarginLayoutParams(-2, -2));
     }
 
-    public static MarginLayoutParams 取设置(View $视图) {
-        return (MarginLayoutParams) $视图.getLayoutParams();
+    public static MarginLayoutParams 取边距设置(View $视图) {
+        LayoutParams $设置 = 取设置($视图);
+        if ($设置 instanceof MarginLayoutParams) {
+            return (MarginLayoutParams)$设置;
+        } else {
+            return new MarginLayoutParams($设置);
+        }
     }
 
-    public static void 置设置(View $视图,MarginLayoutParams $设置) {
+    public static LayoutParams 取设置(View $视图) {
+        return $视图.getLayoutParams();
+    }
+
+    public static void 置设置(View $视图,LayoutParams $设置) {
         if ($设置 != null) {
             $视图.setLayoutParams($设置);
             $视图.requestLayout();

@@ -13,29 +13,23 @@ public class 反射  {
     public static Class<?> 取自身类(String $相对) {
         return 取类(应用.取包名() + "." + $相对);
     }
-    
+
     public static Class<?> 取类(String $类名) {
-        try {
-            return Class.forName($类名, false, 注入.最新加载器);
-        } catch (Exception $错误) {}
-        return null;
+        return 取类($类名, 注入.最新加载器);
     }
 
     public static Class<?> 取类(String $类名,ClassLoader $类加载器) {
         try {
             Class<?> $类 = Class.forName($类名, false, $类加载器);
-            if ($类 == null)
-                $类 = 取类($类名);
             return $类;
         } catch (Exception $错误) {}
         return null;
     }
 
 
-    public static Object 实例化(Class $类,Object... $参数) {
+    public static Object 实例化(Class $类,Class[] $类组,Object... $参数) {
         try {
-            Class[] $参数类组 = 取参数类组($参数);
-            Constructor cons = $类.getConstructor($参数类组);   
+            Constructor cons = $类.getConstructor($类组);   
             return cons.newInstance($参数);
         } catch (Exception $错误) {
             错误.抛出($错误);

@@ -4,10 +4,19 @@ import android.text.*;
 import android.view.*;
 import 放课后乐园部.视图.*;
 import 放课后乐园部.视图.实现.*;
+import android.content.res.*;
 
 public class 视图 {
 
     视图() {}
+	
+	public static ColorStateList 创建颜色列表(int $普通,int $按下) {
+		int[] $颜色 = 
+			new int[] {$按下,$普通};int[][] $状态 = new int[2][];
+		$状态[0] = new int[] { android.R.attr.state_pressed};
+		$状态[1] = new int[] {}; 
+		return new ColorStateList($状态, $颜色);
+	}
 
     public static Integer 检查输入类型(Object $类型) {
         if ($类型 instanceof Integer) return (Integer)$类型;

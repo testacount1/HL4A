@@ -15,14 +15,12 @@ public class 弹出菜单 extends PopupMenu {
         菜单 = getMenu();
     }
     
-    public 弹出菜单 添加(String $名称,通用方法 $单击) {
+    public void 添加(String $名称,通用方法 $单击) {
         菜单.add($名称).setOnMenuItemClickListener(new 菜单选中($单击));
-        return this;
     }
     
-    public 弹出菜单 显示() {
+    public void 显示() {
         show();
-        return this;
     }
     
 }

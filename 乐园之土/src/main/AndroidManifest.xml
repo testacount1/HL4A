@@ -33,8 +33,9 @@
 
         <activity android:name=".ErrorActivity" />
         <activity android:name=".ScriptActivity"/>
-        
         <service android:name =".MusicService" />
+
+		<activity  android:name="h.ide.activity.MainActivity" />
 
     </application>
 

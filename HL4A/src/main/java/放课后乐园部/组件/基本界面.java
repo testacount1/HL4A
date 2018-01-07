@@ -8,7 +8,6 @@ import java.io.*;
 import 放课后乐园部.事件.*;
 import 放课后乐园部.基本.*;
 import 放课后乐园部.收集.*;
-import 放课后乐园部.脚本.*;
 
 public class 基本界面 extends Activity {
 
@@ -44,9 +43,16 @@ public class 基本界面 extends Activity {
 
     public Menu 当前菜单;
 
+	public View 当前视图;
+	
     public void 打开布局(View $视图) {
+		当前视图 = $视图;
         布局.打开(this, $视图);
     }
+
+	public View 找视图(Object $标签) {
+		return 当前视图.findViewWithTag($标签);
+	}
 
     public void 跳转界面(Class $类) {
         跳转界面(null, $类, null);
