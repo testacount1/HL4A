@@ -22,18 +22,10 @@ public class 基本应用 extends Application {
     public 通用方法 应用销毁事件;
     public 通用方法 附加上下文事件;
 
-    public 通用方法 应用出错事件 = new 通用方法() {
-        @Override
-        public Object 调用(Object[] $参数) {
-            错误.默认((Exception)$参数[1]);
-            return null;
-        }
-    };
-
     public 错误处理 错误处理 = new 错误处理(new 通用方法() {
             @Override
             public Object 调用(Object[] $参数) {
-                调用方法.事件(应用出错事件, $参数);
+                调用方法.安全(错误.应用出错事件,$参数);
                 return null;
             }
         });

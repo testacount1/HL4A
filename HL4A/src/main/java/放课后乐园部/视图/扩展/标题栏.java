@@ -35,6 +35,7 @@ public class 标题栏 extends 线性布局 {
 		标题对象.置文本大小(主题.大文本());
 		标题对象.置文本颜色(颜色.白色);
 		标题对象.置左填充("16dp");
+        标题对象.setHorizontallyScrolling(true);
 		标题对象.加入到(this);
 
         右按钮栏 = new 线性布局(上下文);

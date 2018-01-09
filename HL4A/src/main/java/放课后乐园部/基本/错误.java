@@ -2,6 +2,7 @@ package 放课后乐园部.基本;
 
 import android.content.*;
 import org.mozilla.javascript.*;
+import 放课后乐园部.事件.*;
 
 public class 错误 extends RuntimeException {
 
@@ -158,23 +159,25 @@ public class 错误 extends RuntimeException {
             throw new 错误($错误);
         }
     }
-
-    public static void 默认(Throwable $错误) {
-        if ($错误 instanceof 错误 && !(((错误)$错误).代理错误 instanceof RuntimeException)) {
-            默认(((错误)$错误).代理错误);
-        } else if (!($错误 instanceof RuntimeException)) {
-          错误.保存($错误);
-          环境.读取().结束();
-          System.exit(1);
+    
+    public static 通用方法 应用出错事件 = new 通用方法() {
+        @Override
+        public Object 调用(Object[] $参数) {
+            Exception $错误 = (Exception)$参数[1];
+            保存($错误);
+            跳转($错误);
+            System.exit(0);
+            return null;
         }
-    }
-
+    };
+    
     public static void 跳转(Throwable $错误) {
         环境.读取().结束界面($错误);
         Intent $意图 = new Intent(环境.读取(), 反射.取类(应用.取包名() + ".ErrorActivity"));
         $意图.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         $意图.putExtra("错误", 取整个错误($错误));
         环境.读取().startActivity($意图);
+        System.exit(0);
     }
 
     public static void 普通(String $错误内容) {
