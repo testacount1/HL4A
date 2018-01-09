@@ -52,14 +52,14 @@ public class 启动界面 extends 基本界面 {
                 解压.全部(文件.取安装包位置(), "@");
                 设置.保存("APK散列", $当前);
             }
-			//初始化成功事件();
-			//结束();
+			初始化成功事件();
             return null;
         }
     };
 
 	public void 初始化成功事件() {
 		跳转脚本("@script/index.js");
+        结束();
 	}
 
     @Override

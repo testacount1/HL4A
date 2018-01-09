@@ -11,6 +11,7 @@ import 放课后乐园部.数据.*;
 import h.ide.util.*;
 import h.ide.adapter.*;
 import h.kl.activity.*;
+import 放课后乐园部.编译.*;
 
 public class MainActivity extends 基本界面 {
 
@@ -18,6 +19,8 @@ public class MainActivity extends 基本界面 {
 	public void onCreate(Bundle $数据) {
 		super.onCreate($数据);
 		打开布局(new 布局_主页(this));
+        new AXML("%a.xml")
+        .保存("%aa.xml");
 	}
     
     

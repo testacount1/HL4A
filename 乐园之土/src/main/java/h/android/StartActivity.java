@@ -8,6 +8,7 @@ public class StartActivity extends 启动界面 {
 	@Override
 	public void 初始化成功事件() {
 		跳转界面(MainActivity.class);
+        结束();
 	}
 	
 }

@@ -26,19 +26,30 @@ public class 工程适配器 extends 数组适配器 {
         更新工程();
         $视图.置适配器(this);
         $视图.置项目单击事件(列表单击);
+        新建工程 = new 弹窗.基本弹窗(界面)
+        .置标题("新建工程");
+        
     }
-
+    
+    弹窗.基本弹窗 新建工程;
+    
     通用方法 列表单击 = new 通用方法() {
         @Override
         public Object 调用(Object[] $参数) {
-            View $项目 = (View)$参数[1];
-            哈希表 $表 = (哈希表)$项目.getTag();
-            安卓工程 $工程 = (安卓工程)$表.读取("工程");
-            界面.跳转界面(ProjActivity.class,$工程.取目录());
+            int $键值 = $参数[2];
+            if ($键值 == 0) {
+                // 
+            } else {
+                View $项目 = (View)$参数[1];
+                哈希表 $表 = (哈希表)$项目.getTag();
+                String $地址 = (String)$表.读取("内容");
+                安卓工程 $工程 = (安卓工程)$表.读取("工程");
+                界面.跳转界面(ProjActivity.class,$地址, $工程);
+            }
             return null;
         }
     };
-    
+
     通用方法 列表长按 = new 通用方法() {
         @Override
         public Object 调用(Object[] $参数) {
@@ -50,29 +61,29 @@ public class 工程适配器 extends 数组适配器 {
                         // TODO: Implement this method
                         return null;
                     }
-            });
-            
+                });
+
             哈希表 $表 = (哈希表)$项目.getTag();
             安卓工程 $工程 = (安卓工程)$表.读取("工程");
             return null;
         }
     };
-    
+
     public void 更新工程() {
         数据.清空();
-        File[] $所有 = 文件.取文件列表(安卓工程.工程目录);
-        if ($所有.length == 0) {
-            添加项目("新建工程", null);
-        } else {
-            for (File $单个 : $所有) {
-                if($单个.isDirectory()) {
-                    安卓工程 $工程 = 安卓工程.读取($单个.getName());
-                    if ($工程 != null) {
-                        添加项目($工程.工程名,$工程);
-                    }
+        File[] $所有 = 文件.取文件列表(工程管理.工程目录);
+
+        添加项目("新建工程", null);
+
+        for (File $单个 : $所有) {
+            if ($单个.isDirectory()) {
+                安卓工程 $工程 = 工程管理.读取($单个.getName());
+                if ($工程 != null) {
+                    添加项目($工程.工程名, $工程);
                 }
             }
         }
+        
         发送重绘事件();
     }
 
