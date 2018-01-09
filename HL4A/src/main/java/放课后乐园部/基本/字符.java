@@ -9,7 +9,7 @@ public class 字符 {
 
     public static String 读取(String $文件) {
 
-        FileInputStream $输入流 = IO流.输入.文件($文件);
+        InputStream $输入流 = IO流.输入.文件($文件);
 
         String $文本 = 读取($输入流);
 

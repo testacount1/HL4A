@@ -2,6 +2,8 @@ apply plugin: 'com.android.application'
 
 android {
 
+    minSdkVersion 21
+    targetSdkVersion 21
     compileSdkVersion 21
     buildToolsVersion "21.1.0"
 

@@ -9,13 +9,22 @@ import android.content.res.*;
 public class 视图 {
 
     视图() {}
-	
-	public static ColorStateList 创建颜色列表(int $普通,int $按下) {
-		int[] $颜色 = 
-			new int[] {$按下,$普通};int[][] $状态 = new int[2][];
+
+	public static ColorStateList 创建颜色列表(Object $普通颜色,Object $按下颜色) {
+        int $普通 = 检查颜色($普通颜色);
+        int $按下 = 检查颜色($按下颜色);
+		int[] $颜色 = new int[] {$按下,$普通};int[][] $状态 = new int[2][];
 		$状态[0] = new int[] { android.R.attr.state_pressed};
 		$状态[1] = new int[] {}; 
 		return new ColorStateList($状态, $颜色);
+	}
+    
+    public static ColorStateList 创建单颜色列表(Object $普通颜色) {
+        int $普通 = 检查颜色($普通颜色);
+        int[] $颜色 = new int[] {$普通};
+        int[][] $状态 = new int[1][];
+        $状态[0] = new int[] {}; 
+        return new ColorStateList($状态, $颜色);
 	}
 
     public static Integer 检查输入类型(Object $类型) {

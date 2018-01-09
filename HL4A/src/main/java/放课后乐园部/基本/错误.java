@@ -166,7 +166,6 @@ public class 错误 extends RuntimeException {
             Exception $错误 = (Exception)$参数[1];
             保存($错误);
             跳转($错误);
-            System.exit(0);
             return null;
         }
     };

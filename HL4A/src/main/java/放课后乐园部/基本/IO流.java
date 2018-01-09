@@ -54,7 +54,7 @@ public final class IO流 {
 
     public static class 输入 {
 
-        public static FileInputStream 文件(String $文件) {
+        public static InputStream 文件(String $文件) {
             try {
                 return new FileInputStream(文件.取文件对象($文件));
             } catch (FileNotFoundException $错误) {}

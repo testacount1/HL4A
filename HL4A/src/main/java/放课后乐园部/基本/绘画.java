@@ -25,6 +25,7 @@ public class 绘画 {
 
     public static Drawable 生成背景(Object $普通,Object $按下) {
         return new 按下变色绘画($普通, $按下);
+        //return new 涟漪绘画($普通,$按下);
     }
 
     public static Drawable 颜色转绘画(Object $颜色) {

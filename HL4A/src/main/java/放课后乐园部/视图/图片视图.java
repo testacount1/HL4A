@@ -2,73 +2,52 @@ package 放课后乐园部.视图;
 
 import android.app.*;
 import android.content.*;
+import android.graphics.*;
+import android.graphics.drawable.*;
 import android.view.*;
 import android.widget.*;
+import java.io.*;
 import 放课后乐园部.事件.*;
 import 放课后乐园部.视图.实现.*;
-import android.support.v4.widget.*;
 import 放课后乐园部.基本.*;
-import org.autojs.dynamiclayoutinflater.util.*;
 
-public class 进度条 extends ProgressBar implements 基本视图 {
+public class 图片视图 extends ImageView implements 基本视图 {
 
-    public 进度条(Context $上下文) {
-        this($上下文,android.R.attr.progressBarStyleHorizontal);
-    }
-    
-    public 进度条(Context $上下文,int $主题) {
-        super($上下文, null, $主题);
+    public 图片视图(Context $上下文) {
+        super($上下文);
         视图实现.初始化控件(this);
-        置颜色(主题.基本色());
     }
     
-    public void 置自动(boolean $状态) {
-        setIndeterminate($状态);
-    }
-
-    public void 置颜色(Object $颜色) {
-        setProgressTintList(视图.创建单颜色列表(主题.基本色()));
-        setIndeterminateTintList(视图.创建单颜色列表(主题.基本色()));
-    }
 
     @Override
     public void 置布局重力(String $重力) {
-        视图实现.置布局重力(this, $重力);
+        视图实现.置布局重力(this,$重力);
     }
 
     @Override
     public void 置布局权重(float $权重) {
-        视图实现.置布局权重(this, $权重);
+        视图实现.置布局权重(this,$权重);
     }
 
-    //进度条实现
-
-
-    public void 置进度(int $进度) {
-        进度条实现.置进度(this, $进度);
+    public void 置图片(Bitmap $图片) {
+        setImageBitmap($图片);
     }
 
-
-    public void 置二级进度(int $进度) {
-        进度条实现.置二级进度(this, $进度);
+    public void 置图片(byte[] $图片) {
+        置图片(图片.读取($图片));
     }
 
-
-    public void 置进度颜色(Object $颜色) {
-        进度条实现.置进度颜色(this, $颜色);
+    public void 置图片(InputStream $图片) {
+        置图片(图片.读取($图片));
     }
 
-
-    public int 取进度() {
-        return 进度条实现.取进度(this);
+    public void 置图片(String $地址) {
+        置图片(图片.读取($地址));
     }
 
-
-    public int 取二级进度() {
-        return 进度条实现.取二级进度(this);
+    public void 保存到(String $地址) {
+        图片.保存(图片.读取((BitmapDrawable)getDrawable()), $地址);
     }
-
-    //视图实现
 
     @Override
     public void 加入到(ViewGroup $布局) {

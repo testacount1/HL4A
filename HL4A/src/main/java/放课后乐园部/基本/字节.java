@@ -8,7 +8,7 @@ public class 字节 {
 
     public static byte[] 读取(String $文件) {
 
-        FileInputStream $输入流 = IO流.输入.文件($文件);
+        InputStream $输入流 = IO流.输入.文件($文件);
 
         byte[] $字节 = 读取($输入流);
 

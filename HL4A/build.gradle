@@ -1,7 +1,9 @@
 apply plugin: 'com.android.library'
-apply plugin: 'android-maven'
 
 android {
+
+    minSdkVersion 21
+    targetSdkVersion 21
     compileSdkVersion 21
     buildToolsVersion "21.1.0"
 
@@ -17,7 +19,6 @@ android {
 }
 
 dependencies {
-//	compile 'com.android.support:appcompat-v7:23.2.1'
     compile fileTree(dir: 'libs')
 }
 

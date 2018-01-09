@@ -13,7 +13,6 @@ import 放课后乐园部.基本.*;
 import 放课后乐园部.视图.*;
 import 放课后乐园部.视图.扩展.*;
 import 放课后乐园部.收集.*;
-import android.support.multidexs.*;
 import 放课后乐园部.资源.布局.*;
 import com.lzy.okgo.*;
 import okhttp3.*;
@@ -24,35 +23,22 @@ public class 启动界面 extends 基本界面 {
     @Override
     public void onCreate(Bundle $数据) {
         super.onCreate($数据);
-        try {
-      
-            打开布局(new 界面_初始化(this));
-            
-            
-
-            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-                new 线程($初始化).启动();
-                return;
-            }
-
-            按键按下事件 = new 通用方法() {
-                @Override
-                public Object 调用(Object[] $参数) {
-                    return null;
-                }
-            };
-
-            getWindow().addFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
-            if (权限.检查所有() == true) {
-                new 线程($初始化).启动();
-            }
-			else {
-                权限.请求所有(this);
-            }
-
+        打开布局(new 界面_初始化(this));
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            new 线程($初始化).启动();
+            return;
         }
-		catch (Exception $错误) {
-            错误.保存($错误);
+        按键按下事件 = new 通用方法() {
+            @Override
+            public Object 调用(Object[] $参数) {
+                return null;
+            }
+        };
+        //getWindow().addFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+        if (权限.检查所有() == true) {
+            new 线程($初始化).启动();
+        } else {
+            权限.请求所有(this);
         }
     }
 
@@ -66,14 +52,8 @@ public class 启动界面 extends 基本界面 {
                 解压.全部(文件.取安装包位置(), "@");
                 设置.保存("APK散列", $当前);
             }
-            MultiDex.install(启动界面.this);
-            环境.读取().已初始化 = true;
-            OkHttpClient.Builder $工厂 = new OkHttpClient.Builder();
-            $工厂.connectTimeout(1,TimeUnit.SECONDS);
-            OkGo.getInstance().init(环境.读取())
-                .setOkHttpClient($工厂.build());
-			初始化成功事件();
-			结束();
+			//初始化成功事件();
+			//结束();
             return null;
         }
     };

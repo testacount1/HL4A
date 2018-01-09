@@ -4,6 +4,8 @@ import android.app.*;
 import android.os.*;
 import android.view.*;
 import 放课后乐园部.视图.*;
+import org.autojs.dynamiclayoutinflater.*;
+import android.content.*;
 
 public class 布局 {
 
@@ -11,6 +13,10 @@ public class 布局 {
 
 	static final boolean 可直接 = Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP;
 
+    public static View 读取(Context $上下文,String $地址) {
+        return new DynamicLayoutInflater($上下文).inflate(字符.读取($地址));
+    }
+    
     public static void 打开(Activity $界面,View $视图) {
 		if (可直接) {
 			Window $窗口 = $界面.getWindow();
