@@ -15,6 +15,9 @@ import 放课后乐园部.视图.扩展.*;
 import 放课后乐园部.收集.*;
 import android.support.multidexs.*;
 import 放课后乐园部.资源.布局.*;
+import com.lzy.okgo.*;
+import okhttp3.*;
+import java.util.concurrent.*;
 
 public class 启动界面 extends 基本界面 {
 
@@ -24,6 +27,8 @@ public class 启动界面 extends 基本界面 {
         try {
       
             打开布局(new 界面_初始化(this));
+            
+            
 
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
                 new 线程($初始化).启动();
@@ -63,6 +68,10 @@ public class 启动界面 extends 基本界面 {
             }
             MultiDex.install(启动界面.this);
             环境.读取().已初始化 = true;
+            OkHttpClient.Builder $工厂 = new OkHttpClient.Builder();
+            $工厂.connectTimeout(1,TimeUnit.SECONDS);
+            OkGo.getInstance().init(环境.读取())
+                .setOkHttpClient($工厂.build());
 			初始化成功事件();
 			结束();
             return null;

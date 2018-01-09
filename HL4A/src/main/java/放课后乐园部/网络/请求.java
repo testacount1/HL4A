@@ -30,6 +30,11 @@ public class 请求 {
         return this;
     }
     
+    public 请求 置缓存超时(int $时间) {
+        请求.cacheTime($时间);
+        return this;
+    }
+    
     public 请求 置缓存模式(String $模式) {
         switch ($模式) {
             default:

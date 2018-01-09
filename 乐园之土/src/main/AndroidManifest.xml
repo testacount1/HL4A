@@ -36,6 +36,10 @@
         <service android:name =".MusicService" />
 
 		<activity  android:name="h.ide.activity.MainActivity" />
+        <activity  android:name="h.ide.activity.ProjActivity" />
+        <activity  android:name="h.ide.activity.EditActivity" />
+            
+        <activity  android:name="h.kl.activity.ManageActivity" />
 
     </application>
 

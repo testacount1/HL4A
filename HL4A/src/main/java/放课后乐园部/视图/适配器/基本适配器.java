@@ -9,8 +9,8 @@ import 放课后乐园部.基本.*;
 
 public abstract class 基本适配器 extends BaseAdapter {
 
-    Context 上下文;
-    集合 数据;
+    public Context 上下文;
+    public 集合 数据;
     
     public 基本适配器(Context $上下文,List $数据) {
         上下文 = $上下文;
@@ -39,6 +39,14 @@ public abstract class 基本适配器 extends BaseAdapter {
         }
         $视图 = 处理($视图,(哈希表)数据.读取($键值));
         return $视图;
+    }
+    
+    public void 发送更新事件() {
+        notifyDataSetChanged();
+    }
+    
+    public void 发送重绘事件() {
+        notifyDataSetInvalidated();
     }
     
     public abstract List 转换(List $数据);

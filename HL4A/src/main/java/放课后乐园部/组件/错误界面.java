@@ -12,7 +12,7 @@ public class 错误界面 extends 基本界面 {
     @Override
     public void onCreate(Bundle $数据) {
         super.onCreate($数据);
-        try {
+       
         按键按下事件 = new 通用方法() {
             @Override
             public Object 调用(Object[] $参数) {
@@ -71,9 +71,6 @@ public class 错误界面 extends 基本界面 {
 		$文本.置文本(错误内容);
 		$文本.加入到($布局);
 
-}catch(Exception $错误) {
-    错误.保存($错误);
-}
 
     }
 

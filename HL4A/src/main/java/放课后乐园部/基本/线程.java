@@ -39,12 +39,12 @@ public class 线程 extends Thread {
         start();
     }
 
-    public void 停止() {
-        stop();
+    public void 暂停() {
+        suspend();
     }
 
-    public void 让步() {
-        yield();
+    public void 重启() {
+        resume();
     }
     
     public static void 暂停(long $毫秒) {

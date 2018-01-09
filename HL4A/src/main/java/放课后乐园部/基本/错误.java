@@ -159,17 +159,22 @@ public class 错误 extends RuntimeException {
         }
     }
 
-    public static void 跳转(Throwable $错误) {
-        保存($错误);
-        try {
-            环境.读取().结束界面($错误);
-            Intent $意图 = new Intent(环境.读取(), 反射.取类(应用.取包名() + ".ErrorActivity"));
-            $意图.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            $意图.putExtra("错误", 取整个错误($错误));
-            环境.读取().startActivity($意图);
-        } catch (Exception $新错误) {
-            结束($新错误);
+    public static void 默认(Throwable $错误) {
+        if ($错误 instanceof 错误 && !(((错误)$错误).代理错误 instanceof RuntimeException)) {
+            默认(((错误)$错误).代理错误);
+        } else if (!($错误 instanceof RuntimeException)) {
+          错误.保存($错误);
+          环境.读取().结束();
+          System.exit(1);
         }
+    }
+
+    public static void 跳转(Throwable $错误) {
+        环境.读取().结束界面($错误);
+        Intent $意图 = new Intent(环境.读取(), 反射.取类(应用.取包名() + ".ErrorActivity"));
+        $意图.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        $意图.putExtra("错误", 取整个错误($错误));
+        环境.读取().startActivity($意图);
     }
 
     public static void 普通(String $错误内容) {

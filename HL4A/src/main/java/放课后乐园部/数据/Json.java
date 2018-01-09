@@ -26,6 +26,10 @@ public class Json {
         return JSON.toJSONString($表);
     }
     
+    public static Object 解析类(String $内容,Class<?> $类) {
+        return JSON.parseObject($内容,$类);
+    }
+    
     public static 哈希表 处理(JSONObject $对象) {
        哈希表 $返回 = new 哈希表();
        for (Map.Entry<String,Object>$单个 :$对象.entrySet()) {

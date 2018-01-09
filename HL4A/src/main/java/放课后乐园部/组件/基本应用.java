@@ -25,7 +25,7 @@ public class 基本应用 extends Application {
     public 通用方法 应用出错事件 = new 通用方法() {
         @Override
         public Object 调用(Object[] $参数) {
-            错误.跳转((Exception)$参数[1]);
+            错误.默认((Exception)$参数[1]);
             return null;
         }
     };
