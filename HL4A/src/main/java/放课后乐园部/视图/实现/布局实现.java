@@ -32,13 +32,7 @@ public class 布局实现 {
     // addView
 
     public static void 加入子元素(ViewGroup $视图,View $子元素) {
-        if ($子元素 instanceof 基本视图)
-            加入子元素($视图, (基本视图)$子元素);
-        else 视图实现.加入到($子元素, $视图);
-    }
-
-    public static void 加入子元素(ViewGroup $视图,基本视图 $子元素) {
-        $子元素.加入到($视图);
+        $视图.addView($子元素);
     }
 
     public static View 取子元素(ViewGroup $视图,Object $标签) {

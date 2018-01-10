@@ -16,6 +16,14 @@ public class 进度条 extends ProgressBar implements 基本视图 {
         this($上下文,android.R.attr.progressBarStyleHorizontal);
     }
     
+    
+    
+    public 进度条(Context $上下文,ViewGroup $父视图) {
+        this($上下文);
+        加入到($父视图);
+    }
+    
+    
     public 进度条(Context $上下文,int $主题) {
         super($上下文, null, $主题);
         视图实现.初始化控件(this);

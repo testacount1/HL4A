@@ -9,7 +9,7 @@ public class ProjActivity extends 基本界面 {
     @Override
     public void onCreate(Bundle $数据) {
         super.onCreate($数据);
-        打开布局(new 布局_工程(this));
+        打开布局(new 布局_新建工程(this));
     }
     
     

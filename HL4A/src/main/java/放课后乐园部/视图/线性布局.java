@@ -8,7 +8,7 @@ import 放课后乐园部.事件.*;
 import 放课后乐园部.视图.实现.*;
 import 放课后乐园部.基本.*;
 
-public class 线性布局 extends LinearLayout implements 基本视图 {
+public class 线性布局 extends LinearLayout implements 基本布局 {
 
     public 线性布局(Context $上下文) {
         super($上下文);
@@ -17,6 +17,13 @@ public class 线性布局 extends LinearLayout implements 基本视图 {
         置高度("最大");
         置方向("垂直");
     }
+    
+    public 线性布局(Context $上下文,ViewGroup $父视图) {
+        this($上下文);
+        加入到($父视图);
+    }
+    
+    
 
     @Override
     public void 置布局重力(String $重力) {
@@ -50,18 +57,22 @@ public class 线性布局 extends LinearLayout implements 基本视图 {
         布局实现.置方向(this, $方向);
     }
 
+    @Override
     public void 加入子元素(View $子元素) {
         布局实现.加入子元素(this, $子元素);
     }
     
+    @Override
     public View 取子元素(Object $标签) {
         return 布局实现.取子元素(this, $标签);
     }
     
+    @Override
     public View 取子元素(int $键值) {
         return 布局实现.取子元素(this, $键值);
     }
     
+    @Override
     public View[] 取所有子元素() {
         return 布局实现.取所有子元素(this);
     }

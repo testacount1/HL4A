@@ -26,6 +26,11 @@ public class 浏览器 extends WebView implements 基本视图 {
         setWebViewClient(new 浏览器实例());
     }
     
+    public 浏览器(Context $上下文,ViewGroup $父视图) {
+        this($上下文);
+        加入到($父视图);
+    }
+    
 
     @Override
     public void 置布局重力(String $重力) {

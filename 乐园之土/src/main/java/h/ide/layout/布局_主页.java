@@ -14,8 +14,10 @@ import 放课后乐园部.基本.*;
 import h.ide.adapter.*;
 import 放课后乐园部.组件.*;
 import h.kl.activity.*;
+import android.view.*;
 
 public class 布局_主页 extends 布局_基本界面 {
+
 
     public 下拉刷新布局 布局;
 	public 列表视图 列表;

@@ -13,6 +13,12 @@ public class 拖动条 extends SeekBar implements 基本视图 {
         super($上下文);
     }
     
+    public 拖动条(Context $上下文,ViewGroup $父视图) {
+        this($上下文);
+        加入到($父视图);
+    }
+    
+    
     @Override
     public void 置布局重力(String $重力) {
         视图实现.置布局重力(this,$重力);

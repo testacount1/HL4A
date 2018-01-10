@@ -12,8 +12,20 @@ import 放课后乐园部.视图.事件.*;
 import 放课后乐园部.视图.实现.*;
 import 放课后乐园部.收集.*;
 
-public class 代码框 extends FreeScrollingTextField  {
+public class 代码框 extends FreeScrollingTextField implements 基本视图  {
 
+    @Override
+    public void 置布局重力(String $重力) {
+        视图实现.置布局重力(this,$重力);
+    }
+
+    @Override
+    public void 置布局权重(float $权重) {
+        视图实现.置布局权重(this,$权重);
+    }
+    
+
+    
     private boolean _isWordWrap;
     private Context mContext;
     private int _index;
@@ -37,6 +49,11 @@ public class 代码框 extends FreeScrollingTextField  {
 
         
 
+    }
+    
+    public 代码框(Context $上下文,ViewGroup $父视图) {
+        this($上下文);
+        加入到($父视图);
     }
 
     public void 置代码选中事件(通用方法 $方法) {

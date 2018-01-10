@@ -9,7 +9,18 @@ import 放课后乐园部.视图.实现.*;
 import 放课后乐园部.基本.*;
 import 放课后乐园部.视图.事件.*;
 
-public class 下拉刷新布局 extends SwipeRefreshLayout implements 基本视图 {
+public class 下拉刷新布局 extends SwipeRefreshLayout implements 基本布局 {
+
+    @Override
+    public View 取子元素(Object $标签) {
+        return 布局实现.取子元素(this,$标签);
+    }
+
+    @Override
+    public View 取子元素(int $键值) {
+        return 布局实现.取子元素(this,$键值);
+    }
+
 
     public 下拉刷新布局(Context $上下文) {
         super($上下文);
@@ -17,6 +28,10 @@ public class 下拉刷新布局 extends SwipeRefreshLayout implements 基本视�
         置圆圈颜色(主题.基本色());
     }
     
+    public 下拉刷新布局(Context $上下文,ViewGroup $父视图) {
+        this($上下文);
+        加入到($父视图);
+    }
 
     public void 置刷新状态(boolean $刷新) {
         setRefreshing($刷新);
@@ -44,14 +59,6 @@ public class 下拉刷新布局 extends SwipeRefreshLayout implements 基本视�
         布局实现.加入子元素(this, $子元素);
     }
 
-
-    public View 取子元素从标签(Object $标签) {
-        return 布局实现.取子元素(this, $标签);
-    }
-
-    public View 取子元素从键值(int $键值) {
-        return 布局实现.取子元素(this, $键值);
-    }
 
     public View[] 取所有子元素() {
         return 布局实现.取所有子元素(this);

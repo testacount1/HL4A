@@ -8,7 +8,7 @@ import 放课后乐园部.事件.*;
 
 public class 弹出菜单 extends PopupMenu {
     
-    Menu 菜单;
+    public Menu 菜单;
     
     public 弹出菜单(View $视图) {
         super($视图.getContext(),$视图);

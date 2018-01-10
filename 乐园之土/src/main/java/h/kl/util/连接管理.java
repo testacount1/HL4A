@@ -14,12 +14,12 @@ public class 连接管理 {
 
     static int 数量;
     static String 地址;
-    static 文本控件 状态;
-    static 文本控件 成功;
+    static 文本视图 状态;
+    static 文本视图 成功;
     
     static 通用方法 停止;
 
-    public static void 初始化(int $数量,String $地址,文本控件 $状态,文本控件 $成功,通用方法 $停止) {
+    public static void 初始化(int $数量,String $地址,文本视图 $状态,文本视图 $成功,通用方法 $停止) {
         线程池 = Executors.newFixedThreadPool($数量);
         数量 = $数量;
         地址 = $地址;

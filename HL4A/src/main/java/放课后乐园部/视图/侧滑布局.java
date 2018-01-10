@@ -8,13 +8,18 @@ import android.view.ViewGroup.*;
 import 放课后乐园部.事件.*;
 import 放课后乐园部.视图.实现.*;
 
-public class 侧滑布局 extends DrawerLayout implements 基本视图 {
+public class 侧滑布局 extends DrawerLayout implements 基本布局 {
 
+    
     public 侧滑布局(Context $上下文) {
         super($上下文);
         setLayoutParams(new MarginLayoutParams(-1,-1));
     }
     
+    public 侧滑布局(Context $上下文,ViewGroup $父视图) {
+        this($上下文);
+        加入到($父视图);
+    }
 
     @Override
     public void 置布局重力(String $重力) {
@@ -50,19 +55,22 @@ public class 侧滑布局 extends DrawerLayout implements 基本视图 {
         return isDrawerOpen($视图);
     }
 
+    @Override
     public void 加入子元素(View $子元素) {
         布局实现.加入子元素(this, $子元素);
     }
     
-    
-    public View 取子元素从标签(Object $标签) {
+    @Override
+    public View 取子元素(Object $标签) {
         return 布局实现.取子元素(this, $标签);
     }
 
-    public View 取子元素从键值(int $键值) {
+    @Override
+    public View 取子元素(int $键值) {
         return 布局实现.取子元素(this, $键值);
     }
 
+    @Override
     public View[] 取所有子元素() {
         return 布局实现.取所有子元素(this);
     }

@@ -2,24 +2,23 @@ package 放课后乐园部.视图;
 
 import android.app.*;
 import android.content.*;
+import android.graphics.*;
 import android.view.*;
 import android.widget.*;
 import 放课后乐园部.事件.*;
-import 放课后乐园部.基本.*;
 import 放课后乐园部.视图.实现.*;
-import android.net.*;
-import java.net.*;
 
-public class 播放器控件 extends VideoView implements 基本视图 {
+public class 开关视图 extends Switch implements 基本视图 {
 
-    MediaController 控制器;
-    String 视频地址;
-
-    public 播放器控件(Context $上下文) {
+    
+    public 开关视图(Context $上下文) {
         super($上下文);
-        控制器 = new MediaController($上下文);
-        setMediaController(控制器);
         视图实现.初始化控件(this);
+    }
+    
+    public 开关视图(Context $上下文,ViewGroup $父视图) {
+        this($上下文);
+        加入到($父视图);
     }
     
 
@@ -33,64 +32,128 @@ public class 播放器控件 extends VideoView implements 基本视图 {
         视图实现.置布局权重(this,$权重);
     }
     
-    public void 开始() {
-        置播放状态("开始");
-    }
-    
-    public void 暂停() {
-        置播放状态("暂停");
-    }
-    
-    public void 停止() {
-        置播放状态("停止");
-    }
-    
-    
-    public void 置播放状态(String $状态) {
-        
-        switch ($状态) {
-            case "开始":start();break;
-            case "暂停":pause();break;
-            case "倒带":
-            break;
-        }
-        
-        
+    public void 置打开状态(boolean $是否打开) {
+        setSelected($是否打开);
     }
 
-    public void 置视频地址(String $地址) {
-        if (文件.是文件($地址)) {
-            视频地址 = 文件.检查地址($地址);
-            setVideoPath(视频地址);
-        } else if (字符.以开始($地址, "http")) {
-            视频地址 = $地址;
-            setVideoURI(Uri.parse(视频地址));
-        }
+    public void 打开() {
+        置打开状态(true);
     }
 
-    public String 取视频地址() {
-        return 视频地址;
+    public void 关闭() {
+        置打开状态(false);
     }
-    
-    public int 取视频长度() {
-        return getDuration();
+
+    public boolean 取打开状态() {
+        return isSelected();
     }
-    
-    public int 取播放位置() {
-        return getCurrentPosition();
+
+    public String 取开启文本() {
+        return getTextOn().toString();
     }
-    
-    public void 置播放位置(int $位置) {
-        seekTo($位置);
+
+    public void 置开启文本(String $文本) {
+        setTextOn($文本);
     }
-    
-    public boolean 是正在播放() {
-        return isPlaying();
+
+    public String 取关闭文本() {
+        return getTextOff().toString();
     }
-    
-    public void 重新开始() {
-        resume();
+
+    public void 置关闭文本(String $文本) {
+        setTextOff($文本);
     }
+
+    public void 置文本(String $文本) {
+        文本实现.置文本(this, $文本);
+    }
+
+
+    public void 置HTML文本(String $HTML) {
+        文本实现.置HTML文本(this, $HTML);
+    }
+
+
+    public String 取文本() {
+        return 文本实现.取文本(this);
+    }
+
+
+    public void 置文本大小(Object $大小) {
+        文本实现.置文本大小(this, $大小);
+    }
+
+
+    public void 置文本颜色(Object $颜色) {
+        文本实现.置文本颜色(this, $颜色);
+    }
+
+
+    public void 置文本字体(String $地址) {
+        文本实现.置文本字体(this, $地址);
+    }
+
+
+    public void 置文本字体(Typeface $字体) {
+        文本实现.置文本字体(this, $字体);
+    }
+
+
+    public void 置文本重力(String $重力) {
+        文本实现.置文本重力(this, $重力);
+    }
+
+
+    public void 置文本显示在同一行() {
+        文本实现.置文本显示在同一行(this);
+
+    }
+
+
+    public void 置文本显示在同一行(Boolean $是否) {
+        文本实现.置文本显示在同一行(this, $是否);
+    }
+
+
+    public void 置行数(int $行数) {
+        文本实现.置行数(this, $行数);
+    }
+
+
+    public void 置最小行数(int $行数) {
+        文本实现.置最小行数(this, $行数);
+    }
+
+
+    public void 置最大行数(int $行数) {
+        文本实现.置最大行数(this, $行数);
+    }
+
+
+    public void 置链接可点击() {
+        文本实现.置链接可点击(this);
+    }
+
+
+    public void 置链接可点击(Boolean $是否) {
+        文本实现.置链接可点击(this, $是否);
+    }
+
+
+    public void 置链接颜色(Object $颜色) {
+        文本实现.置链接颜色(this, $颜色);
+    }
+
+
+    public void 置文本改变事件(通用方法 $事件) {
+        文本实现.置文本改变事件(this, $事件);
+    }
+
+
+    public void 置文本改变事件(通用方法 $改变前,通用方法 $已改变,通用方法 $改变后) {
+        文本实现.置文本改变事件(this, $改变前, $已改变, $改变后);
+    }
+
 
     @Override
     public void 加入到(ViewGroup $布局) {
@@ -231,6 +294,6 @@ public class 播放器控件 extends VideoView implements 基本视图 {
     public void 置背景颜色(Object $颜色) {
         视图实现.置背景颜色(this, $颜色);
     }
-
+    
 
 }

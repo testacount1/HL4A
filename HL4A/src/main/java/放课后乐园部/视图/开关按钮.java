@@ -10,9 +10,15 @@ import 放课后乐园部.视图.实现.*;
 
 public class 开关按钮 extends ToggleButton implements 基本视图 {
     
+    
     public 开关按钮(Context $上下文) {
         super($上下文);
         视图实现.初始化控件(this);
+    }
+    
+    public 开关按钮(Context $上下文,ViewGroup $父视图) {
+        this($上下文);
+        加入到($父视图);
     }
     
     public void 置打开状态(boolean $是否打开) {

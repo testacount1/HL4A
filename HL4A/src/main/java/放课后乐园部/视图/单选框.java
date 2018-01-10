@@ -10,11 +10,16 @@ import 放课后乐园部.视图.实现.*;
 
 public class 单选框 extends RadioButton implements 基本视图 {
     
+    
     public 单选框(Context $上下文) {
         super($上下文);
         视图实现.初始化控件(this);
     }
     
+    public 单选框(Context $上下文,ViewGroup $父视图) {
+        this($上下文);
+        加入到($父视图);
+    }
 
     @Override
     public void 置布局重力(String $重力) {

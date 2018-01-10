@@ -20,6 +20,12 @@ public class 按钮 extends Button implements 基本视图 {
         置背景(绘画.主题());
         置文本颜色(颜色.白色);
     }
+    
+    public 按钮(Context $上下文,ViewGroup $父视图) {
+        this($上下文);
+        加入到($父视图);
+    }
+    
 
     @Override
     public void 置布局重力(String $重力) {

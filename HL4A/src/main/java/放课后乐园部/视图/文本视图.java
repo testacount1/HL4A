@@ -9,16 +9,21 @@ import 放课后乐园部.事件.*;
 import 放课后乐园部.视图.实现.*;
 import 放课后乐园部.基本.主题;
 
-public class 文本控件 extends TextView implements 基本视图 {
+public class 文本视图 extends TextView implements 基本视图 {
 
-    public 文本控件(Context $上下文) {
+    public 文本视图(Context $上下文) {
         super($上下文);
         视图实现.初始化控件(this);
         置文本大小(主题.文本大小());
         置文本颜色(主题.基本色());
     }
     
+    public 文本视图(Context $上下文,ViewGroup $父视图) {
+        this($上下文);
+        加入到($父视图);
+    }
 
+    
     @Override
     public void 置布局重力(String $重力) {
         视图实现.置布局重力(this,$重力);

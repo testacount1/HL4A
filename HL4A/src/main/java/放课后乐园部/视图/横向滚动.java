@@ -7,12 +7,17 @@ import android.widget.*;
 import 放课后乐园部.事件.*;
 import 放课后乐园部.视图.实现.*;
 
-public class 横向滚动 extends HorizontalScrollView implements 基本视图 {
+public class 横向滚动 extends HorizontalScrollView implements 基本布局 {
 
     public 横向滚动(Context $上下文) {
         super($上下文);
         视图实现.初始化控件(this);
         置宽度("最大");
+    }
+    
+    public 横向滚动(Context $上下文,ViewGroup $父视图) {
+        this($上下文);
+        加入到($父视图);
     }
     
 
@@ -26,18 +31,22 @@ public class 横向滚动 extends HorizontalScrollView implements 基本视图 {
         视图实现.置布局权重(this,$权重);
     }
     
+    @Override
     public void 加入子元素(View $子元素) {
         布局实现.加入子元素(this, $子元素);
     }
 
+    @Override
     public View 取子元素(Object $标签) {
         return 布局实现.取子元素(this, $标签);
     }
 
+    @Override
     public View 取子元素(int $键值) {
         return 布局实现.取子元素(this, $键值);
     }
 
+    @Override
     public View[] 取所有子元素() {
         return 布局实现.取所有子元素(this);
     }

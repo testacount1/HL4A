@@ -13,11 +13,16 @@ import 放课后乐园部.基本.*;
 
 public class 图片视图 extends ImageView implements 基本视图 {
 
+    
     public 图片视图(Context $上下文) {
         super($上下文);
         视图实现.初始化控件(this);
     }
     
+    public 图片视图(Context $上下文,ViewGroup $父视图) {
+        this($上下文);
+        加入到($父视图);
+    }
 
     @Override
     public void 置布局重力(String $重力) {

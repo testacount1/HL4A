@@ -30,7 +30,11 @@ public final class 视图实现 {
     // AddView
 
     public static void 加入到(View $视图,ViewGroup $布局) {
-        $布局.addView($视图);
+        if ($布局 instanceof 基本布局) {
+            ((基本布局)$布局).加入子元素($视图);
+        } else {
+            $布局.addView($视图);
+        }
     }
 
     //setContentView

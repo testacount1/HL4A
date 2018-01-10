@@ -15,7 +15,7 @@ public class 弹窗 {
     弹窗() {}
 
     public static Toast 提示对象;
-    public static 文本控件 文本对象;
+    public static 文本视图 文本对象;
 
     public static void 初始化(Context $环境) {
         提示对象 = Toast.makeText($环境, "", Toast.LENGTH_SHORT);

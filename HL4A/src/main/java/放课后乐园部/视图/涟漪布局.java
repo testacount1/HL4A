@@ -12,9 +12,14 @@ import 放课后乐园部.基本.*;
 import 放课后乐园部.视图.实现.*;
 
 
-public class 涟漪布局 extends RelativeLayout implements 基本视图 {
+public class 涟漪布局 extends RelativeLayout implements 基本布局 {
 
-
+    public 涟漪布局(Context $上下文,ViewGroup $父视图) {
+        this($上下文);
+        加入到($父视图);
+    }
+    
+    
     @Override
     public void 置布局重力(String $重力) {
         视图实现.置布局重力(this,$重力);
@@ -101,19 +106,22 @@ public class 涟漪布局 extends RelativeLayout implements 基本视图 {
         this.setClickable(true);
     }
     
-    
+    @Override
     public void 加入子元素(View $子元素) {
         布局实现.加入子元素(this, $子元素);
     }
 
+    @Override
     public View 取子元素(Object $标签) {
         return 布局实现.取子元素(this, $标签);
     }
 
+    @Override
     public View 取子元素(int $键值) {
         return 布局实现.取子元素(this, $键值);
     }
 
+    @Override
     public View[] 取所有子元素() {
         return 布局实现.取所有子元素(this);
     }
@@ -287,7 +295,8 @@ public class 涟漪布局 extends RelativeLayout implements 基本视图 {
     public void 置涟漪类型(String $类型) {
         switch ($类型) {
             case "默认":rippleType = 0;break;
-            case "矩形":rippleType = 3;break;
+            case "扩散":rippleType = 1;break;
+            case "矩形":rippleType = 2;break;
 
         }
     }

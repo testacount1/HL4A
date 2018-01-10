@@ -10,11 +10,19 @@ import 放课后乐园部.视图.适配器.*;
 
 public class 列表视图 extends ListView implements 基本视图 {
     
+    
     public 列表视图(Context $上下文) {
         super($上下文);
         视图实现.初始化控件(this);
         置宽度("最大");
         置高度("最大");
+    }
+    
+    
+    
+    public 列表视图(Context $上下文,ViewGroup $父视图) {
+        this($上下文);
+        加入到($父视图);
     }
 
     @Override
