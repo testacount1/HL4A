@@ -7,6 +7,9 @@ import android.view.*;
 import android.widget.*;
 import 放课后乐园部.事件.*;
 import 放课后乐园部.视图.实现.*;
+import 放课后乐园部.基本.*;
+import android.graphics.drawable.*;
+import java.lang.reflect.*;
 
 public class 编辑框 extends EditText implements 基本视图 {
 
@@ -15,11 +18,30 @@ public class 编辑框 extends EditText implements 基本视图 {
         super($上下文);
         视图实现.初始化控件(this);
         置宽度("最大");
+        置文本颜色(主题.基本色());
+        置横杠颜色(主题.基本色());
+        置指针颜色(主题.基本色());
     }
     
     public 编辑框(Context $上下文,ViewGroup $父视图) {
         this($上下文);
         加入到($父视图);
+    }
+    
+    public void 置横杠颜色(Object $颜色) {
+        ((InsetDrawable)getBackground()).setTintList(视图.创建单颜色列表($颜色));
+    }
+    
+    public void 置指针颜色(Object $颜色) {
+        Field $指针ID变量 = 反射.取变量(this,"mCursorDrawableRes");
+        int $资源ID = 反射.读变量($指针ID变量,this);
+        Field $编辑器变量 = 反射.取变量(this,"mEditor");
+        Object $编辑器 = 反射.读变量($编辑器变量,this);
+        Field $绘画对象 = 反射.取变量($编辑器,"mCursorDrawable");
+        Drawable[] $绘画组 = new Drawable[1];
+        $绘画组[0] = getContext().getResources().getDrawable($资源ID);
+        $绘画组[0].setColorFilter(视图.检查颜色($颜色), PorterDuff.Mode.SRC_IN);
+        反射.改变量($绘画对象,$编辑器,$绘画组);
     }
 
     @Override
