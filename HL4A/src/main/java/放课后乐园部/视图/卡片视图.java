@@ -17,8 +17,8 @@ public class 卡片视图 extends CardView implements 基本布局 {
         视图实现.初始化控件(this);
     }
     
-    public 卡片视图(Context $上下文,ViewGroup $父视图) {
-        this($上下文);
+    public 卡片视图(ViewGroup $父视图) {
+        this($父视图.getContext());
         加入到($父视图);
     }
 	

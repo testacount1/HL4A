@@ -8,6 +8,7 @@ import java.io.*;
 import 放课后乐园部.事件.*;
 import 放课后乐园部.基本.*;
 import 放课后乐园部.收集.*;
+import 放课后乐园部.弹窗.*;
 
 public class 基本界面 extends Activity {
 
@@ -198,7 +199,7 @@ public class 基本界面 extends Activity {
                     finish();
                     return true;
                 } else {
-                    弹窗.提示("再按一次返回键退出 ~");
+                    提示.普通("再按一次返回键退出 ~");
                     return false;
                 }
             } else return super.onKeyDown(keyCode, event);

@@ -74,7 +74,7 @@ public class 视图 {
 
     public static Integer 检查大小(Object $大小) {
         if ($大小 == null) return null;
-        if ($大小 instanceof Float) return (Integer) $大小;
+        if ($大小 instanceof Float) return ((Float)$大小).intValue();
         if ($大小 instanceof Integer) return (Integer) $大小;
         if ($大小 instanceof String) {
             switch ((String)$大小) {

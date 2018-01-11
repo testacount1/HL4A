@@ -16,8 +16,8 @@ public class 单选框 extends RadioButton implements 基本视图 {
         视图实现.初始化控件(this);
     }
     
-    public 单选框(Context $上下文,ViewGroup $父视图) {
-        this($上下文);
+    public 单选框(ViewGroup $父视图) {
+        this($父视图.getContext());
         加入到($父视图);
     }
 

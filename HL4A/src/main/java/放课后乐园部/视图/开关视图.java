@@ -16,8 +16,8 @@ public class 开关视图 extends Switch implements 基本视图 {
         视图实现.初始化控件(this);
     }
     
-    public 开关视图(Context $上下文,ViewGroup $父视图) {
-        this($上下文);
+    public 开关视图(ViewGroup $父视图) {
+        this($父视图.getContext());
         加入到($父视图);
     }
     

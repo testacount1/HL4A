@@ -16,8 +16,8 @@ public class 滑动布局 extends PageLayout implements 基本布局 {
         置高度("最大");
     }
     
-    public 滑动布局(Context $上下文,ViewGroup $父视图) {
-        this($上下文);
+    public 滑动布局(ViewGroup $父视图) {
+        this($父视图.getContext());
         加入到($父视图);
     }
     

@@ -2,20 +2,20 @@ package 放课后乐园部.基本;
 
 public class 断言 {
     
-    public static void 为空(Object $对象,String $内容) {
+    public static void 不为空(Object $对象,String $内容) {
         if ($对象 == null) {
             错误.内容($内容);
         }
     }
     
-    public static void 为真(Object $对象,String $内容) {
-        if ($对象 == true) {
+    public static void 不为真(Object $对象,String $内容) {
+        if ($对象 != true) {
             错误.内容($内容);
         }
     }
     
-    public static void 为假(Object $对象,String $内容) {
-        if ($对象 == false) {
+    public static void 不为假(Object $对象,String $内容) {
+        if ($对象 != false) {
             错误.内容($内容);
         }
     }

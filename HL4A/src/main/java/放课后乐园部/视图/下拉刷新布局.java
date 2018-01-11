@@ -28,8 +28,8 @@ public class 下拉刷新布局 extends SwipeRefreshLayout implements 基本布�
         置圆圈颜色(主题.基本色());
     }
     
-    public 下拉刷新布局(Context $上下文,ViewGroup $父视图) {
-        this($上下文);
+    public 下拉刷新布局(ViewGroup $父视图) {
+        this($父视图.getContext());
         加入到($父视图);
     }
 

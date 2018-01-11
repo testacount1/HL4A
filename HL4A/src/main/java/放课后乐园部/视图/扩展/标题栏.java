@@ -1,12 +1,10 @@
 package 放课后乐园部.视图.扩展;
 
-import android.app.*;
 import android.content.*;
 import android.view.*;
 import 放课后乐园部.事件.*;
 import 放课后乐园部.基本.*;
 import 放课后乐园部.视图.*;
-import 放课后乐园部.视图.实现.*;
 
 public class 标题栏 extends 线性布局 {
 
@@ -27,23 +25,25 @@ public class 标题栏 extends 线性布局 {
         置重力("中间垂直");
         置背景颜色(主题.基本色());
 
-        左按钮栏 = new 线性布局(上下文);
+        左按钮栏 = new 线性布局(this);
         左按钮栏.置宽度("自动");
-        左按钮栏.加入到(this);
 
-        标题对象 = new 文本视图(上下文);
+        标题对象 = new 文本视图(this);
 		标题对象.置文本大小(主题.大文本());
 		标题对象.置文本颜色(颜色.白色);
 		标题对象.置左填充("16dp");
         标题对象.setHorizontallyScrolling(true);
-		标题对象.加入到(this);
 
-        右按钮栏 = new 线性布局(上下文);
+        右按钮栏 = new 线性布局(this);
 		右按钮栏.置高度("56dp");
 		右按钮栏.置方向("水平");
 		右按钮栏.置重力("右边");
-		右按钮栏.加入到(this);
 
+    }
+    
+    public 标题栏(ViewGroup $父视图) {
+        this($父视图.getContext());
+        加入到($父视图);
     }
 
     public void 切换() {

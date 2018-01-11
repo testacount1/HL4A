@@ -18,8 +18,8 @@ public class 线性布局 extends LinearLayout implements 基本布局 {
         置方向("垂直");
     }
     
-    public 线性布局(Context $上下文,ViewGroup $父视图) {
-        this($上下文);
+    public 线性布局(ViewGroup $父视图) {
+        this($父视图.getContext());
         加入到($父视图);
     }
     

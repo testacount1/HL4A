@@ -14,8 +14,8 @@ import 放课后乐园部.视图.实现.*;
 
 public class 涟漪布局 extends RelativeLayout implements 基本布局 {
 
-    public 涟漪布局(Context $上下文,ViewGroup $父视图) {
-        this($上下文);
+    public 涟漪布局(ViewGroup $父视图) {
+        this($父视图.getContext());
         加入到($父视图);
     }
     

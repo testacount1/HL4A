@@ -16,8 +16,8 @@ public class 侧滑布局 extends DrawerLayout implements 基本布局 {
         setLayoutParams(new MarginLayoutParams(-1,-1));
     }
     
-    public 侧滑布局(Context $上下文,ViewGroup $父视图) {
-        this($上下文);
+    public 侧滑布局(ViewGroup $父视图) {
+        this($父视图.getContext());
         加入到($父视图);
     }
 

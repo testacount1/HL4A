@@ -15,8 +15,8 @@ public class 横向滚动 extends HorizontalScrollView implements 基本布局 {
         置宽度("最大");
     }
     
-    public 横向滚动(Context $上下文,ViewGroup $父视图) {
-        this($上下文);
+    public 横向滚动(ViewGroup $父视图) {
+        this($父视图.getContext());
         加入到($父视图);
     }
     

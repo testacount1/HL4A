@@ -26,8 +26,8 @@ public class 浏览器 extends WebView implements 基本视图 {
         setWebViewClient(new 浏览器实例());
     }
     
-    public 浏览器(Context $上下文,ViewGroup $父视图) {
-        this($上下文);
+    public 浏览器(ViewGroup $父视图) {
+        this($父视图.getContext());
         加入到($父视图);
     }
     

@@ -5,6 +5,7 @@ import 放课后乐园部.视图.*;
 import 放课后乐园部.收集.*;
 import 放课后乐园部.事件.*;
 import 放课后乐园部.基本.*;
+import android.view.*;
 
 public class 符号栏 extends 横向滚动 {
 
@@ -22,6 +23,11 @@ public class 符号栏 extends 横向滚动 {
 		底层.置方向("水平");
 		底层.置背景(主题.基本色());
 		底层.加入到(this);
+    }
+    
+    public 符号栏(ViewGroup $父视图) {
+        this($父视图.getContext());
+        加入到($父视图);
     }
 
     通用方法 单击 = new 通用方法() {

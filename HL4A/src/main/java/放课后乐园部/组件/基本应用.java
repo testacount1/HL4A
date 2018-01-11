@@ -8,6 +8,7 @@ import java.util.concurrent.*;
 import okhttp3.*;
 import 放课后乐园部.事件.*;
 import 放课后乐园部.基本.*;
+import 放课后乐园部.弹窗.*;
 import 放课后乐园部.收集.*;
 
 public class 基本应用 extends Application {
@@ -31,7 +32,7 @@ public class 基本应用 extends Application {
     public 通用方法 系统输出事件 = new 通用方法() {
         @Override
         public Object 调用(Object[] $参数) {
-            弹窗.提示(字符.分解($参数));
+            提示.普通(字符.分解($参数));
             return null;
         }
     };
@@ -103,7 +104,7 @@ public class 基本应用 extends Application {
         System.setErr(输出打印);
         System.setOut(输出打印);
         环境.设置(this);
-        弹窗.初始化(this);
+        提示.初始化(this);
         签名检验();
         OkHttpClient.Builder $工厂 = new OkHttpClient.Builder();
         $工厂.connectTimeout(2, TimeUnit.SECONDS);
@@ -114,7 +115,7 @@ public class 基本应用 extends Application {
 
     public static void 签名检验() {
         Class $MT = 反射.取类("cc.binmt.signature.PmsHookApplication");
-        if ($MT != null) 弹窗.提示("您可能是盗版应用的受害者！");
+        if ($MT != null) 提示.警告("您可能是盗版应用的受害者！");
     }
 
 }

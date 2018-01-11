@@ -4,6 +4,7 @@ import android.content.*;
 import h.kl.util.*;
 import 放课后乐园部.事件.*;
 import 放课后乐园部.基本.*;
+import 放课后乐园部.弹窗.*;
 import 放课后乐园部.视图.*;
 import 放课后乐园部.资源.布局.*;
 
@@ -43,7 +44,7 @@ public class 布局_管理界面 extends 布局_基本界面 {
         public Object 调用(Object[] $参数) {
            try {
             if ("".equals(地址.取文本())) {
-                弹窗.提示("请输入线程数量");
+                提示.警告("请输入线程数量");
             } else {
                 状态.置文本("正在发送");
                 次数.置文本("正在发送");

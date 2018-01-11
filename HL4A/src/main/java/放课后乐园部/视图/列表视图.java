@@ -20,8 +20,8 @@ public class 列表视图 extends ListView implements 基本视图 {
     
     
     
-    public 列表视图(Context $上下文,ViewGroup $父视图) {
-        this($上下文);
+    public 列表视图(ViewGroup $父视图) {
+        this($父视图.getContext());
         加入到($父视图);
     }
 

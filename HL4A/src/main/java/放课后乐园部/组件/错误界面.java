@@ -1,9 +1,10 @@
 package 放课后乐园部.组件;
 import android.os.*;
+import 放课后乐园部.事件.*;
+import 放课后乐园部.基本.*;
+import 放课后乐园部.弹窗.*;
 import 放课后乐园部.视图.*;
 import 放课后乐园部.视图.扩展.*;
-import 放课后乐园部.基本.*;
-import 放课后乐园部.事件.*;
 
 public class 错误界面 extends 基本界面 {
 
@@ -25,7 +26,7 @@ public class 错误界面 extends 基本界面 {
 		$底层.打开(this);
 
         标题栏 $标题 = new 标题栏(this);
-		$标题.置标题("又崩溃了(ノДＴ)");
+		$标题.置标题("崩溃了(ノДＴ)");
 		$标题.加入到($底层);
 
         $标题.左按钮("图片.返回", new 通用方法() {
@@ -40,7 +41,7 @@ public class 错误界面 extends 基本界面 {
                 @Override
                 public Object 调用(Object[] $参数) {
                     设备.剪切板(错误内容);
-                    弹窗.提示("已复制 ~");
+                    提示.普通("已复制 ~");
                     return null;
                 }
             });
@@ -49,7 +50,7 @@ public class 错误界面 extends 基本界面 {
                 @Override
                 public Object 调用(Object[] $参数) {
                     设备.剪切板(错误内容);
-                    弹窗.提示("已复制 请发送 ~");
+                    提示.普通("已复制 请发送 ~");
                     网络.QQ.作者();
                     return null;
                 }

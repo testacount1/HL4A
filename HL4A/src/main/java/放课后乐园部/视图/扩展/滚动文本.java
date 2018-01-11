@@ -2,6 +2,7 @@ package 放课后乐园部.视图.扩展;
 
 import android.content.*;
 import 放课后乐园部.视图.*;
+import android.view.*;
 
 public class 滚动文本 extends 滚动视图 {
 
@@ -19,6 +20,11 @@ public class 滚动文本 extends 滚动视图 {
         文本.setHorizontallyScrolling(true);
     }
 
+    public 滚动文本(ViewGroup $父视图) {
+        this($父视图.getContext());
+        加入到($父视图);
+    }
+    
     public void 置文本(String $文本) {
         文本.置文本($文本);
     }

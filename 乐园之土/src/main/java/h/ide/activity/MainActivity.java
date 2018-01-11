@@ -19,8 +19,6 @@ public class MainActivity extends 基本界面 {
 	public void onCreate(Bundle $数据) {
 		super.onCreate($数据);
 		打开布局(new 布局_主页(this));
-        new AXML("%a.xml")
-        .保存("%aa.xml");
 	}
     
     

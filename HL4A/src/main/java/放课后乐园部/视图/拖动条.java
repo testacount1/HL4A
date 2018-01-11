@@ -13,8 +13,8 @@ public class 拖动条 extends SeekBar implements 基本视图 {
         super($上下文);
     }
     
-    public 拖动条(Context $上下文,ViewGroup $父视图) {
-        this($上下文);
+    public 拖动条(ViewGroup $父视图) {
+        this($父视图.getContext());
         加入到($父视图);
     }
     

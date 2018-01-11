@@ -7,6 +7,7 @@ import android.view.accessibility.*;
 import java.util.*;
 import 放课后乐园部.组件.*;
 import 放课后乐园部.事件.*;
+import 放课后乐园部.弹窗.*;
 
 public class 辅助 {
 
@@ -21,7 +22,7 @@ public class 辅助 {
     public static boolean 自动() {
         if (!检查()) {
             环境.读取().startActivity(new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
-            弹窗.提示("请开启或重启 " + 应用.取应用名() + " ~\n重新开关后服务仍未运行请重启系统！");
+            提示.普通("请开启或重启 " + 应用.取应用名() + " ~\n重新开关后服务仍未运行请重启系统！");
             return false;
         }
         return true;

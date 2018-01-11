@@ -10,7 +10,14 @@ public class 底层布局 extends 涟漪布局 {
     
     public 底层布局(Context $上下文) {
         super($上下文);
-        底层 = new 线性布局($上下文,this);
+        置涟漪类型("矩形");
+        底层 = new 线性布局($上下文);
+        addView(底层);
+    }
+    
+    public 底层布局(ViewGroup $父视图) {
+        this($父视图.getContext());
+        加入到($父视图);
     }
 
     @Override

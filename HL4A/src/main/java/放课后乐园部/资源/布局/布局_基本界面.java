@@ -11,10 +11,8 @@ public class 布局_基本界面 extends 线性布局 {
 	
 	public 布局_基本界面(Context $上下文) {
 		super($上下文);
-		标题 = new 标题栏($上下文);
-		标题.加入到(this);
-		底层 = new 线性布局($上下文);
-		底层.加入到(this);
+		标题 = new 标题栏(this);
+		底层 = new 线性布局(this);
 	}
 	
 }

@@ -23,8 +23,8 @@ public class 编辑框 extends EditText implements 基本视图 {
         置指针颜色(主题.基本色());
     }
     
-    public 编辑框(Context $上下文,ViewGroup $父视图) {
-        this($上下文);
+    public 编辑框(ViewGroup $父视图) {
+        this($父视图.getContext());
         加入到($父视图);
     }
     

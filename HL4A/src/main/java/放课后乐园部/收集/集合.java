@@ -34,12 +34,27 @@ public class 集合 extends ArrayList implements Serializable,基本收集 {
     public void 遍历(通用方法 $遍历) {
         遍历(this, $遍历);
     }
-
-    public 集合 添加(Object 对象) {
-        add(对象);
+    
+    public 集合 添加(int $键值,Object $对象) {
+        add($键值,$对象);
         return this;
     }
 
+    public 集合 添加(Object $对象) {
+        add($对象);
+        return this;
+    }
+    
+    public 集合 添加(int $键值,Collection $集合) {
+        addAll($键值,$集合);
+        return this;
+    }
+    
+    public 集合 添加(Collection $集合) {
+        addAll($集合);
+        return this;
+    }
+    
     public 集合 删除(int $键值) {
         remove($键值);
         return this;
@@ -69,6 +84,10 @@ public class 集合 extends ArrayList implements Serializable,基本收集 {
     public 集合 清空() {
         clear();
         return this;
+    }
+    
+    public Object[] 到数组() {
+        return toArray();
     }
 
 }
