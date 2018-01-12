@@ -66,13 +66,14 @@ public final class 文件 {
     public static String[] 取文件地址列表(String $目录) {
         if (是目录($目录))
             return 取文件对象($目录).list();
-        return null;
+        return new String[0];
     }
 
     public static File[] 取文件列表(String $目录) {
         if (是目录($目录))
             return 取文件对象($目录).listFiles();
-        return null;
+			else 创建目录($目录);
+        return new File[0];
     }
 
     public static 集合 找文件关键字(String $目录,String $关键字) {
@@ -330,10 +331,6 @@ public final class 文件 {
 
     }
 
-    public static void 存自身文件(String $相对地址,String $输出文件) {
-        解压.单个(取安装包位置(), $相对地址, $输出文件);
-    }
-    
     public static boolean 是空文件(String $地址) {
         if (!文件.是文件($地址)) return true;
         return 取文件对象($地址).length() == 0;

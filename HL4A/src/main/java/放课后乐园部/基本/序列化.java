@@ -10,14 +10,6 @@ public class 序列化 {
     
     public static class 脚本对象 {
         
-        public static void 保存(Lua $环境,String $地址,Object $对象) {
-            序列化.保存($地址,$对象);
-        }
-
-        public static Object 读取(Lua $环境,String $地址) {
-            return 序列化.读取($地址);
-        }
-        
         public static void 保存(JavaScript $环境,String $地址,Object $对象) {
             try {
                 OutputStream $文件流 = IO流.输出.文件($地址);

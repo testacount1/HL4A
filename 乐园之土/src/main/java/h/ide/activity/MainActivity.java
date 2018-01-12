@@ -12,6 +12,8 @@ import h.ide.util.*;
 import h.ide.adapter.*;
 import h.kl.activity.*;
 import 放课后乐园部.编译.*;
+import 放课后乐园部.脚本.*;
+import 放课后乐园部.弹窗.*;
 
 public class MainActivity extends 基本界面 {
 
@@ -20,9 +22,6 @@ public class MainActivity extends 基本界面 {
 		super.onCreate($数据);
 		打开布局(new 布局_主页(this));
 	}
-    
-    
-    
 
 }
 

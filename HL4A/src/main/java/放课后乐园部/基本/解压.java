@@ -3,33 +3,73 @@ package 放课后乐园部.基本;
 import java.io.*;
 import java.util.*;
 import java.util.zip.*;
+import net.lingala.zip4j.core.*;
 import 放课后乐园部.收集.*;
+
+import net.lingala.zip4j.core.ZipFile;
 
 public class 解压 {
 
     解压() {}
 
-    public static void 单个(String $文件,String $地址,String $输出) {
+    public static void 全部(String $文件,String $输出) {
+        全部($文件, $输出, null);
+    }
+
+    public static void 全部(String $文件,String $输出,String $密码) {
         try {
             $文件 = 文件.检查地址($文件);
             $输出 = 文件.检查地址($输出);
-            ZipFile $压缩 = new ZipFile($文件);
+            ZipFile $对象 = new ZipFile($文件);
+            if ($对象.isEncrypted()) {
+                $对象.setPassword($密码);
+            }
+            $对象.extractAll($输出);
+        } catch (Exception $错误) {
+			重试($文件, $输出);
+		}
+    }
+	
+	public static void 单个(String $文件,String $位置,String $输出) {
+		单个($文件,$位置,$输出,null);
+	}
+	
+	public static void 单个(String $文件,String $位置,String $输出,String $密码) {
+		try {
+            $文件 = 文件.检查地址($文件);
+            $输出 = 文件.检查地址($输出);
+            ZipFile $对象 = new ZipFile($文件);
+            if ($对象.isEncrypted()) {
+                $对象.setPassword($密码);
+            }
+            $对象.extractFile($位置,$输出);
+        } catch (Exception $错误) {
+			重试单个($文件,$位置, $输出);
+		}
+	}
+	
+	
+    public static void 重试单个(String $文件,String $地址,String $输出) {
+        try {
+            $文件 = 文件.检查地址($文件);
+            $输出 = 文件.检查地址($输出);
+            java.util.zip.ZipFile $压缩 = new java.util.zip.ZipFile($文件);
             ZipEntry $进入 = $压缩.getEntry($地址);
             字节.保存($输出, 字节.读取($压缩.getInputStream($进入)));
             $压缩.close();
         } catch (Exception $错误) {}
 
     }
+	
 
-    public static 集合 全部(String $文件,String $输出) {
+    public static 集合 重试(String $文件,String $输出) {
         if ($文件 == null || $输出 == null) return null;
         $文件 = 文件.检查地址($文件);
         $输出 = 文件.检查地址($输出);
         try {
             集合 files = new 集合();
-            ZipFile zf = new ZipFile($文件);
+            java.util.zip.ZipFile zf = new java.util.zip.ZipFile($文件);
             Enumeration<?> entries = zf.entries();
-
             while (entries.hasMoreElements()) {
                 ZipEntry entry = ((ZipEntry) entries.nextElement());
                 String entryName = entry.getName();
@@ -41,7 +81,7 @@ public class 解压 {
         return null;
     }
 
-    private static boolean unzipChildFile(String destDir,List files,ZipFile zf,ZipEntry entry,String entryName) throws IOException {
+    private static boolean unzipChildFile(String destDir,List files,java.util.zip.ZipFile zf,ZipEntry entry,String entryName) throws IOException {
         String filePath = destDir + File.separator + entryName;
         File file = new File(filePath);
         files.add(file);
@@ -81,8 +121,8 @@ public class 解压 {
         }
     }
 
-    
 
+	
 
 
 

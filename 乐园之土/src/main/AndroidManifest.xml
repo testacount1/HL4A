@@ -4,7 +4,7 @@
     platformBuildVersionName="6.0-2166767">
     <uses-sdk
         android:minSdkVersion="21"
-        android:targetSdkVersion="21" />
+        android:targetSdkVersion="25" />
     <application
         android:theme="@android:style/Theme.Holo.Light.NoActionBar"
         android:label="@string/name"
@@ -43,7 +43,6 @@
 
     </application>
 
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />

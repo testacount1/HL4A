@@ -2,16 +2,16 @@ apply plugin: 'com.android.application'
 
 android {
 
-    minSdkVersion 21
-    targetSdkVersion 21
     compileSdkVersion 21
     buildToolsVersion "21.1.0"
 
     defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 25
         applicationId "h.android"
         versionCode 62
         versionName "1.6.0"
-		multiDexEnabled true
+		multiDexEnabled false
     }
 }
 dependencies {

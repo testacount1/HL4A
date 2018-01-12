@@ -10,6 +10,7 @@ import android.view.*;
 import java.util.*;
 import 放课后乐园部.收集.*;
 import android.content.pm.PackageManager.*;
+import android.os.*;
 
 public class 应用 {
 
@@ -20,6 +21,10 @@ public class 应用 {
 	public static void 启动(String $包名) {
 		环境.读取().startActivity(环境.读取().getPackageManager().getLaunchIntentForPackage($包名));
 	}
+    
+    public static int 取SDK() {
+        return Build.VERSION.SDK_INT;
+    }
 	
     public static int 取编译SDK() {
         try {
@@ -27,7 +32,7 @@ public class 应用 {
                 应用.取包名(), 0);
             return $信息.applicationInfo.targetSdkVersion;
         } catch (Exception $错误) {}
-        return 23;
+        return 21;
     }
 
     public static String[] 取所有权限() {

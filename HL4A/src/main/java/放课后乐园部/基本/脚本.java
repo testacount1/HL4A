@@ -12,16 +12,11 @@ public class 脚本 {
         switch ($后缀) {
             default:
             case "js":return JS();
-            case "lua":return Lua();
         }
     }
     
     public static JavaScript JS() {
         return new JavaScript();
-    }
-
-    public static Lua Lua() {
-        return new Lua();
     }
 
 }

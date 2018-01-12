@@ -24,10 +24,6 @@ public class 启动界面 extends 基本界面 {
     public void onCreate(Bundle $数据) {
         super.onCreate($数据);
         打开布局(new 界面_初始化(this));
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-            new 线程($初始化).启动();
-            return;
-        }
         按键按下事件 = new 通用方法() {
             @Override
             public Object 调用(Object[] $参数) {
@@ -35,11 +31,9 @@ public class 启动界面 extends 基本界面 {
             }
         };
         //getWindow().addFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
-        if (权限.检查所有() == true) {
+     
             new 线程($初始化).启动();
-        } else {
-            权限.请求所有(this);
-        }
+  
     }
 
     通用方法 $初始化 = new 通用方法() {
@@ -52,7 +46,14 @@ public class 启动界面 extends 基本界面 {
                 解压.全部(文件.取安装包位置(), "@");
                 设置.保存("APK散列", $当前);
             }
-			初始化成功事件();
+            if (Build.VERSION.SDK_INT < 21) {
+                初始化成功事件();
+            } else if(权限.检查所有()){
+                初始化成功事件();
+            } else {
+                权限.请求所有(启动界面.this);
+            }
+			
             return null;
         }
     };
@@ -65,15 +66,12 @@ public class 启动界面 extends 基本界面 {
     @Override
     public void onRequestPermissionsResult(int requestCode,String[] permissions,int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        switch (requestCode) {
-            case 0x38:
-                for (int i = 0; i < permissions.length; i++) {
-                    if (grantResults[i] == PackageManager.PERMISSION_GRANTED)
-                        错误.抛出(new Exception("权限错误 应用无法运行:" + permissions[i]));
-                }
-                new 线程($初始化).启动();
-                break;
+        for (int i = 0; i < permissions.length; i++) {
+            if (grantResults[i] != PackageManager.PERMISSION_GRANTED)
+                错误.普通("\n\n请授权应用使用权限:\n" + permissions[i] + "\n否则程序无法运行。");
         }
+        new 线程($初始化).启动();
+        
     }
 
 }

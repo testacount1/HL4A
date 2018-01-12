@@ -94,9 +94,7 @@ public class 工程适配器 extends 数组适配器 {
     public void 更新工程() {
         数据.清空();
         File[] $所有 = 文件.取文件列表(工程.工程目录);
-
         添加项目("新建工程", null);
-
         for (File $单个 : $所有) {
             if ($单个.isDirectory()) {
                 工程 $工程 =工程.读取($单个.getName());
