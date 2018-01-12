@@ -194,5 +194,4 @@ public class 图片视图 extends ImageView implements 基本视图 {
         视图实现.置背景颜色(this, $颜色);
     }
 
-
 }

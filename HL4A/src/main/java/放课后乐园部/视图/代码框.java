@@ -60,21 +60,17 @@ public class 代码框 extends FreeScrollingTextField implements 基本视图  {
         setOnSelectionChangedListener(new 代码选中($方法));
     }
 
-
     public void 加入到(ViewGroup $布局) {
         视图实现.加入到(this, $布局);
     }
-
 
     public void 打开(Activity $界面) {
         视图实现.打开(this, $界面);
     }
 
-
     public void 置标签(Object $标签) {
         视图实现.置标签(this, $标签);
     }
-
 
     public Object 取标签() {
         return 视图实现.取标签(this);
@@ -84,106 +80,85 @@ public class 代码框 extends FreeScrollingTextField implements 基本视图  {
         视图实现.置单击事件(this, $事件);
     }
 
-
     public void 置长按事件(通用方法 $事件) {
         视图实现.置长按事件(this, $事件);
     }
-
 
     public void 置触摸事件(通用方法 $事件) {
         视图实现.置触摸事件(this, $事件);
     }
 
-
     public void 置宽度(Object $宽度) {
         视图实现.置宽度(this, $宽度);
     }
-
 
     public void 置高度(Object $高度) {
         视图实现.置高度(this, $高度);
     }
 
-
     public void 置状态(String $状态) {
         视图实现.置状态(this, $状态);
     }
-
 
     public String 取状态() {
         return 视图实现.取状态(this);
     }
 
-
     public void 显示() {
         视图实现.显示(this);
     }
-
 
     public void 占位() {
         视图实现.占位(this);
     }
 
-
     public void 隐藏() {
         视图实现.隐藏(this);
     }
-
 
     public void 置边距(Object $边距) {
         视图实现.置边距(this, $边距);
     }
 
-
     public void 置边距(Object $上,Object $下,Object $左,Object $右) {
         视图实现.置边距(this, $上, $下, $左, $右);
     }
-
 
     public void 置上边距(Object $边距) {
         视图实现.置上边距(this, $边距);
     }
 
-
     public void 置下边距(Object $边距) {
         视图实现.置下边距(this, $边距);
     }
-
 
     public void 置左边距(Object $边距) {
         视图实现.置左边距(this, $边距);
     }
 
-
     public void 置右边距(Object $边距) {
         视图实现.置右边距(this, $边距);
     }
-
 
     public void 置填充(Object $填充) {
         视图实现.置填充(this, $填充);
     }
 
-
     public void 置填充(Object $上,Object $下,Object $左,Object $右) {
         视图实现.置填充(this, $上, $下, $左, $右);
     }
-
 
     public void 置上填充(Object $填充) {
         视图实现.置上填充(this, $填充);
     }
 
-
     public void 置下填充(Object $填充) {
         视图实现.置下填充(this, $填充);
     }
 
-
     public void 置左填充(Object $填充) {
         视图实现.置左填充(this, $填充);
     }
-
 
     public void 置右填充(Object $填充) {
         视图实现.置右填充(this, $填充);
@@ -244,11 +219,9 @@ public class 代码框 extends FreeScrollingTextField implements 基本视图  {
         getColorScheme().setColor(ColorScheme.Colorable.COMMENT, color);
     }
 
-
     public void 置背景(Object $背景) {
         置背景颜色($背景);
     }
-
 
     public void 置背景颜色(Object $颜色) {
         getColorScheme().setColor(ColorScheme.Colorable.BACKGROUND, 视图.检查颜色($颜色));
@@ -266,7 +239,6 @@ public class 代码框 extends FreeScrollingTextField implements 基本视图  {
         // TODO: Implement this method
         return  _hDoc.subSequence(getSelectionStart(), getSelectionEnd() - getSelectionStart()).toString();
     }
-
 
     public void 全选() {
         selectAll();
@@ -305,7 +277,6 @@ public class 代码框 extends FreeScrollingTextField implements 基本视图  {
         return super.onKeyShortcut(keyCode, event);
     }
 
-
     public void 置文字包装(boolean enable) {
         _isWordWrap = enable;
         super.setWordWrap(enable);
@@ -338,7 +309,6 @@ public class 代码框 extends FreeScrollingTextField implements 基本视图  {
         else
             _index = index;
     }
-
 
     public void 撤销() {
         DocumentProvider doc = createDocumentProvider();
@@ -382,7 +352,5 @@ public class 代码框 extends FreeScrollingTextField implements 基本视图  {
     public void 保存(String $文件) {
         字符.保存($文件, 取文本());
     }
-
-
 
 }

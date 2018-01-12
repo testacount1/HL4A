@@ -35,7 +35,6 @@ public class 动态图 extends View implements 基本视图 {
     private long mMovieStart;
     private int mCurrentAnimationTime;
 
-
     /**
      * Position for drawing animation frames in the center of the view.
      */
@@ -75,7 +74,6 @@ public class 动态图 extends View implements 基本视图 {
         return 图片地址;
     }
 
-
     public void 播放() {
         if (this.mPaused) {
             this.mPaused = false;
@@ -98,7 +96,6 @@ public class 动态图 extends View implements 基本视图 {
         }
 
     }
-
 
     public boolean 是已经暂停() {
         return this.mPaused;

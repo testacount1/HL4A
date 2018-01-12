@@ -196,5 +196,4 @@ public class 卡片视图 extends CardView implements 基本布局 {
         视图实现.置背景颜色(this, $颜色);
     }
 
-
 }

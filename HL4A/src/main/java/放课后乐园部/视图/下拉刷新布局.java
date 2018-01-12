@@ -5,9 +5,9 @@ import android.content.*;
 import android.support.v4.widget.*;
 import android.view.*;
 import 放课后乐园部.事件.*;
-import 放课后乐园部.视图.实现.*;
 import 放课后乐园部.基本.*;
 import 放课后乐园部.视图.事件.*;
+import 放课后乐园部.视图.实现.*;
 
 public class 下拉刷新布局 extends SwipeRefreshLayout implements 基本布局 {
 
@@ -20,7 +20,6 @@ public class 下拉刷新布局 extends SwipeRefreshLayout implements 基本布�
     public View 取子元素(int $键值) {
         return 布局实现.取子元素(this,$键值);
     }
-
 
     public 下拉刷新布局(Context $上下文) {
         super($上下文);
@@ -58,7 +57,6 @@ public class 下拉刷新布局 extends SwipeRefreshLayout implements 基本布�
     public void 加入子元素(View $子元素) {
         布局实现.加入子元素(this, $子元素);
     }
-
 
     public View[] 取所有子元素() {
         return 布局实现.取所有子元素(this);

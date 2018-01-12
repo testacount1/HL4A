@@ -13,7 +13,6 @@ public class 脚本 {
             default:
             case "js":return JS();
             case "lua":return Lua();
-            case "bsh":return BSH();
         }
     }
     
@@ -23,10 +22,6 @@ public class 脚本 {
 
     public static Lua Lua() {
         return new Lua();
-    }
-
-    public static BeanShell BSH() {
-        return new BeanShell();
     }
 
 }
