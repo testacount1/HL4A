@@ -10,8 +10,9 @@ import 放课后乐园部.事件.*;
 import 放课后乐园部.基本.*;
 import 放课后乐园部.弹窗.*;
 import 放课后乐园部.收集.*;
+import com.morgoo.droidplugin.*;
 
-public class 基本应用 extends Application {
+public class 基本应用 extends PluginApplication {
 
     public 集合 所有界面 = new 集合();
 
@@ -24,7 +25,7 @@ public class 基本应用 extends Application {
     public 错误处理 错误处理 = new 错误处理(new 通用方法() {
             @Override
             public Object 调用(Object[] $参数) {
-                调用方法.安全(错误.应用出错事件,$参数);
+                调用方法.安全(错误.应用出错事件, $参数);
                 return null;
             }
         });

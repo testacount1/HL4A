@@ -6,7 +6,7 @@
         android:minSdkVersion="21"
         android:targetSdkVersion="25" />
     <application
-        android:theme="@android:style/Theme.Holo.Light.NoActionBar"
+        android:theme="@android:style/Theme.Material.Light.NoActionBar"
         android:label="@string/name"
         android:icon="@drawable/icon"
         android:name=".Application"
@@ -35,19 +35,11 @@
         <activity android:name=".ScriptActivity"/>
         <service android:name =".MusicService" />
 
-		<activity  android:name="h.ide.activity.MainActivity" />
+     	<activity  android:name="h.ide.activity.MainActivity" />
         <activity  android:name="h.ide.activity.ProjActivity" />
         <activity  android:name="h.ide.activity.EditActivity" />
-            
         <activity  android:name="h.kl.activity.ManageActivity" />
 
     </application>
-
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
 </manifest>

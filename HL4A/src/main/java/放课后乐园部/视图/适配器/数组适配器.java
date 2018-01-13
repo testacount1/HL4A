@@ -18,6 +18,13 @@ public class 数组适配器 extends 基本适配器 {
         super($上下文,$数据);
     }
 
+	public void 添加(String $项目) {
+		哈希表 $参数 = new 哈希表();
+		$参数.设置("内容",$项目);
+		数据.添加($参数);
+		发送更新事件();
+	}
+	
     @Override
     public List 转换(List $数据) {
         集合 $返回 = new 集合();

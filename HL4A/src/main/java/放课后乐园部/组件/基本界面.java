@@ -126,8 +126,7 @@ public class 基本界面 extends Activity {
     @Override
     public void onCreate(Bundle $数据) {
         super.onCreate($数据);
-        if (Build.VERSION.SDK_INT >= 21)
-            setTheme(android.R.style.Theme_Material_Light_NoActionBar);
+        //setTheme(android.R.style.Theme_Material_Light_NoActionBar);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         环境.读取().所有界面.添加(this);
         L = Looper.getMainLooper();

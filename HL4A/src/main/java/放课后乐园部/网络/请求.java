@@ -15,7 +15,6 @@ public class 请求 {
     String 地址;
 
     public 请求(String $地址) {
-        断言.在主线程("直接访问网络文件:访问网络文件不能在主线程！\n请在线程内访问 ~");
         地址 = $地址;
         置类型("GET");
     }
@@ -122,6 +121,7 @@ public class 请求 {
 
 
     public 资源 同步() {
+		断言.在主线程("同步网络请求:访问网络文件不能在主线程！\n请在线程内访问 ~");
         try {
             okhttp3.Response $资源 =  请求.execute();
             return new 资源($资源);
