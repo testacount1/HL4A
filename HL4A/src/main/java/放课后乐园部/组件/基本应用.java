@@ -12,7 +12,7 @@ import 放课后乐园部.弹窗.*;
 import 放课后乐园部.收集.*;
 import com.morgoo.droidplugin.*;
 
-public class 基本应用 extends PluginApplication {
+public class 基本应用 extends Application {
 
     public 集合 所有界面 = new 集合();
 

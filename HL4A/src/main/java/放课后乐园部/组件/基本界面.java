@@ -74,6 +74,27 @@ public class 基本界面 extends Activity {
             startActivityForResult($意图, $请求码);
 
     }
+	
+	public void 跳转界面(String $类) {
+        跳转界面(null, $类, null);
+    }
+
+    public void 跳转界面(String $类,Object... $数据) {
+        跳转界面(null, $类 , $数据);
+    }
+
+    public void 跳转界面(Integer $请求码,String $类,Object... $数据) {
+
+        Intent $意图 = new Intent(this, 反射.取类($类));
+        if ($数据 != null)
+            $意图.putExtra("数据", $数据);
+        if ($请求码 == null)
+            startActivity($意图);
+        else
+            startActivityForResult($意图, $请求码);
+
+    }
+	
 
     public void 跳转脚本(String $文件) {
         跳转脚本(null, $文件, null);
