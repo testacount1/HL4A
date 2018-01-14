@@ -17,8 +17,8 @@ public class 工程 {
     public static 工程 读取(String $地址) {
 		if (文件.是文件(转换地址($地址))) {
 			工程 $工程 = new 工程();
+			$工程.配置 = $地址;
 			$工程.信息 = (工程信息)Json.解析类(字符.读取(转换地址($地址)), 工程信息.class);
-			//$工程.保存();
 			return $工程;
 		}
 		return null;

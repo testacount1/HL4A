@@ -23,7 +23,7 @@ public class 启动界面 extends 基本界面 {
     @Override
     public void onCreate(Bundle $数据) {
         super.onCreate($数据);
-        打开布局(new 界面_初始化(this));
+        打开布局(new 布局_初始化(this));
         按键按下事件 = new 通用方法() {
             @Override
             public Object 调用(Object[] $参数) {

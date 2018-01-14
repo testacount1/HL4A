@@ -139,9 +139,6 @@ public class 基本界面 extends Activity {
             finish();
     }
     
-    
-    
-
     public Object[] 传入数据;
 
     @Override
@@ -215,7 +212,7 @@ public class 基本界面 extends Activity {
         if (按键按下事件 == null) {
             if (keyCode == KeyEvent.KEYCODE_BACK) {
                 long 上次 = 返回时间;
-                if ((返回时间 = 时间.时间戳()) - 上次 < 2000) {
+                if ((返回时间 = 时间.时间戳()) - 上次 < 2333) {
                     finish();
                     return true;
                 } else {

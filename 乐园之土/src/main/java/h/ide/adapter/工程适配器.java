@@ -44,9 +44,9 @@ public class 工程适配器 extends 数组适配器 {
         public Object 调用(Object[] $参数) {
             String $包名 = 新建工程布局.包名.取文本();
             String $工程名 = 新建工程布局.工程名.取文本();
-			if ($包名 == "") {
+			if ("".equals($包名)) {
 				提示.普通("包名不能为空 ~");
-			} else if ($工程名 == "") {
+			} else if ("".equals($工程名)) {
 				提示.普通("工程名不能为空 ~");
 			} else if (工程.检查($包名)) {
 				提示.普通("包名已存在 ~");
@@ -70,8 +70,7 @@ public class 工程适配器 extends 数组适配器 {
             } else {
                 View $项目 = (View)$参数[1];
                 哈希表 $表 = (哈希表)$项目.getTag();
-                String $地址 = (String)$表.读取("内容");
-                工程信息 $工程 = (工程信息)$表.读取("工程");
+                String $地址 = (String)$表.读取("地址");
                 界面.跳转界面(ProjActivity.class, $地址);
             }
             return null;
@@ -86,7 +85,7 @@ public class 工程适配器 extends 数组适配器 {
             if ($单个.isDirectory()) {
                 工程 $工程 =工程.读取($单个.getName());
                 if ($工程 != null) {
-                    添加项目($工程.信息.工程名, $工程.信息);
+                    添加项目($工程.信息.工程名,$单个.getName());
                 }
             }
         }
@@ -95,10 +94,10 @@ public class 工程适配器 extends 数组适配器 {
     }
 
 
-    void 添加项目(String $内容,工程信息 $工程) {
+    void 添加项目(String $内容,String $地址) {
         哈希表 $添加 = new 哈希表();
         $添加.设置("内容", $内容);
-        $添加.设置("工程", $工程);
+        $添加.设置("地址", $地址);
         数据.添加($添加);
     }
 

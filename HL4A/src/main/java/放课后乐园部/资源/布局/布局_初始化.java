@@ -5,9 +5,9 @@ import 放课后乐园部.基本.*;
 import 放课后乐园部.视图.*;
 import 放课后乐园部.视图.扩展.*;
 
-public class 界面_初始化 extends 布局_基本界面 {
+public class 布局_初始化 extends 布局_基本界面 {
 
-    public 界面_初始化(Context $上下文) {
+    public 布局_初始化(Context $上下文) {
 
         super($上下文);
 

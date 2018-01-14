@@ -11,7 +11,7 @@ public class 提示 {
 
     public static Toast 提示对象;
     public static 文本视图 文本对象;
-    public static float 上次提示;
+    public static long 上次提示;
 
     public static void 初始化(Context $环境) {
         提示对象 = Toast.makeText($环境, "", Toast.LENGTH_SHORT);
@@ -27,11 +27,11 @@ public class 提示 {
                 public Object 调用(Object[] $参数) {
                     Object $文本 = $内容;
                     if ($文本 == null) $文本 = "null";
-					Float 上次 = new Float(上次提示);
-					if (上次 - (上次提示 = 时间.时间戳()) < 233) {
-						文本对象.置文本(文本对象.取文本() + $文本.toString());
+					long 上次 = 上次提示;
+					if ((上次提示 = 时间.时间戳()) - 上次 < 233) {
+						文本对象.置文本(文本对象.取文本() + "\n" + $内容.toString());
 					} else {
-						文本对象.置文本($文本.toString());
+						文本对象.置文本($内容.toString());
 					}
 					上次提示 = 上次;
                     文本对象.置文本颜色(主题.基本色());
@@ -40,13 +40,13 @@ public class 提示 {
                 }
             });
     }
-	
+
 	public static void 普通(final Object $内容) {
-        指定($内容,主题.基本色());
+        指定($内容, 主题.基本色());
     }
 
     public static void 警告(final Object $内容) {
-        指定($内容,颜色.红色[5]);
+        指定($内容, 颜色.红色[5]);
     }
 
 }

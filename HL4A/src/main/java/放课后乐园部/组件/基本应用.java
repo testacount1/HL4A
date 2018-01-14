@@ -10,7 +10,6 @@ import 放课后乐园部.事件.*;
 import 放课后乐园部.基本.*;
 import 放课后乐园部.弹窗.*;
 import 放课后乐园部.收集.*;
-import com.morgoo.droidplugin.*;
 
 public class 基本应用 extends Application {
 
