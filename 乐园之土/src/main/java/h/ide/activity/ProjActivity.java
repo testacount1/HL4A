@@ -10,6 +10,7 @@ import 放课后乐园部.收集.*;
 import 放课后乐园部.组件.*;
 import 放课后乐园部.视图.*;
 import java.lang.reflect.*;
+import java.io.*;
 
 public class ProjActivity extends 基本界面 {
 
@@ -17,6 +18,7 @@ public class ProjActivity extends 基本界面 {
 	String 地址;
 	工程 当前;
 	基本弹窗 设置;
+	基本弹窗 删除;
 	布局_设置弹窗 内容;
 	哈希表 所有 = new 哈希表();
 
@@ -34,8 +36,51 @@ public class ProjActivity extends 基本界面 {
 		设置.置内容(内容);
 		设置.置中按钮("取消", 基本弹窗.隐藏弹窗);
 		设置.置右按钮("更改", 更改设置);
-		创建按钮("进入编辑");
+		删除 = new 基本弹窗(this);
+		删除.置标题("删除工程");
+		删除.置内容("真的要删除 " + 当前.信息.工程名 + " 吗？");
+		删除.置中按钮("取消",基本弹窗.隐藏弹窗);
+		删除.置右按钮("删除",直接删除);
+		创建按钮("进入编辑").置单击事件(进入编辑);
+		创建按钮("打包运行").置单击事件(可运行类.未实现);
+		创建按钮("删除工程").置单击事件(删除工程);
     }
+
+	通用方法 删除工程 = new 通用方法() {
+		@Override
+		public Object 调用(Object[] $参数) {
+			删除.显示();
+			return null;
+		}
+	};
+
+	通用方法 直接删除 = new 通用方法() {
+		@Override
+		public Object 调用(Object[] $参数) {
+			文件.删除(当前.取地址());
+			提示.普通("删除成功 ！");
+			基本弹窗.隐藏弹窗.调用($参数);
+			结束();
+			return null;
+		}
+	};
+	
+
+	通用方法 进入编辑 = new 通用方法() {
+		@Override
+		public Object 调用(Object[] $参数) {
+			跳转界面(EditActivity.class, 当前.配置);
+			return null;
+		}
+	};
+
+	通用方法 打包运行 = new 通用方法() {
+		@Override
+		public Object 调用(Object[] $参数) {
+			// Wait Implements
+			return null;
+		}
+	};
 
 	通用方法 更改设置 = new 通用方法() {
 		@Override
@@ -98,12 +143,12 @@ public class ProjActivity extends 基本界面 {
 			$布局.置高度("自动");
 			文本视图 $内容 = new 文本视图($布局);
 			$内容.置标签("内容");
-			Field $变量 = 反射.取变量(当前.信息,$设置);
-			$内容.置文本(反射.读变量($变量,当前.信息).toString());
-			所有.设置($设置,$内容);
+			Field $变量 = 反射.取变量(当前.信息, $设置);
+			$内容.置文本(反射.读变量($变量, 当前.信息).toString());
+			所有.设置($设置, $内容);
 		}
 	}
-	
+
 	public 线性布局 创建按钮(String $名称) {
 		线性布局 $按钮 = new 线性布局(布局.底层);
 		$按钮.置高度("自动");

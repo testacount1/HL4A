@@ -7,6 +7,8 @@ import 放课后乐园部.资源.布局.*;
 import java.util.*;
 import 放课后乐园部.视图.*;
 import 放课后乐园部.基本.*;
+import java.lang.reflect.*;
+import com.android.internal.view.menu.*;
 
 public class 数组适配器 extends 基本适配器 {
 
@@ -35,8 +37,8 @@ public class 数组适配器 extends 基本适配器 {
     }
     
     @Override
-    public View 创建(Context $上下文) {
-        return new 布局_适配器_数组($上下文);
+    public View 创建() {
+        return new 布局_适配器_数组(上下文);
     }
 
     @Override

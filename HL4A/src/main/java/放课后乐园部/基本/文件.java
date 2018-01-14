@@ -9,6 +9,7 @@ import android.content.*;
 import android.net.*;
 import 放课后乐园部.收集.*;
 import 放课后乐园部.网络.*;
+import java.util.*;
 
 public final class 文件 {
 
@@ -69,12 +70,38 @@ public final class 文件 {
         return new String[0];
     }
 
-    public static File[] 取文件列表(String $目录) {
+	public static File[] 取文件列表(String $目录) {
         if (是目录($目录))
-            return 取文件对象($目录).listFiles();
-			else 创建目录($目录);
+            return 按文件排序(按日期排序(取文件对象($目录).listFiles()));
+		else 创建目录($目录);
         return new File[0];
     }
+	
+	public static File[] 按文件排序(File[] $文件) {
+		Arrays.sort($文件, new Comparator< File>() {
+				public int compare(File f1,File f2) {
+					if (f1.isFile() && f2.isFile() || f1.isDirectory() && f2.isDirectory()) {
+						return f1.getName().toLowerCase()
+							.compareTo(f2.getName().toLowerCase());						
+					} else {
+						return f1.isFile() ? 1 : -1;
+					}			
+				}
+			});
+		return $文件;
+	}
+
+	public static File[] 按日期排序(File[] $文件) {
+		Arrays.sort($文件, new Comparator< File>() {
+				public int compare(File f1,File f2) {
+					long diff = f1.lastModified() - f2.lastModified();
+					if (diff > 0) return 1;
+					else if (diff == 0) return 0;
+					else return -1;
+				}
+			});
+		return $文件;
+	}
 
     public static 集合 找文件关键字(String $目录,String $关键字) {
 
@@ -141,9 +168,9 @@ public final class 文件 {
         } catch (Exception $错误) {}
         return null;
     }
-    
+
     public static boolean 是网络文件(String $文件) {
-        return 字符.以开始($文件,"http");
+        return 字符.以开始($文件, "http");
     }
 
     public static File 取文件对象(String $文件) {
@@ -203,16 +230,16 @@ public final class 文件 {
             $目录[$键值] = 检查地址($目录[$键值]);
         return $目录;
     }
-    
+
     public static String 取直接地址(String $地址) {
         if (是网络文件($地址))
-            $地址 = 字符.截取开始($地址,"://",null);
+            $地址 = 字符.截取开始($地址, "://", null);
         String $名称 = 取名称($地址);
-        if (字符.是否出现($名称,"?")) {
-            $地址 = 字符.截取结束($地址,"/",null)
-            + 字符.截取开始($名称,null,"?");
+        if (字符.是否出现($名称, "?")) {
+            $地址 = 字符.截取结束($地址, "/", null)
+				+ 字符.截取开始($名称, null, "?");
         }
-        return $地址.replace("/","$");
+        return $地址.replace("/", "$");
     }
 
     public static String 检查地址(String $目录) {
@@ -225,8 +252,8 @@ public final class 文件 {
         }
 
         if (是网络文件($目录)) {
-                
-                return $目录;
+
+			return $目录;
 
         } else {
 
@@ -249,14 +276,14 @@ public final class 文件 {
                 $目录 = 取存储卡目录() + "/" + $目录;
 
             return new File($目录).getPath();
-                
+
         }
-        
-        
+
+
     }
 
     public static String 取后缀(String $地址) {
-        if (!字符.是否出现($地址,"."))return "";
+        if (!字符.是否出现($地址, "."))return "";
         return 字符.小写(字符.截取结束(取文件对象($地址).getName(), ".", null));
     }
 

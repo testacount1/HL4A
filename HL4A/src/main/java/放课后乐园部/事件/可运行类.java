@@ -1,12 +1,21 @@
 package 放课后乐园部.事件;
 
 import 放课后乐园部.基本.*;
+import 放课后乐园部.弹窗.*;
 
 public class 可运行类 implements Runnable,通用方法 {
 
     public static final 通用方法 空方法 = new 通用方法() {
         @Override
         public Object 调用(Object[] $参数) {
+            return null;
+        }
+    };
+	
+	public static final 通用方法 未实现 = new 通用方法() {
+        @Override
+        public Object 调用(Object[] $参数) {
+			提示.普通("再等一周绝对能写出来 ~");
             return null;
         }
     };

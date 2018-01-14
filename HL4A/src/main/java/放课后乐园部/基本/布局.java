@@ -16,12 +16,12 @@ public class 布局 {
     public static View 读取(Context $上下文,String $地址) {
         return new DynamicLayoutInflater($上下文).inflate(字符.读取($地址));
     }
-    
+
     public static void 打开(Activity $界面,View $视图) {
+		Window $窗口 = $界面.getWindow();
+		$窗口.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS); //Then call setStatusBarColor. 
+		$窗口.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
 		if (可直接) {
-			Window $窗口 = $界面.getWindow();
-			$窗口.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS); //Then call setStatusBarColor. 
-			$窗口.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
 			$窗口.setStatusBarColor(视图.检查颜色(主题.基本深色()));
 			$界面.setContentView($视图);
 			return;

@@ -33,7 +33,6 @@ public class 提示 {
 					} else {
 						文本对象.置文本($内容.toString());
 					}
-					上次提示 = 上次;
                     文本对象.置文本颜色(主题.基本色());
                     提示对象.show();
                     return null;

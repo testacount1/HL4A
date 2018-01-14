@@ -55,7 +55,7 @@ public class 代码框 extends FreeScrollingTextField implements 基本视图  {
         this($父视图.getContext());
         加入到($父视图);
     }
-
+	
     public void 置代码选中事件(通用方法 $方法) {
         setOnSelectionChangedListener(new 代码选中($方法));
     }

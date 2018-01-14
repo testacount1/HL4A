@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    platformBuildVersionCode="21"
-    platformBuildVersionName="6.0-2166767">
-    <uses-sdk
-        android:minSdkVersion="21"
-        android:targetSdkVersion="25" />
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
         android:theme="@android:style/Theme.Material.Light.NoActionBar"
         android:label="@string/name"
@@ -12,7 +7,7 @@
         android:name=".Application"
         android:debuggable="false"
         android:allowBackup="false">
-        <activity android:name=".StartActivity">
+        <activity android:name=".LaunchPad">
             <intent-filter>
                 <action
                     android:name="android.intent.action.MAIN" />

@@ -37,6 +37,7 @@ public class 基本弹窗 extends Dialog {
     
     public void 置内容(String $内容) {
         布局.底层.removeAllViews();
+		布局.底层.置填充(0,"16dp","16dp","16dp");
         new 滚动文本(布局.底层).置文本($内容);
     }
     
@@ -62,6 +63,23 @@ public class 基本弹窗 extends Dialog {
         布局.右按钮.文本.置文本($文本);
         布局.右按钮.置单击事件(new 弹窗按钮单击(this,$单击));
     }
+	
+	public 通用方法 显示 = new 通用方法() {
+		@Override
+		public Object 调用(Object[] $参数) {
+			显示();
+			return null;
+		}
+	};
+	
+	public 通用方法 隐藏 = new 通用方法() {
+		@Override
+		public Object 调用(Object[] $参数) {
+			隐藏();
+			return null;
+		}
+	};
+    
     
     public void 显示() {
         show();

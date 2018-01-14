@@ -13,6 +13,8 @@ public class JavaScript implements 基本脚本 {
     public String 取脚本类型() {
         return "JavaScript";
     }
+	
+	public static String 实例 = "提示.普通(\"Hello World\");";
 
     public static 哈希表 替换关键字表 = new 哈希表();
     

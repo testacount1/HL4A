@@ -35,7 +35,7 @@ public abstract class 基本适配器 extends BaseAdapter {
     @Override
     public View getView(int $键值,View $视图,ViewGroup $视图组) {
         if ($视图 == null) {
-            $视图 = 创建(上下文);
+            $视图 = 创建();
         }
         $视图 = 处理($视图,(哈希表)数据.读取($键值));
         return $视图;
@@ -51,7 +51,7 @@ public abstract class 基本适配器 extends BaseAdapter {
     
     public abstract List 转换(List $数据);
    
-    public abstract View 创建(Context $上下文);
+    public abstract View 创建();
     
     public abstract View 处理(View $视图,哈希表 $参数);
    

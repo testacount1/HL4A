@@ -1,4 +1,5 @@
 package h.ide.util;
+
 import 放课后乐园部.基本.*;
 import 放课后乐园部.数据.*;
 
@@ -45,5 +46,13 @@ public class 工程 {
     public static String 转换地址(String $地址) {
         return 工程目录 + "/" + $地址 + "/" + 配置文件;
     }
+	
+	public String 取地址() {
+		return 工程目录 + "/" + 配置;
+	}
+	
+	public String 取地址(String $相对) {
+		return 工程目录 + "/" + 配置 + "/" + $相对;
+	}
 
 }

@@ -1,81 +1,55 @@
-package 放课后乐园部.视图.列表;
-
-
+package 放课后乐园部.视图;
 
 import android.app.*;
 import android.content.*;
 import android.view.*;
+import android.widget.*;
 import 放课后乐园部.事件.*;
-import 放课后乐园部.基本.*;
-import 放课后乐园部.视图.*;
 import 放课后乐园部.视图.实现.*;
 
-public class 基本列表 extends 滚动视图 implements 基本视图 {
+public class 水平滚动 extends HorizontalScrollView implements 基本布局 {
 
-    Context 环境;
-    线性布局 底层;
-
-    public 基本列表(Context $上下文) {
+    public 水平滚动(Context $上下文) {
         super($上下文);
-        环境 = $上下文;
+        视图实现.初始化控件(this);
         置宽度("最大");
-        置高度("最大");
-        底层 = new 线性布局(环境);
-		底层.置宽度("最大");
-		底层.置高度("最大");
-		底层.置方向("垂直");
-		底层.加入到(this);
     }
-
-    public void 添加视图(View $视图) {
-        底层.加入子元素($视图);
+    
+    public 水平滚动(ViewGroup $父视图) {
+        this($父视图.getContext());
+        加入到($父视图);
     }
-
-    public void 清空() {
-        底层.removeAllViews();
-    }
+    
 
     @Override
     public void 置布局重力(String $重力) {
-        视图实现.置布局重力(this, $重力);
+        视图实现.置布局重力(this,$重力);
     }
 
     @Override
     public void 置布局权重(float $权重) {
-        视图实现.置布局权重(this, $权重);
+        视图实现.置布局权重(this,$权重);
     }
-
-    public void 到侧滑左布局() {
-        侧滑布局.LayoutParams $设置 = new 侧滑布局.LayoutParams(getLayoutParams());
-        $设置.gravity = 视图.检查重力("开始");
-        setLayoutParams($设置);
-    }
-
-    public void 到侧滑右布局() {
-        侧滑布局.LayoutParams $设置 = new 侧滑布局.LayoutParams(getLayoutParams());
-        $设置.gravity = 视图.检查重力("结束");
-        setLayoutParams($设置);
-    }
-
-    // 布局实现
-
+    
+    @Override
     public void 加入子元素(View $子元素) {
-        添加视图($子元素);
+        布局实现.加入子元素(this, $子元素);
     }
 
+    @Override
     public View 取子元素(Object $标签) {
         return 布局实现.取子元素(this, $标签);
     }
 
+    @Override
     public View 取子元素(int $键值) {
         return 布局实现.取子元素(this, $键值);
     }
 
+    @Override
     public View[] 取所有子元素() {
         return 布局实现.取所有子元素(this);
     }
-
-    // 视图实现
 
     @Override
     public void 加入到(ViewGroup $布局) {
@@ -216,5 +190,6 @@ public class 基本列表 extends 滚动视图 implements 基本视图 {
     public void 置背景颜色(Object $颜色) {
         视图实现.置背景颜色(this, $颜色);
     }
+
 
 }
