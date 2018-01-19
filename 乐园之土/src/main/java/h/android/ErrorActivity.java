@@ -1,5 +1,6 @@
 package h.android;
-import 放课后乐园部.组件.*;
+
+import 放课后乐园部.安卓.组件.*;
 
 public class ErrorActivity extends 错误界面 {
 }

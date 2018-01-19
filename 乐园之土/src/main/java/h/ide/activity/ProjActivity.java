@@ -3,14 +3,15 @@ package h.ide.activity;
 import android.os.*;
 import h.ide.layout.*;
 import h.ide.util.*;
-import 放课后乐园部.事件.*;
-import 放课后乐园部.基本.*;
-import 放课后乐园部.弹窗.*;
-import 放课后乐园部.收集.*;
-import 放课后乐园部.组件.*;
-import 放课后乐园部.视图.*;
 import java.lang.reflect.*;
-import java.io.*;
+import 放课后乐园部.事件.*;
+import 放课后乐园部.安卓.弹窗.*;
+import 放课后乐园部.安卓.组件.*;
+import 放课后乐园部.安卓.视图.*;
+import 放课后乐园部.安卓.资源.*;
+import 放课后乐园部.工具.*;
+import 放课后乐园部.收集.*;
+import 放课后乐园部.安卓.工具.*;
 
 public class ProjActivity extends 基本界面 {
 
@@ -22,13 +23,18 @@ public class ProjActivity extends 基本界面 {
 	布局_设置弹窗 内容;
 	哈希表 所有 = new 哈希表();
 
+	@Override
+	public void 结束界面(Exception $错误) {
+		//super.结束界面($错误);
+	}
+	
     @Override
     public void onCreate(Bundle $数据) {
         super.onCreate($数据);
-		地址 = (String)传入数据[0];
+		地址 = (String)传入参数[0];
 		当前 = 工程.读取(地址);
         布局 = new 布局_工程管理(this);
-		布局.标题.左按钮("图片.返回", 界面结束);
+		布局.标题.左按钮(图标.返回, 界面结束);
 		打开布局(布局);
 		创建设置("工程名", "包名", "版本名", "版本号");
 		内容 = new 布局_设置弹窗(this);
@@ -42,7 +48,7 @@ public class ProjActivity extends 基本界面 {
 		删除.置中按钮("取消",基本弹窗.隐藏弹窗);
 		删除.置右按钮("删除",直接删除);
 		创建按钮("进入编辑").置单击事件(进入编辑);
-		创建按钮("打包运行").置单击事件(可运行类.未实现);
+		//创建按钮("打包运行").置单击事件(可运行类.未实现);
 		创建按钮("删除工程").置单击事件(删除工程);
     }
 
@@ -57,10 +63,10 @@ public class ProjActivity extends 基本界面 {
 	通用方法 直接删除 = new 通用方法() {
 		@Override
 		public Object 调用(Object[] $参数) {
-			文件.删除(当前.取地址());
-			提示.普通("删除成功 ！");
+			文件工具.删除(当前.取地址());
+			提示工具.普通("删除成功 ！");
 			基本弹窗.隐藏弹窗.调用($参数);
-			结束();
+			结束界面();
 			return null;
 		}
 	};
@@ -88,14 +94,14 @@ public class ProjActivity extends 基本界面 {
 			String $内容 = 内容.编辑.取文本();
 			String $类型 = 内容.类型;
 			if ("".equals($内容)) {
-				提示.普通("请不要留空 ~");
+				提示工具.普通("请不要留空 ~");
 				return null;
 			} else {
-				提示.普通("更改成功 ~");
+				提示工具.普通("更改成功 ~");
 			}
 			((文本视图)所有.读取($类型)).置文本($内容);
-			Field $变量 = 反射.取变量(当前.信息, $类型);
-			反射.改变量($变量, 当前.信息, $内容);
+			Field $变量 = 反射工具.取变量(当前.信息, $类型);
+			反射工具.改变量($变量, 当前.信息, $内容);
 			当前.保存();
 			基本弹窗.隐藏弹窗.调用($参数);
 			return null;
@@ -105,7 +111,7 @@ public class ProjActivity extends 基本界面 {
 	通用方法 界面结束 = new 通用方法() {
 		@Override
 		public Object 调用(Object[] $参数) {
-			结束();
+			结束界面();
 			return null;
 		}
 	};
@@ -143,8 +149,8 @@ public class ProjActivity extends 基本界面 {
 			$布局.置高度("自动");
 			文本视图 $内容 = new 文本视图($布局);
 			$内容.置标签("内容");
-			Field $变量 = 反射.取变量(当前.信息, $设置);
-			$内容.置文本(反射.读变量($变量, 当前.信息).toString());
+			Field $变量 = 反射工具.取变量(当前.信息, $设置);
+			$内容.置文本(反射工具.读变量($变量, 当前.信息).toString());
 			所有.设置($设置, $内容);
 		}
 	}

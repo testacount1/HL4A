@@ -6,15 +6,18 @@ android {
     buildToolsVersion "21.1.0"
 
     defaultConfig {
-        minSdkVersion 21
-        targetSdkVersion 25
         applicationId "h.android"
+      	minSdkVersion 21
+      	targetSdkVersion 25
         versionCode 62
         versionName "1.6.0"
-		//multiDexEnabled true
+        multiDexEnabled true
     }
 }
+
 dependencies {
-    compile project(":HL4A")
-    //compile project(':编译DEX')
+    compile project(':安卓')
+	compile project(':JSON')
+	compile project(':脚本')
+   	compile project(':编辑器')
 }

@@ -1,8 +1,6 @@
 package h.ide.util;
 
 import 放课后乐园部.收集.*;
-import 放课后乐园部.数据.*;
-import 放课后乐园部.基本.*;
 
 public class 工程信息 {
 

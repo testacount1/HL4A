@@ -1,7 +1,7 @@
 package h.ide.layout;
 
-import 放课后乐园部.视图.*;
 import android.content.*;
+import 放课后乐园部.安卓.视图.*;
 
 public class 布局_设置弹窗 extends 线性布局 {
 	

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:theme="@android:style/Theme.Material.Light.NoActionBar"
-        android:label="@string/name"
-        android:icon="@drawable/icon"
+        android:label="乐园之土"
+        android:theme="@android:style/Theme.Holo.Light.NoActionBar"
+		android:icon="@drawable/icon"
         android:name=".Application"
         android:debuggable="false"
         android:allowBackup="false">
@@ -15,26 +15,13 @@
                     android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <service
-            android:name=".Accessibility"
-            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE" >
-            <meta-data
-                android:name="android.accessibilityservice" 
-                android:resource="@xml/accessibility"/>
-            <intent-filter>
-                <action android:name="android.accessibilityservice.AccessibilityService" />
-            </intent-filter>
-        </service>
-
-        <activity android:name=".ErrorActivity" />
-        <activity android:name=".ScriptActivity"/>
-        <service android:name =".MusicService" />
-
-     	<activity  android:name="h.ide.activity.MainActivity" />
+		<activity android:name=".ScriptActivity" />
+		<activity android:name=".ErrorActivity" />
+			
+		<activity  android:name="h.ide.activity.MainActivity" />
         <activity  android:name="h.ide.activity.ProjActivity" />
         <activity  android:name="h.ide.activity.EditActivity" />
         <activity  android:name="h.kl.activity.ManageActivity" />
-
     </application>
 
 </manifest>

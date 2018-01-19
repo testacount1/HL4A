@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-
-<resources>
-		<string name="name">乐园之土</string>
-		<string name="accessibility">使用辅助功能~\n\n
-注意 : 本服务与一些服务可能无法共存。例如Auto.js之类的需要操作界面的辅助软件。\n\n
-原因是系统限制了只有一个服务能访问界面。假如本服务或是其他经常需要重新开始，可能是不兼容的问题。
-</string>
-</resources>

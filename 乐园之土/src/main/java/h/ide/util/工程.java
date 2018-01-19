@@ -1,7 +1,9 @@
 package h.ide.util;
 
-import 放课后乐园部.基本.*;
+import h.ide.util.*;
+import 放课后乐园部.工具.*;
 import 放课后乐园部.数据.*;
+import 放课后乐园部.安卓.工具.*;
 
 public class 工程 {
 
@@ -12,14 +14,14 @@ public class 工程 {
     public 工程信息 信息;
 
     public void 保存() {
-        字符.保存(转换地址(配置), Json.转换(信息));
+        字符工具.保存(转换地址(配置), JSON工具.转换(信息));
     }
 
     public static 工程 读取(String $地址) {
-		if (文件.是文件(转换地址($地址))) {
+		if (文件工具.是文件(转换地址($地址))) {
 			工程 $工程 = new 工程();
 			$工程.配置 = $地址;
-			$工程.信息 = (工程信息)Json.解析类(字符.读取(转换地址($地址)), 工程信息.class);
+			$工程.信息 = (工程信息)JSON工具.解析类(字符工具.读取(转换地址($地址)), 工程信息.class);
 			return $工程;
 		}
 		return null;
@@ -37,7 +39,7 @@ public class 工程 {
     }
 
     public static boolean 检查(String $地址) {
-        if (文件.是文件(转换地址($地址))) {
+        if (文件工具.是文件(转换地址($地址))) {
             return true;
         }
         return false;
