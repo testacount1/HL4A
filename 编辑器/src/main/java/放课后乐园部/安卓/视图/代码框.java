@@ -1,4 +1,4 @@
-package 放课后乐园部.视图;
+package 放课后乐园部.安卓.视图;
 
 import android.app.*;
 import android.content.*;
@@ -7,9 +7,9 @@ import android.view.*;
 import com.myopicmobile.textwarrior.android.*;
 import com.myopicmobile.textwarrior.common.*;
 import 放课后乐园部.事件.*;
-import 放课后乐园部.安卓.视图.实现.*;
 import 放课后乐园部.安卓.工具.*;
-import 放课后乐园部.视图.事件.*;
+import 放课后乐园部.安卓.视图.事件.*;
+import 放课后乐园部.安卓.视图.实现.*;
 import 放课后乐园部.工具.*;
 
 public class 代码框 extends FreeScrollingTextField implements 基本视图  {

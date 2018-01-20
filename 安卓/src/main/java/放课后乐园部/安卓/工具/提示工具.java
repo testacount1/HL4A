@@ -28,15 +28,19 @@ public class 提示工具 {
                 @Override
                 public Object 调用(Object[] $参数) {
                     Object $文本 = $内容;
+					try {
                     if ($文本 == null) $文本 = "null";
 					long 上次 = 上次提示;
 					if ((上次提示 = 时间工具.时间戳()) - 上次 < 233) {
-						文本对象.置文本(文本对象.取文本() + "\n" + $内容.toString());
+						文本对象.置文本(文本对象.取文本() + "\n" + $文本);
 					} else {
-						文本对象.置文本($内容.toString());
+						文本对象.置文本($文本.toString());
 					}
                     文本对象.置文本颜色($颜色);
                     提示对象.show();
+					}catch(Exception $错误) {
+						应用工具.错误处理.调用(null,$错误);
+					}
                     return null;
                 }
             });

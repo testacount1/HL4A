@@ -20,7 +20,6 @@ public class 弹出菜单 extends ListPopupWindow {
 		适配器 = new 数组适配器($视图.getContext(),new 集合());
 		setAdapter(适配器);
 		setOnItemClickListener(new 项目单击(单击事件));
-		setWidth(new Float(应用工具.取屏幕宽度()*0.618).intValue());
 		setModal(true);
     }
 
@@ -36,16 +35,26 @@ public class 弹出菜单 extends ListPopupWindow {
 		}
 	};
 	
+	public String 最大 = "";
+	
 	public void 添加(String $名称,通用方法 $单击) {
+		if ($名称.length() > 最大.length()) {
+			最大 = $名称;
+		}
 		单击.设置(适配器.数据.数量(),$单击);
 		适配器.添加($名称);
 	}
 	
-	public void 置宽度(int $宽度) {
-		setWidth($宽度);
+	public void 置宽度(Object $宽度) {
+		setWidth(视图工具.检查大小($宽度));
 	}
-
+	
     public void 显示() {
+		int $大小 = 视图工具.计算宽度(最大,主题工具.取文本大小());
+		if ($大小 < (应用工具.取屏幕宽度() * 0.618 * 0.618)) {
+			$大小 = new Double(应用工具.取屏幕宽度() * 0.618 * 0.618).intValue();
+		}
+		setWidth($大小);
         show();
     }
 	

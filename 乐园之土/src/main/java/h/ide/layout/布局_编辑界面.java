@@ -3,10 +3,9 @@ package h.ide.layout;
 import android.content.*;
 import 放课后乐园部.事件.*;
 import 放课后乐园部.安卓.视图.*;
+import 放课后乐园部.安卓.视图.扩展.*;
 import 放课后乐园部.安卓.视图.适配器.*;
 import 放课后乐园部.安卓.资源.布局.*;
-import 放课后乐园部.视图.扩展.*;
-import 放课后乐园部.视图.*;
 
 public class 布局_编辑界面 extends 布局_侧滑界面 {
 	

@@ -15,13 +15,13 @@ public class JavaScript implements 基本脚本 {
         return "JavaScript";
     }
 	
-	public static String 实例 = "提示.普通(\"Hello World\");";
+	public static String 实例 = "提示工具.普通(\"你好 世界 ~\");";
 
     public static 哈希表 替换关键字表 = new 哈希表();
     
     public static String[][] 默认替换表 = {
         {"出", "break"},
-        {"为", "case"},
+        {"选", "case"},
         {"续", "continue"},
         {"默", "default"},
         {"删", "delete"},

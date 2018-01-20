@@ -25,11 +25,8 @@ public class 基本界面 extends Activity {
 	}
 
 	public Object 调用事件(String $名称,Object... $参数) {
-		if (检查事件($名称)) {
-			通用方法 $方法 = 所有事件.读取($名称);
-			return 调用方法.事件($方法, $参数);
-		}
-		return null;
+		通用方法 $方法 = 所有事件.读取($名称);
+		return 调用方法.事件($方法, $参数);
 	}
 
 	@Override
@@ -120,10 +117,7 @@ public class 基本界面 extends Activity {
     @Override
     public boolean onKeyDown(int keyCode,KeyEvent event) {
 		if (检查事件("按键按下事件")) {
-			Object $返回 = 调用事件("按键按下事件", keyCode, event);
-			if ($返回 instanceof boolean) {
-				return (boolean)$返回;
-			}
+			return 调用事件("按键按下事件", keyCode, event) == true;
 		} else {
 			Boolean $返回 = 按键按下事件(keyCode, event);
 			if ($返回 != null) {
@@ -132,10 +126,7 @@ public class 基本界面 extends Activity {
 		}
 		if (keyCode == KeyEvent.KEYCODE_BACK) {
 			if (检查事件("返回按下事件")) {
-				Object $返回 = 调用事件("返回按下事件");
-				if ($返回 instanceof boolean) {
-					return (boolean)$返回;
-				}
+				return 调用事件("返回按下事件") == true;
 			} else {
 				Boolean $返回 = 返回按下事件();
 				if ($返回 != null) {
@@ -203,7 +194,7 @@ public class 基本界面 extends Activity {
 	public void 结束界面() {
 		finish();
 	}
-	
+
 	public void 结束界面(Exception $错误) {
 		finish();
 	}

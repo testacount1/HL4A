@@ -644,7 +644,7 @@ public class Parser
                         String directive = getDirective(n);
                         if (directive == null) {
                             inDirectivePrologue = false;
-                        } else if (directive.equals("use strict")) {
+                        } else if (directive.equals("严格模式")) {
                             inUseStrictDirective = true;
                             root.setInStrictMode(true);
                         }

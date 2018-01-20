@@ -12,6 +12,7 @@ import 放课后乐园部.安卓.资源.*;
 import 放课后乐园部.工具.*;
 import 放课后乐园部.收集.*;
 import 放课后乐园部.安卓.工具.*;
+import android.content.*;
 
 public class ProjActivity extends 基本界面 {
 
@@ -24,14 +25,38 @@ public class ProjActivity extends 基本界面 {
 	哈希表 所有 = new 哈希表();
 
 	@Override
+	public void 界面回调事件(int $请求码,int $返回码,Intent $意图) {
+		if ($返回码 == 233) {
+			结束界面();
+		}
+	}
+	
+	@Override
 	public void 结束界面(Exception $错误) {
 		//super.结束界面($错误);
+	}
+
+	public boolean 检查() {
+		if (!文件工具.是文件(当前.取地址("应用.json"))) {
+			提示工具.警告("工程已损坏!");
+			结束界面();
+			return true;
+		}
+		return false;
+	}
+	@Override
+	public void 界面刷新事件() {
+		检查();
 	}
 	
     @Override
     public void onCreate(Bundle $数据) {
         super.onCreate($数据);
 		地址 = (String)传入参数[0];
+		if (!工程.检查(地址)) {
+			提示工具.警告("工程已损坏!");
+			结束界面();
+		}
 		当前 = 工程.读取(地址);
         布局 = new 布局_工程管理(this);
 		布局.标题.左按钮(图标.返回, 界面结束);
@@ -63,6 +88,7 @@ public class ProjActivity extends 基本界面 {
 	通用方法 直接删除 = new 通用方法() {
 		@Override
 		public Object 调用(Object[] $参数) {
+			if (检查())return null;
 			文件工具.删除(当前.取地址());
 			提示工具.普通("删除成功 ！");
 			基本弹窗.隐藏弹窗.调用($参数);
@@ -75,7 +101,8 @@ public class ProjActivity extends 基本界面 {
 	通用方法 进入编辑 = new 通用方法() {
 		@Override
 		public Object 调用(Object[] $参数) {
-			跳转界面(EditActivity.class, 当前.配置);
+			if (检查())return null;
+			跳转界面(666,EditActivity.class, 当前.配置);
 			return null;
 		}
 	};
@@ -83,7 +110,7 @@ public class ProjActivity extends 基本界面 {
 	通用方法 打包运行 = new 通用方法() {
 		@Override
 		public Object 调用(Object[] $参数) {
-			// Wait Implements
+			if (检查())return null;
 			return null;
 		}
 	};
@@ -91,6 +118,7 @@ public class ProjActivity extends 基本界面 {
 	通用方法 更改设置 = new 通用方法() {
 		@Override
 		public Object 调用(Object[] $参数) {
+			if (检查())return null;
 			String $内容 = 内容.编辑.取文本();
 			String $类型 = 内容.类型;
 			if ("".equals($内容)) {
@@ -119,6 +147,7 @@ public class ProjActivity extends 基本界面 {
 	通用方法 启动设置 = new 通用方法() {
 		@Override
 		public Object 调用(Object[] $参数) {
+			if (检查())return null;
 			线性布局 $按钮 = (线性布局)$参数[0];
 			文本视图 $文本 = (文本视图)$按钮.取子元素("文本");
 			文本视图 $内容 = (文本视图)$按钮.取子元素("内容");

@@ -4,6 +4,7 @@ import h.ide.util.*;
 import 放课后乐园部.工具.*;
 import 放课后乐园部.数据.*;
 import 放课后乐园部.安卓.工具.*;
+import java.io.*;
 
 public class 工程 {
 
@@ -53,8 +54,8 @@ public class 工程 {
 		return 工程目录 + "/" + 配置;
 	}
 	
-	public String 取地址(String $相对) {
-		return 工程目录 + "/" + 配置 + "/" + $相对;
+	public String 取地址(String... $相对) {
+		return new File(工程目录 + "/" + 配置 + "/" + 字符工具.分解($相对,"/")).getPath();
 	}
 
 }

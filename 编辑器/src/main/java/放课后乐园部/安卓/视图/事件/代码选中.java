@@ -1,4 +1,4 @@
-package 放课后乐园部.视图.事件;
+package 放课后乐园部.安卓.视图.事件;
 
 import com.myopicmobile.textwarrior.android.*;
 import 放课后乐园部.事件.*;

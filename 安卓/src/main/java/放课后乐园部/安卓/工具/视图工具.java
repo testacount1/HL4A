@@ -1,13 +1,29 @@
 package 放课后乐园部.安卓.工具;
 
 import android.content.res.*;
+import android.graphics.*;
 import android.text.*;
 import android.view.*;
-import 放课后乐园部.安卓.图形.*;
 import 放课后乐园部.工具.*;
 
 public class 视图工具 {
 
+	public static int 计算宽度(String $字符串,Object $大小) {
+		Paint pFont = new Paint(); 
+		Rect rect = new Rect();
+		pFont.setTextSize(视图工具.检查大小($大小));
+		pFont.getTextBounds($字符串, 0, 1, rect); 
+		return  rect.width();
+	}
+	
+	public static int 计算高度(String $字符串,Object $大小) {
+		Paint pFont = new Paint(); 
+		Rect rect = new Rect();
+		pFont.setTextSize(视图工具.检查大小($大小));
+		pFont.getTextBounds($字符串, 0, 1, rect); 
+		return  rect.width();
+	}
+	
 	public static ColorStateList 创建颜色列表(Object $普通颜色,Object $按下颜色) {
         int $普通 = 检查颜色($普通颜色);
         int $按下 = 检查颜色($按下颜色);

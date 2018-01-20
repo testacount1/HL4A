@@ -1,13 +1,11 @@
-package 放课后乐园部.视图.扩展;
+package 放课后乐园部.安卓.视图.扩展;
 
 import android.content.*;
 import android.view.*;
 import 放课后乐园部.事件.*;
 import 放课后乐园部.安卓.图形.*;
-import 放课后乐园部.安卓.视图.*;
-import 放课后乐园部.安卓.视图.事件.*;
-import 放课后乐园部.视图.*;
 import 放课后乐园部.安卓.工具.*;
+import 放课后乐园部.安卓.视图.*;
 
 public class 符号栏 extends 水平滚动 {
 
