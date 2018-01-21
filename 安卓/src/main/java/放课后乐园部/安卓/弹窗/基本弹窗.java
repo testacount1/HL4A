@@ -10,15 +10,7 @@ import 放课后乐园部.安卓.视图.扩展.*;
 import 放课后乐园部.安卓.资源.布局.*;
 import 放课后乐园部.工具.*;
 
-public class 基本弹窗 extends Dialog {
-
-    public static 通用方法 隐藏弹窗 = new 通用方法() {
-        @Override
-        public Object 调用(Object[] $参数) {
-            ((基本弹窗)$参数[0]).隐藏();
-            return null;
-        }
-    };
+public class 基本弹窗 extends AlertDialog {
     
     public Context 上下文;
     public 布局_基本弹窗 布局;
@@ -27,6 +19,7 @@ public class 基本弹窗 extends Dialog {
     public 基本弹窗(Context $上下文) {
         super($上下文);
         布局 = new 布局_基本弹窗($上下文);
+		setView(布局);
         置可关闭(true);
     }
     
@@ -82,16 +75,13 @@ public class 基本弹窗 extends Dialog {
     
     
     public void 显示() {
-        show();
-        setContentView(布局);
+		show();
         Window $窗口 = getWindow();
         LayoutParams $设置 = $窗口.getAttributes();
         $设置.flags = 2;
         $设置.width = -1;
 		$设置.height = -2;
-        
         $窗口.setAttributes($设置);
-        
     }
 
     public void 置可关闭(boolean $是否) {

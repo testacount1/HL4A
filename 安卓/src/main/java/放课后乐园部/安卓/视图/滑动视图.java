@@ -7,6 +7,7 @@ import android.widget.*;
 import 放课后乐园部.事件.*;
 import 放课后乐园部.安卓.视图.实现.*;
 import android.support.v4.view.*;
+import 放课后乐园部.安卓.视图.事件.*;
 
 public class 滑动视图 extends ViewPager implements 基本布局 {
 
@@ -21,6 +22,18 @@ public class 滑动视图 extends ViewPager implements 基本布局 {
         this($父视图.getContext());
         加入到($父视图);
     }
+	
+	public void 置界面(int $界面) {
+		setCurrentItem($界面);
+	}
+	
+	public void 取界面() {
+		getCurrentItem();
+	}
+	
+	public void 置滑动事件(通用方法 $进度,通用方法 $改变,通用方法 $状态) {
+		setOnPageChangeListener(new 界面滑动($进度,$改变,$状态));
+	}
 	
 	public void 置适配器(PagerAdapter $适配器) {
 		setAdapter($适配器);

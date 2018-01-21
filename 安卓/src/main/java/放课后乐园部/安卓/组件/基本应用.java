@@ -42,12 +42,10 @@ public class 基本应用 extends Application {
 
 	public void 错误处理事件(Thread $线程,Exception $错误) {
 		应用工具.结束界面($错误);
-		
 		Intent $意图 = new Intent(上下文工具.取全局上下文(), 反射工具.取类(应用工具.取包名() + ".ErrorActivity"));
         $意图.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        $意图.putExtra("错误", 错误工具.取整个错误($错误));
+        $意图.putExtra("错误","当前应用版本 :"+ 应用工具.取版本名() +"\n"+ 错误工具.取整个错误($错误));
 		上下文工具.取全局上下文().startActivity($意图);
-		
 		字符工具.保存("#错误日志/" + 时间工具.格式() + ".log", 错误工具.取整个错误($错误));
 		System.exit(0);
 	}

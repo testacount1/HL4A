@@ -70,7 +70,7 @@ public class 流工具 {
 			return new ByteArrayInputStream($字节);
 		}
 		
-		public static FileInputStream 文件(String $地址) {
+		public static FileInputStream 文件(String... $地址) {
 			File $对象 = 文件工具.取文件对象($地址);
 			if (!$对象.isFile()) return null;
 			try {

@@ -29,8 +29,7 @@ public class 界面适配器 extends PagerAdapter {
 
 	@Override
 	public void destroyItem(ViewGroup container,int position,Object object) {
-		super.destroyItem(container, position, object);
-		视图集合.删除(object);
+		container.removeView((View)object);
 	}
 	
 	@Override

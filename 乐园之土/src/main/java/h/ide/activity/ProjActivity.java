@@ -14,6 +14,7 @@ import 放课后乐园部.安卓.资源.*;
 import 放课后乐园部.工具.*;
 import 放课后乐园部.收集.*;
 import 放课后乐园部.安卓.编译.*;
+import 放课后乐园部.压缩.*;
 
 public class ProjActivity extends 基本界面 {
 
@@ -31,7 +32,7 @@ public class ProjActivity extends 基本界面 {
 			结束界面();
 		}
 	}
-	
+
 	@Override
 	public void 结束界面(Exception $错误) {
 		//super.结束界面($错误);
@@ -49,7 +50,7 @@ public class ProjActivity extends 基本界面 {
 	public void 界面刷新事件() {
 		检查();
 	}
-	
+
     @Override
     public void onCreate(Bundle $数据) {
         super.onCreate($数据);
@@ -60,34 +61,35 @@ public class ProjActivity extends 基本界面 {
 		}
 		当前 = 工程.读取(地址);
         布局 = new 布局_工程管理(this);
-		布局.标题.左按钮(图标.图标_箭头_返回_白色,界面结束);
+		布局.标题.左按钮(图标.图标_箭头_返回_白色, 界面结束);
 		打开布局(布局);
 		创建设置("工程名", "包名", "版本名", "版本号");
 		内容 = new 布局_设置弹窗(this);
 		设置 = new 基本弹窗(this);
 		设置.置内容(内容);
-		设置.置中按钮("取消", 基本弹窗.隐藏弹窗);
+		设置.置中按钮("取消", 设置.隐藏);
 		设置.置右按钮("更改", 更改设置);
 		删除 = new 基本弹窗(this);
 		删除.置标题("删除工程");
 		删除.置内容("真的要删除 " + 当前.信息.工程名 + " 吗？");
-		删除.置中按钮("取消",基本弹窗.隐藏弹窗);
-		删除.置右按钮("删除",直接删除);
-		通用方法 打包运行 = new 通用方法() {
-			@Override
-			public Object 调用(Object[] $参数) {
-				if (检查())return null;
-				加载中弹窗 $提示 = new 加载中弹窗(ProjActivity.this);
-				$提示.置可关闭(true);
-				$提示.显示();
-				APK $编译器 = new APK("","");
-				return null;
-			}
-		};
+		删除.置中按钮("取消", 删除.隐藏);
+		删除.置右按钮("删除", 直接删除);
 		创建按钮("进入编辑").置单击事件(进入编辑);
-		//创建按钮("编译打包").置单击事件(打包运行);
+		创建按钮("打包HPK").置单击事件(打包HPK);
 		创建按钮("删除工程").置单击事件(删除工程);
     }
+
+	通用方法 打包HPK = new 通用方法() {
+		@Override
+		public Object 调用(Object[] $参数) {
+			if (检查()) return null;
+			String $输出 = 文件工具.取目录(当前.取地址()) + "/" + 当前.信息.包名 + ".hpk";
+			ZIP工具.压缩(当前.取地址(), $输出);
+			字符工具.保存($输出, 编码工具.Base64.编码(字节工具.读取($输出)));
+			提示工具.普通("打包成功 ~ \n保存到 :"+$输出);
+			return null;
+		}
+	};
 
 	通用方法 删除工程 = new 通用方法() {
 		@Override
@@ -103,23 +105,23 @@ public class ProjActivity extends 基本界面 {
 			if (检查())return null;
 			文件工具.删除(当前.取地址());
 			提示工具.普通("删除成功 ！");
-			基本弹窗.隐藏弹窗.调用($参数);
+			删除.隐藏();
 			结束界面();
 			return null;
 		}
 	};
-	
+
 
 	通用方法 进入编辑 = new 通用方法() {
 		@Override
 		public Object 调用(Object[] $参数) {
 			if (检查())return null;
-			跳转界面(666,EditActivity.class, 当前.配置);
+			跳转界面(666, EditActivity.class, 当前.配置);
 			return null;
 		}
 	};
 
-	
+
 
 	通用方法 更改设置 = new 通用方法() {
 		@Override
@@ -137,7 +139,7 @@ public class ProjActivity extends 基本界面 {
 			Field $变量 = 反射工具.取变量(当前.信息, $类型);
 			反射工具.改变量($变量, 当前.信息, $内容);
 			当前.保存();
-			基本弹窗.隐藏弹窗.调用($参数);
+			设置.隐藏();
 			return null;
 		}
 	};

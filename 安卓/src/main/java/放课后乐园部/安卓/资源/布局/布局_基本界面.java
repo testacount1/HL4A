@@ -1,9 +1,11 @@
 package 放课后乐园部.安卓.资源.布局;
 
 import android.content.*;
+import android.content.res.*;
+import android.graphics.drawable.*;
+import 放课后乐园部.安卓.工具.*;
 import 放课后乐园部.安卓.视图.*;
 import 放课后乐园部.安卓.视图.扩展.*;
-import 放课后乐园部.安卓.工具.*;
 
 public class 布局_基本界面 extends 线性布局 {
 	

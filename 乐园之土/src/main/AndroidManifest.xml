@@ -6,18 +6,52 @@
 		android:icon="@drawable/icon"
         android:name=".Application"
         android:debuggable="false"
+		android:supportsRtl="true"
         android:allowBackup="false">
-        <activity android:name=".LaunchPad">
+
+		<activity android:name=".LaunchPad"
+			android:exported="true">
+			<intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
             <intent-filter>
-                <action
-                    android:name="android.intent.action.MAIN" />
-                <category
-                    android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="file" />
+                <data android:mimeType="*/*" />
+                <data android:host="*" />
+                <data android:pathPattern=".*\.hpk" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="content" />
+				<data android:mimeType="*/*" />
+                <data android:host="*" />
+                <data android:pathPattern=".*\.hpk" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="file" />
+                <data android:host="*" />
+                <data android:pathPattern=".*\.hpk" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="content" />
+                <data android:host="*" />
+                <data android:pathPattern=".*\.hpk" />
             </intent-filter>
         </activity>
 		<activity android:name=".ScriptActivity" />
 		<activity android:name=".ErrorActivity" />
-			
 		<activity  android:name="h.ide.activity.MainActivity" />
         <activity  android:name="h.ide.activity.ProjActivity" />
         <activity  android:name="h.ide.activity.EditActivity" />

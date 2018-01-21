@@ -23,12 +23,12 @@ public final class 文件工具 {
         return $文件;
     }
 
-    public static Boolean 是文件(String $文件) {
-        return 取文件对象($文件).isFile();
+    public static Boolean 是文件(String... $文件) {
+        return 取文件对象(字符工具.分解($文件,"/")).isFile();
     }
 
-    public static Boolean 是目录(String $文件夹) {
-        return 取文件对象($文件夹).isDirectory();
+    public static Boolean 是目录(String... $文件夹) {
+        return 取文件对象(字符工具.分解($文件夹,"/")).isDirectory();
     }
 
     public static Boolean 是否存在(String $路径) {
@@ -136,8 +136,8 @@ public final class 文件工具 {
         return 字符工具.以开始($文件, "http");
     }
 
-    public static File 取文件对象(String $文件) {
-        return new File(检查地址($文件));
+    public static File 取文件对象(String... $文件) {
+        return new File(检查地址(字符工具.分解($文件,"/")));
     }
 
     public static String[] 检查地址(String[] $目录) {

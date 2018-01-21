@@ -22,8 +22,7 @@ public class 线性布局 extends LinearLayout implements 基本布局 {
         this($父视图.getContext());
         加入到($父视图);
     }
-    
-    
+   
 
     @Override
     public void 置布局重力(String $重力) {

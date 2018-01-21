@@ -13,7 +13,7 @@ public class 视图工具 {
 		Rect rect = new Rect();
 		pFont.setTextSize(视图工具.检查大小($大小));
 		pFont.getTextBounds($字符串, 0, 1, rect); 
-		return  rect.width();
+		return  rect.width() * 2;
 	}
 	
 	public static int 计算高度(String $字符串,Object $大小) {

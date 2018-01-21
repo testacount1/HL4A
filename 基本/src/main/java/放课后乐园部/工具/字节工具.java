@@ -4,7 +4,7 @@ import java.io.*;
 
 public class 字节工具 {
 
-    public static byte[] 读取(String $文件) {
+    public static byte[] 读取(String... $文件) {
 
         InputStream $输入流 = 流工具.输入.文件($文件);
 

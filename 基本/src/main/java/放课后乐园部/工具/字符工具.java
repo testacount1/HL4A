@@ -5,26 +5,26 @@ import java.util.regex.*;
 
 public class 字符工具 {
 
-	public static String 读取(String $地址) {
+	public static String 读取(String... $地址) {
 		if (!文件工具.是文件($地址)) return null;
 		return 转换(字节工具.读取($地址));
 	}
-	
+
 	public static String 读取(InputStream $流) {
 		if ($流 == null) return null;
 		return 转换(字节工具.读取($流));
 	}
-	
+
 	public static void 保存(String $地址,String $内容) {
 		if ($内容 == null) return;
-		字节工具.保存($地址,$内容.getBytes());
+		字节工具.保存($地址, $内容.getBytes());
 	}
-	
+
 	public static void 追加(String $地址,String $内容) {
 		if ($内容 == null) return;
-		字节工具.追加($地址,$内容.getBytes());
+		字节工具.追加($地址, $内容.getBytes());
 	}
-	
+
 	public static String 转换十六(byte[] bytes) { 
 		StringBuilder sb = new StringBuilder(); 
 		for (int i = 0; i < bytes.length; i++) { 
@@ -36,7 +36,7 @@ public class 字符工具 {
 		}
 		return sb.toString(); 
 	}
-   
+
     public static String 转换(byte[] $字节) {
         if ($字节 == null) return null;
         return new String($字节);
@@ -151,7 +151,13 @@ public class 字符工具 {
 
         if ($数组长度 == 0) return "";
 
-        if ($数组长度 == 1) return $数组[0].toString();
+        if ($数组长度 == 1) {
+			if ($数组[0] != null) {
+				return $数组[0].toString();
+			} else {
+				return "";
+			}
+		}
 
         String $分解 = $数组[0].toString();
 

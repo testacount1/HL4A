@@ -7,12 +7,17 @@ import 放课后乐园部.安卓.图形.*;
 import 放课后乐园部.安卓.视图.*;
 import 放课后乐园部.安卓.工具.*;
 import 放课后乐园部.安卓.资源.*;
+import 放课后乐园部.工具.*;
 
 public class 标题栏 extends 线性布局 {
 
     public 文本视图 标题对象;
     public 线性布局 左按钮栏;
     public 线性布局 右按钮栏;
+	
+	public static final byte[] 阴影图片 = 编码工具.Base64.解码("iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAMAAADXEh96AAAAD1BMVEUAAAAAAAAAAAAAAAD///9PsMGfAAAABXRSTlMtIhEGALq/5HAAAAAaSURBVAjXY2CAAEYwYGACAwZmMGBgAQMoBQAEmABVxsd5dwAAAABJRU5ErkJggg==");
+	
+	public 图片视图 阴影视图;
 
     Context 上下文;
 
@@ -23,7 +28,7 @@ public class 标题栏 extends 线性布局 {
 
 		置标签("标题");
         置方向("水平");
-        置高度("56dp");
+        置高度(主题工具.取中等填充());
         置重力("中间垂直");
         置背景颜色(主题工具.取主题颜色().取基本色());
 
@@ -33,11 +38,10 @@ public class 标题栏 extends 线性布局 {
         标题对象 = new 文本视图(this);
 		标题对象.置文本大小(主题工具.取大文本大小());
 		标题对象.置文本颜色(颜色.白色);
-		标题对象.置左填充("16dp");
+		标题对象.置左填充(主题工具.取默认填充());
         标题对象.setHorizontallyScrolling(true);
 
         右按钮栏 = new 线性布局(this);
-		右按钮栏.置高度("56dp");
 		右按钮栏.置方向("水平");
 		右按钮栏.置重力("右边");
 

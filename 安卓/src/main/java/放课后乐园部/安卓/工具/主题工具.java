@@ -8,7 +8,25 @@ public class 主题工具 {
 	private static String 圆角大小;
 	private static String 大文本大小;
 	private static String 文本大小;
+	private static String 小文本大小;
 	private static String 默认填充;
+	private static String 中等填充;
+
+	public static void 置中等填充(String $填充) {
+		中等填充 = $填充;
+	}
+
+	public static String 取中等填充() {
+		return 中等填充;
+	}
+
+	public static void 置小文本大小(String $大小) {
+		小文本大小 = $大小;
+	}
+
+	public static String 取小文本大小() {
+		return 小文本大小;
+	}
 
 	public static void 置大文本大小(String $大小) {
 		主题工具.大文本大小 = $大小;

@@ -74,6 +74,10 @@ public class 颜色 {
 		return 字符组[7];
 	}
 	
+	public String 取淡色字符() {
+		return 字符组[1];
+	}
+	
 	public int 取基本色() {
 		return 颜色组[5];
 	}
@@ -82,4 +86,8 @@ public class 颜色 {
 		return 颜色组[7];
 	}
 
+	public int 取淡色() {
+		return 颜色组[1];
+	}
+	
 }
