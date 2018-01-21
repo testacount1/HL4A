@@ -4,7 +4,9 @@
 <br />[码云](https://gitee.com/MikaGuraN/HL4A)
 <br />[Github](https://github.com/MikaGuraN/HL4A)
 <br />
-<br />[预览版](./乐园之土.apk)<pre>
+<br />[预览版](./乐园之土.apk)
+<br /> 协议 :
+<br />[GNU GENERAL PUBLIC LICENSE 3](./LICENSE)<pre>
 
 还在不断完善啦
 
@@ -23,8 +25,4 @@
 
 emmmmm...
 以前的都省略啦，正在重构...
-
 </pre>
-<br />
-<br /> 协议 :
-<br />[GNU GENERAL PUBLIC LICENSE 3](./LICENSE)
