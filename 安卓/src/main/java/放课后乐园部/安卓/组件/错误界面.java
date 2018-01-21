@@ -23,7 +23,7 @@ public class 错误界面 extends 基本界面 {
 		$标题.置标题("崩溃了(ノДＴ)");
 		$标题.加入到($底层);
 
-        $标题.左按钮(图标.返回, new 通用方法() {
+        $标题.左按钮(图标.图标_箭头_返回_白色, new 通用方法() {
                 @Override
                 public Object 调用(Object[] $参数) {
                     错误界面.this.结束界面();
@@ -31,7 +31,7 @@ public class 错误界面 extends 基本界面 {
                 }
             });
 
-        $标题.右按钮(图标.复制, new 通用方法() {
+        $标题.右按钮(图标.图标_内容_copy_白色, new 通用方法() {
                 @Override
                 public Object 调用(Object[] $参数) {
                     设备工具.置剪切板(错误内容);

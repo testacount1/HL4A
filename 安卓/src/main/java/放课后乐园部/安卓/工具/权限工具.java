@@ -16,7 +16,7 @@ public class 权限工具 {
             if (检查权限($界面, $单个) == PackageManager.PERMISSION_DENIED) {
                 return false;
             }
-        }
+       }
         return true;
     }
 

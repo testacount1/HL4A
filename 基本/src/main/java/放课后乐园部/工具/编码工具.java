@@ -26,7 +26,103 @@ public class 编码工具 {
 		
 	}
 	
-	public static class BASE64 {
+	public static class Unicode {
+		
+		public static String 编码(String $字符)
+		{
+			String str = "";
+			if (($字符 == null) || ($字符.trim().equals("")))
+				return str;
+			for (int i = 0; i < $字符.length(); i++)
+			{
+				byte[] bytes = String.valueOf($字符.charAt(i)).getBytes();
+				String s4;
+				if (bytes.length == 1)
+				{
+					s4 = String.valueOf($字符.charAt(i));
+				} else {
+					int ch = $字符.charAt(i);
+					s4 = "\\u" + Integer.toHexString(ch);
+				}
+				str = str + s4;
+			}
+			return str;
+		}
+
+		public static String 解码(String $内容) {
+			char aChar;
+			int len = $内容.length();
+			StringBuffer outBuffer = new StringBuffer(len);
+			for (int x = 0; x < len;) {
+				aChar = $内容.charAt(x++);
+				if (aChar == '\\') {
+					aChar = $内容.charAt(x++);
+					if (aChar == 'u') {
+						int value = 0;
+						for (int i = 0; i < 4; i++) {
+							aChar = $内容.charAt(x++);
+							switch (aChar) {
+								case '0':
+								case '1':
+								case '2':
+								case '3':
+								case '4':
+								case '5':
+								case '6':
+								case '7':
+								case '8':
+								case '9':
+									value = (value << 4) + aChar - '0';
+									break;
+								case 'a':
+								case 'b':
+								case 'c':
+								case 'd':
+								case 'e':
+								case 'f':
+									value = (value << 4) + 10 + aChar - 'a';
+									break;
+								case 'A':
+								case 'B':
+								case 'C':
+								case 'D':
+								case 'E':
+								case 'F':
+									value = (value << 4) + 10 + aChar - 'A';
+									break;
+								default:
+									throw new IllegalArgumentException(
+										"Malformed      encoding.");
+							}
+
+						}
+						outBuffer.append((char) value);
+					} else {
+						if (aChar == 't') {
+							aChar = '\t';
+						} else if (aChar == 'r') {
+							aChar = '\r';
+						} else if (aChar == 'n') {
+							aChar = '\n';
+						} else if (aChar == 'f') {
+							aChar = '\f';
+						}
+						outBuffer.append(aChar);
+					}
+				} else {
+					outBuffer.append(aChar);
+				}
+
+			}
+			return outBuffer.toString();
+
+		}
+
+	}
+		
+
+	
+	public static class Base64 {
 
 		public static String 编码(byte[] $字节) {
 			if ($字节 == null) return null;

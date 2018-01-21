@@ -166,7 +166,7 @@ public class 基本界面 extends Activity {
 
 	@Override
 	public void onRequestPermissionsResult(int requestCode,String[] permissions,int[] grantResults) {
-		super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+		//super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 		if (检查事件("权限回调事件")) {
 			调用事件("权限回调事件", requestCode, permissions, grantResults);
 		} else
@@ -279,6 +279,10 @@ public class 基本界面 extends Activity {
     }
 
 	public void 请求权限() {
+		if (设备工具.取SDK值() < 23) {
+			权限回调事件();
+			return;
+		}
 		权限工具.请求所有(this, 233);
 	}
 

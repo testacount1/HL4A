@@ -1,18 +1,19 @@
 package h.ide.activity;
 
+import android.content.*;
 import android.os.*;
 import h.ide.layout.*;
 import h.ide.util.*;
 import java.lang.reflect.*;
 import 放课后乐园部.事件.*;
+import 放课后乐园部.安卓.工具.*;
 import 放课后乐园部.安卓.弹窗.*;
 import 放课后乐园部.安卓.组件.*;
 import 放课后乐园部.安卓.视图.*;
 import 放课后乐园部.安卓.资源.*;
 import 放课后乐园部.工具.*;
 import 放课后乐园部.收集.*;
-import 放课后乐园部.安卓.工具.*;
-import android.content.*;
+import 放课后乐园部.安卓.编译.*;
 
 public class ProjActivity extends 基本界面 {
 
@@ -59,7 +60,7 @@ public class ProjActivity extends 基本界面 {
 		}
 		当前 = 工程.读取(地址);
         布局 = new 布局_工程管理(this);
-		布局.标题.左按钮(图标.返回, 界面结束);
+		布局.标题.左按钮(图标.图标_箭头_返回_白色,界面结束);
 		打开布局(布局);
 		创建设置("工程名", "包名", "版本名", "版本号");
 		内容 = new 布局_设置弹窗(this);
@@ -72,8 +73,19 @@ public class ProjActivity extends 基本界面 {
 		删除.置内容("真的要删除 " + 当前.信息.工程名 + " 吗？");
 		删除.置中按钮("取消",基本弹窗.隐藏弹窗);
 		删除.置右按钮("删除",直接删除);
+		通用方法 打包运行 = new 通用方法() {
+			@Override
+			public Object 调用(Object[] $参数) {
+				if (检查())return null;
+				加载中弹窗 $提示 = new 加载中弹窗(ProjActivity.this);
+				$提示.置可关闭(true);
+				$提示.显示();
+				APK $编译器 = new APK("","");
+				return null;
+			}
+		};
 		创建按钮("进入编辑").置单击事件(进入编辑);
-		//创建按钮("打包运行").置单击事件(可运行类.未实现);
+		//创建按钮("编译打包").置单击事件(打包运行);
 		创建按钮("删除工程").置单击事件(删除工程);
     }
 
@@ -107,13 +119,7 @@ public class ProjActivity extends 基本界面 {
 		}
 	};
 
-	通用方法 打包运行 = new 通用方法() {
-		@Override
-		public Object 调用(Object[] $参数) {
-			if (检查())return null;
-			return null;
-		}
-	};
+	
 
 	通用方法 更改设置 = new 通用方法() {
 		@Override

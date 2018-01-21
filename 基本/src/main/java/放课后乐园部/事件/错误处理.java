@@ -10,7 +10,7 @@ public class 错误处理 implements Thread.UncaughtExceptionHandler {
     
     @Override
     public void uncaughtException(Thread $线程,Throwable $错误) {
-        调用方法.事件(处理,$线程,$错误);
+        调用方法.安全(处理,$线程,$错误);
     }
 
 }

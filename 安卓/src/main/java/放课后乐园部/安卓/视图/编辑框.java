@@ -24,38 +24,40 @@ public class 编辑框 extends EditText implements 基本视图 {
         置横杠颜色(主题工具.取主题颜色().取基本色());
         置指针颜色(主题工具.取主题颜色().取基本色());
     }
-    
+
     public 编辑框(ViewGroup $父视图) {
         this($父视图.getContext());
         加入到($父视图);
     }
-    
+
     public void 置横杠颜色(Object $颜色) {
-        ((InsetDrawable)getBackground()).setTintList(视图工具.创建单颜色列表($颜色));
+		getBackground().setTintList(视图工具.创建单颜色列表($颜色));
     }
-    
+
     public void 置指针颜色(Object $颜色) {
-        Field $指针ID变量 = 反射工具.取变量(this,"mCursorDrawableRes");
-        int $资源ID = 反射工具.读变量($指针ID变量,this);
-        Field $编辑器变量 = 反射工具.取变量(this,"mEditor");
-        Object $编辑器 = 反射工具.读变量($编辑器变量,this);
-        Field $绘画对象 = 反射工具.取变量($编辑器,"mCursorDrawable");
-        Drawable[] $绘画组 = new Drawable[1];
-        $绘画组[0] = getContext().getResources().getDrawable($资源ID);
-        $绘画组[0].setColorFilter(视图工具.检查颜色($颜色), PorterDuff.Mode.SRC_IN);
-        反射工具.改变量($绘画对象,$编辑器,$绘画组);
+		if (设备工具.取SDK值() > 21) {
+			Field $指针ID变量 = 反射工具.取变量(this, "mCursorDrawableRes");
+			int $资源ID = 反射工具.读变量($指针ID变量, this);
+			Field $编辑器变量 = 反射工具.取变量(this, "mEditor");
+			Object $编辑器 = 反射工具.读变量($编辑器变量, this);
+			Field $绘画对象 = 反射工具.取变量($编辑器, "mCursorDrawable");
+			Drawable[] $绘画组 = new Drawable[1];
+			$绘画组[0] = getContext().getResources().getDrawable($资源ID);
+			$绘画组[0].setColorFilter(视图工具.检查颜色($颜色), PorterDuff.Mode.SRC_IN);
+			反射工具.改变量($绘画对象, $编辑器, $绘画组);
+		}
     }
 
     @Override
     public void 置布局重力(String $重力) {
-        视图实现.置布局重力(this,$重力);
+        视图实现.置布局重力(this, $重力);
     }
 
     @Override
     public void 置布局权重(float $权重) {
-        视图实现.置布局权重(this,$权重);
+        视图实现.置布局权重(this, $权重);
     }
-    
+
     // 编辑框实现
 
 
@@ -92,7 +94,7 @@ public class 编辑框 extends EditText implements 基本视图 {
 
 
     public void 置文本(String $文本) {
-        文本实现.置文本(this,$文本);
+        文本实现.置文本(this, $文本);
     }
 
 
