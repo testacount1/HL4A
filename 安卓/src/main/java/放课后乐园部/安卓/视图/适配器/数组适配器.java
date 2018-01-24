@@ -2,6 +2,8 @@ package 放课后乐园部.安卓.视图.适配器;
 
 import android.content.*;
 import android.view.*;
+import android.view.View.*;
+import android.widget.*;
 import java.util.*;
 import 放课后乐园部.安卓.视图.*;
 import 放课后乐园部.安卓.资源.布局.*;
@@ -37,7 +39,43 @@ public class 数组适配器 extends 基本适配器 {
     public View 创建() {
         return new 布局_适配器_数组(上下文);
     }
+	
+	private ViewGroup 预测布局;;
+	
+	public int 预测宽度() {
+		
+		// 从 android源码 MenuPopupHelper 抄来的
+		
+        int maxWidth = 0;
+        View itemView = null;
+        int itemType = 0;
 
+        final int widthMeasureSpec = MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED);
+        final int heightMeasureSpec = MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED);
+        final int count = getCount();
+        for (int i = 0; i < count; i++) {
+            final int positionType = getItemViewType(i);
+            if (positionType != itemType) {
+                itemType = positionType;
+                itemView = null;
+            }
+
+            if (预测布局 == null) {
+                预测布局 = new FrameLayout(上下文);
+            }
+
+            itemView = getView(i, itemView, 预测布局);
+            itemView.measure(widthMeasureSpec, heightMeasureSpec);
+
+            final int itemWidth = itemView.getMeasuredWidth();
+            if (itemWidth > maxWidth) {
+                maxWidth = itemWidth;
+            }
+        }
+
+        return maxWidth;
+    }
+	
     @Override
     public View 处理(View $视图,哈希表 $参数) {
         文本视图 $内容 = ((布局_适配器_数组)$视图).文本;

@@ -2084,7 +2084,7 @@ public class ScriptRuntime {
             return value;
         } else {
             // See ES5 8.7.2
-            String msg = "Assignment to undefined \"" + id + "\" in strict mode";
+            String msg = id + " (对未声明的变量赋值)";
             throw constructError("ReferenceError", msg);
         }
     }

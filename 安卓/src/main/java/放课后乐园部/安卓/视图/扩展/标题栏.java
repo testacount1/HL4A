@@ -15,17 +15,18 @@ public class 标题栏 extends 线性布局 {
     public 线性布局 左按钮栏;
     public 线性布局 右按钮栏;
 	
-	public static final byte[] 阴影图片 = 编码工具.Base64.解码("iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAMAAADXEh96AAAAD1BMVEUAAAAAAAAAAAAAAAD///9PsMGfAAAABXRSTlMtIhEGALq/5HAAAAAaSURBVAjXY2CAAEYwYGACAwZmMGBgAQMoBQAEmABVxsd5dwAAAABJRU5ErkJggg==");
+	public 线性布局 菜单视图;
+	public 弹出菜单 菜单对象;
 	
-	public 图片视图 阴影视图;
-
     Context 上下文;
 
     public 标题栏(Context $上下文) {
         super($上下文);
 
         上下文 = $上下文;
-
+		
+		setTranslationZ(视图工具.检查大小("4dp"));
+		
 		置标签("标题");
         置方向("水平");
         置高度(主题工具.取中等填充());
@@ -44,8 +45,20 @@ public class 标题栏 extends 线性布局 {
         右按钮栏 = new 线性布局(this);
 		右按钮栏.置方向("水平");
 		右按钮栏.置重力("右边");
+		
+		菜单视图 = 右按钮(菜单显示);
+		菜单对象 = new 弹出菜单(菜单视图);
+		菜单视图.隐藏();
 
     }
+	
+	通用方法 菜单显示 = new 通用方法() {
+		@Override
+		public Object 调用(Object[] $参数) {
+			菜单对象.显示();
+			return null;
+		}
+	};
     
     public 标题栏(ViewGroup $父视图) {
         this($父视图.getContext());
@@ -55,6 +68,7 @@ public class 标题栏 extends 线性布局 {
     public void 切换() {
         标题对象.置文本颜色(主题工具.取主题颜色().取基本色());
         置背景(颜色.白色);
+		setTranslationZ(0);
     }
 
     public String 取标题() {
@@ -66,7 +80,7 @@ public class 标题栏 extends 线性布局 {
     }
 
     public 线性按钮 左按钮(通用方法 $事件) {
-        线性按钮 $按钮 = new 线性按钮(上下文, 图标.图标_menu_白色);
+        线性按钮 $按钮 = new 线性按钮(上下文, 图标.菜单);
         $按钮.加入到(左按钮栏);
 		$按钮.置单击事件($事件);
         return $按钮;
@@ -80,18 +94,23 @@ public class 标题栏 extends 线性布局 {
     }
 
     public 线性按钮 右按钮(通用方法 $事件) {
-        线性按钮 $按钮 = new 线性按钮(上下文, 图标.图标_more_vert_白色);
+        线性按钮 $按钮 = new 线性按钮(上下文, 图标.更多);
         $按钮.加入到(右按钮栏);
 		$按钮.置单击事件($事件);
         return $按钮;
     }
 
-    public 线性按钮 右按钮(byte[] $图片,通用方法 $事件) {
+    public 线性按钮 右按钮(Object $图片,通用方法 $事件) {
         线性按钮 $按钮 = new 线性按钮(上下文, $图片);
         $按钮.加入到(右按钮栏);
 		$按钮.置单击事件($事件);
         return $按钮;
     }
+	
+	public 弹出菜单 取菜单() {
+		菜单视图.显示();
+		return 菜单对象;
+	}
 
 
 }

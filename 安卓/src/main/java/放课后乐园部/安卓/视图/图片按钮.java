@@ -34,21 +34,9 @@ public class 图片按钮 extends ImageButton implements 基本视图 {
         视图实现.置布局权重(this,$权重); 
     }
     
-    public void 置图片(Bitmap $图片) {
-        setImageBitmap($图片);
-    }
-
-    public void 置图片(byte[] $图片) {
-        置图片(图片工具.读取($图片));
-    }
-
-    public void 置图片(InputStream $图片) {
-        置图片(图片工具.读取($图片));
-    }
-
-    public void 置图片(String $地址) {
-        置图片(图片工具.读取($地址));
-    }
+	public void 置图片(Object $图片) {
+		置图片(视图工具.检查图片($图片));
+	}
 
     public void 保存到(String $地址) {
         图片工具.保存(图片工具.读取((BitmapDrawable)getDrawable()), $地址);

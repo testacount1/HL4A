@@ -1397,23 +1397,13 @@ public abstract class ScriptableObject implements Scriptable,
             superProto = ScriptableObject.getObjectPrototype(scope);
         }
         proto.setPrototype(superProto);
-
+		
         // Find out whether there are any methods that begin with
         // "js". If so, then only methods that begin with special
         // prefixes will be defined as JavaScript entities.
-        final String functionPrefix = "函数_";
-        final String staticFunctionPrefix = "静态函数_";
-        final String getterPrefix = "取";
-        final String setterPrefix = "置";
-        final String ctorName = "初始化_";
 
         Member ctorMember = findAnnotatedMember(methods, JSConstructor.class);
-        if (ctorMember == null) {
-            ctorMember = findAnnotatedMember(ctors, JSConstructor.class);
-        }
-        if (ctorMember == null) {
-            ctorMember = FunctionObject.findSingleMethod(methods, ctorName);
-        }
+   
         if (ctorMember == null) {
             if (ctors.length == 1) {
                 ctorMember = ctors[0];
@@ -1459,9 +1449,10 @@ public abstract class ScriptableObject implements Scriptable,
             // ignore any compiler generated methods.
             if (name.indexOf('$') != -1)
                 continue;
+				/*
             if (name.equals(ctorName))
                 continue;
-
+			
             Annotation annotation = null;
             String prefix = null;
             if (method.isAnnotationPresent(JSFunction.class)) {
@@ -1530,6 +1521,7 @@ public abstract class ScriptableObject implements Scriptable,
             if (sealed) {
                 f.sealObject();
             }
+			*/
         }
 
         // Call user code to complete initialization if necessary.
@@ -1549,15 +1541,18 @@ public abstract class ScriptableObject implements Scriptable,
         return ctor;
     }
 
-    private static Member findAnnotatedMember(AccessibleObject[] members,
-                                              Class<? extends Annotation> annotation) {
-        for (AccessibleObject member : members) {
+    private static Member findAnnotatedMember(AccessibleObject[] members,Class<? extends Annotation> annotation) {
+        /*
+			for (AccessibleObject member : members) {
             if (member.isAnnotationPresent(annotation)) {
                 return (Member) member;
             }
-        }
+			
+        }*/
         return null;
     }
+	
+	/*
 
     private static Method findSetterMethod(Method[] methods,
                                            String name,
@@ -1619,6 +1614,8 @@ public abstract class ScriptableObject implements Scriptable,
         }
         return propName;
     }
+	
+	*/
 
     @SuppressWarnings({"unchecked"})
     private static <T extends Scriptable> Class<T> extendsScriptable(Class<?> c)

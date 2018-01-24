@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <application
+        android:label="乐园之土"
+        android:theme="@android:style/Theme.Holo.Light.NoActionBar"
+		android:icon="@drawable/icon"
+        android:name=".Application"
+        android:debuggable="false"
+		android:supportsRtl="true"
+        android:allowBackup="false">
+
+		<activity android:name=".LaunchPad"
+			android:exported="true">
+			<intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="file" />
+                <data android:mimeType="*/*" />
+                <data android:host="*" />
+                <data android:pathPattern=".*\.hpk" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="content" />
+				<data android:mimeType="*/*" />
+                <data android:host="*" />
+                <data android:pathPattern=".*\.hpk" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="file" />
+                <data android:host="*" />
+                <data android:pathPattern=".*\.hpk" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="content" />
+                <data android:host="*" />
+                <data android:pathPattern=".*\.hpk" />
+            </intent-filter>
+        </activity>
+      		<activity  android:name=".activity.MainActivity" />
+        <activity  android:name=".activity.ProjActivity" />
+        <activity  android:name=".activity.EditActivity" />
+    </application>
+
+</manifest>

@@ -5,6 +5,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 package org.mozilla.javascript;
+import 放课后乐园部.工具.*;
 
 /**
  * A wrapper for runtime exceptions.
@@ -23,7 +24,7 @@ public class WrappedException extends EvaluatorException {
      
     
     public WrappedException(Throwable exception) {
-        super(exception.getMessage());
+        super(错误工具.取整个错误(exception));
         this.exception = exception;
         Kit.initCause(this, exception);
 

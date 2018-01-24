@@ -6,34 +6,26 @@ import zhao.arsceditor.ResDecoder.*;
 import 放课后乐园部.压缩.*;
 import 放课后乐园部.工具.*;
 import com.stardust.autojs.apkbuilder.*;
+import 放课后乐园部.安卓.工具.*;
 
 public class APK {
 
 	public String 包名;
 	public String 目录;
-	public String 原文件;
 	public ARSCDecoder 资源;
 	public ManifestEditor 清单;
-
-	public String 打包;
+	
 	public String 资源文件;
 	public String 清单文件;
 
-	public APK(String $原文件,String $编译目录) {
-		原文件 = $原文件;
+	public APK(String $编译目录) {
 		目录 = $编译目录;
-		打包 = 目录 + "/打包";
-		清单文件 = 打包 + "/AndroidManifest.xml";
-		资源文件 = 打包 + "/resources.arsc";
+		清单文件 = 目录 + "/AndroidManifest.xml";
+		资源文件 = 目录 + "/resources.arsc";
 	}
 
 	public void 初始化(String $包名) {
-		文件工具.删除(打包);
-		ZIP工具.解压(原文件, 打包);
 		清单 = new ManifestEditor(清单文件);
-	}
-
-	public void 置包名(String $包名) {
 		清单.setPackageName($包名);
 		包名 = $包名;
 	}
@@ -68,13 +60,13 @@ public class APK {
 
 	public void 打包签名() {
 		try {
-			String $输出 = 目录 + "/" + 包名 + ".apk";
-			TinySign.sign(文件工具.取文件对象(打包), 流工具.输出.文件($输出));
+			String $输出 = 文件工具.取目录(目录) + "/" + 包名 + ".apk";
+			TinySign.sign(文件工具.取文件对象(目录), 流工具.输出.文件($输出));
 		} catch (Exception $错误) {}
 	}
 	
 	public void 清除缓存() {
-		文件工具.删除(打包);
+		文件工具.删除(目录);
 	}
 
 }

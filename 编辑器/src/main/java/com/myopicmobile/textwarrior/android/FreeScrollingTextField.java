@@ -3166,15 +3166,15 @@ implements Document.TextFieldMetrics{
 				text.toString());
 			_composingCharCount = 0;
 			_hDoc.endBatchEdit();
-
 			//TODO reduce invalidate calls
-			if(newCursorPosition > 1){
+			if(newCursorPosition >= 1){
 				_fieldController.moveCaret(_caretPosition + newCursorPosition - 1);
 			}
 			else if (newCursorPosition <= 0){
 				_fieldController.moveCaret(_caretPosition - text.length() - newCursorPosition);
 			}
 			_isComposing = false;
+			log("commitText:"+text+","+newCursorPosition);
 			return true;
 		}
 

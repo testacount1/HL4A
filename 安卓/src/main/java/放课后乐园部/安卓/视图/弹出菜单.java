@@ -43,6 +43,15 @@ public class 弹出菜单 extends ListPopupWindow {
 		}
 		单击.设置(适配器.数据.数量(),$单击);
 		适配器.添加($名称);
+		预置宽度();
+	}
+
+	private void 预置宽度() {
+		int $大小 = 适配器.预测宽度();
+		if ($大小 < (应用工具.取屏幕宽度() * 0.618 * 0.618)) {
+			$大小 = new Double(应用工具.取屏幕宽度() * 0.618 * 0.618).intValue();
+		}
+		setWidth($大小);
 	}
 	
 	public void 置宽度(Object $宽度) {
@@ -50,12 +59,8 @@ public class 弹出菜单 extends ListPopupWindow {
 	}
 	
     public void 显示() {
-		int $大小 = 视图工具.计算宽度(最大,主题工具.取文本大小());
-		if ($大小 < (应用工具.取屏幕宽度() * 0.618 * 0.618)) {
-			$大小 = new Double(应用工具.取屏幕宽度() * 0.618 * 0.618).intValue();
-		}
-		setWidth($大小);
-        show();
+		if ("".equals(最大)) return;
+		show();
     }
 	
 	public void 隐藏() {

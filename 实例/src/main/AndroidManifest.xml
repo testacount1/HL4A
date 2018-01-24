@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
         android:label="实例"
-        android:theme="@android:style/Theme.Holo.Light.NoActionBar"
-      		android:icon="@drawable/icon"
+        android:theme="@android:style/Theme.Material.Light.NoActionBar"
+      	android:icon="@drawable/icon"
         android:name=".Application"
         android:debuggable="false"
         android:allowBackup="false">
@@ -15,9 +15,6 @@
                     android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-		<activity android:name=".ScriptActivity" />
-		<activity android:name=".ErrorActivity" />
-			
     </application>
 
 </manifest>

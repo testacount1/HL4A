@@ -498,7 +498,7 @@ public class BaseFunction extends IdScriptableObject implements Function
              : activation.get("arguments", activation);
     }
 
-    private static Object jsConstructor(Context cx, Scriptable scope,
+    public static Object jsConstructor(Context cx, Scriptable scope,
                                         Object[] args)
     {
         int arglen = args.length;

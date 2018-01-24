@@ -5,14 +5,15 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 package org.mozilla.javascript;
+import 放课后乐园部.工具.*;
+import 放课后乐园部.安卓.工具.*;
 
 /**
  * This is the default error reporter for JavaScript.
  *
  * @author Norris Boyd
  */
-class DefaultErrorReporter implements ErrorReporter
-{
+class DefaultErrorReporter implements ErrorReporter {
     static final DefaultErrorReporter instance = new DefaultErrorReporter();
 
     private boolean forEval;
@@ -20,17 +21,15 @@ class DefaultErrorReporter implements ErrorReporter
 
     private DefaultErrorReporter() { }
 
-    static ErrorReporter forEval(ErrorReporter reporter)
-    {
+    static ErrorReporter forEval(ErrorReporter reporter) {
         DefaultErrorReporter r = new DefaultErrorReporter();
         r.forEval = true;
         r.chainedReporter = reporter;
         return r;
     }
 
-    public void warning(String message, String sourceURI, int line,
-                        String lineText, int lineOffset)
-    {
+    public void warning(String message,String sourceURI,int line,
+                        String lineText,int lineOffset) {
         if (chainedReporter != null) {
             chainedReporter.warning(
                 message, sourceURI, line, lineText, lineOffset);
@@ -39,9 +38,8 @@ class DefaultErrorReporter implements ErrorReporter
         }
     }
 
-    public void error(String message, String sourceURI, int line,
-                      String lineText, int lineOffset)
-    {
+    public void error(String message,String sourceURI,int line,
+                      String lineText,int lineOffset) {
         if (forEval) {
             // Assume error message strings that start with "TypeError: "
             // should become TypeError exceptions. A bit of a hack, but we
@@ -54,8 +52,9 @@ class DefaultErrorReporter implements ErrorReporter
                 error = TYPE_ERROR_NAME;
                 message = message.substring(prefix.length());
             }
-            throw ScriptRuntime.constructError(error, message, sourceURI,
-                                               line, lineText, lineOffset);
+			应用工具.错误处理.调用(null,
+             ScriptRuntime.constructError(error, message, sourceURI,
+                                               line, lineText, lineOffset));
         }
         if (chainedReporter != null) {
             chainedReporter.error(
@@ -66,10 +65,9 @@ class DefaultErrorReporter implements ErrorReporter
         }
     }
 
-    public EvaluatorException runtimeError(String message, String sourceURI,
-                                           int line, String lineText,
-                                           int lineOffset)
-    {
+    public EvaluatorException runtimeError(String message,String sourceURI,
+                                           int line,String lineText,
+                                           int lineOffset) {
         if (chainedReporter != null) {
             return chainedReporter.runtimeError(
                 message, sourceURI, line, lineText, lineOffset);

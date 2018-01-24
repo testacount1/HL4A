@@ -2,12 +2,11 @@ package 放课后乐园部.安卓.视图;
 
 import android.app.*;
 import android.content.*;
-import android.view.*;
-import android.widget.*;
-import 放课后乐园部.事件.*;
-import 放课后乐园部.安卓.视图.实现.*;
 import android.support.v4.view.*;
+import android.view.*;
+import 放课后乐园部.事件.*;
 import 放课后乐园部.安卓.视图.事件.*;
+import 放课后乐园部.安卓.视图.实现.*;
 
 public class 滑动视图 extends ViewPager implements 基本布局 {
 

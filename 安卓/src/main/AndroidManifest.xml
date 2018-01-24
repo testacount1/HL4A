@@ -1,8 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="h.android" >
+    package="hl4a.runtime" >
 	<uses-permission android:name="android.permission.INTERNET" />
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 	<uses-permission android:name="android.permission.READ_PHONE_STATE" />
-	
+	<application>
+ 	<activity android:name=".ScriptActivity" />
+		<activity android:name=".ErrorActivity" />
+		<service
+			android:name=".Accessibility"
+			android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE" >
+			<meta-data
+				android:name="android.accessibilityservice"
+				android:resource="@xml/accessibility"/>
+			<intent-filter>
+				<action android:name="android.accessibilityservice.AccessibilityService" />
+			</intent-filter>
+		</service>
+	</application>
 </manifest>

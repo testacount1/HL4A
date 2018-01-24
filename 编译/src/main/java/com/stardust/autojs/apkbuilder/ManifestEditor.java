@@ -79,12 +79,19 @@ public class ManifestEditor {
             return;
         }
         if ("versionName".equals(attr.name.data) && mVersionName != null && attr.value instanceof StringItem) {
-            attr.value = new StringItem(mVersionName);
+            //attr.value = new StringItem(mVersionName);
             ((StringItem) attr.value).data = mVersionName;
             return;
         }
         if ("label".equals(attr.name.data) && mAppName != null && attr.value instanceof StringItem) {
             ((StringItem) attr.value).data = mAppName;
+            return;
+        }
+		if ("name".equals(attr.name.data) && mAppName != null && attr.value instanceof StringItem) {
+            switch(((StringItem) attr.value).data) {
+					case "实例应用类":((StringItem) attr.value).data = mPackageName + ".Application";return;
+					case "实例启动类":((StringItem) attr.value).data = mPackageName + ".LaunchPad";return;
+			}
             return;
         }
     }

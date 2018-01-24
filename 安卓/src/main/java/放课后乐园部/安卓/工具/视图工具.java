@@ -5,25 +5,11 @@ import android.graphics.*;
 import android.text.*;
 import android.view.*;
 import 放课后乐园部.工具.*;
+import java.io.*;
+import android.graphics.drawable.*;
 
 public class 视图工具 {
 
-	public static int 计算宽度(String $字符串,Object $大小) {
-		Paint pFont = new Paint(); 
-		Rect rect = new Rect();
-		pFont.setTextSize(视图工具.检查大小($大小));
-		pFont.getTextBounds($字符串, 0, 1, rect); 
-		return  rect.width() * 2;
-	}
-	
-	public static int 计算高度(String $字符串,Object $大小) {
-		Paint pFont = new Paint(); 
-		Rect rect = new Rect();
-		pFont.setTextSize(视图工具.检查大小($大小));
-		pFont.getTextBounds($字符串, 0, 1, rect); 
-		return  rect.width();
-	}
-	
 	public static ColorStateList 创建颜色列表(Object $普通颜色,Object $按下颜色) {
         int $普通 = 检查颜色($普通颜色);
         int $按下 = 检查颜色($按下颜色);
@@ -32,7 +18,7 @@ public class 视图工具 {
 		$状态[1] = new int[] {}; 
 		return new ColorStateList($状态, $颜色);
 	}
-    
+
     public static ColorStateList 创建单颜色列表(Object $普通颜色) {
         int $普通 = 检查颜色($普通颜色);
         int[] $颜色 = new int[] {$普通};
@@ -40,6 +26,20 @@ public class 视图工具 {
         $状态[0] = new int[] {}; 
         return new ColorStateList($状态, $颜色);
 	}
+
+	public static Bitmap 检查图片(Object $图片) {
+		if ($图片 instanceof String) {
+			if (文件工具.是文件((String)$图片)) {
+				return 图片工具.读取((String)$图片);
+			}
+		}
+		if ($图片 instanceof Bitmap) return (Bitmap)$图片;
+		if ($图片 instanceof byte[]) return 图片工具.读取((byte[])$图片);
+		if ($图片 instanceof InputStream) return 图片工具.读取((InputStream)$图片);
+		if ($图片 instanceof BitmapDrawable)return 图片工具.读取((BitmapDrawable)$图片);
+		return null;
+	}
+
 
     public static Integer 检查输入类型(Object $类型) {
         if ($类型 instanceof Integer) return (Integer)$类型;
@@ -87,23 +87,27 @@ public class 视图工具 {
     }
 
     public static Integer 检查大小(Object $大小) {
-        if ($大小 == null) return null;
+        if ($大小 == null || "".equals($大小)) return null;
         if ($大小 instanceof Float) return ((Float)$大小).intValue();
         if ($大小 instanceof Integer) return (Integer) $大小;
+		if ($大小 instanceof Double) return ((Double)$大小).intValue();
         if ($大小 instanceof String) {
             switch ((String)$大小) {
                 case "最大":case "填充":case "-1":return -1;
                 case "最小":case "自动":case "-2":return -2;
             }
-            String $结束 = 字符工具.小写(字符工具.取结束后((String)$大小, 2));
+			if ("".equals(((String)$大小).replaceAll("[0-9]",""))) {
+				return new Integer((String)$大小);
+			}
+			String $结束 = 字符工具.小写(字符工具.取结束后((String)$大小, 2));
             Integer $数量 = new Integer(字符工具.取结束前((String)$大小, 2));
             switch ($结束) {
-                case "px":return 转换工具.px($数量);
-                case "dp":return 转换工具.dp($数量);
-                case "sp":return 转换工具.sp($数量);
-                case "pt":return 转换工具.pt($数量);
-                case "mm":return 转换工具.mm($数量);
-                case "in":return 转换工具.in($数量);
+                case "px":return 转换工具.px($数量).intValue();
+                case "dp":return 转换工具.dp($数量).intValue();
+                case "sp":return 转换工具.sp($数量).intValue();
+                case "pt":return 转换工具.pt($数量).intValue();
+                case "mm":return 转换工具.mm($数量).intValue();
+                case "in":return 转换工具.in($数量).intValue();
             }
         }
         return -2;

@@ -27,24 +27,26 @@ public class 提示工具 {
         处理工具.主线程(new 通用方法(){
                 @Override
                 public Object 调用(Object[] $参数) {
-                    Object $文本 = $内容;
-					try {
-                    if ($文本 == null) $文本 = "null";
-					long 上次 = 上次提示;
-					if ((上次提示 = 时间工具.时间戳()) - 上次 < 233) {
-						文本对象.置文本(文本对象.取文本() + "\n" + $文本);
-					} else {
-						文本对象.置文本($文本.toString());
-					}
-                    文本对象.置文本颜色($颜色);
-                    提示对象.show();
-					}catch(Exception $错误) {
-						应用工具.错误处理.调用(null,$错误);
-					}
+                    直接($内容,$颜色);
                     return null;
                 }
-            });
+           });
     }
+	
+	private synchronized static void 直接(Object $文本,Object $颜色) {
+		if ($文本 == null) $文本 = "null";
+		else if ($文本 instanceof Object[]) {
+			$文本 = 字符工具.分解((Object[])$文本,"\n");
+		}
+		long 上次 = 上次提示;
+		if ((上次提示 = 时间工具.时间戳()) - 上次 < 233) {
+			文本对象.置文本(文本对象.取文本() + "\n" + $文本);
+		} else {
+			文本对象.置文本($文本.toString());
+		}
+		文本对象.置文本颜色($颜色);
+		提示对象.show();
+	}
 
 	public static void 普通(final Object $内容) {
         指定($内容, 主题工具.取主题颜色().取基本色());

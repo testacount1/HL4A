@@ -14,11 +14,11 @@ public class JavaScript implements 基本脚本 {
     public String 取脚本类型() {
         return "JavaScript";
     }
-	
+
 	public static String 实例 = "提示工具.普通(\"你好 世界 ~\");";
 
     public static 哈希表 替换关键字表 = new 哈希表();
-    
+
     public static String[][] 默认替换表 = {
         {"出", "break"},
         {"选", "case"},
@@ -50,20 +50,20 @@ public class JavaScript implements 基本脚本 {
         {"为", "instanceof"},
         {"抛", "throw"},
         {"试", "try"},
-       
+
     };
-    
+
     static {
         替换关键字(默认替换表);
     }
-    
+
     public static void 替换关键字(String $新,String $旧) {
-        替换关键字表.设置($新,$旧);
+        替换关键字表.设置($新, $旧);
     }
-    
+
     public static void 替换关键字(String[][] $表) {
         for (String[] $单个 : $表) {
-            替换关键字表.设置((String)$单个[0],(String)$单个[1]);
+            替换关键字表.设置((String)$单个[0], (String)$单个[1]);
         }
     }
 
@@ -84,7 +84,7 @@ public class JavaScript implements 基本脚本 {
 		执行代码(字符串.脚本_初始化);
 
 	}
-	
+
 	public JavaScript(JavaScript $被继承) {
 
 		JS上下文 = Context.enter();
@@ -118,7 +118,7 @@ public class JavaScript implements 基本脚本 {
 			错误工具.抛出($错误);
 		}
 	}
-    
+
 
     @Override
 	public Object 读取对象(String $对象名) {
@@ -129,7 +129,7 @@ public class JavaScript implements 基本脚本 {
 		return null;
 	}
 
-    
+
 	public Function 读取函数(String $函数名) {
 		Object $对象 = 读取对象($函数名);
 		if ($对象 instanceof Function) {
@@ -160,16 +160,14 @@ public class JavaScript implements 基本脚本 {
         return 执行代码($内容, $内容);
     }
 
-	public Object 执行代码(String $内容,String $环境名) {
-
+	public Script 编译代码(String $内容,String $环境名) {
 		if ($内容 == null) $内容 = "";
-		try {
-			return JS上下文.evaluateString(函数环境, $内容.toString(), $环境名, 1, null);
-		} catch (Exception $错误) {
-			错误工具.抛出($错误);
-		}
+			return JS上下文.compileString($内容, $环境名, 1, null);
+	}
 
-		return null;
+	public Object 执行代码(String $内容,String $环境名) {
+		if ($内容 == null) $内容 = "";
+		return JS上下文.evaluateString(函数环境, $内容.toString(), $环境名, 1, null);
 
 	}
 

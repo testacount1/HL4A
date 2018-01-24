@@ -2,10 +2,10 @@ package 放课后乐园部.安卓.组件;
 
 import android.app.*;
 import android.content.*;
-import 放课后乐园部.安卓.工具.*;
-import 放课后乐园部.事件.*;
-import 放课后乐园部.工具.*;
 import android.content.res.*;
+import hl4a.runtime.*;
+import 放课后乐园部.安卓.工具.*;
+import 放课后乐园部.工具.*;
 
 public class 基本应用 extends Application {
 
@@ -42,7 +42,7 @@ public class 基本应用 extends Application {
 
 	public void 错误处理事件(Thread $线程,Exception $错误) {
 		应用工具.结束界面($错误);
-		Intent $意图 = new Intent(上下文工具.取全局上下文(), 反射工具.取类(应用工具.取包名() + ".ErrorActivity"));
+		Intent $意图 = new Intent(上下文工具.取全局上下文(), ErrorActivity.class);
         $意图.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         $意图.putExtra("错误","当前应用版本 :"+ 应用工具.取版本名() +"\n"+ 错误工具.取整个错误($错误));
 		上下文工具.取全局上下文().startActivity($意图);

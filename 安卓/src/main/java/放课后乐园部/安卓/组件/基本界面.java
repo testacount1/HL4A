@@ -4,18 +4,21 @@ import android.app.*;
 import android.content.*;
 import android.os.*;
 import android.view.*;
+import java.io.*;
 import 放课后乐园部.事件.*;
 import 放课后乐园部.安卓.工具.*;
-import 放课后乐园部.收集.*;
+import 放课后乐园部.安卓.工具.服务工具.*;
+import 放课后乐园部.安卓.视图.*;
 import 放课后乐园部.工具.*;
-import 放课后乐园部.安卓.弹窗.*;
-import java.io.*;
+import 放课后乐园部.收集.*;
 
 public class 基本界面 extends Activity {
 
 	public Object[] 传入参数;
 	public 哈希表<String,通用方法> 所有事件 = new 哈希表<String,通用方法>();
-
+	public 集合<连接处理> 所有连接 = new 集合<>();
+	public 集合<浏览器> 所有浏览器 = new 集合<>();
+	
 	public void 注册事件(String $事件,通用方法 $方法) {
 		所有事件.设置($事件, $方法);
 	}
@@ -179,6 +182,15 @@ public class 基本界面 extends Activity {
 			调用事件("界面销毁事件");
 		} else
 			界面销毁事件();
+		for (浏览器 $单个 : 所有浏览器) {
+			$单个.loadUrl("about:blank");
+			$单个.removeAllViews();
+			((ViewGroup)$单个.getParent()).removeView($单个);
+			$单个.destroy();
+		}
+		for (连接处理 $单个 : 所有连接) {
+			unbindService($单个);
+		}
 		super.onDestroy();
     }
 
@@ -261,7 +273,7 @@ public class 基本界面 extends Activity {
 
     public void 跳转脚本(Integer $请求码,String $类,Object... $数据) {
 		Class<?> $组件 = 反射工具.取类("放课后乐园部.安卓.脚本.组件.脚本界面");
-		Class<?> $界面 = 反射工具.取类(应用工具.取包名() + ".ScriptActivity");
+		Class<?> $界面 = 反射工具.取类("hl4a.runtime.ScriptActivity");
 		if ($组件 == null) {
 			错误工具.内容("没有引入脚本支持包 ~");
 		} else if ($界面 == null) {

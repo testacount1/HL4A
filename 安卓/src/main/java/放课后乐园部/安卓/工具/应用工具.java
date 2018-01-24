@@ -18,11 +18,22 @@ import 放课后乐园部.线程.*;
 import 放课后乐园部.事件.*;
 import android.widget.*;
 import 放课后乐园部.安卓.组件.*;
+import android.content.pm.PackageManager.*;
 
 public class 应用工具 {
 
 	private static 集合<基本界面> 所有界面 = new 集合<基本界面>();
 
+	public static boolean 已安装(String $包名) {
+		PackageManager $PM = 上下文工具.取全局上下文().getPackageManager();
+		try {
+			$PM.getPackageInfo($包名, 0);
+			return true;
+		} catch (PackageManager.NameNotFoundException $错误) {
+			return false;
+		}
+	}
+	
 	public static void 初始化界面(基本界面 $界面) {
 		新建界面($界面);
 		自动设置主题($界面);
@@ -57,14 +68,14 @@ public class 应用工具 {
 	public static void 初始化应用(基本应用 $应用) {
 		上下文工具.置全局上下文($应用);
 		安卓文件.初始化();
-		基本线程.置错误处理(错误处理);
+		线程.置错误处理(错误处理);
 		主题工具.置圆角大小("3dp");
 		主题工具.置大文本大小("8dp");
 		主题工具.置文本大小("5dp");
-		主题工具.置小文本大小("5dp");
+		主题工具.置小文本大小("4dp");
 		主题工具.置默认填充("16dp");
 		主题工具.置中等填充("56dp");
-		主题工具.置主题颜色(颜色.粉色);
+		主题工具.置主题颜色(颜色.靛蓝);
 		提示工具.初始化($应用);
 	}
 

@@ -9,7 +9,7 @@ public class 线性按钮 extends 线性布局 {
 
     public 图片视图 图片;
 
-    public 线性按钮(Context $上下文,byte[] $图片) {
+    public 线性按钮(Context $上下文,Object $图片) {
         super($上下文);
         置宽度("56dp");
         置高度("56dp");

@@ -6,9 +6,9 @@ import android.graphics.*;
 import android.view.*;
 import android.widget.*;
 import 放课后乐园部.事件.*;
-import 放课后乐园部.安卓.视图.实现.*;
-import 放课后乐园部.安卓.工具.*;
 import 放课后乐园部.安卓.图形.*;
+import 放课后乐园部.安卓.工具.*;
+import 放课后乐园部.安卓.视图.实现.*;
 
 public class 文本视图 extends TextView implements 基本文本 {
 

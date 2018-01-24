@@ -75,7 +75,9 @@ public class 字符工具 {
     public static Boolean 是否出现(String $文本,String $内容) {
         if ($文本 == null || $内容 == null)
             return false;
-        return $文本.indexOf($内容) != -1;
+
+			return $文本.indexOf($内容) != -1;
+	
     }
 
     public static Boolean 是否出现(String $文本,String $内容,Integer $开始位置) {
@@ -154,7 +156,8 @@ public class 字符工具 {
         if ($数组长度 == 1) {
 			if ($数组[0] != null) {
 				return $数组[0].toString();
-			} else {
+			}
+			else {
 				return "";
 			}
 		}
@@ -319,7 +322,8 @@ public class 字符工具 {
             int $位置 = $文本.indexOf($内容, $开始位置);
             if ($位置 == -1) return null;
             return $位置;
-        } else return 取出现位置($文本, $内容);
+        }
+		else return 取出现位置($文本, $内容);
     }
 
     public static Integer 取出现位置下标(String $文本,String $内容) {
@@ -337,7 +341,8 @@ public class 字符工具 {
             int $位置 = $文本.indexOf($内容, $开始位置);
             if ($位置 == -1) return null;
             return $位置 + $内容.length();
-        } else return 取出现位置下标($文本, $内容);
+        }
+		else return 取出现位置下标($文本, $内容);
     }
 
     public static Boolean 是否为空(Object... $内容) {

@@ -232,8 +232,10 @@ public final class 文件工具 {
     }
 
     public static void 剪切(String $地址,String $新地址) {
+		文件工具.删除($新地址);
+		if (文件工具.取文件对象($地址).renameTo(文件工具.取文件对象($新地址))) return;
         复制($地址, $新地址);
-        文件工具.删除($地址);
+		文件工具.删除($地址);
     }
 
     public static void 删除(String $地址) {
@@ -250,10 +252,10 @@ public final class 文件工具 {
 
     }
 
-    public static void 删除关键字(String $地址,String $关键字) {
+    public static void 删除关键字(String $地址,哈希表 $关键字) {
         File $对象 = 取文件对象($地址);
         if ($对象.exists())
-            if ($对象.isFile() && 字符工具.是否出现($对象.getName(), $关键字)) {
+            if ($对象.isFile() && $关键字.检查($对象.getName().toLowerCase())) {
                 $对象.delete();
             } else if ($对象.isDirectory()) {
                 File[] $列表 = $对象.listFiles();
