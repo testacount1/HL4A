@@ -7,10 +7,11 @@ public class 命令工具 {
     private boolean 成功 = true;
     private Process 进程 = null;
 
-    public 命令工具(String $命令,File $当前,String... $参数) {
+    public 命令工具(String $命令, File $当前, String... $参数) {
         try {
-            if ($命令 == null) $命令 = "";
-            进程 =  Runtime.getRuntime().exec($命令, $参数, $当前);
+            if ($命令 == null)
+                $命令 = "";
+            进程 = Runtime.getRuntime().exec($命令, $参数, $当前);
         } catch (Exception $错误) {
             成功 = false;
         }

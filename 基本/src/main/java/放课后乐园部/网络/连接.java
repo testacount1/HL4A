@@ -12,7 +12,7 @@ public class 连接 {
 
     public 连接(String $地址) {
         try {
-            连接对象 = (HttpURLConnection)new URL($地址).openConnection();
+            连接对象 = (HttpURLConnection) new URL($地址).openConnection();
             连接对象.setDoInput(true);
             连接对象.setDoOutput(true);
             置请求头("Accept-Language", "zh-cn,zh;q=0.5");
@@ -32,12 +32,12 @@ public class 连接 {
     public int 取连接超时() {
         return 连接对象.getConnectTimeout();
     }
-    
+
     public 连接 置读取超时(int $超时) {
         连接对象.setReadTimeout($超时);
         return this;
     }
-    
+
     public int 取读取超时() {
         return 连接对象.getReadTimeout();
     }
@@ -58,8 +58,7 @@ public class 连接 {
         return this;
     }
 
-
-    public 连接 置请求头(String $请求头,String $内容) {
+    public 连接 置请求头(String $请求头, String $内容) {
         连接对象.setRequestProperty($请求头, $内容);
         return this;
     }
@@ -98,11 +97,11 @@ public class 连接 {
     public String 取请求类型() {
         return 连接对象.getRequestMethod();
     }
-    
+
     public boolean 取可缓存() {
         return 连接对象.getUseCaches();
     }
-    
+
     public 连接 置可缓存(boolean $设置) {
         连接对象.setUseCaches($设置);
         return this;
@@ -116,7 +115,7 @@ public class 连接 {
         }
         return this;
     }
-    
+
     public 连接 传入数据(String $数据) {
         try {
             传入数据(字节工具.转换(URLEncoder.encode($数据, 取编码())));
@@ -125,24 +124,25 @@ public class 连接 {
         }
         return this;
     }
-    
+
     public 连接 传入数据(哈希表 $数据) {
         try {
             传入数据(格式数据($数据));
-        } catch (Exception $错误) {}
+        } catch (Exception $错误) {
+        }
         return this;
     }
-    
+
     public 连接 传入文件(String $文件) {
         传入数据(字节工具.读取($文件));
         return this;
     }
 
     public 连接 传入数据(byte[] $数据) {
-        字节工具.保存(取输出流(),$数据);
+        字节工具.保存(取输出流(), $数据);
         return this;
     }
-    
+
     public OutputStream 取输出流() {
         try {
             return 连接对象.getOutputStream();
@@ -151,12 +151,12 @@ public class 连接 {
         }
         return null;
     }
-    
-    
+
     public InputStream 取输入流() {
         try {
             return 连接对象.getInputStream();
-        } catch (Exception $错误) {}
+        } catch (Exception $错误) {
+        }
         return null;
     }
 
@@ -167,32 +167,33 @@ public class 连接 {
     public String 读取字符() {
         return 字符工具.读取(取输入流());
     }
-    
+
     public int 取状态码() {
         try {
             return 连接对象.getResponseCode();
-        } catch (Exception $错误) {}
+        } catch (Exception $错误) {
+        }
         return -1;
     }
-    
+
     public String 取信息() {
         try {
             return 连接对象.getResponseMessage();
-        } catch (Exception $错误) {}
+        } catch (Exception $错误) {
+        }
         return null;
     }
-    
 
     public 连接 保存文件(String $地址) {
 
         OutputStream $输出流 = 流工具.输出.文件($地址);
         流工具.保存($输出流, 流工具.读取(取输入流()));
         流工具.关闭($输出流);
-        
+
         return this;
 
     }
-    
+
     private byte[] 格式数据(Map<String, String> $对象) throws UnsupportedEncodingException {
         // TODO: Implement this method
         StringBuilder $缓存 = new StringBuilder();
@@ -202,6 +203,5 @@ public class 连接 {
         }
         return $缓存.toString().getBytes(取编码());
     }
-
 
 }

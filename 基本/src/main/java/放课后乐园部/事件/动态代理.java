@@ -5,21 +5,21 @@ import java.util.*;
 import 放课后乐园部.收集.*;
 
 public class 动态代理 implements InvocationHandler {
-    
+
     public static Class v = void.class;
     public static Class V = Void.class;
     public static Class b = boolean.class;
-    
+
     public 哈希表 方法表;
-    
+
     public 动态代理(Map $列表) {
         方法表 = new 哈希表($列表);
     }
-    
-    public  Object 代理(Class $类) {
-        return Proxy.newProxyInstance(getClass().getClassLoader(),$类.getInterfaces(),this);
+
+    public Object 代理(Class $类) {
+        return Proxy.newProxyInstance(getClass().getClassLoader(), $类.getInterfaces(), this);
     }
-    
+
     @Override
     public Object invoke(Object $对象,Method $方法,Object[] $参数) {
         

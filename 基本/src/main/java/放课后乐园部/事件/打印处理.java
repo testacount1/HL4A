@@ -13,9 +13,9 @@ public class 打印处理 extends PrintStream {
     }
 
     public void onPrint(Object... $参数) {
-        调用方法.事件(事件,$参数);
+        调用方法.事件(事件, $参数);
     }
-    
+
     @Override
     public void println() {
         onPrint();
@@ -43,7 +43,7 @@ public class 打印处理 extends PrintStream {
 
     @Override
     public void print(float f) {
-       onPrint(f);
+        onPrint(f);
     }
 
     @Override
@@ -58,7 +58,7 @@ public class 打印处理 extends PrintStream {
 
     @Override
     public void print(double d) {
-      onPrint(d);
+        onPrint(d);
     }
 
     @Override
@@ -83,7 +83,7 @@ public class 打印处理 extends PrintStream {
 
     @Override
     public void println(String str) {
-      onPrint(str);
+        onPrint(str);
     }
 
     @Override
@@ -98,7 +98,7 @@ public class 打印处理 extends PrintStream {
 
     @Override
     public void println(Object o) {
-       onPrint(o);
+        onPrint(o);
     }
 
     @Override
@@ -112,16 +112,15 @@ public class 打印处理 extends PrintStream {
     }
 
     @Override
-    public PrintStream printf(String format,Object[] args) {
+    public PrintStream printf(String format, Object[] args) {
         onPrint(format, args);
         return this;
     }
 
     @Override
-    public PrintStream printf(Locale l,String format,Object[] args) {
+    public PrintStream printf(Locale l, String format, Object[] args) {
         onPrint(l, format, args);
         return this;
     }
-    
 
 }

@@ -8,7 +8,7 @@ import 放课后乐园部.收集.*;
 
 public class ZIP工具 {
 
-    public static void 解压(String $文件,String $地址,String $输出) {
+    public static void 解压(String $文件, String $地址, String $输出) {
         try {
             $文件 = 文件工具.检查地址($文件);
             $输出 = 文件工具.检查地址($输出);
@@ -16,12 +16,14 @@ public class ZIP工具 {
             ZipEntry $进入 = $压缩.getEntry($地址);
             字节工具.保存($输出, 字节工具.读取($压缩.getInputStream($进入)));
             $压缩.close();
-        } catch (Exception $错误) {}
+        } catch (Exception $错误) {
+        }
 
     }
-	
-    public static 集合 解压(String $文件,String $输出) {
-        if ($文件 == null || $输出 == null) return null;
+
+    public static 集合 解压(String $文件, String $输出) {
+        if ($文件 == null || $输出 == null)
+            return null;
         $文件 = 文件工具.检查地址($文件);
         $输出 = 文件工具.检查地址($输出);
         try {
@@ -31,22 +33,27 @@ public class ZIP工具 {
             while (entries.hasMoreElements()) {
                 ZipEntry entry = ((ZipEntry) entries.nextElement());
                 String entryName = entry.getName();
-                if (!unzipChildFile($输出, files, zf, entry, entryName)) return files;
+                if (!unzipChildFile($输出, files, zf, entry, entryName))
+                    return files;
             }
 
             return files;
-        } catch (Exception $错误) {}
+        } catch (Exception $错误) {
+        }
         return null;
     }
 
-    private static boolean unzipChildFile(String destDir,List files,java.util.zip.ZipFile zf,ZipEntry entry,String entryName) throws IOException {
+    private static boolean unzipChildFile(String destDir, List files, java.util.zip.ZipFile zf, ZipEntry entry,
+            String entryName) throws IOException {
         String filePath = destDir + File.separator + entryName;
         File file = new File(filePath);
         files.add(file);
         if (entry.isDirectory()) {
-            if (!createOrExistsDir(file)) return false;
+            if (!createOrExistsDir(file))
+                return false;
         } else {
-            if (!createOrExistsFile(file)) return false;
+            if (!createOrExistsFile(file))
+                return false;
             InputStream in = null;
             OutputStream out = null;
 
@@ -68,9 +75,12 @@ public class ZIP工具 {
     }
 
     private static boolean createOrExistsFile(final File file) {
-        if (file == null) return false;
-        if (file.exists()) return file.isFile();
-        if (!createOrExistsDir(file.getParentFile())) return false;
+        if (file == null)
+            return false;
+        if (file.exists())
+            return file.isFile();
+        if (!createOrExistsDir(file.getParentFile()))
+            return false;
         try {
             return file.createNewFile();
         } catch (IOException e) {
@@ -79,78 +89,73 @@ public class ZIP工具 {
         }
     }
 
+    public static File 压缩(String sourceDir, String zipFilePath) {
 
+        File file = 文件工具.取文件对象(sourceDir);
+        File zipFile = 文件工具.取文件对象(zipFilePath);
+        java.util.zip.ZipOutputStream zos = null;
+        try {
+            // 创建写出流操作
+            OutputStream os = new FileOutputStream(zipFile);
+            BufferedOutputStream bos = new BufferedOutputStream(os);
+            zos = new java.util.zip.ZipOutputStream(bos);
 
-	public static File 压缩(String sourceDir,String zipFilePath) {
+            String basePath = null;
 
-		File file = 文件工具.取文件对象(sourceDir);
-		File zipFile = 文件工具.取文件对象(zipFilePath);
-		java.util.zip.ZipOutputStream zos = null;
-		try {
-			// 创建写出流操作
-			OutputStream os = new FileOutputStream(zipFile);
-			BufferedOutputStream bos = new BufferedOutputStream(os);
-			zos = new java.util.zip.ZipOutputStream(bos);
+            // 获取目录
+            if (file.isDirectory()) {
+                basePath = file.getPath();
+            } else {
+                basePath = file.getParent();
+            }
 
-			String basePath = null;
+            zipFile(file, basePath, zos);
 
-			// 获取目录
-			if (file.isDirectory()) {
-				basePath = file.getPath();
-			} else {
-				basePath = file.getParent();
-			}
+            if (zos != null) {
+                zos.closeEntry();
+                zos.close();
+            }
+        } catch (Exception $错误) {
+        }
+        return zipFile;
 
-			zipFile(file, basePath, zos);
+    }
 
-			if (zos != null) {
-				zos.closeEntry();
-				zos.close();
-			}
-		} catch (Exception $错误) {}
-		return zipFile;
+    private static void zipFile(File source, String basePath, java.util.zip.ZipOutputStream zos) throws IOException {
+        File[] files = null;
+        if (source.isDirectory()) {
+            files = source.listFiles();
+        } else {
+            files = new File[1];
+            files[0] = source;
+        }
 
-	}
+        InputStream is = null;
+        String pathName;
+        byte[] buf = new byte[1024];
+        int length = 0;
+        try {
+            for (File file : files) {
+                if (file.isDirectory()) {
+                    pathName = file.getPath().substring(basePath.length() + 1) + "/";
+                    zos.putNextEntry(new java.util.zip.ZipEntry(pathName));
+                    zipFile(file, basePath, zos);
+                } else {
+                    pathName = file.getPath().substring(basePath.length() + 1);
+                    is = new FileInputStream(file);
+                    BufferedInputStream bis = new BufferedInputStream(is);
+                    zos.putNextEntry(new java.util.zip.ZipEntry(pathName));
+                    while ((length = bis.read(buf)) > 0) {
+                        zos.write(buf, 0, length);
+                    }
+                }
+            }
+        } finally {
+            if (is != null) {
+                is.close();
+            }
+        }
 
-	private static void zipFile(File source,String basePath,java.util.zip.ZipOutputStream zos)
-	throws IOException {
-		File[] files = null;
-		if (source.isDirectory()) {
-			files = source.listFiles();
-		} else {
-			files = new File[1];
-			files[0] = source;
-		}
-
-		InputStream is = null;
-		String pathName;
-		byte[] buf = new byte[1024];
-		int length = 0;
-		try {
-			for (File file : files) {
-				if (file.isDirectory()) {
-					pathName = file.getPath().substring(basePath.length() + 1) + "/";
-					zos.putNextEntry(new java.util.zip.ZipEntry(pathName));
-					zipFile(file, basePath, zos);
-				} else {
-					pathName = file.getPath().substring(basePath.length() + 1);
-					is = new FileInputStream(file);
-					BufferedInputStream bis = new BufferedInputStream(is);
-					zos.putNextEntry(new java.util.zip.ZipEntry(pathName));
-					while ((length = bis.read(buf)) > 0) {
-						zos.write(buf, 0, length);
-					}
-				}
-			}
-		}
-		finally {
-			if (is != null) {
-				is.close();
-			}
-		}
-
-	}
-
-
+    }
 
 }

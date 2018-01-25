@@ -17,28 +17,28 @@ public class 集合<类型> extends ArrayList<类型> {
         集合 $集合 = new 集合();
         for (Object $数据 : $数组) {
             if ($数据 instanceof Object[])
-                $数据 = 到集合((Object[])$数据);
+                $数据 = 到集合((Object[]) $数据);
             $集合.添加($数据);
         }
         return $集合;
     }
 
-    public void 添加(int $键值,类型 $对象) {
-        add($键值,$对象);
+    public void 添加(int $键值, 类型 $对象) {
+        add($键值, $对象);
     }
 
     public void 添加(类型 $对象) {
         add($对象);
     }
-    
-    public void 添加(int $键值,Collection<类型> $集合) {
-        addAll($键值,$集合);
+
+    public void 添加(int $键值, Collection<类型> $集合) {
+        addAll($键值, $集合);
     }
-    
+
     public void 添加(Collection<类型> $集合) {
         addAll($集合);
     }
-    
+
     public void 删除(int $键值) {
         remove($键值);
     }
@@ -51,9 +51,9 @@ public class 集合<类型> extends ArrayList<类型> {
         return get($键值);
     }
 
-	public void 设置(int $键值,类型 $对象) {
-		set($键值, $对象);
-	}
+    public void 设置(int $键值, 类型 $对象) {
+        set($键值, $对象);
+    }
 
     public Boolean 检查(int $键值) {
         return 读取($键值) == null;
@@ -66,7 +66,7 @@ public class 集合<类型> extends ArrayList<类型> {
     public void 清空() {
         clear();
     }
-    
+
     public Object[] 到数组() {
         return toArray();
     }
