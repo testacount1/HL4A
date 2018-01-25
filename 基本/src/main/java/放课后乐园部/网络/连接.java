@@ -52,6 +52,8 @@ public class 连接 {
     }
 
     public 连接 置请求头(哈希表 $请求表) {
+        
+        // TODO: 类型转换问题
         for (Map.Entry<String, String> $内容 : $请求表.entrySet()) {
             连接对象.setRequestProperty($内容.getKey(), $内容.getValue());
         }

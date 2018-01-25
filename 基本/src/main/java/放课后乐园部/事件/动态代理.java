@@ -39,8 +39,8 @@ public class 动态代理 implements InvocationHandler {
         
         if ($返回类型 == v || $返回类型 == V) {
             $返回值 = null;
-        } else if ($返回类型 == b && !($返回值 instanceof boolean)) {
-            $返回值 = ($返回值 == true);
+        } else if ($返回类型 == b && !($返回值 instanceof Boolean)) {
+            $返回值 = ($返回值.equals(true));
         }
         
         return $返回值;
