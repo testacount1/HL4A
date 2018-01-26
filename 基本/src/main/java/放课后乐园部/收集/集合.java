@@ -1,6 +1,5 @@
 package 放课后乐园部.收集;
 
-import java.io.*;
 import java.util.*;
 
 public class 集合<类型> extends ArrayList<类型> {
