@@ -1,0 +1,2 @@
+include ':基本'
+project(':基本').projectDir = new File(settingsDir, '../基本')
