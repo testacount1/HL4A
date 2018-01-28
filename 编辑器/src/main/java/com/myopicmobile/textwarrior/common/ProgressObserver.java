@@ -13,7 +13,7 @@ package com.myopicmobile.textwarrior.common;
  * progress updates to be sent to the ProgressObserver.
  */
 public interface ProgressObserver {
-	public void onComplete(int requestCode, Object result);
-	public void onError(int requestCode, int errorCode, String message);
-	public void onCancel(int requestCode);
+    public void onComplete(int requestCode, Object result);
+    public void onError(int requestCode, int errorCode, String message);
+    public void onCancel(int requestCode);
 }

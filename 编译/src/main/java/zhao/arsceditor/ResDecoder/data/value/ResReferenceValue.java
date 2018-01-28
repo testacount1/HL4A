@@ -24,20 +24,20 @@ import zhao.arsceditor.ResDecoder.data.ResPackage;
  * @author Ryszard Wiśniewski <brut.alll@gmail.com>
  */
 public class ResReferenceValue extends ResIntValue {
-	public ResReferenceValue(ResPackage package_, int value, String rawValue) {
-		this(package_, value, rawValue, false);
-	}
+    public ResReferenceValue(ResPackage package_, int value, String rawValue) {
+        this(package_, value, rawValue, false);
+    }
 
-	public ResReferenceValue(ResPackage package_, int value, String rawValue, boolean theme) {
-		super(value, rawValue, "reference");
-	}
+    public ResReferenceValue(ResPackage package_, int value, String rawValue, boolean theme) {
+        super(value, rawValue, "reference");
+    }
 
-	@Override
-	protected String encodeAsResValue() throws IOException {
-		return String.valueOf(mValue);
-	}
+    @Override
+    protected String encodeAsResValue() throws IOException {
+        return String.valueOf(mValue);
+    }
 
-	public boolean isNull() {
-		return mValue == 0;
-	}
+    public boolean isNull() {
+        return mValue == 0;
+    }
 }

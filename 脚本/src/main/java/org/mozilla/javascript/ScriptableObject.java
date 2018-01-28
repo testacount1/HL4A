@@ -1397,7 +1397,7 @@ public abstract class ScriptableObject implements Scriptable,
             superProto = ScriptableObject.getObjectPrototype(scope);
         }
         proto.setPrototype(superProto);
-		
+        
         // Find out whether there are any methods that begin with
         // "js". If so, then only methods that begin with special
         // prefixes will be defined as JavaScript entities.
@@ -1449,10 +1449,10 @@ public abstract class ScriptableObject implements Scriptable,
             // ignore any compiler generated methods.
             if (name.indexOf('$') != -1)
                 continue;
-				/*
+                /*
             if (name.equals(ctorName))
                 continue;
-			
+            
             Annotation annotation = null;
             String prefix = null;
             if (method.isAnnotationPresent(JSFunction.class)) {
@@ -1521,7 +1521,7 @@ public abstract class ScriptableObject implements Scriptable,
             if (sealed) {
                 f.sealObject();
             }
-			*/
+            */
         }
 
         // Call user code to complete initialization if necessary.
@@ -1543,16 +1543,16 @@ public abstract class ScriptableObject implements Scriptable,
 
     private static Member findAnnotatedMember(AccessibleObject[] members,Class<? extends Annotation> annotation) {
         /*
-			for (AccessibleObject member : members) {
+            for (AccessibleObject member : members) {
             if (member.isAnnotationPresent(annotation)) {
                 return (Member) member;
             }
-			
+            
         }*/
         return null;
     }
-	
-	/*
+    
+    /*
 
     private static Method findSetterMethod(Method[] methods,
                                            String name,
@@ -1560,10 +1560,10 @@ public abstract class ScriptableObject implements Scriptable,
         String newStyleName = "set"
                 + Character.toUpperCase(name.charAt(0))
                 + name.substring(1);
-				
-		String 置 = "set"
-			+ Character.toUpperCase(name.charAt(0))
-			+ name.substring(1);
+                
+        String 置 = "set"
+            + Character.toUpperCase(name.charAt(0))
+            + name.substring(1);
         for (Method method : methods) {
             JSSetter annotation = method.getAnnotation(JSSetter.class);
             if (annotation != null) {
@@ -1614,8 +1614,8 @@ public abstract class ScriptableObject implements Scriptable,
         }
         return propName;
     }
-	
-	*/
+    
+    */
 
     @SuppressWarnings({"unchecked"})
     private static <T extends Scriptable> Class<T> extendsScriptable(Class<?> c)

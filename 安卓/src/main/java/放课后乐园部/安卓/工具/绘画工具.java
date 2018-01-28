@@ -21,19 +21,20 @@ public class 绘画工具 {
     }
 
     public static Drawable 主题() {
-        return 生成背景(主题工具.取主题颜色().取基本色(), 主题工具.取主题颜色().取基本深色());
+        return 生成背景(主题工具.取主题颜色().取控件色(), 主题工具.取主题颜色().取基本色());
     }
 
     public static Drawable 生成背景(Object $普通,Object $按下) {
-		if (设备工具.取SDK值() > 21) {
-			ShapeDrawable $波纹 = new ShapeDrawable();
-			$波纹.setShape(new RectShape());
-			InsetDrawable $绘画 = new InsetDrawable($波纹, -1);
-			RippleDrawable $涟漪 = new RippleDrawable(ColorStateList.valueOf(主题工具.取主题颜色().取淡色()), 绘画工具.颜色转绘画($普通), $绘画);
-			return $涟漪;
-		} else {
-			return new 按下变色绘画($普通, $按下);
-		}
+        if (设备工具.取SDK() > 21) {
+            ShapeDrawable $波纹 = new ShapeDrawable();
+            $波纹.setShape(new RectShape());
+            InsetDrawable $绘画 = new InsetDrawable($波纹, -1);
+            
+            RippleDrawable $涟漪 = new RippleDrawable(ColorStateList.valueOf(主题工具.取主题颜色().取淡色()), 绘画工具.颜色转绘画($普通), $绘画);
+            return $涟漪;
+        } else {
+            return new 按下变色绘画($普通, $按下);
+        }
         //return new 涟漪绘画($普通,$按下,颜色.白色);
     }
 

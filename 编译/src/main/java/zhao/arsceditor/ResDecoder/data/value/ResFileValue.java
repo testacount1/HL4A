@@ -26,32 +26,32 @@ import zhao.arsceditor.ResDecoder.data.ResResource;
  * @author Ryszard Wiśniewski <brut.alll@gmail.com>
  */
 public class ResFileValue extends ResIntBasedValue implements GetResValues {
-	private final String mPath;
+    private final String mPath;
 
-	public ResFileValue(String path, int rawIntValue) {
-		super(rawIntValue);
-		this.mPath = path;
-	}
+    public ResFileValue(String path, int rawIntValue) {
+        super(rawIntValue);
+        this.mPath = path;
+    }
 
-	public String getPath() {
-		return mPath;
-	}
+    public String getPath() {
+        return mPath;
+    }
 
-	@Override
-	public void getResValues(ARSCCallBack back, ResResource res) throws IOException {
-		back.back(res.getConfig().toString(), res.getResSpec().getType().getName(), res.getResSpec().getName(),
-				getStrippedPath());
-	}
+    @Override
+    public void getResValues(ARSCCallBack back, ResResource res) throws IOException {
+        back.back(res.getConfig().toString(), res.getResSpec().getType().getName(), res.getResSpec().getName(),
+                getStrippedPath());
+    }
 
-	public String getStrippedPath() throws IOException {
-		if (!mPath.startsWith("res/")) {
-			throw new IOException("File path does not start with \"res/\": " + mPath);
-		}
-		return mPath;/* .substring(4); */
-	}
+    public String getStrippedPath() throws IOException {
+        if (!mPath.startsWith("res/")) {
+            throw new IOException("File path does not start with \"res/\": " + mPath);
+        }
+        return mPath;/* .substring(4); */
+    }
 
-	@Override
-	public String toString() {
-		return mPath;
-	}
+    @Override
+    public String toString() {
+        return mPath;
+    }
 }

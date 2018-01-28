@@ -51,7 +51,7 @@ public class 连接 {
         return 连接对象.getFollowRedirects();
     }
 
-    public 连接 置请求头(哈希表<String, String> $请求表) {
+    public 连接 置请求头(哈希表<String,String> $请求表) {
         for (Map.Entry<String, String> $内容 : $请求表.entrySet()) {
             连接对象.setRequestProperty($内容.getKey(), $内容.getValue());
         }

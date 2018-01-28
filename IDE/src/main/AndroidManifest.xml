@@ -47,12 +47,14 @@
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data android:scheme="content" />
                 <data android:host="*" />
-                <data android:pathPattern=".*\.hpk" />
+                <data android:pathPattern=".%*\.hpk" />
             </intent-filter>
         </activity>
-      		<activity  android:name=".activity.MainActivity" />
-        <activity  android:name=".activity.ProjActivity" />
-        <activity  android:name=".activity.EditActivity" />
+        <activity android:name=".activity.MainActivity" />
+        <activity android:name=".activity.ProjActivity" />
+        <activity android:name=".activity.EditActivity" />
+        <activity android:name=".activity.HelpActivity" />
+        <activity android:name=".activity.ViewActivity" />
     </application>
 
 </manifest>

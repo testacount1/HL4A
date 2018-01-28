@@ -3,8 +3,8 @@ package 放课后乐园部.安卓.工具;
 import android.content.*;
 
 public class 安卓设置 {
-	
-	public static Object 读取(String $设置名) {
+    
+    public static Object 读取(String $设置名) {
         return 读取从文件("defult", $设置名);
     }
 
@@ -53,5 +53,5 @@ public class 安卓设置 {
         $写入.remove($设置名);
         $写入.commit();
     }
-	
+    
 }

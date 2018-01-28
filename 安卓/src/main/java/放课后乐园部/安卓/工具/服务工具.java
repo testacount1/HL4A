@@ -13,10 +13,10 @@ public class 服务工具 {
         if (已启动($类.getName()))return;
         $上下文.startService(new Intent($上下文, $类));
     }
-	
-	public static boolean 已启动(Class<?> $类) {
-		return 已启动($类.getName());
-	}
+    
+    public static boolean 已启动(Class<?> $类) {
+        return 已启动($类.getName());
+    }
 
     public static boolean 已启动(String $类名) {
         ActivityManager $am = (ActivityManager) 上下文工具.取全局上下文().getSystemService(Context.ACTIVITY_SERVICE);
@@ -28,7 +28,7 @@ public class 服务工具 {
     }
 
     public static 连接处理 绑定(基本界面 $界面,Class<?> $类,通用方法 $成功,通用方法 $断开) {
-		启动($界面,$类);
+        启动($界面,$类);
         连接处理 $处理 = new 连接处理($成功, $断开);
         $界面.bindService(new Intent($界面, $类), $处理, Context.BIND_AUTO_CREATE);
         $界面.所有连接.添加($处理);

@@ -1,6 +1,7 @@
 package 放课后乐园部.收集;
 
 import java.util.*;
+import 放课后乐园部.工具.*;
 
 public class 集合<类型> extends ArrayList<类型> {
 
@@ -12,6 +13,14 @@ public class 集合<类型> extends ArrayList<类型> {
         super($集合);
     }
 
+    public 集合(类型[] $集合) {
+        super();
+        for (类型 $单个 : $集合) {
+            添加($单个);
+        }
+    }
+
+
     public static 集合 到集合(Object[] $数组) {
         集合 $集合 = new 集合();
         for (Object $数据 : $数组) {
@@ -22,7 +31,7 @@ public class 集合<类型> extends ArrayList<类型> {
         return $集合;
     }
 
-    public void 添加(int $键值, 类型 $对象) {
+    public void 添加(int $键值,类型 $对象) {
         add($键值, $对象);
     }
 
@@ -30,7 +39,13 @@ public class 集合<类型> extends ArrayList<类型> {
         add($对象);
     }
 
-    public void 添加(int $键值, Collection<类型> $集合) {
+    public void 添加(类型[] $对象) {
+        for (类型 $单个 : $对象) {
+            add($单个);
+        }
+    }
+
+    public void 添加(int $键值,Collection<类型> $集合) {
         addAll($键值, $集合);
     }
 
@@ -50,7 +65,7 @@ public class 集合<类型> extends ArrayList<类型> {
         return get($键值);
     }
 
-    public void 设置(int $键值, 类型 $对象) {
+    public void 设置(int $键值,类型 $对象) {
         set($键值, $对象);
     }
 
@@ -64,6 +79,10 @@ public class 集合<类型> extends ArrayList<类型> {
 
     public void 清空() {
         clear();
+    }
+
+    public Object[] 到数组(Class<?> $类) {
+        return toArray(数组工具.创建($类, 数量()));
     }
 
     public Object[] 到数组() {

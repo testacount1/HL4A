@@ -182,7 +182,7 @@ public class 图片工具 {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
             Bitmap bitmap = $图片.copy($图片.getConfig(), true);
             final RenderScript rs = RenderScript.create(上下文工具.取全局上下文());
-            final Allocation input = Allocation.createFromBitmap(rs, $图片, Allocation.MipmapControl.MIPMAP_NONE,																						 Allocation.USAGE_SCRIPT);
+            final Allocation input = Allocation.createFromBitmap(rs, $图片, Allocation.MipmapControl.MIPMAP_NONE,                                                                                         Allocation.USAGE_SCRIPT);
             final Allocation output = Allocation.createTyped(rs, input.getType());
             ScriptIntrinsicBlur script = ScriptIntrinsicBlur.create(rs, Element.U8_4(rs));
             script.setRadius($半径);

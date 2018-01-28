@@ -10,14 +10,14 @@ import android.graphics.drawable.*;
 
 public class 视图工具 {
 
-	public static ColorStateList 创建颜色列表(Object $普通颜色,Object $按下颜色) {
+    public static ColorStateList 创建颜色列表(Object $普通颜色,Object $按下颜色) {
         int $普通 = 检查颜色($普通颜色);
         int $按下 = 检查颜色($按下颜色);
-		int[] $颜色 = new int[] {$按下,$普通};int[][] $状态 = new int[2][];
-		$状态[0] = new int[] { android.R.attr.state_pressed};
-		$状态[1] = new int[] {}; 
-		return new ColorStateList($状态, $颜色);
-	}
+        int[] $颜色 = new int[] {$按下,$普通};int[][] $状态 = new int[2][];
+        $状态[0] = new int[] { android.R.attr.state_pressed};
+        $状态[1] = new int[] {}; 
+        return new ColorStateList($状态, $颜色);
+    }
 
     public static ColorStateList 创建单颜色列表(Object $普通颜色) {
         int $普通 = 检查颜色($普通颜色);
@@ -25,20 +25,20 @@ public class 视图工具 {
         int[][] $状态 = new int[1][];
         $状态[0] = new int[] {}; 
         return new ColorStateList($状态, $颜色);
-	}
+    }
 
-	public static Bitmap 检查图片(Object $图片) {
-		if ($图片 instanceof String) {
-			if (文件工具.是文件((String)$图片)) {
-				return 图片工具.读取((String)$图片);
-			}
-		}
-		if ($图片 instanceof Bitmap) return (Bitmap)$图片;
-		if ($图片 instanceof byte[]) return 图片工具.读取((byte[])$图片);
-		if ($图片 instanceof InputStream) return 图片工具.读取((InputStream)$图片);
-		if ($图片 instanceof BitmapDrawable)return 图片工具.读取((BitmapDrawable)$图片);
-		return null;
-	}
+    public static Bitmap 检查图片(Object $图片) {
+        if ($图片 instanceof String) {
+            if (文件工具.是文件((String)$图片)) {
+                return 图片工具.读取((String)$图片);
+            }
+        }
+        if ($图片 instanceof Bitmap) return (Bitmap)$图片;
+        if ($图片 instanceof byte[]) return 图片工具.读取((byte[])$图片);
+        if ($图片 instanceof InputStream) return 图片工具.读取((InputStream)$图片);
+        if ($图片 instanceof BitmapDrawable)return 图片工具.读取((BitmapDrawable)$图片);
+        return null;
+    }
 
 
     public static Integer 检查输入类型(Object $类型) {
@@ -90,16 +90,16 @@ public class 视图工具 {
         if ($大小 == null || "".equals($大小)) return null;
         if ($大小 instanceof Float) return ((Float)$大小).intValue();
         if ($大小 instanceof Integer) return (Integer) $大小;
-		if ($大小 instanceof Double) return ((Double)$大小).intValue();
+        if ($大小 instanceof Double) return ((Double)$大小).intValue();
         if ($大小 instanceof String) {
             switch ((String)$大小) {
                 case "最大":case "填充":case "-1":return -1;
                 case "最小":case "自动":case "-2":return -2;
             }
-			if ("".equals(((String)$大小).replaceAll("[0-9]",""))) {
-				return new Integer((String)$大小);
-			}
-			String $结束 = 字符工具.小写(字符工具.取结束后((String)$大小, 2));
+            if ("".equals(((String)$大小).replaceAll("[0-9]",""))) {
+                return new Integer((String)$大小);
+            }
+            String $结束 = 字符工具.小写(字符工具.取结束后((String)$大小, 2));
             Integer $数量 = new Integer(字符工具.取结束前((String)$大小, 2));
             switch ($结束) {
                 case "px":return 转换工具.px($数量).intValue();

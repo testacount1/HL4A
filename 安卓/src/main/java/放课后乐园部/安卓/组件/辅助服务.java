@@ -27,7 +27,7 @@ public class 辅助服务 extends AccessibilityService {
     public void onAccessibilityEvent(AccessibilityEvent $意图) {
         switch ($意图.getEventType()) {
             case AccessibilityEvent.TYPE_WINDOW_CONTENT_CHANGED:
-				最新包名 = $意图.getPackageName().toString();break;
+                最新包名 = $意图.getPackageName().toString();break;
             case AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED:
                 置最新界面信息($意图.getPackageName(), $意图.getClassName());break;
         }
@@ -57,9 +57,6 @@ public class 辅助服务 extends AccessibilityService {
 
     @Override
     public void onInterrupt() {
-		服务 = null;
-		意图 = null;
-		节点 = null;
     }
 
 }

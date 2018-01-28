@@ -22,13 +22,19 @@ public class 字符工具 {
             return;
         字节工具.保存($地址, $内容.getBytes());
     }
+    
+    public static void 保存(OutputStream $地址, String $内容) {
+        if ($内容 == null)
+            return;
+        字节工具.保存($地址, $内容.getBytes());
+    }
 
     public static void 追加(String $地址, String $内容) {
         if ($内容 == null)
             return;
         字节工具.追加($地址, $内容.getBytes());
     }
-
+    
     public static String 转换十六(byte[] bytes) {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < bytes.length; i++) {

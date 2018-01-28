@@ -2,14 +2,12 @@ package 放课后乐园部.安卓.视图;
 
 import android.app.*;
 import android.content.*;
-import android.graphics.*;
 import android.graphics.drawable.*;
 import android.view.*;
 import android.widget.*;
-import java.io.*;
 import 放课后乐园部.事件.*;
-import 放课后乐园部.安卓.视图.实现.*;
 import 放课后乐园部.安卓.工具.*;
+import 放课后乐园部.安卓.视图.实现.*;
 
 public class 图片按钮 extends ImageButton implements 基本视图 {
     
@@ -34,9 +32,9 @@ public class 图片按钮 extends ImageButton implements 基本视图 {
         视图实现.置布局权重(this,$权重); 
     }
     
-	public void 置图片(Object $图片) {
-		置图片(视图工具.检查图片($图片));
-	}
+    public void 置图片(Object $图片) {
+        置图片(视图工具.检查图片($图片));
+    }
 
     public void 保存到(String $地址) {
         图片工具.保存(图片工具.读取((BitmapDrawable)getDrawable()), $地址);

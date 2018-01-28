@@ -9,5 +9,5 @@
 package com.myopicmobile.textwarrior.android;
 
 public interface SelectionModeListener {
-	public void onSelectionModeChanged(boolean active);
+    public void onSelectionModeChanged(boolean active);
 }

@@ -20,13 +20,13 @@ package zhao.arsceditor.ResDecoder.data.value;
  * @author Matt Mastracci <matthew@mastracci.com>
  */
 public class ResIntBasedValue extends ResValue {
-	private int mRawIntValue;
+    private int mRawIntValue;
 
-	protected ResIntBasedValue(int rawIntValue) {
-		mRawIntValue = rawIntValue;
-	}
+    protected ResIntBasedValue(int rawIntValue) {
+        mRawIntValue = rawIntValue;
+    }
 
-	public int getRawIntValue() {
-		return mRawIntValue;
-	}
+    public int getRawIntValue() {
+        return mRawIntValue;
+    }
 }

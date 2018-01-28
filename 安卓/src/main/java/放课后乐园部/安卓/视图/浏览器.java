@@ -18,9 +18,9 @@ public class 浏览器 extends WebView implements 基本视图 {
 
     public 浏览器(Context $上下文) {
         super($上下文);
-		if ($上下文 instanceof 基本界面) {
-			((基本界面)$上下文).所有浏览器.添加(this);
-		}
+        if ($上下文 instanceof 基本界面) {
+            ((基本界面)$上下文).所有浏览器.添加(this);
+        }
         视图实现.初始化控件(this);
         置宽度("最大");
         置高度("最大");
@@ -30,11 +30,11 @@ public class 浏览器 extends WebView implements 基本视图 {
         设置.setDisplayZoomControls(true);
         设置.setSupportZoom(true);
         setWebViewClient(new 浏览器实例());
-		setWebChromeClient(new Chrome实例());
-		addJavascriptInterface(new JS置源码(),"$__置源码");
+        setWebChromeClient(new Chrome实例());
+        addJavascriptInterface(new JS置源码(),"$__置源码");
     }
 
-	@Override
+    @Override
     public boolean onKeyDown(int keyCode,KeyEvent event) {
         if ((keyCode == KeyEvent.KEYCODE_BACK) && canGoBack()) {
             goBack();
@@ -65,26 +65,26 @@ public class 浏览器 extends WebView implements 基本视图 {
     public String 取网址() {
         return getUrl();
     }
-	
-	public String 取源码() {
-		return 源码;
-	}
-	
-	public void 置源码(String $源码) {
-		loadData($源码, "text/html", "UTF-8");
-		源码 = $源码;
-	}
-	
-	public String 取标题() {
-		
-		return getTitle();
-	}
+    
+    public String 取源码() {
+        return 源码;
+    }
+    
+    public void 置源码(String $源码) {
+        loadData($源码, "text/html", "UTF-8");
+        源码 = $源码;
+    }
+    
+    public String 取标题() {
+        
+        return getTitle();
+    }
 
     public 通用方法 加载开始事件;
     public 通用方法 加载完成事件;
     public 通用方法 加载错误事件;
-	
-	private String 源码;
+    
+    private String 源码;
 
     class 浏览器实例 extends WebViewClient {
 
@@ -93,61 +93,61 @@ public class 浏览器 extends WebView implements 基本视图 {
             调用方法.事件(加载错误事件, (浏览器)$视图, $错误码, $描述, $链接);
         }
 
-		@Override
+        @Override
         public void onPageStarted(WebView $视图,String $链接,Bitmap $图标) {
             super.onPageStarted($视图, $链接, $图标);
             调用方法.事件(加载开始事件, (浏览器)$视图, $链接, $图标);
         }
 
-		@Override
+        @Override
         public void onPageFinished(WebView $视图,String $链接) {
             super.onPageFinished($视图, $链接);
-			loadUrl("javascript:window.$__置源码.置源码('<head>'+" +
+            loadUrl("javascript:window.$__置源码.置源码('<head>'+" +
                     "document.getElementsByTagName('html')[0].innerHTML+'</head>');");
             调用方法.事件(加载完成事件, (浏览器)$视图, $链接);
         }
 
-		@Override
-		public boolean shouldOverrideUrlLoading(WebView $视图,String $链接) {
-			if (字符工具.以开始($链接, "http") || 字符工具.以开始($链接, "file")) {
-				$视图.loadUrl($链接);
-				return true;
-			} else {
-				链接工具.打开($链接);
-				return false;
-			}
-		}
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView $视图,String $链接) {
+            if (字符工具.以开始($链接, "http") || 字符工具.以开始($链接, "file")) {
+                $视图.loadUrl($链接);
+                return true;
+            } else {
+                链接工具.打开($链接);
+                return false;
+            }
+        }
 
     }
 
-	class Chrome实例 extends WebChromeClient {
+    class Chrome实例 extends WebChromeClient {
 
-		@Override
-		public boolean onJsAlert(WebView $视图,String $链接,String $信息,final JsResult $返回) {
-			基本弹窗 $弹窗 = new 基本弹窗(getContext());
-			$弹窗.置标题("来自网页的提示");
-			$弹窗.置内容($信息);
-			$弹窗.置右按钮("确定", $弹窗.隐藏);
-			$弹窗.setOnDismissListener(new DialogInterface.OnDismissListener(){
-					@Override
-					public void onDismiss(DialogInterface $弹窗) {
-						$返回.cancel();
-					}
-				});
-			$弹窗.显示();
-			return true;
-		}
+        @Override
+        public boolean onJsAlert(WebView $视图,String $链接,String $信息,final JsResult $返回) {
+            基本弹窗 $弹窗 = new 基本弹窗(getContext());
+            $弹窗.置标题("来自网页的提示");
+            $弹窗.置内容($信息);
+            $弹窗.置右按钮("确定", $弹窗.隐藏);
+            $弹窗.setOnDismissListener(new DialogInterface.OnDismissListener(){
+                    @Override
+                    public void onDismiss(DialogInterface $弹窗) {
+                        $返回.cancel();
+                    }
+                });
+            $弹窗.显示();
+            return true;
+        }
 
-	}
-	
-	class JS置源码 {
-		
-		@JavascriptInterface
-		public void 置源码(String $源码) {
-			源码 = $源码;
-		}
-		
-	}
+    }
+    
+    class JS置源码 {
+        
+        @JavascriptInterface
+        public void 置源码(String $源码) {
+            源码 = $源码;
+        }
+        
+    }
 
     @Override
     public void 加入到(ViewGroup $布局) {

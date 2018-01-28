@@ -26,53 +26,53 @@ import java.util.Set;
  * @author Ryszard Wiśniewski <brut.alll@gmail.com>
  */
 public class ResType {
-	private final ResConfigFlags mFlags;
-	private final Map<ResResSpec, ResResource> mResources = new LinkedHashMap<ResResSpec, ResResource>();
+    private final ResConfigFlags mFlags;
+    private final Map<ResResSpec, ResResource> mResources = new LinkedHashMap<ResResSpec, ResResource>();
 
-	public ResType(ResConfigFlags flags) {
-		this.mFlags = flags;
-	}
+    public ResType(ResConfigFlags flags) {
+        this.mFlags = flags;
+    }
 
-	public void addResource(ResResource res) throws IOException {
-		addResource(res, false);
-	}
+    public void addResource(ResResource res) throws IOException {
+        addResource(res, false);
+    }
 
-	public void addResource(ResResource res, boolean overwrite) throws IOException {
-		ResResSpec spec = res.getResSpec();
-		if (mResources.put(spec, res) != null && !overwrite) {
-			// throw new IOException(String.format("Multiple resources: spec=%s,
-			// config=%s", spec, this));
-		}
-	}
+    public void addResource(ResResource res, boolean overwrite) throws IOException {
+        ResResSpec spec = res.getResSpec();
+        if (mResources.put(spec, res) != null && !overwrite) {
+            // throw new IOException(String.format("Multiple resources: spec=%s,
+            // config=%s", spec, this));
+        }
+    }
 
-	public ResConfigFlags getFlags() {
-		return mFlags;
-	}
+    public ResConfigFlags getFlags() {
+        return mFlags;
+    }
 
-	public ResResource getResource(ResResSpec spec) throws IOException {
-		ResResource res = mResources.get(spec);
-		if (res == null) {
-			// throw new UndefinedResObject(String.format("resource: spec=%s,
-			// config=%s", spec, this));
-		}
-		return res;
-	}
+    public ResResource getResource(ResResSpec spec) throws IOException {
+        ResResource res = mResources.get(spec);
+        if (res == null) {
+            // throw new UndefinedResObject(String.format("resource: spec=%s,
+            // config=%s", spec, this));
+        }
+        return res;
+    }
 
-	public Set<ResResource> listResources() {
-		return new LinkedHashSet<ResResource>(mResources.values());
-	}
+    public Set<ResResource> listResources() {
+        return new LinkedHashSet<ResResource>(mResources.values());
+    }
 
-	public Set<ResResSpec> listResSpecs() {
-		return mResources.keySet();
-	}
+    public Set<ResResSpec> listResSpecs() {
+        return mResources.keySet();
+    }
 
-	public void removeResource(ResResource res) throws IOException {
-		ResResSpec spec = res.getResSpec();
-		mResources.remove(spec);
-	}
+    public void removeResource(ResResource res) throws IOException {
+        ResResSpec spec = res.getResSpec();
+        mResources.remove(spec);
+    }
 
-	@Override
-	public String toString() {
-		return mFlags.toString();
-	}
+    @Override
+    public String toString() {
+        return mFlags.toString();
+    }
 }

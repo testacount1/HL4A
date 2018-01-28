@@ -15,6 +15,7 @@ public class 下拉刷新布局 extends SwipeRefreshLayout implements 基本布�
     public View 取子元素(Object $标签) {
         return 布局实现.取子元素(this,$标签);
     }
+    
 
     @Override
     public View 取子元素(int $键值) {
@@ -24,7 +25,7 @@ public class 下拉刷新布局 extends SwipeRefreshLayout implements 基本布�
     public 下拉刷新布局(Context $上下文) {
         super($上下文);
         视图实现.初始化控件(this);
-        置圆圈颜色(主题工具.取主题颜色().取基本色());
+        置圆圈颜色(主题工具.取主题颜色().取控件色());
     }
     
     public 下拉刷新布局(ViewGroup $父视图) {

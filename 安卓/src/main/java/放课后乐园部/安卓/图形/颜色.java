@@ -14,7 +14,7 @@ public class 颜色 {
     public static final String 黑透明 = "#202020";
 
 
-	public static final String[] 红色字符组 = {"#FFEBEE","#FFCDD2","#EF9A9A","#E57373","#EF5350","#F44336","#E53935","#D32F2F","#C62828","#B71C1C","#FF8A80","#FF5252","#FF1744","#D50000"};
+    public static final String[] 红色字符组 = {"#FFEBEE","#FFCDD2","#EF9A9A","#E57373","#EF5350","#F44336","#E53935","#D32F2F","#C62828","#B71C1C","#FF8A80","#FF5252","#FF1744","#D50000"};
     public static final String[] 粉色字符组 = {"#FCE4EC","#F8BBD0","#F48FB1","#F06292","#EC407A","#E91E63","#D81B60","#C2185B","#AD1457","#880E4F","#FF80AB","#FF4081","#F50057","#C51162"};
     public static final String[] 紫色字符组 = {"#F3E5F5","#E1BEE7","#CE93D8","#BA68C8","#AB47BC","#9C27B0","#8E24AA","#7B1FA2","#6A1B9A","#4A148C","#EA80FC","#E040FB","#D500F9","#AA00FF"};
     public static final String[] 深紫字符组 = {"#EDE7F6","#D1C4E9","#B39DDB","#9575CD","#7E57C2","#673AB7","#5E35B1","#512DA8","#4527A0","#311B92","#B388FF","#7C4DFF","#651FFF","#6200EA"};
@@ -33,61 +33,69 @@ public class 颜色 {
     public static final String[] 棕色字符组 = {"#EFEBE9","#D7CCC8","#BCAAA4","#A1887F","#8D6E63","#795548","#6D4C41","#5D4037","#4E342E","#3E2723"};
     public static final String[] 灰色字符组 = {"#FAFAFA","#F5F5F5","#EEEEEE","#E0E0E0","#BDBDBD","#9E9E9E","#757575","#616161","#424242","#212121"};
     public static final String[] 蓝灰字符组 = {"#ECEFF1","#CFD8DC","#B0BEC5","#90A4AE","#78909C","#607D8B","#546E7A","#455A64","#37474F","#263238"};
-	
-	public static final 颜色 红色 = new 颜色(红色字符组);
-	public static final 颜色 粉色 = new 颜色(粉色字符组);
-	public static final 颜色 紫色 = new 颜色(紫色字符组);
-	public static final 颜色 深紫 = new 颜色(深紫字符组);
-	public static final 颜色 靛蓝 = new 颜色(靛蓝字符组);
-	public static final 颜色 蓝色 = new 颜色(蓝色字符组);
-	public static final 颜色 亮蓝 = new 颜色(亮蓝字符组);
-	public static final 颜色 青色 = new 颜色(青色字符组);
-	public static final 颜色 鸭绿 = new 颜色(鸭绿字符组);
-	public static final 颜色 绿色 = new 颜色(绿色字符组);
-	public static final 颜色 亮绿 = new 颜色(亮绿字符组);
-	public static final 颜色 酸橙 = new 颜色(酸橙字符组);
-	public static final 颜色 黄色 = new 颜色(黄色字符组);
-	public static final 颜色 琥珀 = new 颜色(琥珀字符组);
-	public static final 颜色 橙色 = new 颜色(橙色字符组);
-	public static final 颜色 暗橙 = new 颜色(暗橙字符组);
-	public static final 颜色 棕色 = new 颜色(棕色字符组);
-	public static final 颜色 灰色 = new 颜色(灰色字符组);
-	public static final 颜色 蓝灰 = new 颜色(蓝灰字符组);
-	
-	
-	private String[] 字符组;
-	private int[] 颜色组;
-	
-	public 颜色(String[] $颜色) {
-		字符组 = $颜色;
-		颜色组 = new int[字符组.length];
-		for (int $键值 = 0;$键值 < 字符组.length;$键值 ++) {
-			颜色组[$键值] = 颜色工具.转换(字符组[$键值]);
-		}
-	}
-	
-	public String 取基本色字符() {
-		return 字符组[5];
-	}
-	
-	public String 取基本深色字符() {
-		return 字符组[7];
-	}
-	
-	public String 取淡色字符() {
-		return 字符组[1];
-	}
-	
-	public int 取基本色() {
-		return 颜色组[5];
-	}
-	
-	public int 取基本深色() {
-		return 颜色组[7];
-	}
-
-	public int 取淡色() {
-		return 颜色组[1];
-	}
-	
+    
+    public static final 颜色 红色 = new 颜色(红色字符组);
+    public static final 颜色 粉色 = new 颜色(粉色字符组);
+    public static final 颜色 紫色 = new 颜色(紫色字符组);
+    public static final 颜色 深紫 = new 颜色(深紫字符组);
+    public static final 颜色 靛蓝 = new 颜色(靛蓝字符组);
+    public static final 颜色 蓝色 = new 颜色(蓝色字符组);
+    public static final 颜色 亮蓝 = new 颜色(亮蓝字符组);
+    public static final 颜色 青色 = new 颜色(青色字符组);
+    public static final 颜色 鸭绿 = new 颜色(鸭绿字符组);
+    public static final 颜色 绿色 = new 颜色(绿色字符组);
+    public static final 颜色 亮绿 = new 颜色(亮绿字符组);
+    public static final 颜色 酸橙 = new 颜色(酸橙字符组);
+    public static final 颜色 黄色 = new 颜色(黄色字符组);
+    public static final 颜色 琥珀 = new 颜色(琥珀字符组);
+    public static final 颜色 橙色 = new 颜色(橙色字符组);
+    public static final 颜色 暗橙 = new 颜色(暗橙字符组);
+    public static final 颜色 棕色 = new 颜色(棕色字符组);
+    public static final 颜色 灰色 = new 颜色(灰色字符组);
+    public static final 颜色 蓝灰 = new 颜色(蓝灰字符组);
+    
+    
+    private String[] 字符组;
+    private int[] 颜色组;
+    
+    public 颜色(String[] $颜色) {
+        字符组 = $颜色;
+        颜色组 = new int[字符组.length];
+        for (int $键值 = 0;$键值 < 字符组.length;$键值 ++) {
+            颜色组[$键值] = 颜色工具.转换(字符组[$键值]);
+        }
+    }
+    
+    public String 取淡色字符() {
+        return 字符组[1];
+    }
+    
+    public String 取控件色字符() {
+        return 字符组[4];
+    }
+    
+    public String 取基本色字符() {
+        return 字符组[5];
+    }
+    
+    public String 取基本深色字符() {
+        return 字符组[7];
+    }
+    
+    public int 取淡色() {
+        return 颜色组[1];
+    }
+    
+    public int 取控件色() {
+        return 颜色组[4];
+    }
+    
+    public int 取基本色() {
+        return 颜色组[5];
+    }
+    
+    public int 取基本深色() {
+        return 颜色组[7];
+    }
+    
 }

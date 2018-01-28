@@ -12,57 +12,57 @@ package com.myopicmobile.textwarrior.common;
  * Singleton class containing the symbols and operators of the Python language
  */
 public class LanguagePython extends LanguageCFamily{
-	private static LanguageCFamily _theOne = null;
-	
-	private final static String[] keywords = {
-		"and", "assert", "break", "class", "continue", "def", "del",
-		"elif", "else", "except", "exec", "finally", "for", "from",
-		"global", "if", "import", "in", "is", "lambda", "not", "or",
-		"pass", "print", "raise", "return", "try", "while", "with",
-		"yield", "True", "False", "None"
-		};
-	
-	private final static char[] operators = {
-		'(', ')', '{', '}', '.', ',', ';', '=', '+', '-',
-		'/', '*', '&', '!', '|', ':', '[', ']', '<', '>',
-		'~', '%', '^'
-	}; // no ternary operator ? :
+    private static LanguageCFamily _theOne = null;
+    
+    private final static String[] keywords = {
+        "and", "assert", "break", "class", "continue", "def", "del",
+        "elif", "else", "except", "exec", "finally", "for", "from",
+        "global", "if", "import", "in", "is", "lambda", "not", "or",
+        "pass", "print", "raise", "return", "try", "while", "with",
+        "yield", "True", "False", "None"
+        };
+    
+    private final static char[] operators = {
+        '(', ')', '{', '}', '.', ',', ';', '=', '+', '-',
+        '/', '*', '&', '!', '|', ':', '[', ']', '<', '>',
+        '~', '%', '^'
+    }; // no ternary operator ? :
 
 
-	@Override
-	public boolean isWordStart(char c){
-		return (c == '@');
-	}
-	
-	@Override
-	public boolean isLineAStart(char c){
-		return false;
-	}
-	
-	@Override
-	public boolean isLineBStart(char c){
-		return (c == '#');
-	}
+    @Override
+    public boolean isWordStart(char c){
+        return (c == '@');
+    }
+    
+    @Override
+    public boolean isLineAStart(char c){
+        return false;
+    }
+    
+    @Override
+    public boolean isLineBStart(char c){
+        return (c == '#');
+    }
 
-	@Override
-	public boolean isLineStart(char c0, char c1){
-		return false;
-	}
+    @Override
+    public boolean isLineStart(char c0, char c1){
+        return false;
+    }
 
-	@Override
-	public boolean isMultilineStartDelimiter(char c0, char c1){
-		return false;
-	}
-	
-	public static LanguageCFamily getCharacterEncodings(){
-		if(_theOne == null){
-			_theOne = new LanguagePython();
-		}
-		return _theOne;
-	}
-	
-	private LanguagePython(){
-		super.registerKeywords(keywords);
-		super.replaceOperators(operators);
-	}
+    @Override
+    public boolean isMultilineStartDelimiter(char c0, char c1){
+        return false;
+    }
+    
+    public static LanguageCFamily getCharacterEncodings(){
+        if(_theOne == null){
+            _theOne = new LanguagePython();
+        }
+        return _theOne;
+    }
+    
+    private LanguagePython(){
+        super.registerKeywords(keywords);
+        super.replaceOperators(operators);
+    }
 }

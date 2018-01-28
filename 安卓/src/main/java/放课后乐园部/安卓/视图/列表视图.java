@@ -32,27 +32,27 @@ public class 列表视图 extends ListView implements 基本列表 {
         视图实现.置布局权重(this,$权重);
     }
     
-	@Override
+    @Override
     public void 置适配器(BaseAdapter $适配器) {
         setAdapter($适配器);
     }
     
-	@Override
+    @Override
     public void 置项目单击事件(通用方法 $单击) {
         列表实现.置项目单击事件(this, $单击);
     }
 
-	@Override
+    @Override
     public void 置项目长按事件(通用方法 $长按) {
         列表实现.置项目长按事件(this, $长按);
     }
     
-	@Override
+    @Override
     public void 置项目选中事件(通用方法 $选中) {
         列表实现.置项目选中事件(this, $选中);
     }
     
-	@Override
+    @Override
     public void 置项目选中事件(通用方法 $选中,通用方法 $取消) {
         列表实现.置项目选中事件(this, $选中,$取消);
     }

@@ -12,6 +12,8 @@ import java.util.*;
 import 放课后乐园部.安卓.线程.*;
 import 放课后乐园部.安卓.组件.*;
 import 放课后乐园部.线程.*;
+import 放课后乐园部.事件.*;
+import java.math.*;
 
 public class 辅助工具 {
 
@@ -21,13 +23,21 @@ public class 辅助工具 {
         return false;
     }
 
-	public static void 跳转() {
-		上下文工具.取全局上下文().startActivity(new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
-	}
-	
+    public static boolean 停止() {
+        if (检查()) {
+            辅助服务.服务.disableSelf();
+            return true;
+        }
+        return false;
+    }
+
+    public static void 跳转() {
+        上下文工具.取全局上下文().startActivity(new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+    }
+
     public static boolean 自动() {
         if (!检查()) {
-			跳转();
+            跳转();
             提示工具.普通("请开启或重启 " + 应用工具.取应用名() + " ~\n重新开关后服务仍未运行请重启系统！");
             return false;
         }
@@ -89,7 +99,7 @@ public class 辅助工具 {
         return null;
     }
 
-    
+
 
     public static boolean 已启动() {
         return 服务工具.已启动(Accessibility.class);
@@ -126,66 +136,68 @@ public class 辅助工具 {
         return 辅助服务.服务.performGlobalAction(辅助服务.服务.GLOBAL_ACTION_RECENTS);
     }
 
-	public static boolean 分屏() {
+    public static boolean 分屏() {
         if (!检查()) return false;
         return 辅助服务.服务.performGlobalAction(辅助服务.服务.GLOBAL_ACTION_TOGGLE_SPLIT_SCREEN);
     }
 
-	public static class 点按 {
+    public static class 点按 {
 
-		public static boolean 手势(long start,long duration,int[]... points) {
-			Path path = pointsToPath(points);
-			return 手势(new GestureDescription.StrokeDescription(path, start, duration));
-		}
+        public static boolean 手势(long start,long duration,int[]... points) {
+            Path path = pointsToPath(points);
+            return 手势(new GestureDescription.StrokeDescription(path, start, duration));
+        }
 
-		private static Path pointsToPath(int[][] points) {
-			Path path = new Path();
-			path.moveTo(points[0][0], points[0][1]);
-			for (int i = 1; i < points.length; i++) {
-				int[] point = points[i];
-				path.lineTo(point[0], point[1]);
-			}
-			return path;
-		}
+        private static Path pointsToPath(int[][] points) {
+            Path path = new Path();
+            path.moveTo(points[0][0], points[0][1]);
+            for (int i = 1; i < points.length; i++) {
+                int[] point = points[i];
+                path.lineTo(point[0], point[1]);
+            }
+            return path;
+        }
 
-		public static boolean 手势(GestureDescription.StrokeDescription... strokes) {
-			if (!检查()) return false;
-			if (安卓线程.是主线程()) return false;
-			final 回调<Boolean> $回调 = new 回调<>();
-			GestureDescription.Builder builder = new GestureDescription.Builder();
-			for (GestureDescription.StrokeDescription stroke : strokes) {
-				builder.addStroke(stroke);
-			}
-			辅助服务.服务.dispatchGesture(builder.build(), new AccessibilityService.GestureResultCallback() {
-					@Override
-					public void onCompleted(GestureDescription gestureDescription) {
-						$回调.返回(true);
-					}
-					@Override
-					public void onCancelled(GestureDescription gestureDescription) {
-						$回调.返回(false);
-					}
-				}, null);
-			return $回调.等待();
-		}
+        public static boolean 手势(final GestureDescription.StrokeDescription... strokes) {
+            if (!检查()) return false;
+            if (安卓线程.是主线程()) {
+                throw new RuntimeException("点按不能在主线程，否则无法受到回调");
+            }
+            final 回调<Boolean> $回调 = new 回调<>();
+            GestureDescription.Builder builder = new GestureDescription.Builder();
+            for (GestureDescription.StrokeDescription stroke : strokes) {
+                builder.addStroke(stroke);
+            }
+            辅助服务.服务.dispatchGesture(builder.build(), new AccessibilityService.GestureResultCallback() {
+                    @Override
+                    public void onCompleted(GestureDescription gestureDescription) {
+                        $回调.返回(true);
+                    }
+                    @Override
+                    public void onCancelled(GestureDescription gestureDescription) {
+                        $回调.返回(false);
+                    }
+                }, null);
+            return $回调.等待();
+        }
 
-		public static boolean 单击(int x,int y) {
-			return 按下(x, y, ViewConfiguration.getTapTimeout() + 50);
-		}
+        public static boolean 单击(int x,int y) {
+            return 按下(x, y, ViewConfiguration.getTapTimeout() + 50);
+        }
 
-		public static boolean 按下(int x,int y,int delay) {
-			return 手势(0, delay, new int[]{x, y});
-		}
+        public static boolean 按下(int x,int y,int delay) {
+            return 手势(0, delay, new int[]{x, y});
+        }
 
-		public static  boolean 长按(int x,int y) {
-			return 手势(0, ViewConfiguration.getLongPressTimeout() + 200, new int[]{x, y});
-		}
+        public static  boolean 长按(int x,int y) {
+            return 手势(0, ViewConfiguration.getLongPressTimeout() + 200, new int[]{x, y});
+        }
 
-		public static boolean 滑动(int x1,int y1,int x2,int y2,int delay) {
-			return 手势(0, delay, new int[]{x1, y1}, new int[]{x2, y2});
-		}
+        public static boolean 滑动(int x1,int y1,int x2,int y2,int delay) {
+            return 手势(0, delay, new int[]{x1, y1}, new int[]{x2, y2});
+        }
 
-	}
+    }
 
     public static class 节点 {
 
@@ -243,8 +255,7 @@ public class 辅助工具 {
             if (为空()) return false;
             if (可单击()) {
                 return 对象.performAction(AccessibilityNodeInfo.ACTION_CLICK);
-            }
-			else {
+            } else {
                 return 取父节点().单击();
             }
         }
@@ -253,8 +264,7 @@ public class 辅助工具 {
             if (为空()) return false;
             if (可长按()) {
                 return 对象.performAction(AccessibilityNodeInfo.ACTION_LONG_CLICK);
-            }
-			else {
+            } else {
                 return 取父节点().长按();
             }
         }

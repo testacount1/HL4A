@@ -8,8 +8,8 @@ import 放课后乐园部.事件.*;
 import 放课后乐园部.安卓.视图.实现.*;
 
 public class 网格视图 extends GridView implements 基本列表 {
-	
-	public 网格视图(Context $上下文) {
+    
+    public 网格视图(Context $上下文) {
         super($上下文);
         视图实现.初始化控件(this);
         置宽度("最大");
@@ -20,37 +20,37 @@ public class 网格视图 extends GridView implements 基本列表 {
         this($父视图.getContext());
         加入到($父视图);
     }
-	
-	public void 置行数(int $行数) {
-		setNumColumns($行数);
-	}
+    
+    public void 置行数(int $行数) {
+        setNumColumns($行数);
+    }
 
-	@Override
+    @Override
     public void 置适配器(BaseAdapter $适配器) {
         setAdapter($适配器);
     }
 
-	@Override
+    @Override
     public void 置项目单击事件(通用方法 $单击) {
         列表实现.置项目单击事件(this, $单击);
     }
 
-	@Override
+    @Override
     public void 置项目长按事件(通用方法 $长按) {
         列表实现.置项目长按事件(this, $长按);
     }
 
-	@Override
+    @Override
     public void 置项目选中事件(通用方法 $选中) {
         列表实现.置项目选中事件(this, $选中);
     }
 
-	@Override
+    @Override
     public void 置项目选中事件(通用方法 $选中,通用方法 $取消) {
         列表实现.置项目选中事件(this, $选中,$取消);
     }
     
-	
+    
     @Override
     public void 置布局重力(String $重力) {
         视图实现.置布局重力(this,$重力);
@@ -201,5 +201,5 @@ public class 网格视图 extends GridView implements 基本列表 {
         视图实现.置背景颜色(this, $颜色);
     }
     
-	
+    
 }

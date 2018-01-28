@@ -8,10 +8,10 @@ public class 列表实现 {
     
     列表实现() {}
     
-	public static void 置适配器(AdapterView $视图,BaseAdapter $适配器) {
-		$视图.setAdapter($适配器);
-	}
-	
+    public static void 置适配器(AdapterView $视图,BaseAdapter $适配器) {
+        $视图.setAdapter($适配器);
+    }
+    
     public static void 置项目选中事件(AdapterView $视图,通用方法 $选中,通用方法 $取消) {
         $视图.setOnItemSelectedListener(new 项目选中($选中,$取消));
     }

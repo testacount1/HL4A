@@ -252,9 +252,9 @@ public class 动态图 extends View implements 基本视图 {
             int movieWidth = movie.width();
             int movieHeight = movie.height();
 
-			/*
+            /*
              * Calculate horizontal scaling
-			 */
+             */
             float scaleH = 1f;
             int measureModeWidth = MeasureSpec.getMode(widthMeasureSpec);
 
@@ -265,9 +265,9 @@ public class 动态图 extends View implements 基本视图 {
                 }
             }
 
-			/*
+            /*
              * calculate vertical scaling
-			 */
+             */
             float scaleW = 1f;
             int measureModeHeight = MeasureSpec.getMode(heightMeasureSpec);
 
@@ -278,9 +278,9 @@ public class 动态图 extends View implements 基本视图 {
                 }
             }
 
-			/*
+            /*
              * calculate overall scale
-			 */
+             */
             mScale = 1f / Math.max(scaleH, scaleW);
 
             mMeasuredMovieWidth = (int) (movieWidth * mScale);
@@ -289,9 +289,9 @@ public class 动态图 extends View implements 基本视图 {
             setMeasuredDimension(mMeasuredMovieWidth, mMeasuredMovieHeight);
 
         } else {
-			/*
-			 * No movie set, just set minimum available size.
-			 */
+            /*
+             * No movie set, just set minimum available size.
+             */
             setMeasuredDimension(getSuggestedMinimumWidth(), getSuggestedMinimumHeight());
         }
     }
@@ -299,9 +299,9 @@ public class 动态图 extends View implements 基本视图 {
     @Override
     protected void onLayout(boolean changed,int l,int t,int r,int b) {
         super.onLayout(changed, l, t, r, b);
-		/*
-		 * Calculate mLeft / mTop for drawing in center
-		 */
+        /*
+         * Calculate mLeft / mTop for drawing in center
+         */
         mLeft = (getWidth() - mMeasuredMovieWidth) / 2f;
         mTop = (getHeight() - mMeasuredMovieHeight) / 2f;
 

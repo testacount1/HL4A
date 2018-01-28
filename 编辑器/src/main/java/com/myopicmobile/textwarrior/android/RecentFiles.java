@@ -15,9 +15,9 @@ import android.util.*;
 import java.util.*;
 
 public class RecentFiles {
-	/** Maximum number of files stored in file history */
-	public final static int MAX_HISTORY_SIZE = 10;
-	private LinkedList<String> _recentFiles = new LinkedList<String>();
+    /** Maximum number of files stored in file history */
+    public final static int MAX_HISTORY_SIZE = 10;
+    private LinkedList<String> _recentFiles = new LinkedList<String>();
     private final Context _ctx;
 
     public RecentFiles(Context ctx) {
@@ -26,7 +26,7 @@ public class RecentFiles {
     }
 
     public List<String> getRecentFiles(){
-    	return _recentFiles;
+        return _recentFiles;
     }
     
     /**
@@ -37,16 +37,16 @@ public class RecentFiles {
      * @param filename Full path of file to add to the recent history list
      */
     public void addRecentFile(String filename){
-    	//remove existing entry, if any
-    	_recentFiles.remove(filename);
-    	
-    	//promote to head of list
-    	_recentFiles.addFirst(filename);
-    	
-    	//trim list
-    	if(_recentFiles.size() > MAX_HISTORY_SIZE){
-    		_recentFiles.removeLast();
-    	}
+        //remove existing entry, if any
+        _recentFiles.remove(filename);
+        
+        //promote to head of list
+        _recentFiles.addFirst(filename);
+        
+        //trim list
+        if(_recentFiles.size() > MAX_HISTORY_SIZE){
+            _recentFiles.removeLast();
+        }
     }
     
     /**
@@ -60,10 +60,10 @@ public class RecentFiles {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
         Cursor c = db.query(DATABASE_TABLE, new String[] {KEY_FILENAME},
-        		null, null, null, null, KEY_RECENT_RANK);
+                null, null, null, null, KEY_RECENT_RANK);
         int filenameColumn = c.getColumnIndexOrThrow(KEY_FILENAME);
         while(c.moveToNext()){
-        	_recentFiles.add(c.getString(filenameColumn));
+            _recentFiles.add(c.getString(filenameColumn));
         }
         c.close();
         dbHelper.close();
@@ -73,17 +73,17 @@ public class RecentFiles {
         RecentFilesDbHelper dbHelper = new RecentFilesDbHelper(_ctx);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         
-    	// Delete all rows and add the contents of _recentFiles.
-    	// This is simpler than checking the db if a filename exists and then
-    	// calculating and updating the appropriate rank.
-    	db.delete(DATABASE_TABLE, null, null);
-    	
+        // Delete all rows and add the contents of _recentFiles.
+        // This is simpler than checking the db if a filename exists and then
+        // calculating and updating the appropriate rank.
+        db.delete(DATABASE_TABLE, null, null);
+        
         ContentValues initialValues = new ContentValues();
-    	for(int i = 0; i < _recentFiles.size(); ++i){
+        for(int i = 0; i < _recentFiles.size(); ++i){
             initialValues.put(KEY_FILENAME, _recentFiles.get(i));
             initialValues.put(KEY_RECENT_RANK, i);
-    		db.insert(DATABASE_TABLE, null, initialValues);
-    	}
+            db.insert(DATABASE_TABLE, null, initialValues);
+        }
         dbHelper.close();
     }
 
@@ -104,7 +104,7 @@ public class RecentFiles {
         + KEY_RECENT_RANK + " integer unique not null);";
 
     private static final String DATABASE_DELETE =
-    	"DROP TABLE IF EXISTS " + DATABASE_TABLE;
+        "DROP TABLE IF EXISTS " + DATABASE_TABLE;
 
 
     private static class RecentFilesDbHelper extends SQLiteOpenHelper {

@@ -19,7 +19,7 @@ public class 基本弹窗 extends AlertDialog {
     public 基本弹窗(Context $上下文) {
         super($上下文);
         布局 = new 布局_基本弹窗($上下文);
-		setView(布局);
+        setView(布局);
         置可关闭(true);
     }
     
@@ -30,7 +30,7 @@ public class 基本弹窗 extends AlertDialog {
     
     public void 置内容(String $内容) {
         布局.底层.removeAllViews();
-		布局.底层.置填充(0,"16dp","16dp","16dp");
+        布局.底层.置填充(0,"16dp","16dp","16dp");
         new 滚动文本(布局.底层).置文本($内容);
     }
     
@@ -56,31 +56,31 @@ public class 基本弹窗 extends AlertDialog {
         布局.右按钮.文本.置文本($文本);
         布局.右按钮.置单击事件(new 弹窗按钮单击(this,$单击));
     }
-	
-	public 通用方法 显示 = new 通用方法() {
-		@Override
-		public Object 调用(Object[] $参数) {
-			显示();
-			return null;
-		}
-	};
-	
-	public 通用方法 隐藏 = new 通用方法() {
-		@Override
-		public Object 调用(Object[] $参数) {
-			隐藏();
-			return null;
-		}
-	};
+    
+    public 通用方法 显示 = new 通用方法() {
+        @Override
+        public Object 调用(Object[] $参数) {
+            显示();
+            return null;
+        }
+    };
+    
+    public 通用方法 隐藏 = new 通用方法() {
+        @Override
+        public Object 调用(Object[] $参数) {
+            隐藏();
+            return null;
+        }
+    };
     
     
     public void 显示() {
-		show();
+        show();
         Window $窗口 = getWindow();
         LayoutParams $设置 = $窗口.getAttributes();
         $设置.flags = 2;
         $设置.width = -1;
-		$设置.height = -2;
+        $设置.height = -2;
         $窗口.setAttributes($设置);
     }
 
@@ -105,7 +105,7 @@ public class 基本弹窗 extends AlertDialog {
         
         @Override
         public Object 调用(Object[] $参数) {
-            调用方法.事件(单击,数组工具.添加($参数,0,弹窗));
+            调用方法.事件(单击,数组工具.添加(Object.class,$参数,0,弹窗));
             return null;
         }
         

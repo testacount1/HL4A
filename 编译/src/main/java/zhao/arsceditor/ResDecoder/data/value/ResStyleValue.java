@@ -27,25 +27,25 @@ import zhao.arsceditor.ResDecoder.data.ResResource;
  * @author Ryszard Wiśniewski <brut.alll@gmail.com>
  */
 public class ResStyleValue extends ResBagValue implements GetResValues {
-	private final Duo<ResReferenceValue, ResScalarValue>[] mItems;
+    private final Duo<ResReferenceValue, ResScalarValue>[] mItems;
 
-	@SuppressWarnings("unchecked")
-	ResStyleValue(ResReferenceValue parent, Duo<Integer, ResScalarValue>[] items, ResValueFactory factory) {
-		super(parent);
+    @SuppressWarnings("unchecked")
+    ResStyleValue(ResReferenceValue parent, Duo<Integer, ResScalarValue>[] items, ResValueFactory factory) {
+        super(parent);
 
-		mItems = new Duo[items.length];
-		for (int i = 0; i < items.length; i++) {
-			mItems[i] = new Duo<ResReferenceValue, ResScalarValue>(factory.newReference(items[i].m1, null),
-					items[i].m2);
-		}
-	}
+        mItems = new Duo[items.length];
+        for (int i = 0; i < items.length; i++) {
+            mItems[i] = new Duo<ResReferenceValue, ResScalarValue>(factory.newReference(items[i].m1, null),
+                    items[i].m2);
+        }
+    }
 
-	@Override
-	public void getResValues(ARSCCallBack back, ResResource res) throws IOException {
-		for (int i = 0; i < mItems.length; i++) {
-			Duo<ResReferenceValue, ResScalarValue> item = mItems[i];
-			back.back(res.getConfig().toString(), res.getResSpec().getType().getName(), res.getResSpec().getName(),
-					item.m2.encodeResValue());
-		}
-	}
+    @Override
+    public void getResValues(ARSCCallBack back, ResResource res) throws IOException {
+        for (int i = 0; i < mItems.length; i++) {
+            Duo<ResReferenceValue, ResScalarValue> item = mItems[i];
+            back.back(res.getConfig().toString(), res.getResSpec().getType().getName(), res.getResSpec().getName(),
+                    item.m2.encodeResValue());
+        }
+    }
 }
