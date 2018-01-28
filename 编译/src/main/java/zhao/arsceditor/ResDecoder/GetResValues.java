@@ -27,5 +27,5 @@ import zhao.arsceditor.ResDecoder.data.ResResource;
  * @author ZhaoHai
  */
 public interface GetResValues {
-	public void getResValues(ARSCCallBack back, ResResource res) throws IOException;
+    public void getResValues(ARSCCallBack back, ResResource res) throws IOException;
 }

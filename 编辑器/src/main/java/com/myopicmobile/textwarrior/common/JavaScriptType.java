@@ -1,6 +1,6 @@
 package com.myopicmobile.textwarrior.common;
 public enum JavaScriptType {
-	EOF,
+    EOF,
  OPERATOR, //运算符
  IDENTIFIER,//标识符
  INTEGER_LITERAL, //整数

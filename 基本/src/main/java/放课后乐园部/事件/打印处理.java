@@ -5,7 +5,7 @@ import java.util.*;
 
 public class 打印处理 extends PrintStream {
 
-    通用方法 事件;
+    private 通用方法 事件;
 
     public 打印处理(通用方法 $处理) {
         super(new ByteArrayOutputStream());
@@ -113,13 +113,13 @@ public class 打印处理 extends PrintStream {
 
     @Override
     public PrintStream printf(String format, Object[] args) {
-        onPrint(format, args);
+        onPrint(String.format(format,args));
         return this;
     }
 
     @Override
     public PrintStream printf(Locale l, String format, Object[] args) {
-        onPrint(l, format, args);
+        onPrint(String.format(l,format,args));
         return this;
     }
 

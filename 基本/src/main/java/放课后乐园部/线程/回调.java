@@ -1,9 +1,10 @@
 package 放课后乐园部.线程;
 
-public class 回调<类型> {
+public class 回调<类型> implements 可回调的 {
 
     private volatile 类型 内容;
 
+    @Override
     public 类型 等待() {
         synchronized (this) {
             if (内容 != null)
@@ -17,6 +18,7 @@ public class 回调<类型> {
         }
     }
 
+    @Override
     public void 返回(类型 $内容) {
         synchronized (this) {
             内容 = $内容;

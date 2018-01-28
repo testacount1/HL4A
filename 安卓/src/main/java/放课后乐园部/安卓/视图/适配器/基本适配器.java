@@ -9,11 +9,11 @@ import 放课后乐园部.收集.*;
 public abstract class 基本适配器 extends BaseAdapter {
 
     public Context 上下文;
-    public 集合 数据;
+    public 集合<哈希表<String,String>> 数据;
     
-    public 基本适配器(Context $上下文,List $数据) {
+    public 基本适配器(Context $上下文,List<String> $数据) {
         上下文 = $上下文;
-        数据 = new 集合(转换($数据));
+        数据 = new 集合<>(转换($数据));
     }
     
     @Override
@@ -40,6 +40,11 @@ public abstract class 基本适配器 extends BaseAdapter {
         return $视图;
     }
     
+    public void 清空() {
+        数据 = new 集合<>();
+        发送更新事件();
+    }
+    
     public void 发送更新事件() {
         notifyDataSetChanged();
     }
@@ -48,7 +53,7 @@ public abstract class 基本适配器 extends BaseAdapter {
         notifyDataSetInvalidated();
     }
     
-    public abstract List 转换(List $数据);
+    public abstract 集合<哈希表<String,String>> 转换(List<String> $数据);
    
     public abstract View 创建();
     

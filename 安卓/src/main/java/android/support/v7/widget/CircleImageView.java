@@ -62,7 +62,7 @@ public class CircleImageView extends ImageView {
     private boolean mBorderOverlay;
     private boolean mDisableCircularTransformation;
 
-	private float mElevation;
+    private float mElevation;
 
     public CircleImageView(Context context) {
         super(context);
@@ -99,15 +99,15 @@ public class CircleImageView extends ImageView {
         }
     }
 
-	public void setElevation2(float elevation) {
-		
-		mElevation=elevation;
+    public void setElevation2(float elevation) {
+        
+        mElevation=elevation;
         mFillPaint.setShadowLayer(elevation, 0, elevation/2, 0xff000000);
-		invalidate();
-		//setPadding(getPaddingLeft(),getPaddingTop(),getPaddingRight(),getPaddingBottom()-(int)radius);
-	}
-	
-	
+        invalidate();
+        //setPadding(getPaddingLeft(),getPaddingTop(),getPaddingRight(),getPaddingBottom()-(int)radius);
+    }
+    
+    
     @Override
     public ScaleType getScaleType() {
         return SCALE_TYPE;
@@ -207,12 +207,12 @@ public class CircleImageView extends ImageView {
     }
 
 
-	@Override
+    @Override
     public void setBackgroundColor(int color)
-	{
-		setFillColor(color);
-	}
-	
+    {
+        setFillColor(color);
+    }
+    
     /**
      * Set a color to be drawn behind the circle-shaped drawable. Note that
      * this has no effect if the drawable is opaque or no drawable is set.

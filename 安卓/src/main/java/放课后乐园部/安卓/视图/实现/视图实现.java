@@ -8,6 +8,8 @@ import android.widget.*;
 import 放课后乐园部.事件.*;
 import 放课后乐园部.安卓.工具.*;
 import 放课后乐园部.安卓.视图.事件.*;
+import android.graphics.*;
+import android.content.res.*;
 
 public final class 视图实现 {
 
@@ -121,17 +123,17 @@ public final class 视图实现 {
     public static void 置边距实现(View $视图,Object $上,Object $下,Object $左,Object $右) {
         ViewGroup.MarginLayoutParams $设置 = 取边距设置($视图);
 
-		int $上边距 = $设置.topMargin;
-		int $下边距 = $设置.bottomMargin;
-		int $左边距 = $设置.leftMargin;
-		int $右边距 = $设置.rightMargin;
-		$上边距 = (($上 = 视图工具.检查大小($上)) == null) ? $上边距 : (int) $上;
-		$下边距 = (($下 = 视图工具.检查大小($下)) == null) ? $下边距 : (int) $下;
-		$左边距 = (($左 = 视图工具.检查大小($左)) == null) ? $左边距 : (int) $左;
-		$右边距 = (($右 = 视图工具.检查大小($左)) == null) ? $右边距 : (int) $右;
-		$设置.setMargins($左边距, $上边距, $右边距, $下边距);
-		// 这里的边距已经设置到了，但是为什么没有应用呢？
-		置设置($视图, $设置);
+        int $上边距 = $设置.topMargin;
+        int $下边距 = $设置.bottomMargin;
+        int $左边距 = $设置.leftMargin;
+        int $右边距 = $设置.rightMargin;
+        $上边距 = (($上 = 视图工具.检查大小($上)) == null) ? $上边距 : (int) $上;
+        $下边距 = (($下 = 视图工具.检查大小($下)) == null) ? $下边距 : (int) $下;
+        $左边距 = (($左 = 视图工具.检查大小($左)) == null) ? $左边距 : (int) $左;
+        $右边距 = (($右 = 视图工具.检查大小($左)) == null) ? $右边距 : (int) $右;
+        $设置.setMargins($左边距, $上边距, $右边距, $下边距);
+        // 这里的边距已经设置到了，但是为什么没有应用呢？
+        置设置($视图, $设置);
     }
 
     public static void 置边距(final View $视图,final Object $上,final Object $下,final Object $左,final Object $右) {
@@ -244,11 +246,11 @@ public final class 视图实现 {
 
     public static void 置填充(View $视图,Object $上,Object $下,Object $左,Object $右) {
 
-		Integer $上填充 = (($上 = 视图工具.检查大小($上)) == null) ? $视图.getPaddingTop() : (Integer) $上;
-		Integer $下填充 = (($下 = 视图工具.检查大小($下)) == null) ? $视图.getPaddingBottom() : (Integer) $下;
-		Integer $左填充 = (($左 = 视图工具.检查大小($左)) == null) ? $视图.getPaddingLeft() : (Integer) $左;
-		Integer $右填充 = (($右 = 视图工具.检查大小($右)) == null) ? $视图.getPaddingRight() : (Integer) $右;
-		$视图.setPadding($左填充, $上填充, $右填充, $下填充);
+        Integer $上填充 = (($上 = 视图工具.检查大小($上)) == null) ? $视图.getPaddingTop() : (Integer) $上;
+        Integer $下填充 = (($下 = 视图工具.检查大小($下)) == null) ? $视图.getPaddingBottom() : (Integer) $下;
+        Integer $左填充 = (($左 = 视图工具.检查大小($左)) == null) ? $视图.getPaddingLeft() : (Integer) $左;
+        Integer $右填充 = (($右 = 视图工具.检查大小($右)) == null) ? $视图.getPaddingRight() : (Integer) $右;
+        $视图.setPadding($左填充, $上填充, $右填充, $下填充);
 
     }
 

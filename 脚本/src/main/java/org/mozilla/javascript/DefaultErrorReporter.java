@@ -52,7 +52,7 @@ class DefaultErrorReporter implements ErrorReporter {
                 error = TYPE_ERROR_NAME;
                 message = message.substring(prefix.length());
             }
-			应用工具.错误处理.调用(null,
+            应用工具.错误处理.调用(null,
              ScriptRuntime.constructError(error, message, sourceURI,
                                                line, lineText, lineOffset));
         }

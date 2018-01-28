@@ -7,16 +7,14 @@ import 放课后乐园部.收集.*;
 public class 动态代理 implements InvocationHandler {
 
     public static Class v = void.class;
-    public static Class V = Void.class;
-    public static Class b = boolean.class;
 
-    public 哈希表 方法表;
+    public 哈希表<String,通用方法> 方法表;
 
-    public 动态代理(Map $列表) {
-        方法表 = new 哈希表($列表);
+    public 动态代理(Map<String,通用方法> $列表) {
+        方法表 = new 哈希表<>($列表);
     }
 
-    public Object 代理(Class $类) {
+    public Object 代理(Class<?> $类) {
         return Proxy.newProxyInstance(getClass().getClassLoader(), $类.getInterfaces(), this);
     }
 
@@ -31,17 +29,13 @@ public class 动态代理 implements InvocationHandler {
         
         if ($方法对象 instanceof 通用方法) {
             
-           $通用方法 = (通用方法)$方法对象;
+            $通用方法 = (通用方法)$方法对象;
             
         }
         
         Object $返回值 = 调用方法.事件($通用方法,$参数);
         
-        if ($返回类型 == v || $返回类型 == V) {
-            $返回值 = null;
-        } else if ($返回类型 == b && !($返回值 instanceof Boolean)) {
-            $返回值 = ($返回值.equals(true));
-        }
+        if ($返回类型 == v) $返回值 = null;
         
         return $返回值;
        

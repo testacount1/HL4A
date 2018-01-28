@@ -269,7 +269,7 @@ public class ContextFactory
             return false;
 
           case Context.FEATURE_LOCATION_INFORMATION_IN_ERROR:
-            return false;
+            return true; //输出错误？
 
           case Context.FEATURE_STRICT_MODE:
             return false;
@@ -278,7 +278,9 @@ public class ContextFactory
             return false;
 
           case Context.FEATURE_ENHANCED_JAVA_ACCESS:
-            return false;
+              //手动开启 操作java当然是越开放越好
+              //MikaGuraN 2018/01/27
+            return true;
 
           case Context.FEATURE_V8_EXTENSIONS:
             return true;

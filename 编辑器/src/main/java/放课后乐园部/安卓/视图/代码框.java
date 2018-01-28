@@ -44,14 +44,14 @@ public class 代码框 extends FreeScrollingTextField implements 基本视图  {
         setAutoIndentWidth(0);
         Lexer.setLanguage(LanguageJavascript.getInstance());
         setNavigationMethod(new YoyoNavigationMethod(this));
-        置文本颜色(主题工具.取主题颜色().取基本色());
+        置文本颜色(主题工具.取主题颜色().取控件色());
     }
     
     public 代码框(ViewGroup $父视图) {
         this($父视图.getContext());
         加入到($父视图);
     }
-	
+    
     public void 置代码选中事件(通用方法 $方法) {
         setOnSelectionChangedListener(new 代码选中($方法));
     }
@@ -222,7 +222,7 @@ public class 代码框 extends FreeScrollingTextField implements 基本视图  {
     public void 置背景颜色(Object $颜色) {
         getColorScheme().setColor(ColorScheme.Colorable.BACKGROUND, 视图工具.检查颜色($颜色));
     }
-	
+    
     public void 置文本颜色(int color) {
         getColorScheme().setColor(ColorScheme.Colorable.FOREGROUND, color);
     }

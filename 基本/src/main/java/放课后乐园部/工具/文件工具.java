@@ -85,7 +85,6 @@ public final class 文件工具 {
         File[] $列表 = 文件工具.取文件列表($目录);
 
         for (File $单个 : $列表) {
-
             if ($单个.isFile() && 字符工具.是否出现($单个.getName(), $关键字)) {
                 $返回.添加($单个);
             } else {
@@ -176,6 +175,12 @@ public final class 文件工具 {
 
         return new File($目录).getPath();
 
+    }
+    
+    public static String 取前缀(String $地址) {
+        if (!字符工具.是否出现($地址, "."))
+            return $地址;
+        return 字符工具.小写(字符工具.截取结束(取文件对象($地址).getName(), null, "."));
     }
 
     public static String 取后缀(String $地址) {

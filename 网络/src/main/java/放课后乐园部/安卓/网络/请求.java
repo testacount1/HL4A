@@ -13,23 +13,23 @@ import 放课后乐园部.工具.*;
 
 public class 请求 {
 
-	static boolean 已初始化 = false;
+    static boolean 已初始化 = false;
     static OkGo 实例 = OkGo.getInstance();
     Request 请求;
     String 地址;
 
-	public void 初始化() {
-		if (!已初始化) {
-			已初始化 = true;
-			OkHttpClient.Builder $工厂 = new OkHttpClient.Builder();
-			$工厂.connectTimeout(2, TimeUnit.SECONDS);
-			OkGo.getInstance().init(上下文工具.取全局上下文())
-				.setOkHttpClient($工厂.build());
-		}
-	}
-	
+    public void 初始化() {
+        if (!已初始化) {
+            已初始化 = true;
+            OkHttpClient.Builder $工厂 = new OkHttpClient.Builder();
+            $工厂.connectTimeout(2, TimeUnit.SECONDS);
+            OkGo.getInstance().init(上下文工具.取全局上下文())
+                .setOkHttpClient($工厂.build());
+        }
+    }
+    
     public 请求(String $地址) {
-		初始化();
+        初始化();
         地址 = $地址;
         置类型("GET");
     }

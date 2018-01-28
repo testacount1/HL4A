@@ -22,12 +22,12 @@ import android.util.TypedValue;
  * @author Ryszard Wiśniewski <brut.alll@gmail.com>
  */
 public class ResDimenValue extends ResIntValue {
-	public ResDimenValue(int value, String rawValue) {
-		super(value, rawValue, "dimen");
-	}
+    public ResDimenValue(int value, String rawValue) {
+        super(value, rawValue, "dimen");
+    }
 
-	@Override
-	protected String encodeAsResValue() {
-		return TypedValue.coerceToString(TypedValue.TYPE_DIMENSION, mValue);
-	}
+    @Override
+    protected String encodeAsResValue() {
+        return TypedValue.coerceToString(TypedValue.TYPE_DIMENSION, mValue);
+    }
 }

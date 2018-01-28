@@ -20,19 +20,19 @@ package zhao.arsceditor.ResDecoder.data.value;
  * @author Ryszard Wiśniewski <brut.alll@gmail.com>
  */
 public class ResFloatValue extends ResScalarValue {
-	private final float mValue;
+    private final float mValue;
 
-	public ResFloatValue(float value, int rawIntValue, String rawValue) {
-		super("float", rawIntValue, rawValue);
-		this.mValue = value;
-	}
+    public ResFloatValue(float value, int rawIntValue, String rawValue) {
+        super("float", rawIntValue, rawValue);
+        this.mValue = value;
+    }
 
-	@Override
-	protected String encodeAsResValue() {
-		return String.valueOf(mValue);
-	}
+    @Override
+    protected String encodeAsResValue() {
+        return String.valueOf(mValue);
+    }
 
-	public float getValue() {
-		return mValue;
-	}
+    public float getValue() {
+        return mValue;
+    }
 }

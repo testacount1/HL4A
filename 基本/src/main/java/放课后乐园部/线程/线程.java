@@ -2,41 +2,29 @@ package 放课后乐园部.线程;
 
 import 放课后乐园部.事件.*;
 
-public class 线程 extends Thread {
-
-    private long 启动延时 = 0;
+public class 线程<返回值> extends Thread {
+    
     private 通用方法 方法;
-    private Object[] 参数 = new Object[0];
-    private boolean 已完成 = false;
-    private Object 返回值;
-
-    public 线程(通用方法 $方法) {
+    private 回调<返回值> 返回;
+    
+    public 线程(通用方法<返回值> $方法) {
         方法 = $方法;
-    }
-
-    public 线程(long $延时, 通用方法 $方法) {
-        this($方法);
-        启动延时 = $延时;
+        返回 = new 回调<返回值> ();
     }
 
     @Override
     public void run() {
-        返回值 = 调用方法.事件(方法, 参数);
-        已完成 = true;
+       返回.返回((返回值)调用方法.事件(方法));
     }
 
     public Object 等待() {
-        while (!已完成) {
-            暂停(100);
-        }
-        return 返回值;
+        return 返回.等待();
     }
 
     public void 启动(Object... $参数) {
-        参数 = $参数;
         start();
     }
-
+    
     public void 暂停() {
         suspend();
     }

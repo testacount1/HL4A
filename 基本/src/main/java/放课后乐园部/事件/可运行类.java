@@ -2,13 +2,6 @@ package 放课后乐园部.事件;
 
 public class 可运行类 implements Runnable, 通用方法 {
 
-    public static final 通用方法 空方法 = new 通用方法() {
-        @Override
-        public Object 调用(Object[] $参数) {
-            return null;
-        }
-    };
-
     public 通用方法 方法;
     public Object[] 参数;
 

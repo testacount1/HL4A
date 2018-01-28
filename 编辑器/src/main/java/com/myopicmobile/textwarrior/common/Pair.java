@@ -9,32 +9,32 @@
 package com.myopicmobile.textwarrior.common;
 
 public final class Pair {
-	private int _first;
-	private int _second;
-	
-	public Pair(int x, int y){
-		_first = x;
-		_second = y;
-	}
-	
-	public final int getFirst(){
-		return _first;
-	}
-	
-	public final int getSecond(){
-		return _second;
-	}
-	
-	public final void setFirst(int value){
-		_first = value;
-	}
-	
-	public final void setSecond(int value){
-		_second = value;
-	}
+    private int _first;
+    private int _second;
+    
+    public Pair(int x, int y){
+        _first = x;
+        _second = y;
+    }
+    
+    public final int getFirst(){
+        return _first;
+    }
+    
+    public final int getSecond(){
+        return _second;
+    }
+    
+    public final void setFirst(int value){
+        _first = value;
+    }
+    
+    public final void setSecond(int value){
+        _second = value;
+    }
 
-	@Override
-	public String toString() {
-		return "("+_first+","+_second+")";
-	}
+    @Override
+    public String toString() {
+        return "("+_first+","+_second+")";
+    }
 }

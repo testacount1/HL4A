@@ -9,13 +9,14 @@ import 放课后乐园部.事件.*;
 import 放课后乐园部.安卓.视图.实现.*;
 
 public class 复选框 extends CheckBox implements 基本视图 {
-    
-    
+
+
     public 复选框(Context $上下文) {
         super($上下文);
         视图实现.初始化控件(this);
+        
     }
-    
+
     public 复选框(ViewGroup $父视图) {
         this($父视图.getContext());
         加入到($父视图);
@@ -23,12 +24,12 @@ public class 复选框 extends CheckBox implements 基本视图 {
 
     @Override
     public void 置布局重力(String $重力) {
-        视图实现.置布局重力(this,$重力);
+        视图实现.置布局重力(this, $重力);
     }
 
     @Override
     public void 置布局权重(float $权重) {
-        视图实现.置布局权重(this,$权重);
+        视图实现.置布局权重(this, $权重);
     }
 
     public void 置选中状态(boolean $是否打开) {
@@ -259,5 +260,5 @@ public class 复选框 extends CheckBox implements 基本视图 {
     public void 置背景颜色(Object $颜色) {
         视图实现.置背景颜色(this, $颜色);
     }
-    
+
 }

@@ -20,12 +20,12 @@ package zhao.arsceditor.ResDecoder.data.value;
  * @author Ryszard Wiśniewski <brut.alll@gmail.com>
  */
 public class ResColorValue extends ResIntValue {
-	public ResColorValue(int value, String rawValue) {
-		super(value, rawValue, "color");
-	}
+    public ResColorValue(int value, String rawValue) {
+        super(value, rawValue, "color");
+    }
 
-	@Override
-	protected String encodeAsResValue() {
-		return String.format("#%08x", mValue);
-	}
+    @Override
+    protected String encodeAsResValue() {
+        return String.format("#%08x", mValue);
+    }
 }

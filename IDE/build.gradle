@@ -8,14 +8,15 @@ android {
     defaultConfig {
         applicationId "hl4a.ide"
       	minSdkVersion 21
-      	targetSdkVersion 25
-        versionCode 77
-        versionName "1.7.0"
+      	targetSdkVersion 23
+        versionCode 79
+        versionName "1.7.3"
     }
 }
 
 dependencies {
     compile project(':安卓')
+    compile project(':网络')
 	compile project(':JSON')
 	compile project(':脚本')
    	compile project(':编辑器')

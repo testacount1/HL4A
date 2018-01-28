@@ -22,12 +22,12 @@ import android.util.TypedValue;
  * @author Ryszard Wiśniewski <brut.alll@gmail.com>
  */
 public class ResFractionValue extends ResIntValue {
-	public ResFractionValue(int value, String rawValue) {
-		super(value, rawValue, "fraction");
-	}
+    public ResFractionValue(int value, String rawValue) {
+        super(value, rawValue, "fraction");
+    }
 
-	@Override
-	protected String encodeAsResValue() {
-		return TypedValue.coerceToString(TypedValue.TYPE_FRACTION, mValue);
-	}
+    @Override
+    protected String encodeAsResValue() {
+        return TypedValue.coerceToString(TypedValue.TYPE_FRACTION, mValue);
+    }
 }
