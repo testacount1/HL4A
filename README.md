@@ -1,4 +1,6 @@
 # 乐园之土
+[![Build Status](https://travis-ci.org/testacount1/HL4A.svg?branch=master)](https://travis-ci.org/testacount1/HL4A)
+
 使用js,lua,bsh编写Android应用
 <br />
 <br />[码云](https://gitee.com/MikaGuraN/HL4A)
