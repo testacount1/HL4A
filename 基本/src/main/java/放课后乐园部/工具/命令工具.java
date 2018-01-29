@@ -10,7 +10,7 @@ public class 命令工具 {
     public 命令工具() {
         this("");
     }
-    
+
     public 命令工具(String $命令) {
         try {
             if ($命令 == null)
@@ -20,11 +20,11 @@ public class 命令工具 {
             成功 = false;
         }
     }
-    
-    public 命令工具(String $命令,File $当前) {
-        this($命令,$当前,null);
+
+    public 命令工具(String $命令, File $当前) {
+        this($命令, $当前, null);
     }
-    
+
     public 命令工具(String $命令, File $当前, String... $参数) {
         try {
             if ($命令 == null)
@@ -46,17 +46,17 @@ public class 命令工具 {
     public boolean 状态() {
         return 成功;
     }
-    
+
     public String 执行(String $命令) {
-        
+
         OutputStream $输出 = 进程.getOutputStream();
-      
-        字符工具.保存($输出,$命令);
-        
+
+        字符工具.保存($输出, $命令);
+
         等待();
-        
+
         return 读取();
-        
+
     }
 
     public String 读取() {

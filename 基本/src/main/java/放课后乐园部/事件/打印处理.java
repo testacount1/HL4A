@@ -113,13 +113,13 @@ public class 打印处理 extends PrintStream {
 
     @Override
     public PrintStream printf(String format, Object[] args) {
-        onPrint(String.format(format,args));
+        onPrint(String.format(format, args));
         return this;
     }
 
     @Override
     public PrintStream printf(Locale l, String format, Object[] args) {
-        onPrint(String.format(l,format,args));
+        onPrint(String.format(l, format, args));
         return this;
     }
 

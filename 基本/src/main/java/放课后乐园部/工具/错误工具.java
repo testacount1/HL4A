@@ -1,6 +1,5 @@
 package 放课后乐园部.工具;
 
-import android.content.*;
 import 放课后乐园部.事件.*;
 
 public class 错误工具 {

@@ -44,7 +44,7 @@ public class 字节工具 {
         流工具.关闭($输出流);
 
     }
-    
+
     public static void 保存(OutputStream $输出流, byte[] $字节) {
 
         if ($输出流 == null)
