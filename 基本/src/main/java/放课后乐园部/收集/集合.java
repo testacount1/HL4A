@@ -20,7 +20,6 @@ public class 集合<类型> extends ArrayList<类型> {
         }
     }
 
-
     public static 集合 到集合(Object[] $数组) {
         集合 $集合 = new 集合();
         for (Object $数据 : $数组) {
@@ -31,7 +30,7 @@ public class 集合<类型> extends ArrayList<类型> {
         return $集合;
     }
 
-    public void 添加(int $键值,类型 $对象) {
+    public void 添加(int $键值, 类型 $对象) {
         add($键值, $对象);
     }
 
@@ -45,7 +44,7 @@ public class 集合<类型> extends ArrayList<类型> {
         }
     }
 
-    public void 添加(int $键值,Collection<类型> $集合) {
+    public void 添加(int $键值, Collection<类型> $集合) {
         addAll($键值, $集合);
     }
 
@@ -65,7 +64,7 @@ public class 集合<类型> extends ArrayList<类型> {
         return get($键值);
     }
 
-    public void 设置(int $键值,类型 $对象) {
+    public void 设置(int $键值, 类型 $对象) {
         set($键值, $对象);
     }
 

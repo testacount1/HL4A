@@ -3,18 +3,18 @@ package 放课后乐园部.线程;
 import 放课后乐园部.事件.*;
 
 public class 线程<返回值> extends Thread {
-    
+
     private 通用方法 方法;
     private 回调<返回值> 返回;
-    
+
     public 线程(通用方法<返回值> $方法) {
         方法 = $方法;
-        返回 = new 回调<返回值> ();
+        返回 = new 回调<返回值>();
     }
 
     @Override
     public void run() {
-       返回.返回((返回值)调用方法.事件(方法));
+        返回.返回((返回值) 调用方法.事件(方法));
     }
 
     public Object 等待() {
@@ -24,7 +24,7 @@ public class 线程<返回值> extends Thread {
     public void 启动(Object... $参数) {
         start();
     }
-    
+
     public void 暂停() {
         suspend();
     }

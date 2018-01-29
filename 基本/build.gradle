@@ -1,12 +1,13 @@
-apply plugin: 'com.android.library'
-
-android {
-
-    compileSdkVersion 21
-    buildToolsVersion "21.1.0"
-    
-}
+apply plugin: 'java'
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile fileTree(dir: 'libs', include: ['junit*.jar', 'hamcrest*.jar'])
+}
+
+sourceSets {
+    test {
+        java {
+            srcDirs = ["src/test/java"]
+        }
+    }
 }

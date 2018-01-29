@@ -1,6 +1,6 @@
 package 放课后乐园部.线程;
 
-public class 回调<类型> implements 可回调的 {
+public class 回调<类型> implements 可回调的<类型> {
 
     private volatile 类型 内容;
 

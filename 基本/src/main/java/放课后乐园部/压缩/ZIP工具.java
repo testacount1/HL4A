@@ -8,7 +8,7 @@ import 放课后乐园部.收集.*;
 
 public class ZIP工具 {
 
-    public static void 解压(String $文件,String $地址,String $输出) {
+    public static void 解压(String $文件, String $地址, String $输出) {
         try {
             $文件 = 文件工具.检查地址($文件);
             $输出 = 文件工具.检查地址($输出);
@@ -21,7 +21,7 @@ public class ZIP工具 {
 
     }
 
-    public static 集合 解压(String $文件,String $输出) {
+    public static 集合 解压(String $文件, String $输出) {
         if ($文件 == null || $输出 == null)
             return null;
         $文件 = 文件工具.检查地址($文件);
@@ -43,8 +43,8 @@ public class ZIP工具 {
         return null;
     }
 
-    private static boolean unzipChildFile(String destDir,List files,java.util.zip.ZipFile zf,ZipEntry entry,
-                                          String entryName) throws IOException {
+    private static boolean unzipChildFile(String destDir, List files, java.util.zip.ZipFile zf, ZipEntry entry,
+            String entryName) throws IOException {
         String filePath = destDir + File.separator + entryName;
         File file = new File(filePath);
         files.add(file);
@@ -55,7 +55,7 @@ public class ZIP工具 {
             if (!createOrExistsFile(file))
                 return false;
             if (entry.getSize() != 0) {
-                //防止解压空文件导致的闪退
+                // 防止解压空文件导致的闪退
                 InputStream in = null;
                 OutputStream out = null;
                 in = new BufferedInputStream(zf.getInputStream(entry));
@@ -91,7 +91,7 @@ public class ZIP工具 {
         }
     }
 
-    public static File 压缩(String sourceDir,String zipFilePath) {
+    public static File 压缩(String sourceDir, String zipFilePath) {
 
         File file = 文件工具.取文件对象(sourceDir);
         File zipFile = 文件工具.取文件对象(zipFilePath);
@@ -123,7 +123,7 @@ public class ZIP工具 {
 
     }
 
-    private static void zipFile(File source,String basePath,java.util.zip.ZipOutputStream zos) throws IOException {
+    private static void zipFile(File source, String basePath, java.util.zip.ZipOutputStream zos) throws IOException {
         File[] files = null;
         if (source.isDirectory()) {
             files = source.listFiles();
