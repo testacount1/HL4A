@@ -19,4 +19,8 @@ public class 集合测试 {
         相等(1, 测试集.数量());
     }
 
+    @测试
+    public void travis失败() {
+        相等(2, 1);
+    }
 }
